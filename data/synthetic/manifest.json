@@ -1,0 +1,202 @@
+[
+  {
+    "audio_id": "banking_0000",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3",
+    "duration_seconds": 3.67,
+    "reference_transcript": "online fraud ho gaya hai paanch hazaar rupees ka",
+    "language": "mixed",
+    "scenario": "complaint_registration",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0001",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3",
+    "duration_seconds": 4.87,
+    "reference_transcript": "PAN card number ABCDE one two three four F है",
+    "language": "mixed",
+    "scenario": "kyc_verification",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0002",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3",
+    "duration_seconds": 5.74,
+    "reference_transcript": "mera Aadhaar number hai barah sau thirty four fifty six seventy eight ninety",
+    "language": "mixed",
+    "scenario": "kyc_verification",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0003",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3",
+    "duration_seconds": 3.58,
+    "reference_transcript": "UPI se payment karna hai paanch sau rupees",
+    "language": "mixed",
+    "scenario": "fund_transfer",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0004",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3",
+    "duration_seconds": 5.64,
+    "reference_transcript": "मेरा अकाउंट नंबर है नौ दो पांच तीन एक चार सात आठ छह",
+    "language": "hindi",
+    "scenario": "account_inquiry",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0005",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3",
+    "duration_seconds": 4.39,
+    "reference_transcript": "please मेरा account statement भेज दीजिए last three months का",
+    "language": "mixed",
+    "scenario": "account_inquiry",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0006",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3",
+    "duration_seconds": 3.1,
+    "reference_transcript": "मेरा चेक बाउंस हो गया कारण बताइए",
+    "language": "hindi",
+    "scenario": "complaint_registration",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0007",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3",
+    "duration_seconds": 3.96,
+    "reference_transcript": "mujhe education loan ke baare mein jaankari chahiye",
+    "language": "mixed",
+    "scenario": "loan_emi",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0008",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3",
+    "duration_seconds": 3.12,
+    "reference_transcript": "mera credit card activate karna hai",
+    "language": "mixed",
+    "scenario": "card_activation",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0009",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3",
+    "duration_seconds": 4.03,
+    "reference_transcript": "ATM se paise nahi nikle lekin account se kat gaye",
+    "language": "mixed",
+    "scenario": "complaint_registration",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0010",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3",
+    "duration_seconds": 2.88,
+    "reference_transcript": "मुझे अपने कार्ड का पिन बदलना है",
+    "language": "hindi",
+    "scenario": "card_activation",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0011",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3",
+    "duration_seconds": 6.65,
+    "reference_transcript": "My PAN number is Alpha Bravo Charlie Delta Echo one two three four Foxtrot",
+    "language": "english",
+    "scenario": "kyc_verification",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0012",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3",
+    "duration_seconds": 3.12,
+    "reference_transcript": "mera credit card activate karna hai",
+    "language": "mixed",
+    "scenario": "card_activation",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0013",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3",
+    "duration_seconds": 5.64,
+    "reference_transcript": "beneficiary ka account number ek do teen chaar paanch chhe saat aath nau hai",
+    "language": "mixed",
+    "scenario": "fund_transfer",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0014",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3",
+    "duration_seconds": 3.53,
+    "reference_transcript": "home loan EMI amount fifty thousand rupees है",
+    "language": "mixed",
+    "scenario": "loan_emi",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0015",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3",
+    "duration_seconds": 3.58,
+    "reference_transcript": "Aadhaar se linked mobile number change karna hai",
+    "language": "mixed",
+    "scenario": "kyc_verification",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0016",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3",
+    "duration_seconds": 3.0,
+    "reference_transcript": "CVV number teen chaar paanch है",
+    "language": "mixed",
+    "scenario": "card_activation",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0017",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3",
+    "duration_seconds": 3.98,
+    "reference_transcript": "card expiry date December twenty twenty seven है",
+    "language": "mixed",
+    "scenario": "card_activation",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0018",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3",
+    "duration_seconds": 3.53,
+    "reference_transcript": "home loan EMI amount fifty thousand rupees है",
+    "language": "mixed",
+    "scenario": "loan_emi",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  },
+  {
+    "audio_id": "banking_0019",
+    "audio_path": "/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3",
+    "duration_seconds": 4.03,
+    "reference_transcript": "ATM se paise nahi nikle lekin account se kat gaye",
+    "language": "mixed",
+    "scenario": "complaint_registration",
+    "accent_region": "neutral",
+    "noise_level": "clean"
+  }
+]

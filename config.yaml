@@ -1,0 +1,122 @@
+# Banking ASR Evaluation Pipeline Configuration
+
+# ─── Paths ───────────────────────────────────────────────
+paths:
+  data_root: "./data"
+  datasets_dir: "./data/datasets"
+  synthetic_dir: "./data/synthetic"
+  manifests_dir: "./data/manifests"
+  results_dir: "./results"
+  plots_dir: "./results/plots"
+  checkpoints_dir: "./checkpoints"
+  model_cache: "./model_cache"
+
+# ─── Device ──────────────────────────────────────────────
+device:
+  # "cpu" for Mac Mini, "cuda" for Param Rudra
+  compute: "cpu"
+  # Number of dataloader workers
+  num_workers: 2
+  # Batch size for inference (1 for streaming, higher for batch)
+  batch_size: 1
+
+# ─── Models ──────────────────────────────────────────────
+models:
+  # Mac Mini standin — tiny model for testing pipeline
+  whisper-tiny:
+    backend: "whisper"
+    model_id: "openai/whisper-tiny"
+    language: "hi"
+    task: "transcribe"
+    enabled: true
+
+  # ── Category 1: English-first ──
+  whisper-large-v3-turbo:
+    backend: "whisper"
+    model_id: "openai/whisper-large-v3-turbo"
+    language: "hi"
+    task: "transcribe"
+    enabled: false  # Param Rudra only
+
+  parakeet-tdt-0.6b:
+    backend: "nemo"
+    model_id: "nvidia/parakeet-tdt-0.6b-v3"
+    enabled: false
+
+  canary-1b-flash:
+    backend: "nemo"
+    model_id: "nvidia/canary-1b-flash"
+    enabled: false
+
+  # ── Category 2: Indic-native ──
+  indicwav2vec-hindi:
+    backend: "huggingface"
+    model_id: "ai4bharat/indicwav2vec-v2-hindi"
+    enabled: false
+
+  indicconformer-hindi:
+    backend: "huggingface"
+    model_id: "ai4bharat/indicconformer-hi"
+    enabled: false
+
+  whisper-medium-hi:
+    backend: "whisper"
+    model_id: "ai4bharat/whisper-medium-hi"
+    language: "hi"
+    task: "transcribe"
+    enabled: false
+
+  # ── Category 3: Multilingual ──
+  whisper-large-v3:
+    backend: "whisper"
+    model_id: "openai/whisper-large-v3"
+    language: "hi"
+    task: "transcribe"
+    enabled: false
+
+# ─── Evaluation ──────────────────────────────────────────
+evaluation:
+  # Text normalization settings
+  normalize:
+    lowercase: true
+    remove_punctuation: true
+    expand_english_contractions: true
+    normalize_numbers: true
+    normalize_currency: true
+    strip_whitespace: true
+
+  # Which metrics to compute
+  metrics:
+    - wer
+    - cer
+    - mer
+    - wil
+    - number_er
+    - entity_accuracy
+    - codeswitching_wer
+
+  # Checkpoint every N samples (for Param Rudra job resilience)
+  checkpoint_interval: 50
+
+# ─── Synthetic Data ─────────────────────────────────────
+synthetic:
+  num_samples: 100
+  languages: ["hindi", "english", "mixed"]
+  accent_regions: ["up_bihar", "maharashtra", "south_indian", "bengali", "neutral"]
+  noise_levels: ["clean", "moderate", "noisy"]
+  banking_scenarios:
+    - account_inquiry
+    - loan_emi
+    - card_activation
+    - kyc_verification
+    - fund_transfer
+    - complaint_registration
+
+# ─── Benchmarking ────────────────────────────────────────
+benchmark:
+  # Number of warmup runs before timing
+  warmup_runs: 3
+  # Number of timed runs per sample
+  timed_runs: 5
+  # Audio durations to test (seconds)
+  test_durations: [5, 10, 30, 60]
