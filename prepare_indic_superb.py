@@ -6,7 +6,7 @@ from banking_asr_eval.data.loaders import load_hf_dataset
 def main():
     parser = argparse.ArgumentParser(description="Download and prepare HuggingFace ASR datasets")
     parser.add_argument("--dataset", default="ai4bharat/Kathbath", help="HuggingFace dataset name")
-    parser.add_argument("--split", default="test", help="Dataset split")
+    parser.add_argument("--split", default="valid", help="Dataset split")
     parser.add_argument("--language", default="hindi", help="Language filter")
     parser.add_argument("--output", default="./data/manifests/kathbath_hindi.json", help="Output manifest path")
     args = parser.parse_args()
