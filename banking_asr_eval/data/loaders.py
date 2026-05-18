@@ -1,7 +1,32 @@
 import os
+import json
 from typing import Dict, List, Iterator, Optional
 
 from datasets import load_dataset, Audio
+
+
+def load_manifest(manifest_path: str) -> List[Dict]:
+    """
+    Load our custom banking evaluation manifest.
+
+    Expected format: JSON array of objects with at minimum:
+    - audio_path: path to audio file
+    - reference_transcript: ground truth text
+
+    Optional fields: audio_id, duration_seconds, language,
+    scenario, accent_region, noise_level
+    """
+    with open(manifest_path, encoding="utf-8") as f:
+        manifest = json.load(f)
+
+    # Resolve relative audio paths
+    manifest_dir = os.path.dirname(os.path.abspath(manifest_path))
+    for sample in manifest:
+        audio_path = sample.get("audio_path", "")
+        if audio_path and not os.path.isabs(audio_path):
+            sample["audio_path"] = os.path.join(manifest_dir, audio_path)
+
+    return manifest
 
 
 def load_hf_dataset(
