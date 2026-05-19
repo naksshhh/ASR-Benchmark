@@ -34,20 +34,21 @@ def create_hf_model(
         else:
             device = "cpu"
 
-    from transformers import AutoModelForCTC, AutoProcessor
+    from transformers import AutoModelForCTC, AutoFeatureExtractor, AutoTokenizer
     import librosa
 
     print(f"[HF Generic] Loading {model_id} onto {device}...")
 
     try:
-        # Load model and processor manually to handle dict-to-device mapping on GPU safely
-        processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
+        # Load model, feature extractor, and tokenizer manually
+        feature_extractor = AutoFeatureExtractor.from_pretrained(model_id, trust_remote_code=True)
+        tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_code=True)
         model = AutoModelForCTC.from_pretrained(model_id, trust_remote_code=True).to(device)
         model.eval()
 
         def transcribe_ctc(audio_path: str) -> str:
             speech_array, sr = librosa.load(audio_path, sr=16000)
-            inputs = processor(speech_array, sampling_rate=16000, return_tensors="pt")
+            inputs = feature_extractor(speech_array, sampling_rate=16000, return_tensors="pt")
 
             # Safely cast dict values to device
             if isinstance(inputs, dict):
@@ -60,7 +61,7 @@ def create_hf_model(
                 logits = outputs.logits if hasattr(outputs, "logits") else outputs["logits"]
 
             predicted_ids = torch.argmax(logits, dim=-1)
-            transcription = processor.batch_decode(predicted_ids)[0]
+            transcription = tokenizer.batch_decode(predicted_ids)[0]
             return transcription.strip()
 
         return transcribe_ctc
