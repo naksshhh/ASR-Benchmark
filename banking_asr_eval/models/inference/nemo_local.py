@@ -39,8 +39,17 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
     def transcribe(audio_path: str) -> str:
         """Transcribe a single audio file using NeMo."""
         transcriptions = model.transcribe([audio_path])
-        if isinstance(transcriptions, list):
-            return transcriptions[0].strip() if transcriptions else ""
-        return str(transcriptions).strip()
+        
+        # Helper to extract text from whatever structure NeMo returns (lists/tuples/Hypothesis/strings)
+        def extract_text(val):
+            if isinstance(val, (list, tuple)):
+                if not val:
+                    return ""
+                return extract_text(val[0])
+            if hasattr(val, "text"):
+                return str(val.text)
+            return str(val)
+
+        return extract_text(transcriptions).strip()
 
     return transcribe
