@@ -14,7 +14,7 @@ paths:
 # ─── Device ──────────────────────────────────────────────
 device:
   # "cpu" for Mac Mini, "cuda" for Param Rudra
-  compute: "cpu"
+  compute: "cuda"
   # Number of dataloader workers
   num_workers: 2
   # Batch size for inference (1 for streaming, higher for batch)
