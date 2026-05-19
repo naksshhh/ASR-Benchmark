@@ -16,6 +16,8 @@ def create_hf_model(
 ) -> Callable[[str], str]:
     """
     Create a HuggingFace ASR inference function.
+    Prefers manual CTC loading to avoid GPU pipeline dictionary errors,
+    and falls back to pipeline for non-CTC models.
 
     Args:
         model_id: HuggingFace model ID
@@ -32,16 +34,50 @@ def create_hf_model(
         else:
             device = "cpu"
 
-    pipe = pipeline(
-        "automatic-speech-recognition",
-        model=model_id,
-        device=device,
-        trust_remote_code=True,
-    )
+    from transformers import AutoModelForCTC, AutoProcessor
+    import librosa
 
-    def transcribe(audio_path: str) -> str:
-        """Transcribe a single audio file."""
-        result = pipe(audio_path)
-        return result["text"].strip()
+    print(f"[HF Generic] Loading {model_id} onto {device}...")
 
-    return transcribe
+    try:
+        # Load model and processor manually to handle dict-to-device mapping on GPU safely
+        processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
+        model = AutoModelForCTC.from_pretrained(model_id, trust_remote_code=True).to(device)
+        model.eval()
+
+        def transcribe_ctc(audio_path: str) -> str:
+            speech_array, sr = librosa.load(audio_path, sr=16000)
+            inputs = processor(speech_array, sampling_rate=16000, return_tensors="pt")
+
+            # Safely cast dict values to device
+            if isinstance(inputs, dict):
+                inputs = {k: v.to(device) if isinstance(v, torch.Tensor) else v for k, v in inputs.items()}
+            else:
+                inputs = inputs.to(device)
+
+            with torch.no_grad():
+                outputs = model(**inputs)
+                logits = outputs.logits if hasattr(outputs, "logits") else outputs["logits"]
+
+            predicted_ids = torch.argmax(logits, dim=-1)
+            transcription = processor.batch_decode(predicted_ids)[0]
+            return transcription.strip()
+
+        return transcribe_ctc
+
+    except Exception as e:
+        print(f"[HF Generic] CTC loading failed: {e}. Falling back to standard pipeline...")
+        from transformers import pipeline
+        
+        pipe = pipeline(
+            "automatic-speech-recognition",
+            model=model_id,
+            device=device,
+            trust_remote_code=True,
+        )
+
+        def transcribe_pipeline(audio_path: str) -> str:
+            result = pipe(audio_path)
+            return result["text"].strip()
+
+        return transcribe_pipeline
