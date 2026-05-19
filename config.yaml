@@ -51,12 +51,12 @@ models:
   # ── Category 2: Indic-native ──
   indicwav2vec-hindi:
     backend: "huggingface"
-    model_id: "ai4bharat/indicwav2vec-v2-hindi"
+    model_id: "ai4bharat/indicwav2vec-hindi"
     enabled: true
 
   indicconformer-hindi:
     backend: "huggingface"
-    model_id: "ai4bharat/indicconformer-hi"
+    model_id: "Anshul1212/indicconformer-hi-hybrid-rnnt-large-hf"
     enabled: true
 
   whisper-medium-hi:
