@@ -36,6 +36,7 @@ def create_hf_model(
         "automatic-speech-recognition",
         model=model_id,
         device=device,
+        trust_remote_code=True,
     )
 
     def transcribe(audio_path: str) -> str:
