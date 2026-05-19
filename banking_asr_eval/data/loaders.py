@@ -90,14 +90,25 @@ def load_hf_dataset(
             "dataset_source": dataset_name,
         }
 
-        # Store only audio path (NO decoding)
+        # Store audio path (extract and save to disk if file path is missing/virtual)
         if "audio" in sample:
             audio = sample["audio"]
+            audio_id = entry["audio_id"]
 
-            if isinstance(audio, dict):
-                entry["audio_path"] = audio.get("path", "")
+            path = audio.get("path", "") if isinstance(audio, dict) else str(audio)
+
+            if path and os.path.exists(path):
+                entry["audio_path"] = path
             else:
-                entry["audio_path"] = str(audio)
+                import soundfile as sf
+                save_dir = os.path.join("data", "audio", dataset_name.split("/")[-1].lower())
+                os.makedirs(save_dir, exist_ok=True)
+                local_path = os.path.join(save_dir, f"{audio_id}.wav")
+
+                if not os.path.exists(local_path):
+                    sf.write(local_path, audio["array"], audio["sampling_rate"])
+
+                entry["audio_path"] = os.path.abspath(local_path)
 
         # Optional metadata
         for field in ["accent", "gender", "age", "duration"]:
