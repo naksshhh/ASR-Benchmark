@@ -61,7 +61,9 @@ def create_hf_model(
                 logits = outputs.logits if hasattr(outputs, "logits") else outputs["logits"]
 
             predicted_ids = torch.argmax(logits, dim=-1)
-            transcription = tokenizer.batch_decode(predicted_ids)[0]
+            # Convert to flat Python list of ints for custom tokenizers
+            ids_list = predicted_ids[0].cpu().tolist()
+            transcription = tokenizer.decode(ids_list, skip_special_tokens=True)
             return transcription.strip()
 
         return transcribe_ctc
