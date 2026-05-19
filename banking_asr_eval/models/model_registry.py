@@ -67,6 +67,12 @@ class ModelRegistry:
         elif backend == "huggingface":
             from .inference.huggingface_generic import create_hf_model
             return create_hf_model(model_id=config["model_id"])
+        elif backend == "sherpa-onnx":
+            from .inference.sherpa_onnx_local import create_sherpa_onnx_model
+            return create_sherpa_onnx_model(model_id=config["model_id"])
+        elif backend == "voxtral":
+            from .inference.voxtral_local import create_voxtral_model
+            return create_voxtral_model(model_id=config["model_id"])
         else:
             raise ValueError(f"Unknown backend: {backend}")
 

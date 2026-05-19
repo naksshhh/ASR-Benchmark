@@ -61,7 +61,7 @@ models:
 
   whisper-medium-hi:
     backend: "whisper"
-    model_id: "ai4bharat/whisper-medium-hi"
+    model_id: "openai/whisper-medium"
     language: "hi"
     task: "transcribe"
     enabled: true
@@ -72,6 +72,16 @@ models:
     model_id: "openai/whisper-large-v3"
     language: "hi"
     task: "transcribe"
+    enabled: true
+
+  voxtral-mini-3b:
+    backend: "voxtral"
+    model_id: "mistralai/Voxtral-Mini-3B-2507"
+    enabled: true
+
+  streaming-zipformer:
+    backend: "sherpa-onnx"
+    model_id: "csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21"
     enabled: true
 
 # ─── Evaluation ──────────────────────────────────────────
