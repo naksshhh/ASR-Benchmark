@@ -60,9 +60,9 @@ def load_hf_dataset(
             **kwargs,
         )
 
-    # Disable automatic audio decoding
+    # Enable automatic audio decoding to extract files and get valid paths
     if "audio" in ds.column_names:
-        ds = ds.cast_column("audio", Audio(decode=False))
+        ds = ds.cast_column("audio", Audio(decode=True))
 
     # Detect transcript column
     if "sentence" in ds.column_names:
