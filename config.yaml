@@ -28,7 +28,7 @@ models:
     model_id: "openai/whisper-tiny"
     language: "hi"
     task: "transcribe"
-    enabled: true
+    enabled: false
 
   # ── Category 1: English-first ──
   whisper-large-v3-turbo:
@@ -36,35 +36,35 @@ models:
     model_id: "openai/whisper-large-v3-turbo"
     language: "hi"
     task: "transcribe"
-    enabled: false  # Param Rudra only
+    enabled: true  # Param Rudra only
 
   parakeet-tdt-0.6b:
     backend: "nemo"
     model_id: "nvidia/parakeet-tdt-0.6b-v3"
-    enabled: false
+    enabled: true
 
   canary-1b-flash:
     backend: "nemo"
     model_id: "nvidia/canary-1b-flash"
-    enabled: false
+    enabled: true
 
   # ── Category 2: Indic-native ──
   indicwav2vec-hindi:
     backend: "huggingface"
     model_id: "ai4bharat/indicwav2vec-v2-hindi"
-    enabled: false
+    enabled: true
 
   indicconformer-hindi:
     backend: "huggingface"
     model_id: "ai4bharat/indicconformer-hi"
-    enabled: false
+    enabled: true
 
   whisper-medium-hi:
     backend: "whisper"
     model_id: "ai4bharat/whisper-medium-hi"
     language: "hi"
     task: "transcribe"
-    enabled: false
+    enabled: true
 
   # ── Category 3: Multilingual ──
   whisper-large-v3:
@@ -72,7 +72,7 @@ models:
     model_id: "openai/whisper-large-v3"
     language: "hi"
     task: "transcribe"
-    enabled: false
+    enabled: true
 
 # ─── Evaluation ──────────────────────────────────────────
 evaluation:
