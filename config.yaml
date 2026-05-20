@@ -23,7 +23,7 @@ device:
 # ─── Models ──────────────────────────────────────────────
 models:
   # Mac Mini standin — tiny model for testing pipeline
-  whisper-tiny:
+  whisper-tiny:  #done
     backend: "whisper"
     model_id: "openai/whisper-tiny"
     language: "hi"
@@ -31,40 +31,40 @@ models:
     enabled: false
 
   # ── Category 1: English-first ──
-  whisper-large-v3-turbo:
+  whisper-large-v3-turbo:  #done
     backend: "whisper"
     model_id: "openai/whisper-large-v3-turbo"
     language: "hi"
     task: "transcribe"
-    enabled: true  # Param Rudra only
+    enabled: false  # Param Rudra only
 
-  parakeet-tdt-0.6b:
+  parakeet-tdt-0.6b:    #done
     backend: "nemo"
     model_id: "nvidia/parakeet-tdt-0.6b-v3"
-    enabled: true
+    enabled: false
 
-  canary-1b-flash:
+  canary-1b-flash:   #done
     backend: "nemo"
     model_id: "nvidia/canary-1b-flash"
-    enabled: true
+    enabled: false
 
   # ── Category 2: Indic-native ──
-  indicwav2vec-hindi:
+  indicwav2vec-hindi:  #done
     backend: "huggingface"
     model_id: "ai4bharat/indicwav2vec-hindi"
-    enabled: true
+    enabled: false
 
-  indicconformer-hindi:
+  indicconformer-hindi:  #not sure
     backend: "huggingface"
     model_id: "Anshul1212/indicconformer-hi-hybrid-rnnt-large-hf"
-    enabled: true
+    enabled: false
 
-  whisper-medium-hi:
+  whisper-medium-hi:  #done
     backend: "whisper"
     model_id: "openai/whisper-medium"
     language: "hi"
     task: "transcribe"
-    enabled: true
+    enabled: false
 
   # ── Category 3: Multilingual ──
   whisper-large-v3:
@@ -74,15 +74,15 @@ models:
     task: "transcribe"
     enabled: true
 
-  voxtral-mini-3b:
+  voxtral-mini-3b:  #done
     backend: "voxtral"
     model_id: "mistralai/Voxtral-Mini-3B-2507"
-    enabled: true
+    enabled: false
 
   streaming-zipformer:
     backend: "sherpa-onnx"
     model_id: "csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21"
-    enabled: true
+    enabled: false
 
 # ─── Evaluation ──────────────────────────────────────────
 evaluation:

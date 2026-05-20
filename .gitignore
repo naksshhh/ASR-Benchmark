@@ -19,7 +19,7 @@ model_cache/
 checkpoints/
 
 # Results (regeneratable)
-results/
+
 
 # IDE
 .vscode/
