@@ -12,6 +12,87 @@ import os
 import torch
 from typing import Callable
 
+def _load_nemo_manually(nemo_asr, model_id: str):
+    """
+    Manually download and extract a .nemo archive when from_pretrained fails.
+
+    NeMo 2.x sometimes fails to extract model_config.yaml from .nemo archives
+    for certain models (e.g., IndicConformer). This function handles it by:
+    1. Finding the cached .nemo file via huggingface_hub
+    2. Extracting it as a tar archive
+    3. Loading via restore_from on the extracted directory
+    """
+    import tarfile
+    import tempfile
+    import glob
+
+    # Step 1: Find the .nemo file in HuggingFace cache
+    nemo_path = None
+    try:
+        from huggingface_hub import hf_hub_download
+        nemo_path = hf_hub_download(
+            repo_id=model_id,
+            filename=model_id.split("/")[-1] + ".nemo",
+        )
+    except Exception:
+        pass
+
+    if not nemo_path:
+        # Try finding it in the NeMo cache directory
+        nemo_cache = os.path.expanduser(
+            "~/.cache/torch/NeMo"
+        )
+        candidates = glob.glob(
+            os.path.join(nemo_cache, "**", "*.nemo"), recursive=True
+        )
+        matching = [c for c in candidates if model_id.split("/")[-1] in c]
+        if matching:
+            nemo_path = matching[0]
+
+    if not nemo_path:
+        raise FileNotFoundError(
+            f"Could not find .nemo file for {model_id}. "
+            f"Try downloading manually: "
+            f"huggingface-cli download {model_id}"
+        )
+
+    print(f"[NeMo] Found .nemo archive: {nemo_path}")
+
+    # Step 2: Extract the archive
+    extract_dir = tempfile.mkdtemp(prefix="nemo_extract_")
+    print(f"[NeMo] Extracting to: {extract_dir}")
+
+    if tarfile.is_tarfile(nemo_path):
+        with tarfile.open(nemo_path, "r:*") as tar:
+            tar.extractall(extract_dir)
+    else:
+        # Maybe it's already extracted or is a directory
+        extract_dir = os.path.dirname(nemo_path)
+
+    # Step 3: Find model_config.yaml
+    config_candidates = glob.glob(
+        os.path.join(extract_dir, "**", "model_config.yaml"), recursive=True
+    )
+    if not config_candidates:
+        # Some archives have it at the root level
+        config_candidates = glob.glob(
+            os.path.join(extract_dir, "*.yaml"), recursive=False
+        )
+
+    if config_candidates:
+        config_dir = os.path.dirname(config_candidates[0])
+        print(f"[NeMo] Found config at: {config_candidates[0]}")
+    else:
+        config_dir = extract_dir
+        print(f"[NeMo] Warning: No config found, trying extract root: {extract_dir}")
+
+    # Step 4: Load via restore_from
+    model = nemo_asr.models.ASRModel.restore_from(
+        restore_path=nemo_path,
+        override_config_path=config_candidates[0] if config_candidates else None,
+    )
+    return model
+
 
 def create_nemo_model(model_id: str) -> Callable[[str], str]:
     """
@@ -31,16 +112,25 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
             "This is only supported on Param Rudra (requires GPU + heavy deps)."
         )
 
-    # Load the model
-    model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    # Load the model — handle NeMo 2.x extraction issues for IndicConformer
+    is_indicconformer = "indicconformer" in model_id.lower()
+
+    try:
+        model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    except FileNotFoundError as e:
+        if "model_config.yaml" in str(e) and is_indicconformer:
+            print(f"[NeMo] from_pretrained failed (missing model_config.yaml). "
+                  f"Attempting manual .nemo archive extraction...")
+            model = _load_nemo_manually(nemo_asr, model_id)
+        else:
+            raise
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.freeze()  # inference mode
     model = model.to(device)
     model.eval()
 
-    # Detect if this is an IndicConformer hybrid model
-    is_indicconformer = "indicconformer" in model_id.lower()
+    # Set decoder for hybrid models
     if is_indicconformer and hasattr(model, "cur_decoder"):
         model.cur_decoder = "ctc"
         print(f"[NeMo] Set cur_decoder='ctc' for IndicConformer")
