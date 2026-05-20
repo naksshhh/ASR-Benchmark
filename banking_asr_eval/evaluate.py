@@ -121,22 +121,100 @@ def evaluate_sample(
     return result
 
 
+def evaluate_chunk_worker(args) -> List[Dict]:
+    """
+    Worker process to evaluate a chunk of the manifest for a specific model.
+    Loads the model and imports libraries locally in this process to avoid pickling/sharing issues.
+    """
+    model_name, config_path, chunk, device_id, worker_idx, dataset_name = args
+    import os
+    import json
+
+    # Force this subprocess to see only the assigned GPU
+    if device_id is not None:
+        os.environ["CUDA_VISIBLE_DEVICES"] = str(device_id)
+        # Import torch inside worker to initialize CUDA cleanly
+        import torch
+        if torch.cuda.is_available():
+            try:
+                torch.cuda.set_device(0)
+            except Exception:
+                pass
+
+    # Lazy imports to ensure clean multiprocessing launch
+    from banking_asr_eval.models import ModelRegistry
+    from banking_asr_eval.evaluate import evaluate_sample
+
+    registry = ModelRegistry.from_config(config_path)
+    try:
+        model_fn = registry.get_model(model_name)
+    except Exception as e:
+        print(f"[Worker {worker_idx}] Failed to load model {model_name}: {e}")
+        return [{
+            "audio_id": s.get("audio_id", "unknown"),
+            "error": f"Failed to load model: {e}",
+            "wer": None,
+            "model": model_name,
+            "dataset": dataset_name
+        } for s in chunk]
+
+    results = []
+    checkpoint_path = f"./results/checkpoint_{model_name}_worker_{worker_idx}.json"
+    
+    for i, sample in enumerate(chunk):
+        try:
+            res = evaluate_sample(model_fn, sample)
+            res["model"] = model_name
+            res["dataset"] = dataset_name
+            results.append(res)
+        except Exception as e:
+            results.append({
+                "audio_id": sample.get("audio_id", "unknown"),
+                "error": str(e),
+                "wer": None,
+                "model": model_name,
+                "dataset": dataset_name
+            })
+            
+        # Optional local checkpointing inside worker
+        if (i + 1) % 50 == 0:
+            try:
+                with open(checkpoint_path, "w", encoding="utf-8") as f:
+                    json.dump(results, f, ensure_ascii=False, indent=2)
+            except Exception:
+                pass
+                
+    # Cleanup local checkpoint if successfully completed
+    if os.path.exists(checkpoint_path):
+        try:
+            os.remove(checkpoint_path)
+        except Exception:
+            pass
+            
+    return results
+
+
 def run_evaluation(
     config_path: str,
     manifest_path: str,
     output_dir: str = "./results",
     max_samples: Optional[int] = None,
     checkpoint_interval: int = 50,
+    num_workers: Optional[int] = None,
+    gpus: Optional[List[int]] = None,
 ) -> str:
     """
     Run full evaluation: all enabled models × all samples.
+    Can be run sequentially or in parallel using multiprocessing spawn.
 
     Args:
         config_path: Path to config.yaml
         manifest_path: Path to evaluation manifest JSON
         output_dir: Directory to save results
         max_samples: Limit samples (for testing)
-        checkpoint_interval: Save checkpoint every N samples
+        checkpoint_interval: Save checkpoint every N samples (sequential mode only)
+        num_workers: Number of parallel worker processes (overrides config)
+        gpus: List of GPU IDs to distribute workers across (overrides config)
 
     Returns:
         Path to results CSV
@@ -144,6 +222,23 @@ def run_evaluation(
     # Load config
     with open(config_path) as f:
         config = yaml.safe_load(f)
+
+    device_config = config.get("device", {})
+    compute = device_config.get("compute", "cpu")
+
+    # Resolve workers and GPUs
+    if num_workers is None:
+        num_workers = device_config.get("parallel_workers", 1)
+    if gpus is None:
+        gpus = device_config.get("gpus", None)
+        if isinstance(gpus, str):
+            gpus = [int(x.strip()) for x in gpus.split(",") if x.strip()]
+        elif isinstance(gpus, int):
+            gpus = [gpus]
+
+    # Clean up GPU assignment if CPU execution is requested
+    if compute != "cuda":
+        gpus = None
 
     # Setup output
     os.makedirs(output_dir, exist_ok=True)
@@ -153,45 +248,83 @@ def run_evaluation(
     manifest = load_manifest(manifest_path)
     if max_samples:
         manifest = manifest[:max_samples]
+    
     print(f"\n{'='*60}")
     print(f"Evaluation: {len(manifest)} samples")
     print(f"{'='*60}\n")
 
-    # Load models
+    # Load models registry to discover enabled models
     registry = ModelRegistry.from_config(config_path)
-    enabled = list(registry.enabled_models())
-    print(f"Enabled models: {[name for name, _ in enabled]}\n")
+    enabled_models = [name for name, cfg in registry._configs.items() if cfg.get("enabled", False)]
+    print(f"Enabled models: {enabled_models}\n")
 
     all_results = []
 
-    for model_name, model_fn in enabled:
+    # Configure multiprocessing context
+    import multiprocessing
+    try:
+        multiprocessing.set_start_method("spawn", force=True)
+    except RuntimeError:
+        pass
+
+    for model_name in enabled_models:
         print(f"\n── Model: {model_name} ──")
-        checkpoint_path = os.path.join(output_dir, f"checkpoint_{model_name}_{timestamp}.json")
 
-        # Check for existing checkpoint
-        start_idx = 0
-        model_results = []
-        if os.path.exists(checkpoint_path):
-            with open(checkpoint_path) as f:
-                model_results = json.load(f)
-            start_idx = len(model_results)
-            print(f"  Resuming from checkpoint: {start_idx} samples done")
+        # Decide whether to execute sequentially or in parallel
+        actual_workers = min(num_workers, len(manifest))
+        
+        if actual_workers <= 1:
+            print("  Running in sequential single-process mode...")
+            checkpoint_path = os.path.join(output_dir, f"checkpoint_{model_name}_{timestamp}.json")
 
-        for i, sample in enumerate(tqdm(manifest[start_idx:], initial=start_idx, total=len(manifest))):
-            result = evaluate_sample(model_fn, sample)
-            result["model"] = model_name
-            result["dataset"] = os.path.basename(manifest_path)
-            model_results.append(result)
+            # Check for existing checkpoint
+            start_idx = 0
+            model_results = []
+            if os.path.exists(checkpoint_path):
+                with open(checkpoint_path) as f:
+                    model_results = json.load(f)
+                start_idx = len(model_results)
+                print(f"    Resuming from checkpoint: {start_idx} samples done")
 
-            # Checkpoint
-            if (i + 1) % checkpoint_interval == 0:
-                with open(checkpoint_path, "w", encoding="utf-8") as f:
-                    json.dump(model_results, f, ensure_ascii=False, indent=2)
-                print(f"\n  [Checkpoint] Saved {len(model_results)} results")
+            # Load model function in main thread
+            model_fn = registry.get_model(model_name)
 
-        # Final save for this model
-        with open(checkpoint_path, "w", encoding="utf-8") as f:
-            json.dump(model_results, f, ensure_ascii=False, indent=2)
+            for i, sample in enumerate(tqdm(manifest[start_idx:], initial=start_idx, total=len(manifest))):
+                result = evaluate_sample(model_fn, sample)
+                result["model"] = model_name
+                result["dataset"] = os.path.basename(manifest_path)
+                model_results.append(result)
+
+                # Checkpoint
+                if (i + 1) % checkpoint_interval == 0:
+                    with open(checkpoint_path, "w", encoding="utf-8") as f:
+                        json.dump(model_results, f, ensure_ascii=False, indent=2)
+                    print(f"\n    [Checkpoint] Saved {len(model_results)} results")
+
+            # Final save for this model
+            with open(checkpoint_path, "w", encoding="utf-8") as f:
+                json.dump(model_results, f, ensure_ascii=False, indent=2)
+
+        else:
+            print(f"  Running in parallel mode with {actual_workers} workers...")
+            # Chunk the manifest
+            chunk_size = (len(manifest) + actual_workers - 1) // actual_workers
+            chunks = [manifest[i:i + chunk_size] for i in range(0, len(manifest), chunk_size)]
+            
+            # Prepare task arguments
+            tasks = []
+            for idx, chunk in enumerate(chunks):
+                # Distribute workers across available GPUs in round-robin fashion
+                device_id = gpus[idx % len(gpus)] if gpus else None
+                tasks.append((model_name, config_path, chunk, device_id, idx, os.path.basename(manifest_path)))
+
+            # Execute in process pool
+            model_results = []
+            with multiprocessing.get_context("spawn").Pool(processes=actual_workers) as pool:
+                chunk_results = pool.map(evaluate_chunk_worker, tasks)
+                
+            for r in chunk_results:
+                model_results.extend(r)
 
         all_results.extend(model_results)
 
@@ -244,8 +377,14 @@ def main():
     parser.add_argument("--output", default="./results", help="Output directory")
     parser.add_argument("--max-samples", type=int, default=None, help="Limit samples (for testing)")
     parser.add_argument("--checkpoint-interval", type=int, default=50, help="Checkpoint every N samples")
+    parser.add_argument("--workers", type=int, default=None, help="Number of parallel worker processes")
+    parser.add_argument("--gpus", default=None, help="Comma-separated list of GPU IDs to use (e.g. 0,1)")
 
     args = parser.parse_args()
+
+    gpus_list = None
+    if args.gpus:
+        gpus_list = [int(x.strip()) for x in args.gpus.split(",") if x.strip()]
 
     run_evaluation(
         config_path=args.config,
@@ -253,6 +392,8 @@ def main():
         output_dir=args.output,
         max_samples=args.max_samples,
         checkpoint_interval=args.checkpoint_interval,
+        num_workers=args.workers,
+        gpus=gpus_list,
     )
 
 

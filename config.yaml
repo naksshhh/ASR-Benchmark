@@ -19,6 +19,10 @@ device:
   num_workers: 2
   # Batch size for inference (1 for streaming, higher for batch)
   batch_size: 1
+  # Number of parallel workers for evaluation (distributes samples across workers)
+  parallel_workers: 4
+  # GPU device IDs to distribute workers across on the cluster
+  gpus: [0, 1]
 
 # ─── Models ──────────────────────────────────────────────
 models:

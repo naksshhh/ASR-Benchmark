@@ -119,7 +119,7 @@ Make plots                ← git push/pull results back
 Write blog drafts
 ```
 
-### Offline Cluster Usage
+### Offline Cluster Usage & Parallelization
 
 For compute nodes without internet access:
 ```bash
@@ -132,7 +132,29 @@ HF_HUB_OFFLINE=1 python -m banking_asr_eval.evaluate \
   --manifest ./data/manifests/kathbath_hindi.json
 ```
 
+To speed up evaluation across multiple GPUs or CPU cores, you can run in parallel. The script splits the dataset into chunks, isolates each process to a specific GPU, and aggregates the results:
+```bash
+# Run with 4 parallel processes distributed across GPU 0 and GPU 1
+HF_HUB_OFFLINE=1 python -m banking_asr_eval.evaluate \
+  --config config.yaml \
+  --manifest ./data/manifests/kathbath_hindi.json \
+  --workers 4 \
+  --gpus 0,1
+```
+
 > **Note:** Voxtral requires internet due to `mistral_common` tokenizer limitations. Run it on an internet-connected node.
+
+### Benchmarking Latency Guidelines
+
+`benchmark.py` performs **3 warmup runs + 5 timed runs** per sample to compute statistically robust latency percentiles (P50, P95, mean). 
+*   **Subset Recommendation:** Running this 8x multiplier on the full Kathbath dataset (3,151 samples × 8 = 25,208 evaluations) will take a very long time. For latency/RTF benchmarking, we recommend running on a subset of **50–100 samples** using the `--max-samples` flag, or using the 100-sample synthetic dataset:
+    ```bash
+    HF_HUB_OFFLINE=1 python -m banking_asr_eval.benchmark \
+      --config config.yaml \
+      --manifest ./data/manifests/kathbath_hindi.json \
+      --max-samples 100
+    ```
+*   **RAM Disk Optimization:** `benchmark.py` automatically detects and uses `/dev/shm` (RAM disk) to cache audio files during benchmarking. This bypasses the cluster's network filesystem (NFS/GPFS) bottlenecks so that file read times do not skew the latency results.
 
 ### Evaluating with a Local IndicSUPERB / Kathbath Copy
 

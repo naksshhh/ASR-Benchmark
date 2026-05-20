@@ -34,13 +34,32 @@ def benchmark_model(
 ) -> Dict:
     """
     Benchmark a single audio file with warmup and multiple timed runs.
+    Uses RAM disk /dev/shm if available to avoid network filesystem latency.
 
     Returns latency stats (mean, std, min, max, p50, p95) + WER.
     """
+    import shutil
+    import tempfile
+
+    shm_dir = "/dev/shm" if os.path.exists("/dev/shm") and os.path.isdir("/dev/shm") else None
+    temp_dir = None
+    use_path = audio_path
+
+    if shm_dir:
+        try:
+            temp_dir = tempfile.mkdtemp(dir=shm_dir)
+            temp_audio_path = os.path.join(temp_dir, os.path.basename(audio_path))
+            shutil.copy2(audio_path, temp_audio_path)
+            use_path = temp_audio_path
+        except Exception as e:
+            print(f"  [Benchmark] Warning: failed to copy to RAM disk: {e}")
+            temp_dir = None
+            use_path = audio_path
+
     # Warmup
     for _ in range(warmup_runs):
         try:
-            _ = model_fn(audio_path)
+            _ = model_fn(use_path)
         except Exception:
             break
 
@@ -50,10 +69,16 @@ def benchmark_model(
     for _ in range(timed_runs):
         t0 = time.perf_counter()
         try:
-            hypothesis = model_fn(audio_path)
+            hypothesis = model_fn(use_path)
         except Exception as e:
+            if temp_dir:
+                shutil.rmtree(temp_dir, ignore_errors=True)
             return {"error": str(e)}
         latencies.append(time.perf_counter() - t0)
+
+    # Clean up RAM disk copy
+    if temp_dir:
+        shutil.rmtree(temp_dir, ignore_errors=True)
 
     latencies = np.array(latencies)
 
