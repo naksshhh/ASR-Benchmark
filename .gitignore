@@ -16,7 +16,7 @@ env/
 data/datasets/
 model_cache/
 checkpoints/
-
+data/audio
 # Results (regeneratable)
 
 

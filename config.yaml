@@ -32,7 +32,7 @@ models:
     model_id: "openai/whisper-tiny"
     language: "hi"
     task: "transcribe"
-    enabled: false
+    enabled: true
 
   # ── Category 1: English-first ──
   whisper-large-v3-turbo:  #done
@@ -40,7 +40,7 @@ models:
     model_id: "openai/whisper-large-v3-turbo"
     language: "hi"
     task: "transcribe"
-    enabled: false  # Param Rudra only
+    enabled: true  # Param Rudra only
 
   parakeet-tdt-0.6b:    #done — English-only, excluded from Hindi benchmark
     backend: "nemo"
@@ -56,7 +56,7 @@ models:
   indicwav2vec-hindi:  #done
     backend: "huggingface"
     model_id: "ai4bharat/indicwav2vec-hindi"
-    enabled: false
+    enabled: true
 
   indicconformer-hindi:  # requires AI4Bharat NeMo fork (incompatible with standard NeMo)
     backend: "nemo"
@@ -68,7 +68,7 @@ models:
     model_id: "openai/whisper-medium"
     language: "hi"
     task: "transcribe"
-    enabled: false
+    enabled: true
 
   # ── Category 3: Multilingual ──
   whisper-large-v3:  #done
@@ -76,12 +76,12 @@ models:
     model_id: "openai/whisper-large-v3"
     language: "hi"
     task: "transcribe"
-    enabled: false
+    enabled: true
 
   voxtral-mini-3b:  #done
     backend: "voxtral"
     model_id: "mistralai/Voxtral-Mini-3B-2507"
-    enabled: false
+    enabled: true
 
   streaming-zipformer:  #done — English-only (LibriSpeech), excluded from Hindi benchmark
     backend: "sherpa-onnx"
