@@ -106,8 +106,11 @@ def _load_nemo_manually(nemo_asr, model_id: str):
     # Patch the tokenizer config
     if hasattr(config, "tokenizer"):
         config.tokenizer.dir = tokenizer_dir
+        # IndicConformer uses SentencePiece (bpe) tokenizer
+        if not hasattr(config.tokenizer, "type") or config.tokenizer.type is None:
+            config.tokenizer.type = "bpe"
     else:
-        config.tokenizer = OmegaConf.create({"dir": tokenizer_dir})
+        config.tokenizer = OmegaConf.create({"dir": tokenizer_dir, "type": "bpe"})
 
     # Save patched config
     patched_config_path = os.path.join(extract_dir, "model_config_patched.yaml")
