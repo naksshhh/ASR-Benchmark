@@ -198,25 +198,26 @@ Edit `config.yaml` to:
 |-------|------|--------|
 | **Week 1** | Set up eval pipeline | ✅ Complete |
 | **Week 1** | Implement metric stack (WER/CER/NER/Entity/CS-WER) | ✅ Complete |
-| **Week 1** | Run all models on Kathbath Hindi (3,151 samples) | ✅ Complete (6/10 models produced valid Hindi) |
+| **Week 1** | Run all models on Kathbath Hindi (3,151 samples) | ✅ Complete (10 models benchmarked) |
 | **Week 1** | Integrate new model backends (Voxtral, Sherpa-ONNX) | ✅ Complete |
-| **Week 2** | Build synthetic banking test set (100+ samples) | ✅ Complete (100 samples generated using gTTS, saved to `data/synthetic/` with real durations) |
-| **Week 2** | Run RTF latency benchmarks on A100 | 🔲 Ready for cluster run (script verified locally on synthetic data) |
-| **Week 2** | Generate Pareto plots (WER vs RTF) | 🔲 Ready for cluster run (visualizer verified locally on benchmark output) |
-| **Week 3** | Fine-tune Whisper-medium on Kathbath + synthetic data | 🔲 Not started |
+| **Week 2** | Build synthetic banking test set (100+ samples) | ✅ Complete (100 samples, 6 banking domains, Hindi/English/mixed) |
+| **Week 2** | Run evaluation on synthetic banking dataset | ✅ Complete (6 models × 100 samples on A100) |
+| **Week 2** | Run RTF latency benchmarks on A100 | ✅ Complete (RTF measured from synthetic eval on A100) |
+| **Week 2** | Generate Pareto plots (WER vs RTF) | ✅ Complete (Kathbath + Synthetic plots generated) |
+| **Week 3** | Fine-tune Whisper-medium on Kathbath + synthetic data | 🔲 Ready (fine-tuning script created) |
 | **Week 4** | Fine-tune IndicWav2Vec on banking data | 🔲 Not started |
 | **Week 5** | Error analysis, final visualizations | 🔲 Not started |
 | **Week 6** | Write blog draft | 🔲 Not started |
 
 ### Key Findings (Week 1 & 2)
 
-1. **IndicWav2Vec dominates** on Hindi-only audio (11.6% WER) — native Hindi CTC model with clean Devanagari output.
-2. **Voxtral-Mini-3B is surprisingly strong** at 17.7% WER — a 3B multimodal LLM competitive with much larger models.
-3. **Whisper family degrades on Hindi** — even `large-v3` achieves only 28.8% WER with Devanagari spelling errors.
-4. **English-only models fail completely** on Hindi — Parakeet, Canary, and Zipformer produce English romanization or gibberish.
-5. **NER correlates with WER** but not perfectly — IndicWav2Vec's 2.5% NER vs Voxtral's 9.8% shows the gap widens on numbers.
-6. **Synthetic Dataset Generation Successful** — Generated 100 high-quality banking dialogue audio clips across 6 domains (balance inquiries, loans/EMI, cards, KYC, fund transfer, complaints) in Hindi, English, and Hindi-English code-switched styles.
-7. **Latency Benchmark Pipeline Verified** — Benchmark and visualizer scripts validated locally using `whisper-tiny` on CPU, producing standard outputs (`benchmark_*.csv` and Pareto plots). Ready to execute sweeps on Param Rudra A100.
+1. **IndicWav2Vec dominates** on Kathbath Hindi (11.6% WER, 3.3% CER) — native Hindi CTC model with clean Devanagari output and the **fastest RTF (0.09)**.
+2. **Voxtral-Mini-3B is surprisingly strong** at 17.7% WER on Kathbath — a 3B multimodal LLM competitive with much larger Whisper models, with RTF 0.54.
+3. **Whisper-large-v3 is the best Whisper variant** at 28.8% WER on Kathbath, but has the highest RTF (1.49) — not real-time on A100.
+4. **English-only models fail completely** on Hindi — Parakeet (100.1% WER), Canary (105.4%), Streaming-Zipformer (106.5%), and IndicConformer (100.0%) produce English romanization or gibberish.
+5. **Banking domain performance differs from general Hindi** — On the synthetic banking dataset, IndicWav2Vec degrades to 75.5% WER (vs 11.6% on Kathbath), while Voxtral (46.0%) and Whisper-large-v3 (46.3%) hold up much better on code-switched banking utterances.
+6. **Entity accuracy reveals production gaps** — On banking scenarios, Voxtral achieves the best entity recognition (70.5% accuracy), while IndicWav2Vec drops to 29.0% — suggesting it struggles with English banking terms in mixed speech.
+7. **RTF-quality Pareto frontier** — The optimal models are: Voxtral-Mini-3B (best WER-per-RTF), Whisper-large-v3-turbo (good balance), and IndicWav2Vec (lowest latency if Hindi-only).
 
 ---
 
@@ -363,24 +364,42 @@ Build a small (50–100 hours) test set:
 ### Fine-tuning roadmap
 
 * **Stage 1 — Establish baselines (week 1–2)**: Run zero-shot models on Kathbath Hindi. ✅ Complete
-* **Stage 2 — Data preparation (week 2–3)**: Build banking-specific synthetic test set.
-* **Stage 3 — Fine-tune Whisper (week 3–4)**: Fine-tune `whisper-medium` using HF `Seq2SeqTrainer` with 1e-5 learning rate.
+* **Stage 2 — Data preparation (week 2–3)**: Build banking-specific synthetic test set. ✅ Complete
+* **Stage 3 — Fine-tune Whisper (week 3–4)**: Fine-tune `whisper-medium` using HF `Seq2SeqTrainer` with 1e-5 learning rate. 🔲 Ready
 * **Stage 4 — Fine-tune IndicWav2Vec (week 4–5)**: Fine-tune on banking domain data.
 * **Stage 5 — Error analysis (week 5–6)**: Breakdown error categories (substitutions of numbers, entities, code-switched text, etc.).
 
 ---
 
-### The comparison table your blog should land on
+### Kathbath Hindi Benchmark (3,151 samples — General Hindi ASR)
 
-| Model | Hindi WER | CER | Number ER | RTF (A100) | Fine-tuned? |
+| Model | Category | Hindi WER ↓ | CER ↓ | Number ER ↓ | Fine-tuned? |
 |---|---|---|---|---|---|
-| IndicWav2Vec-Hindi | 11.64% | 3.30% | 2.53% | ? | No |
-| Voxtral-Mini-3B | 17.66% | 6.72% | 9.79% | ? | No |
-| Whisper large-v3 | 28.82% | 9.44% | 14.52% | ? | No |
-| Whisper large-v3-turbo | 32.01% | 10.37% | 13.36% | ? | No |
-| Whisper-medium | 41.64% | 15.85% | 21.54% | ? | No |
-| **Whisper-medium (yours)** | ? | ? | ? | ? | **Yes** |
-| **IndicWav2Vec (yours)** | ? | ? | ? | ? | **Yes** |
+| IndicWav2Vec-Hindi | Indic-native | **11.64%** | **3.30%** | **2.53%** | No |
+| Voxtral-Mini-3B | Multilingual | 17.66% | 6.72% | 9.79% | No |
+| Whisper large-v3 | Multilingual | 28.82% | 9.44% | 14.52% | No |
+| Whisper large-v3-turbo | English-first | 32.01% | 10.37% | 13.36% | No |
+| Whisper-medium-hi | Hindi-tuned | 41.64% | 15.85% | 21.54% | No |
+| IndicConformer-Hindi | Indic-native | 100.00% | 100.00% | 100.00% | No |
+| Parakeet-TDT-0.6B | English-first | 100.14% | 92.78% | 100.00% | No |
+| Canary-1B-Flash | English-first | 105.35% | 99.87% | 100.46% | No |
+| Streaming-Zipformer | English-first | 106.49% | 96.38% | 100.69% | No |
+| Whisper-tiny | English-first | 254.00% | 244.76% | 915.55% | No |
+| **Whisper-medium (yours)** | **Fine-tuned** | ? | ? | ? | **Yes** |
+| **IndicWav2Vec (yours)** | **Fine-tuned** | ? | ? | ? | **Yes** |
+
+### Synthetic Banking Dataset (100 samples — Domain-Specific Evaluation on A100)
+
+| Model | Banking WER ↓ | Banking CER ↓ | Entity Accuracy ↑ | RTF (A100) ↓ | Real-time? |
+|---|---|---|---|---|---|
+| Voxtral-Mini-3B | **46.01%** | **34.69%** | **70.5%** | 0.54 | ✅ Yes |
+| Whisper large-v3 | 46.32% | 33.53% | 67.0% | 1.49 | ❌ No |
+| Whisper large-v3-turbo | 55.52% | 39.72% | 62.0% | 0.50 | ✅ Yes |
+| IndicWav2Vec-Hindi | 75.49% | 71.41% | 29.0% | **0.09** | ✅ Yes |
+| Whisper-medium-hi | 179.17% | 167.22% | 74.0% | 0.96 | ✅ Yes |
+| Whisper-tiny | 299.93% | 239.27% | 66.0% | 0.59 | ✅ Yes |
+
+> **Key Insight:** IndicWav2Vec is the best model for pure Hindi transcription (Kathbath), but struggles on code-switched banking speech. Voxtral-Mini-3B offers the best quality-latency tradeoff for real-world banking scenarios with mixed Hindi-English input.
 
 ---
 
