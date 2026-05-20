@@ -14,83 +14,78 @@ from typing import Callable
 
 def _load_nemo_manually(nemo_asr, model_id: str):
     """
-    Manually download and extract a .nemo archive when from_pretrained fails.
+    Fix NeMo 2.x extraction issue and reload.
 
-    NeMo 2.x sometimes fails to extract model_config.yaml from .nemo archives
-    for certain models (e.g., IndicConformer). This function handles it by:
-    1. Finding the cached .nemo file via huggingface_hub
-    2. Extracting it as a tar archive
-    3. Loading via restore_from on the extracted directory
+    NeMo downloads the .nemo archive into a cache directory but doesn't
+    always extract model_config.yaml into it. This function:
+    1. Finds the .nemo file in the NeMo cache
+    2. Extracts it INTO the same cache directory NeMo expects
+    3. Retries from_pretrained (which now finds model_config.yaml)
     """
     import tarfile
-    import tempfile
     import glob
+    import shutil
 
-    # Step 1: Find the .nemo file in HuggingFace cache
+    # Step 1: Find the .nemo file in the NeMo cache
     nemo_path = None
-    try:
-        from huggingface_hub import hf_hub_download
-        nemo_path = hf_hub_download(
-            repo_id=model_id,
-            filename=model_id.split("/")[-1] + ".nemo",
-        )
-    except Exception:
-        pass
+    nemo_cache = os.path.expanduser("~/.cache/torch/NeMo")
+    candidates = glob.glob(
+        os.path.join(nemo_cache, "**", "*.nemo"), recursive=True
+    )
+    model_short = model_id.split("/")[-1]
+    matching = [c for c in candidates if model_short in c]
+    if matching:
+        nemo_path = matching[0]
 
     if not nemo_path:
-        # Try finding it in the NeMo cache directory
-        nemo_cache = os.path.expanduser(
-            "~/.cache/torch/NeMo"
-        )
-        candidates = glob.glob(
-            os.path.join(nemo_cache, "**", "*.nemo"), recursive=True
-        )
-        matching = [c for c in candidates if model_id.split("/")[-1] in c]
-        if matching:
-            nemo_path = matching[0]
+        # Try downloading via huggingface_hub
+        try:
+            from huggingface_hub import hf_hub_download
+            nemo_path = hf_hub_download(
+                repo_id=model_id,
+                filename=model_short + ".nemo",
+            )
+        except Exception:
+            pass
 
     if not nemo_path:
         raise FileNotFoundError(
             f"Could not find .nemo file for {model_id}. "
-            f"Try downloading manually: "
-            f"huggingface-cli download {model_id}"
+            f"Try: huggingface-cli download {model_id}"
         )
 
     print(f"[NeMo] Found .nemo archive: {nemo_path}")
+    cache_dir = os.path.dirname(nemo_path)
 
-    # Step 2: Extract the archive
-    extract_dir = tempfile.mkdtemp(prefix="nemo_extract_")
-    print(f"[NeMo] Extracting to: {extract_dir}")
-
+    # Step 2: Extract the .nemo archive into the SAME cache directory
+    # This places model_config.yaml where NeMo expects it
     if tarfile.is_tarfile(nemo_path):
+        print(f"[NeMo] Extracting .nemo archive into cache dir: {cache_dir}")
         with tarfile.open(nemo_path, "r:*") as tar:
-            tar.extractall(extract_dir)
+            tar.extractall(cache_dir)
+
+        # Verify extraction
+        config_path = os.path.join(cache_dir, "model_config.yaml")
+        if os.path.exists(config_path):
+            print(f"[NeMo] Successfully extracted model_config.yaml")
+        else:
+            # Check if extracted into a subdirectory
+            found = glob.glob(os.path.join(cache_dir, "**", "model_config.yaml"), recursive=True)
+            if found:
+                # Move files up to cache_dir
+                subdir = os.path.dirname(found[0])
+                for item in os.listdir(subdir):
+                    src = os.path.join(subdir, item)
+                    dst = os.path.join(cache_dir, item)
+                    if not os.path.exists(dst):
+                        shutil.move(src, dst)
+                print(f"[NeMo] Moved extracted files from subdirectory to cache dir")
     else:
-        # Maybe it's already extracted or is a directory
-        extract_dir = os.path.dirname(nemo_path)
+        print(f"[NeMo] .nemo file is not a tar archive, skipping extraction")
 
-    # Step 3: Find model_config.yaml
-    config_candidates = glob.glob(
-        os.path.join(extract_dir, "**", "model_config.yaml"), recursive=True
-    )
-    if not config_candidates:
-        # Some archives have it at the root level
-        config_candidates = glob.glob(
-            os.path.join(extract_dir, "*.yaml"), recursive=False
-        )
-
-    if config_candidates:
-        config_dir = os.path.dirname(config_candidates[0])
-        print(f"[NeMo] Found config at: {config_candidates[0]}")
-    else:
-        config_dir = extract_dir
-        print(f"[NeMo] Warning: No config found, trying extract root: {extract_dir}")
-
-    # Step 4: Load via restore_from
-    model = nemo_asr.models.ASRModel.restore_from(
-        restore_path=nemo_path,
-        override_config_path=config_candidates[0] if config_candidates else None,
-    )
+    # Step 3: Retry from_pretrained — NeMo should now find model_config.yaml
+    print(f"[NeMo] Retrying from_pretrained after extraction...")
+    model = nemo_asr.models.ASRModel.from_pretrained(model_id)
     return model
 
 
