@@ -14,15 +14,15 @@ from typing import Callable
 
 def _load_nemo_manually(nemo_asr, model_id: str):
     """
-    Fix NeMo 2.x extraction issue and reload.
+    Fix NeMo 2.x extraction issue for IndicConformer.
 
-    NeMo downloads the .nemo archive into a cache directory but doesn't
-    always extract model_config.yaml into it. This function:
-    1. Finds the .nemo file in the NeMo cache
-    2. Extracts it INTO the same cache directory NeMo expects
-    3. Retries from_pretrained (which now finds model_config.yaml)
+    NeMo's from_pretrained downloads the .nemo archive but doesn't extract it,
+    then DELETES the cache dir on retry ("prevent duplicates"), wiping any
+    manual extraction. The fix:
+    1. Copy the .nemo file to /tmp (outside NeMo's cache)
+    2. Use the specific model class (not abstract ASRModel) with restore_from
+    3. restore_from on a .nemo FILE triggers proper tar extraction + tokenizer setup
     """
-    import tarfile
     import glob
     import shutil
 
@@ -55,37 +55,18 @@ def _load_nemo_manually(nemo_asr, model_id: str):
         )
 
     print(f"[NeMo] Found .nemo archive: {nemo_path}")
-    cache_dir = os.path.dirname(nemo_path)
 
-    # Step 2: Extract the .nemo archive into the SAME cache directory
-    # This places model_config.yaml where NeMo expects it
-    if tarfile.is_tarfile(nemo_path):
-        print(f"[NeMo] Extracting .nemo archive into cache dir: {cache_dir}")
-        with tarfile.open(nemo_path, "r:*") as tar:
-            tar.extractall(cache_dir)
+    # Step 2: Copy .nemo to /tmp to prevent NeMo from deleting it
+    tmp_nemo = os.path.join("/tmp", os.path.basename(nemo_path))
+    if not os.path.exists(tmp_nemo):
+        print(f"[NeMo] Copying .nemo to {tmp_nemo}...")
+        shutil.copy2(nemo_path, tmp_nemo)
 
-        # Verify extraction
-        config_path = os.path.join(cache_dir, "model_config.yaml")
-        if os.path.exists(config_path):
-            print(f"[NeMo] Successfully extracted model_config.yaml")
-        else:
-            # Check if extracted into a subdirectory
-            found = glob.glob(os.path.join(cache_dir, "**", "model_config.yaml"), recursive=True)
-            if found:
-                # Move files up to cache_dir
-                subdir = os.path.dirname(found[0])
-                for item in os.listdir(subdir):
-                    src = os.path.join(subdir, item)
-                    dst = os.path.join(cache_dir, item)
-                    if not os.path.exists(dst):
-                        shutil.move(src, dst)
-                print(f"[NeMo] Moved extracted files from subdirectory to cache dir")
-    else:
-        print(f"[NeMo] .nemo file is not a tar archive, skipping extraction")
-
-    # Step 3: Retry from_pretrained — NeMo should now find model_config.yaml
-    print(f"[NeMo] Retrying from_pretrained after extraction...")
-    model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    # Step 3: Load using the specific model class (not abstract ASRModel)
+    # Passing a .nemo FILE path (not directory) triggers proper tar extraction
+    from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
+    print(f"[NeMo] Loading via EncDecHybridRNNTCTCBPEModel.restore_from({tmp_nemo})...")
+    model = EncDecHybridRNNTCTCBPEModel.restore_from(restore_path=tmp_nemo)
     return model
 
 
