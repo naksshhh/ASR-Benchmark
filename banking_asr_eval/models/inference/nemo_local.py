@@ -1,10 +1,14 @@
 """
 NeMo inference wrapper (Param Rudra only).
 
-Handles Parakeet, Canary, and other NeMo-based models.
+Handles Parakeet, Canary, IndicConformer and other NeMo-based models.
 Requires nemo_toolkit[asr] — not installed on Mac Mini.
+
+Note: IndicConformer requires AI4Bharat's fork of NeMo:
+  git clone https://github.com/AI4Bharat/NeMo.git && cd NeMo && git checkout nemo-v2 && bash reinstall.sh
 """
 
+import torch
 from typing import Callable
 
 
@@ -27,20 +31,30 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
         )
 
     # Load the model
-    if "parakeet" in model_id.lower():
-        model = nemo_asr.models.ASRModel.from_pretrained(model_id)
-    elif "canary" in model_id.lower():
-        model = nemo_asr.models.ASRModel.from_pretrained(model_id)
-    else:
-        model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    model = nemo_asr.models.ASRModel.from_pretrained(model_id)
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.freeze()  # inference mode
+    model = model.to(device)
     model.eval()
+
+    # Detect if this is an IndicConformer hybrid model
+    is_indicconformer = "indicconformer" in model_id.lower()
+    if is_indicconformer and hasattr(model, "cur_decoder"):
+        model.cur_decoder = "ctc"
+        print(f"[NeMo] Set cur_decoder='ctc' for IndicConformer")
 
     def transcribe(audio_path: str) -> str:
         """Transcribe a single audio file using NeMo."""
-        transcriptions = model.transcribe([audio_path])
-        
-        # Helper to extract text from whatever structure NeMo returns (lists/tuples/Hypothesis/strings)
+        # IndicConformer requires language_id='hi'
+        if is_indicconformer:
+            transcriptions = model.transcribe(
+                [audio_path], batch_size=1, logprobs=False, language_id="hi"
+            )
+        else:
+            transcriptions = model.transcribe([audio_path])
+
+        # Helper to extract text from whatever NeMo returns
         def extract_text(val):
             if isinstance(val, (list, tuple)):
                 if not val:
@@ -53,3 +67,4 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
         return extract_text(transcriptions).strip()
 
     return transcribe
+

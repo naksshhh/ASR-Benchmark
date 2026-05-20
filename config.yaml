@@ -38,12 +38,12 @@ models:
     task: "transcribe"
     enabled: false  # Param Rudra only
 
-  parakeet-tdt-0.6b:    #done
+  parakeet-tdt-0.6b:    #done — English-only, excluded from Hindi benchmark
     backend: "nemo"
     model_id: "nvidia/parakeet-tdt-0.6b-v3"
     enabled: false
 
-  canary-1b-flash:   #done
+  canary-1b-flash:   #done — EN/DE/FR/ES only, no Hindi support
     backend: "nemo"
     model_id: "nvidia/canary-1b-flash"
     enabled: false
@@ -54,10 +54,10 @@ models:
     model_id: "ai4bharat/indicwav2vec-hindi"
     enabled: false
 
-  indicconformer-hindi:  #not sure
-    backend: "huggingface"
-    model_id: "Anshul1212/indicconformer-hi-hybrid-rnnt-large-hf"
-    enabled: false
+  indicconformer-hindi:  # switched to NeMo backend (HF conversion was broken)
+    backend: "nemo"
+    model_id: "ai4bharat/indicconformer_stt_hi_hybrid_ctc_rnnt_large"
+    enabled: true
 
   whisper-medium-hi:  #done
     backend: "whisper"
@@ -67,19 +67,19 @@ models:
     enabled: false
 
   # ── Category 3: Multilingual ──
-  whisper-large-v3:
+  whisper-large-v3:  #done
     backend: "whisper"
     model_id: "openai/whisper-large-v3"
     language: "hi"
     task: "transcribe"
-    enabled: true
+    enabled: false
 
   voxtral-mini-3b:  #done
     backend: "voxtral"
     model_id: "mistralai/Voxtral-Mini-3B-2507"
     enabled: false
 
-  streaming-zipformer:
+  streaming-zipformer:  #done — English-only (LibriSpeech), excluded from Hindi benchmark
     backend: "sherpa-onnx"
     model_id: "csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21"
     enabled: false
