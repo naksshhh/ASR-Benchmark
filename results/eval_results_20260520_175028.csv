@@ -1,0 +1,601 @@
+audio_id,error,wer,model,dataset
+banking_0000,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3',,whisper-tiny,manifest.json
+banking_0001,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3',,whisper-tiny,manifest.json
+banking_0002,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3',,whisper-tiny,manifest.json
+banking_0003,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3',,whisper-tiny,manifest.json
+banking_0004,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3',,whisper-tiny,manifest.json
+banking_0005,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3',,whisper-tiny,manifest.json
+banking_0006,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3',,whisper-tiny,manifest.json
+banking_0007,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3',,whisper-tiny,manifest.json
+banking_0008,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3',,whisper-tiny,manifest.json
+banking_0009,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3',,whisper-tiny,manifest.json
+banking_0010,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3',,whisper-tiny,manifest.json
+banking_0011,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3',,whisper-tiny,manifest.json
+banking_0012,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3',,whisper-tiny,manifest.json
+banking_0013,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3',,whisper-tiny,manifest.json
+banking_0014,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3',,whisper-tiny,manifest.json
+banking_0015,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3',,whisper-tiny,manifest.json
+banking_0016,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3',,whisper-tiny,manifest.json
+banking_0017,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3',,whisper-tiny,manifest.json
+banking_0018,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3',,whisper-tiny,manifest.json
+banking_0019,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3',,whisper-tiny,manifest.json
+banking_0020,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3',,whisper-tiny,manifest.json
+banking_0021,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3',,whisper-tiny,manifest.json
+banking_0022,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3',,whisper-tiny,manifest.json
+banking_0023,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3',,whisper-tiny,manifest.json
+banking_0024,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3',,whisper-tiny,manifest.json
+banking_0025,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3',,whisper-tiny,manifest.json
+banking_0026,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3',,whisper-tiny,manifest.json
+banking_0027,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3',,whisper-tiny,manifest.json
+banking_0028,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3',,whisper-tiny,manifest.json
+banking_0029,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3',,whisper-tiny,manifest.json
+banking_0030,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3',,whisper-tiny,manifest.json
+banking_0031,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3',,whisper-tiny,manifest.json
+banking_0032,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3',,whisper-tiny,manifest.json
+banking_0033,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3',,whisper-tiny,manifest.json
+banking_0034,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3',,whisper-tiny,manifest.json
+banking_0035,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3',,whisper-tiny,manifest.json
+banking_0036,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3',,whisper-tiny,manifest.json
+banking_0037,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3',,whisper-tiny,manifest.json
+banking_0038,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3',,whisper-tiny,manifest.json
+banking_0039,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3',,whisper-tiny,manifest.json
+banking_0040,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3',,whisper-tiny,manifest.json
+banking_0041,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3',,whisper-tiny,manifest.json
+banking_0042,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3',,whisper-tiny,manifest.json
+banking_0043,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3',,whisper-tiny,manifest.json
+banking_0044,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3',,whisper-tiny,manifest.json
+banking_0045,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3',,whisper-tiny,manifest.json
+banking_0046,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3',,whisper-tiny,manifest.json
+banking_0047,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3',,whisper-tiny,manifest.json
+banking_0048,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3',,whisper-tiny,manifest.json
+banking_0049,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3',,whisper-tiny,manifest.json
+banking_0050,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3',,whisper-tiny,manifest.json
+banking_0051,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3',,whisper-tiny,manifest.json
+banking_0052,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3',,whisper-tiny,manifest.json
+banking_0053,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3',,whisper-tiny,manifest.json
+banking_0054,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3',,whisper-tiny,manifest.json
+banking_0055,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3',,whisper-tiny,manifest.json
+banking_0056,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3',,whisper-tiny,manifest.json
+banking_0057,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3',,whisper-tiny,manifest.json
+banking_0058,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3',,whisper-tiny,manifest.json
+banking_0059,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3',,whisper-tiny,manifest.json
+banking_0060,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3',,whisper-tiny,manifest.json
+banking_0061,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3',,whisper-tiny,manifest.json
+banking_0062,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3',,whisper-tiny,manifest.json
+banking_0063,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3',,whisper-tiny,manifest.json
+banking_0064,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3',,whisper-tiny,manifest.json
+banking_0065,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3',,whisper-tiny,manifest.json
+banking_0066,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3',,whisper-tiny,manifest.json
+banking_0067,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3',,whisper-tiny,manifest.json
+banking_0068,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3',,whisper-tiny,manifest.json
+banking_0069,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3',,whisper-tiny,manifest.json
+banking_0070,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3',,whisper-tiny,manifest.json
+banking_0071,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3',,whisper-tiny,manifest.json
+banking_0072,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3',,whisper-tiny,manifest.json
+banking_0073,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3',,whisper-tiny,manifest.json
+banking_0074,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3',,whisper-tiny,manifest.json
+banking_0075,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3',,whisper-tiny,manifest.json
+banking_0076,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3',,whisper-tiny,manifest.json
+banking_0077,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3',,whisper-tiny,manifest.json
+banking_0078,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3',,whisper-tiny,manifest.json
+banking_0079,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3',,whisper-tiny,manifest.json
+banking_0080,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3',,whisper-tiny,manifest.json
+banking_0081,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3',,whisper-tiny,manifest.json
+banking_0082,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3',,whisper-tiny,manifest.json
+banking_0083,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3',,whisper-tiny,manifest.json
+banking_0084,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3',,whisper-tiny,manifest.json
+banking_0085,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3',,whisper-tiny,manifest.json
+banking_0086,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3',,whisper-tiny,manifest.json
+banking_0087,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3',,whisper-tiny,manifest.json
+banking_0088,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3',,whisper-tiny,manifest.json
+banking_0089,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3',,whisper-tiny,manifest.json
+banking_0090,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3',,whisper-tiny,manifest.json
+banking_0091,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3',,whisper-tiny,manifest.json
+banking_0092,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3',,whisper-tiny,manifest.json
+banking_0093,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3',,whisper-tiny,manifest.json
+banking_0094,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3',,whisper-tiny,manifest.json
+banking_0095,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3',,whisper-tiny,manifest.json
+banking_0096,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3',,whisper-tiny,manifest.json
+banking_0097,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3',,whisper-tiny,manifest.json
+banking_0098,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3',,whisper-tiny,manifest.json
+banking_0099,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3',,whisper-tiny,manifest.json
+banking_0000,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0001,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0002,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0003,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0004,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0005,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0006,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0007,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0008,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0009,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0010,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0011,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0012,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0013,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0014,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0015,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0016,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0017,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0018,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0019,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0020,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0021,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0022,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0023,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0024,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0025,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0026,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0027,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0028,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0029,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0030,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0031,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0032,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0033,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0034,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0035,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0036,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0037,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0038,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0039,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0040,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0041,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0042,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0043,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0044,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0045,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0046,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0047,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0048,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0049,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0050,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0051,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0052,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0053,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0054,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0055,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0056,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0057,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0058,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0059,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0060,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0061,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0062,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0063,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0064,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0065,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0066,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0067,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0068,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0069,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0070,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0071,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0072,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0073,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0074,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0075,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0076,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0077,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0078,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0079,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0080,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0081,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0082,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0083,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0084,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0085,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0086,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0087,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0088,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0089,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0090,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0091,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0092,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0093,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0094,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0095,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0096,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0097,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0098,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0099,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3',,whisper-large-v3-turbo,manifest.json
+banking_0000,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3',,indicwav2vec-hindi,manifest.json
+banking_0001,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3',,indicwav2vec-hindi,manifest.json
+banking_0002,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3',,indicwav2vec-hindi,manifest.json
+banking_0003,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3',,indicwav2vec-hindi,manifest.json
+banking_0004,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3',,indicwav2vec-hindi,manifest.json
+banking_0005,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3',,indicwav2vec-hindi,manifest.json
+banking_0006,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3',,indicwav2vec-hindi,manifest.json
+banking_0007,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3',,indicwav2vec-hindi,manifest.json
+banking_0008,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3',,indicwav2vec-hindi,manifest.json
+banking_0009,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3',,indicwav2vec-hindi,manifest.json
+banking_0010,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3',,indicwav2vec-hindi,manifest.json
+banking_0011,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3',,indicwav2vec-hindi,manifest.json
+banking_0012,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3',,indicwav2vec-hindi,manifest.json
+banking_0013,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3',,indicwav2vec-hindi,manifest.json
+banking_0014,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3',,indicwav2vec-hindi,manifest.json
+banking_0015,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3',,indicwav2vec-hindi,manifest.json
+banking_0016,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3',,indicwav2vec-hindi,manifest.json
+banking_0017,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3',,indicwav2vec-hindi,manifest.json
+banking_0018,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3',,indicwav2vec-hindi,manifest.json
+banking_0019,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3',,indicwav2vec-hindi,manifest.json
+banking_0020,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3',,indicwav2vec-hindi,manifest.json
+banking_0021,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3',,indicwav2vec-hindi,manifest.json
+banking_0022,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3',,indicwav2vec-hindi,manifest.json
+banking_0023,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3',,indicwav2vec-hindi,manifest.json
+banking_0024,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3',,indicwav2vec-hindi,manifest.json
+banking_0025,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3',,indicwav2vec-hindi,manifest.json
+banking_0026,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3',,indicwav2vec-hindi,manifest.json
+banking_0027,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3',,indicwav2vec-hindi,manifest.json
+banking_0028,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3',,indicwav2vec-hindi,manifest.json
+banking_0029,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3',,indicwav2vec-hindi,manifest.json
+banking_0030,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3',,indicwav2vec-hindi,manifest.json
+banking_0031,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3',,indicwav2vec-hindi,manifest.json
+banking_0032,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3',,indicwav2vec-hindi,manifest.json
+banking_0033,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3',,indicwav2vec-hindi,manifest.json
+banking_0034,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3',,indicwav2vec-hindi,manifest.json
+banking_0035,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3',,indicwav2vec-hindi,manifest.json
+banking_0036,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3',,indicwav2vec-hindi,manifest.json
+banking_0037,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3',,indicwav2vec-hindi,manifest.json
+banking_0038,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3',,indicwav2vec-hindi,manifest.json
+banking_0039,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3',,indicwav2vec-hindi,manifest.json
+banking_0040,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3',,indicwav2vec-hindi,manifest.json
+banking_0041,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3',,indicwav2vec-hindi,manifest.json
+banking_0042,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3',,indicwav2vec-hindi,manifest.json
+banking_0043,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3',,indicwav2vec-hindi,manifest.json
+banking_0044,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3',,indicwav2vec-hindi,manifest.json
+banking_0045,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3',,indicwav2vec-hindi,manifest.json
+banking_0046,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3',,indicwav2vec-hindi,manifest.json
+banking_0047,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3',,indicwav2vec-hindi,manifest.json
+banking_0048,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3',,indicwav2vec-hindi,manifest.json
+banking_0049,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3',,indicwav2vec-hindi,manifest.json
+banking_0050,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3',,indicwav2vec-hindi,manifest.json
+banking_0051,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3',,indicwav2vec-hindi,manifest.json
+banking_0052,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3',,indicwav2vec-hindi,manifest.json
+banking_0053,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3',,indicwav2vec-hindi,manifest.json
+banking_0054,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3',,indicwav2vec-hindi,manifest.json
+banking_0055,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3',,indicwav2vec-hindi,manifest.json
+banking_0056,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3',,indicwav2vec-hindi,manifest.json
+banking_0057,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3',,indicwav2vec-hindi,manifest.json
+banking_0058,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3',,indicwav2vec-hindi,manifest.json
+banking_0059,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3',,indicwav2vec-hindi,manifest.json
+banking_0060,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3',,indicwav2vec-hindi,manifest.json
+banking_0061,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3',,indicwav2vec-hindi,manifest.json
+banking_0062,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3',,indicwav2vec-hindi,manifest.json
+banking_0063,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3',,indicwav2vec-hindi,manifest.json
+banking_0064,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3',,indicwav2vec-hindi,manifest.json
+banking_0065,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3',,indicwav2vec-hindi,manifest.json
+banking_0066,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3',,indicwav2vec-hindi,manifest.json
+banking_0067,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3',,indicwav2vec-hindi,manifest.json
+banking_0068,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3',,indicwav2vec-hindi,manifest.json
+banking_0069,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3',,indicwav2vec-hindi,manifest.json
+banking_0070,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3',,indicwav2vec-hindi,manifest.json
+banking_0071,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3',,indicwav2vec-hindi,manifest.json
+banking_0072,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3',,indicwav2vec-hindi,manifest.json
+banking_0073,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3',,indicwav2vec-hindi,manifest.json
+banking_0074,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3',,indicwav2vec-hindi,manifest.json
+banking_0075,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3',,indicwav2vec-hindi,manifest.json
+banking_0076,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3',,indicwav2vec-hindi,manifest.json
+banking_0077,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3',,indicwav2vec-hindi,manifest.json
+banking_0078,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3',,indicwav2vec-hindi,manifest.json
+banking_0079,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3',,indicwav2vec-hindi,manifest.json
+banking_0080,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3',,indicwav2vec-hindi,manifest.json
+banking_0081,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3',,indicwav2vec-hindi,manifest.json
+banking_0082,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3',,indicwav2vec-hindi,manifest.json
+banking_0083,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3',,indicwav2vec-hindi,manifest.json
+banking_0084,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3',,indicwav2vec-hindi,manifest.json
+banking_0085,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3',,indicwav2vec-hindi,manifest.json
+banking_0086,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3',,indicwav2vec-hindi,manifest.json
+banking_0087,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3',,indicwav2vec-hindi,manifest.json
+banking_0088,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3',,indicwav2vec-hindi,manifest.json
+banking_0089,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3',,indicwav2vec-hindi,manifest.json
+banking_0090,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3',,indicwav2vec-hindi,manifest.json
+banking_0091,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3',,indicwav2vec-hindi,manifest.json
+banking_0092,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3',,indicwav2vec-hindi,manifest.json
+banking_0093,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3',,indicwav2vec-hindi,manifest.json
+banking_0094,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3',,indicwav2vec-hindi,manifest.json
+banking_0095,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3',,indicwav2vec-hindi,manifest.json
+banking_0096,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3',,indicwav2vec-hindi,manifest.json
+banking_0097,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3',,indicwav2vec-hindi,manifest.json
+banking_0098,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3',,indicwav2vec-hindi,manifest.json
+banking_0099,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3',,indicwav2vec-hindi,manifest.json
+banking_0000,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3',,whisper-medium-hi,manifest.json
+banking_0001,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3',,whisper-medium-hi,manifest.json
+banking_0002,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3',,whisper-medium-hi,manifest.json
+banking_0003,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3',,whisper-medium-hi,manifest.json
+banking_0004,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3',,whisper-medium-hi,manifest.json
+banking_0005,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3',,whisper-medium-hi,manifest.json
+banking_0006,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3',,whisper-medium-hi,manifest.json
+banking_0007,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3',,whisper-medium-hi,manifest.json
+banking_0008,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3',,whisper-medium-hi,manifest.json
+banking_0009,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3',,whisper-medium-hi,manifest.json
+banking_0010,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3',,whisper-medium-hi,manifest.json
+banking_0011,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3',,whisper-medium-hi,manifest.json
+banking_0012,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3',,whisper-medium-hi,manifest.json
+banking_0013,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3',,whisper-medium-hi,manifest.json
+banking_0014,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3',,whisper-medium-hi,manifest.json
+banking_0015,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3',,whisper-medium-hi,manifest.json
+banking_0016,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3',,whisper-medium-hi,manifest.json
+banking_0017,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3',,whisper-medium-hi,manifest.json
+banking_0018,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3',,whisper-medium-hi,manifest.json
+banking_0019,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3',,whisper-medium-hi,manifest.json
+banking_0020,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3',,whisper-medium-hi,manifest.json
+banking_0021,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3',,whisper-medium-hi,manifest.json
+banking_0022,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3',,whisper-medium-hi,manifest.json
+banking_0023,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3',,whisper-medium-hi,manifest.json
+banking_0024,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3',,whisper-medium-hi,manifest.json
+banking_0025,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3',,whisper-medium-hi,manifest.json
+banking_0026,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3',,whisper-medium-hi,manifest.json
+banking_0027,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3',,whisper-medium-hi,manifest.json
+banking_0028,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3',,whisper-medium-hi,manifest.json
+banking_0029,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3',,whisper-medium-hi,manifest.json
+banking_0030,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3',,whisper-medium-hi,manifest.json
+banking_0031,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3',,whisper-medium-hi,manifest.json
+banking_0032,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3',,whisper-medium-hi,manifest.json
+banking_0033,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3',,whisper-medium-hi,manifest.json
+banking_0034,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3',,whisper-medium-hi,manifest.json
+banking_0035,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3',,whisper-medium-hi,manifest.json
+banking_0036,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3',,whisper-medium-hi,manifest.json
+banking_0037,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3',,whisper-medium-hi,manifest.json
+banking_0038,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3',,whisper-medium-hi,manifest.json
+banking_0039,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3',,whisper-medium-hi,manifest.json
+banking_0040,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3',,whisper-medium-hi,manifest.json
+banking_0041,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3',,whisper-medium-hi,manifest.json
+banking_0042,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3',,whisper-medium-hi,manifest.json
+banking_0043,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3',,whisper-medium-hi,manifest.json
+banking_0044,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3',,whisper-medium-hi,manifest.json
+banking_0045,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3',,whisper-medium-hi,manifest.json
+banking_0046,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3',,whisper-medium-hi,manifest.json
+banking_0047,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3',,whisper-medium-hi,manifest.json
+banking_0048,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3',,whisper-medium-hi,manifest.json
+banking_0049,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3',,whisper-medium-hi,manifest.json
+banking_0050,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3',,whisper-medium-hi,manifest.json
+banking_0051,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3',,whisper-medium-hi,manifest.json
+banking_0052,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3',,whisper-medium-hi,manifest.json
+banking_0053,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3',,whisper-medium-hi,manifest.json
+banking_0054,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3',,whisper-medium-hi,manifest.json
+banking_0055,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3',,whisper-medium-hi,manifest.json
+banking_0056,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3',,whisper-medium-hi,manifest.json
+banking_0057,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3',,whisper-medium-hi,manifest.json
+banking_0058,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3',,whisper-medium-hi,manifest.json
+banking_0059,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3',,whisper-medium-hi,manifest.json
+banking_0060,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3',,whisper-medium-hi,manifest.json
+banking_0061,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3',,whisper-medium-hi,manifest.json
+banking_0062,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3',,whisper-medium-hi,manifest.json
+banking_0063,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3',,whisper-medium-hi,manifest.json
+banking_0064,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3',,whisper-medium-hi,manifest.json
+banking_0065,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3',,whisper-medium-hi,manifest.json
+banking_0066,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3',,whisper-medium-hi,manifest.json
+banking_0067,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3',,whisper-medium-hi,manifest.json
+banking_0068,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3',,whisper-medium-hi,manifest.json
+banking_0069,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3',,whisper-medium-hi,manifest.json
+banking_0070,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3',,whisper-medium-hi,manifest.json
+banking_0071,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3',,whisper-medium-hi,manifest.json
+banking_0072,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3',,whisper-medium-hi,manifest.json
+banking_0073,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3',,whisper-medium-hi,manifest.json
+banking_0074,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3',,whisper-medium-hi,manifest.json
+banking_0075,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3',,whisper-medium-hi,manifest.json
+banking_0076,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3',,whisper-medium-hi,manifest.json
+banking_0077,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3',,whisper-medium-hi,manifest.json
+banking_0078,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3',,whisper-medium-hi,manifest.json
+banking_0079,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3',,whisper-medium-hi,manifest.json
+banking_0080,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3',,whisper-medium-hi,manifest.json
+banking_0081,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3',,whisper-medium-hi,manifest.json
+banking_0082,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3',,whisper-medium-hi,manifest.json
+banking_0083,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3',,whisper-medium-hi,manifest.json
+banking_0084,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3',,whisper-medium-hi,manifest.json
+banking_0085,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3',,whisper-medium-hi,manifest.json
+banking_0086,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3',,whisper-medium-hi,manifest.json
+banking_0087,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3',,whisper-medium-hi,manifest.json
+banking_0088,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3',,whisper-medium-hi,manifest.json
+banking_0089,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3',,whisper-medium-hi,manifest.json
+banking_0090,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3',,whisper-medium-hi,manifest.json
+banking_0091,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3',,whisper-medium-hi,manifest.json
+banking_0092,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3',,whisper-medium-hi,manifest.json
+banking_0093,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3',,whisper-medium-hi,manifest.json
+banking_0094,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3',,whisper-medium-hi,manifest.json
+banking_0095,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3',,whisper-medium-hi,manifest.json
+banking_0096,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3',,whisper-medium-hi,manifest.json
+banking_0097,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3',,whisper-medium-hi,manifest.json
+banking_0098,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3',,whisper-medium-hi,manifest.json
+banking_0099,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3',,whisper-medium-hi,manifest.json
+banking_0000,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3',,whisper-large-v3,manifest.json
+banking_0001,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3',,whisper-large-v3,manifest.json
+banking_0002,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3',,whisper-large-v3,manifest.json
+banking_0003,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3',,whisper-large-v3,manifest.json
+banking_0004,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3',,whisper-large-v3,manifest.json
+banking_0005,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3',,whisper-large-v3,manifest.json
+banking_0006,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3',,whisper-large-v3,manifest.json
+banking_0007,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3',,whisper-large-v3,manifest.json
+banking_0008,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3',,whisper-large-v3,manifest.json
+banking_0009,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3',,whisper-large-v3,manifest.json
+banking_0010,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3',,whisper-large-v3,manifest.json
+banking_0011,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3',,whisper-large-v3,manifest.json
+banking_0012,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3',,whisper-large-v3,manifest.json
+banking_0013,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3',,whisper-large-v3,manifest.json
+banking_0014,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3',,whisper-large-v3,manifest.json
+banking_0015,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3',,whisper-large-v3,manifest.json
+banking_0016,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3',,whisper-large-v3,manifest.json
+banking_0017,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3',,whisper-large-v3,manifest.json
+banking_0018,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3',,whisper-large-v3,manifest.json
+banking_0019,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3',,whisper-large-v3,manifest.json
+banking_0020,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3',,whisper-large-v3,manifest.json
+banking_0021,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3',,whisper-large-v3,manifest.json
+banking_0022,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3',,whisper-large-v3,manifest.json
+banking_0023,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3',,whisper-large-v3,manifest.json
+banking_0024,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3',,whisper-large-v3,manifest.json
+banking_0025,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3',,whisper-large-v3,manifest.json
+banking_0026,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3',,whisper-large-v3,manifest.json
+banking_0027,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3',,whisper-large-v3,manifest.json
+banking_0028,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3',,whisper-large-v3,manifest.json
+banking_0029,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3',,whisper-large-v3,manifest.json
+banking_0030,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3',,whisper-large-v3,manifest.json
+banking_0031,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3',,whisper-large-v3,manifest.json
+banking_0032,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3',,whisper-large-v3,manifest.json
+banking_0033,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3',,whisper-large-v3,manifest.json
+banking_0034,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3',,whisper-large-v3,manifest.json
+banking_0035,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3',,whisper-large-v3,manifest.json
+banking_0036,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3',,whisper-large-v3,manifest.json
+banking_0037,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3',,whisper-large-v3,manifest.json
+banking_0038,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3',,whisper-large-v3,manifest.json
+banking_0039,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3',,whisper-large-v3,manifest.json
+banking_0040,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3',,whisper-large-v3,manifest.json
+banking_0041,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3',,whisper-large-v3,manifest.json
+banking_0042,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3',,whisper-large-v3,manifest.json
+banking_0043,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3',,whisper-large-v3,manifest.json
+banking_0044,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3',,whisper-large-v3,manifest.json
+banking_0045,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3',,whisper-large-v3,manifest.json
+banking_0046,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3',,whisper-large-v3,manifest.json
+banking_0047,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3',,whisper-large-v3,manifest.json
+banking_0048,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3',,whisper-large-v3,manifest.json
+banking_0049,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3',,whisper-large-v3,manifest.json
+banking_0050,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3',,whisper-large-v3,manifest.json
+banking_0051,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3',,whisper-large-v3,manifest.json
+banking_0052,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3',,whisper-large-v3,manifest.json
+banking_0053,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3',,whisper-large-v3,manifest.json
+banking_0054,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3',,whisper-large-v3,manifest.json
+banking_0055,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3',,whisper-large-v3,manifest.json
+banking_0056,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3',,whisper-large-v3,manifest.json
+banking_0057,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3',,whisper-large-v3,manifest.json
+banking_0058,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3',,whisper-large-v3,manifest.json
+banking_0059,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3',,whisper-large-v3,manifest.json
+banking_0060,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3',,whisper-large-v3,manifest.json
+banking_0061,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3',,whisper-large-v3,manifest.json
+banking_0062,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3',,whisper-large-v3,manifest.json
+banking_0063,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3',,whisper-large-v3,manifest.json
+banking_0064,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3',,whisper-large-v3,manifest.json
+banking_0065,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3',,whisper-large-v3,manifest.json
+banking_0066,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3',,whisper-large-v3,manifest.json
+banking_0067,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3',,whisper-large-v3,manifest.json
+banking_0068,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3',,whisper-large-v3,manifest.json
+banking_0069,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3',,whisper-large-v3,manifest.json
+banking_0070,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3',,whisper-large-v3,manifest.json
+banking_0071,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3',,whisper-large-v3,manifest.json
+banking_0072,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3',,whisper-large-v3,manifest.json
+banking_0073,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3',,whisper-large-v3,manifest.json
+banking_0074,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3',,whisper-large-v3,manifest.json
+banking_0075,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3',,whisper-large-v3,manifest.json
+banking_0076,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3',,whisper-large-v3,manifest.json
+banking_0077,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3',,whisper-large-v3,manifest.json
+banking_0078,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3',,whisper-large-v3,manifest.json
+banking_0079,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3',,whisper-large-v3,manifest.json
+banking_0080,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3',,whisper-large-v3,manifest.json
+banking_0081,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3',,whisper-large-v3,manifest.json
+banking_0082,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3',,whisper-large-v3,manifest.json
+banking_0083,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3',,whisper-large-v3,manifest.json
+banking_0084,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3',,whisper-large-v3,manifest.json
+banking_0085,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3',,whisper-large-v3,manifest.json
+banking_0086,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3',,whisper-large-v3,manifest.json
+banking_0087,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3',,whisper-large-v3,manifest.json
+banking_0088,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3',,whisper-large-v3,manifest.json
+banking_0089,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3',,whisper-large-v3,manifest.json
+banking_0090,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3',,whisper-large-v3,manifest.json
+banking_0091,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3',,whisper-large-v3,manifest.json
+banking_0092,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3',,whisper-large-v3,manifest.json
+banking_0093,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3',,whisper-large-v3,manifest.json
+banking_0094,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3',,whisper-large-v3,manifest.json
+banking_0095,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3',,whisper-large-v3,manifest.json
+banking_0096,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3',,whisper-large-v3,manifest.json
+banking_0097,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3',,whisper-large-v3,manifest.json
+banking_0098,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3',,whisper-large-v3,manifest.json
+banking_0099,[Errno 2] No such file or directory: '/Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3',,whisper-large-v3,manifest.json
+banking_0000,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0000.mp3,,voxtral-mini-3b,manifest.json
+banking_0001,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0001.mp3,,voxtral-mini-3b,manifest.json
+banking_0002,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0002.mp3,,voxtral-mini-3b,manifest.json
+banking_0003,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0003.mp3,,voxtral-mini-3b,manifest.json
+banking_0004,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0004.mp3,,voxtral-mini-3b,manifest.json
+banking_0005,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0005.mp3,,voxtral-mini-3b,manifest.json
+banking_0006,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0006.mp3,,voxtral-mini-3b,manifest.json
+banking_0007,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0007.mp3,,voxtral-mini-3b,manifest.json
+banking_0008,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0008.mp3,,voxtral-mini-3b,manifest.json
+banking_0009,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0009.mp3,,voxtral-mini-3b,manifest.json
+banking_0010,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0010.mp3,,voxtral-mini-3b,manifest.json
+banking_0011,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0011.mp3,,voxtral-mini-3b,manifest.json
+banking_0012,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0012.mp3,,voxtral-mini-3b,manifest.json
+banking_0013,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0013.mp3,,voxtral-mini-3b,manifest.json
+banking_0014,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0014.mp3,,voxtral-mini-3b,manifest.json
+banking_0015,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0015.mp3,,voxtral-mini-3b,manifest.json
+banking_0016,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0016.mp3,,voxtral-mini-3b,manifest.json
+banking_0017,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0017.mp3,,voxtral-mini-3b,manifest.json
+banking_0018,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0018.mp3,,voxtral-mini-3b,manifest.json
+banking_0019,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0019.mp3,,voxtral-mini-3b,manifest.json
+banking_0020,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0020.mp3,,voxtral-mini-3b,manifest.json
+banking_0021,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0021.mp3,,voxtral-mini-3b,manifest.json
+banking_0022,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0022.mp3,,voxtral-mini-3b,manifest.json
+banking_0023,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0023.mp3,,voxtral-mini-3b,manifest.json
+banking_0024,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0024.mp3,,voxtral-mini-3b,manifest.json
+banking_0025,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0025.mp3,,voxtral-mini-3b,manifest.json
+banking_0026,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0026.mp3,,voxtral-mini-3b,manifest.json
+banking_0027,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0027.mp3,,voxtral-mini-3b,manifest.json
+banking_0028,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0028.mp3,,voxtral-mini-3b,manifest.json
+banking_0029,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0029.mp3,,voxtral-mini-3b,manifest.json
+banking_0030,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0030.mp3,,voxtral-mini-3b,manifest.json
+banking_0031,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0031.mp3,,voxtral-mini-3b,manifest.json
+banking_0032,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0032.mp3,,voxtral-mini-3b,manifest.json
+banking_0033,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0033.mp3,,voxtral-mini-3b,manifest.json
+banking_0034,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0034.mp3,,voxtral-mini-3b,manifest.json
+banking_0035,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0035.mp3,,voxtral-mini-3b,manifest.json
+banking_0036,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0036.mp3,,voxtral-mini-3b,manifest.json
+banking_0037,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0037.mp3,,voxtral-mini-3b,manifest.json
+banking_0038,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0038.mp3,,voxtral-mini-3b,manifest.json
+banking_0039,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0039.mp3,,voxtral-mini-3b,manifest.json
+banking_0040,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0040.mp3,,voxtral-mini-3b,manifest.json
+banking_0041,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0041.mp3,,voxtral-mini-3b,manifest.json
+banking_0042,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0042.mp3,,voxtral-mini-3b,manifest.json
+banking_0043,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0043.mp3,,voxtral-mini-3b,manifest.json
+banking_0044,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0044.mp3,,voxtral-mini-3b,manifest.json
+banking_0045,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0045.mp3,,voxtral-mini-3b,manifest.json
+banking_0046,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0046.mp3,,voxtral-mini-3b,manifest.json
+banking_0047,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0047.mp3,,voxtral-mini-3b,manifest.json
+banking_0048,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0048.mp3,,voxtral-mini-3b,manifest.json
+banking_0049,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0049.mp3,,voxtral-mini-3b,manifest.json
+banking_0050,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0050.mp3,,voxtral-mini-3b,manifest.json
+banking_0051,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0051.mp3,,voxtral-mini-3b,manifest.json
+banking_0052,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0052.mp3,,voxtral-mini-3b,manifest.json
+banking_0053,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0053.mp3,,voxtral-mini-3b,manifest.json
+banking_0054,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0054.mp3,,voxtral-mini-3b,manifest.json
+banking_0055,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0055.mp3,,voxtral-mini-3b,manifest.json
+banking_0056,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0056.mp3,,voxtral-mini-3b,manifest.json
+banking_0057,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0057.mp3,,voxtral-mini-3b,manifest.json
+banking_0058,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0058.mp3,,voxtral-mini-3b,manifest.json
+banking_0059,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0059.mp3,,voxtral-mini-3b,manifest.json
+banking_0060,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0060.mp3,,voxtral-mini-3b,manifest.json
+banking_0061,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0061.mp3,,voxtral-mini-3b,manifest.json
+banking_0062,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0062.mp3,,voxtral-mini-3b,manifest.json
+banking_0063,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0063.mp3,,voxtral-mini-3b,manifest.json
+banking_0064,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0064.mp3,,voxtral-mini-3b,manifest.json
+banking_0065,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0065.mp3,,voxtral-mini-3b,manifest.json
+banking_0066,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0066.mp3,,voxtral-mini-3b,manifest.json
+banking_0067,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0067.mp3,,voxtral-mini-3b,manifest.json
+banking_0068,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0068.mp3,,voxtral-mini-3b,manifest.json
+banking_0069,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0069.mp3,,voxtral-mini-3b,manifest.json
+banking_0070,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0070.mp3,,voxtral-mini-3b,manifest.json
+banking_0071,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0071.mp3,,voxtral-mini-3b,manifest.json
+banking_0072,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0072.mp3,,voxtral-mini-3b,manifest.json
+banking_0073,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0073.mp3,,voxtral-mini-3b,manifest.json
+banking_0074,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0074.mp3,,voxtral-mini-3b,manifest.json
+banking_0075,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0075.mp3,,voxtral-mini-3b,manifest.json
+banking_0076,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0076.mp3,,voxtral-mini-3b,manifest.json
+banking_0077,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0077.mp3,,voxtral-mini-3b,manifest.json
+banking_0078,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0078.mp3,,voxtral-mini-3b,manifest.json
+banking_0079,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0079.mp3,,voxtral-mini-3b,manifest.json
+banking_0080,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0080.mp3,,voxtral-mini-3b,manifest.json
+banking_0081,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0081.mp3,,voxtral-mini-3b,manifest.json
+banking_0082,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0082.mp3,,voxtral-mini-3b,manifest.json
+banking_0083,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0083.mp3,,voxtral-mini-3b,manifest.json
+banking_0084,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0084.mp3,,voxtral-mini-3b,manifest.json
+banking_0085,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0085.mp3,,voxtral-mini-3b,manifest.json
+banking_0086,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0086.mp3,,voxtral-mini-3b,manifest.json
+banking_0087,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0087.mp3,,voxtral-mini-3b,manifest.json
+banking_0088,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0088.mp3,,voxtral-mini-3b,manifest.json
+banking_0089,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0089.mp3,,voxtral-mini-3b,manifest.json
+banking_0090,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0090.mp3,,voxtral-mini-3b,manifest.json
+banking_0091,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0091.mp3,,voxtral-mini-3b,manifest.json
+banking_0092,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0092.mp3,,voxtral-mini-3b,manifest.json
+banking_0093,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0093.mp3,,voxtral-mini-3b,manifest.json
+banking_0094,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0094.mp3,,voxtral-mini-3b,manifest.json
+banking_0095,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0095.mp3,,voxtral-mini-3b,manifest.json
+banking_0096,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0096.mp3,,voxtral-mini-3b,manifest.json
+banking_0097,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0097.mp3,,voxtral-mini-3b,manifest.json
+banking_0098,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0098.mp3,,voxtral-mini-3b,manifest.json
+banking_0099,Error loading audio: File not found: /Users/naksh/Documents/GitHub/ASR_finetuning/data/synthetic/audio/banking_0099.mp3,,voxtral-mini-3b,manifest.json
