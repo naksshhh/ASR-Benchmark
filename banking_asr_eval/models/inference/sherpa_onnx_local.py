@@ -78,6 +78,8 @@ def create_sherpa_onnx_model(model_id: str) -> Callable[[str], str]:
             recognizer.decode_stream(stream)
 
         result = recognizer.get_result(stream)
-        return result.text.strip()
+        # Some sherpa-onnx versions return a string, others return an object with .text
+        text = result.text if hasattr(result, 'text') else str(result)
+        return text.strip()
 
     return transcribe
