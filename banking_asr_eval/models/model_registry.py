@@ -51,6 +51,14 @@ class ModelRegistry:
 
     def _load_model(self, name: str) -> ModelFn:
         """Lazy-load a model based on its backend config."""
+        # Configure PyTorch CPU threads to avoid Xeon multi-socket synchronization overhead
+        try:
+            import torch
+            torch.set_num_threads(1)
+            torch.set_num_interop_threads(1)
+        except Exception:
+            pass
+
         config = self._configs[name]
         backend = config.get("backend", "whisper")
 

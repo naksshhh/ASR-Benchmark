@@ -47,7 +47,19 @@ def create_hf_model(
         model.eval()
 
         def transcribe_ctc(audio_path: str) -> str:
-            speech_array, sr = librosa.load(audio_path, sr=16000)
+            import soundfile as sf
+            import numpy as np
+            try:
+                speech_array, sr = sf.read(audio_path, dtype="float32")
+                if len(speech_array.shape) > 1:
+                    speech_array = np.mean(speech_array, axis=1)
+                if sr != 16000:
+                    import librosa
+                    speech_array = librosa.resample(speech_array, orig_sr=sr, target_sr=16000)
+            except Exception:
+                import librosa
+                speech_array, sr = librosa.load(audio_path, sr=16000)
+
             inputs = feature_extractor(speech_array, sampling_rate=16000, return_tensors="pt")
 
             # Safely cast dict values to device

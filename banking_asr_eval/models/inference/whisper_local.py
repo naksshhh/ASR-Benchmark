@@ -59,8 +59,27 @@ def create_whisper_model(
 
     def transcribe(audio_path: str) -> str:
         """Transcribe a single audio file."""
+        import soundfile as sf
+        import numpy as np
+
+        try:
+            # sf.read is extremely fast and avoids launching ffmpeg subprocesses
+            audio_array, samplerate = sf.read(audio_path, dtype="float32")
+            if len(audio_array.shape) > 1:
+                audio_array = np.mean(audio_array, axis=1)
+            
+            # HuggingFace Whisper pipeline requires 16000Hz samplerate
+            if samplerate != 16000:
+                import librosa
+                audio_array = librosa.resample(audio_array, orig_sr=samplerate, target_sr=16000)
+            
+            audio_input = audio_array
+        except Exception:
+            # Fallback to passing path directly if soundfile fails
+            audio_input = audio_path
+
         result = pipe(
-            audio_path,
+            audio_input,
             generate_kwargs={
                 "language": language,
                 "task": task,
