@@ -41,15 +41,39 @@ def create_voxtral_model(
     if device is None:
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-    print(f"[Voxtral] Loading {model_id} onto {device}...")
-    processor = AutoProcessor.from_pretrained(model_id)
+    original_model_id = model_id
+    load_path = model_id
+    local_only = False
+    import os
+
+    # Resolve local cached snapshot path when running offline
+    if os.environ.get("HF_HUB_OFFLINE") == "1":
+        local_only = True
+        try:
+            from huggingface_hub import HF_HUB_CACHE
+            repo_folder_name = f"models--{model_id.replace('/', '--')}"
+            repo_path = os.path.join(HF_HUB_CACHE, repo_folder_name)
+            if os.path.exists(repo_path):
+                snapshots_path = os.path.join(repo_path, "snapshots")
+                if os.path.exists(snapshots_path) and os.path.isdir(snapshots_path):
+                    snapshots = os.listdir(snapshots_path)
+                    if snapshots:
+                        # Find the first snapshot directory
+                        load_path = os.path.join(snapshots_path, snapshots[0])
+                        print(f"[Voxtral] Offline mode: loading from local cache snapshot: {load_path}")
+        except Exception as e:
+            print(f"[Voxtral] Warning: failed to resolve local snapshot path: {e}")
+
+    print(f"[Voxtral] Loading {original_model_id} onto {device}...")
+    processor = AutoProcessor.from_pretrained(load_path, local_files_only=local_only)
 
     # Voxtral requires bfloat16 (or float16) on GPU for memory/numerical stability
     dtype = torch.bfloat16 if torch.cuda.is_available() else torch.float32
     model = VoxtralForConditionalGeneration.from_pretrained(
-        model_id,
+        load_path,
         torch_dtype=dtype,
         low_cpu_mem_usage=True,
+        local_files_only=local_only,
     ).to(device)
 
     model.eval()
@@ -59,7 +83,7 @@ def create_voxtral_model(
         inputs = processor.apply_transcription_request(
             language="hi",
             audio=audio_path,
-            model_id=model_id,
+            model_id=original_model_id,
         )
         # Move inputs to device and cast appropriate fields
         inputs = inputs.to(device, dtype=dtype)

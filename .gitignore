@@ -14,7 +14,6 @@ env/
 
 # Data (large files — track manifests only)
 data/datasets/
-data/synthetic/audio/
 model_cache/
 checkpoints/
 
