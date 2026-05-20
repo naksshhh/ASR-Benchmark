@@ -54,10 +54,10 @@ models:
     model_id: "ai4bharat/indicwav2vec-hindi"
     enabled: false
 
-  indicconformer-hindi:  # switched to NeMo backend (HF conversion was broken)
+  indicconformer-hindi:  # requires AI4Bharat NeMo fork (incompatible with standard NeMo)
     backend: "nemo"
     model_id: "ai4bharat/indicconformer_stt_hi_hybrid_ctc_rnnt_large"
-    enabled: true
+    enabled: false
 
   whisper-medium-hi:  #done
     backend: "whisper"

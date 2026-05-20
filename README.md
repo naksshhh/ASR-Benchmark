@@ -32,30 +32,55 @@ python -m banking_asr_eval.evaluate \
 python -m banking_asr_eval.visualize --results results/eval_results_*.csv
 ```
 
+## Zero-Shot Benchmark Results — Kathbath Hindi (3,151 samples)
+
+**Cluster:** Param Rudra A100 GPU  
+**Dataset:** ai4bharat/Kathbath Hindi validation split
+
+| Rank | Model | Backend | WER ↓ | CER ↓ | NER ↓ | Hindi Native? |
+|------|-------|---------|-------|-------|-------|---------------|
+| 🥇 | **IndicWav2Vec-Hindi** | HuggingFace (CTC) | **11.64%** | **3.30%** | **2.53%** | ✅ Yes |
+| 🥈 | **Voxtral-Mini-3B** | Voxtral | **17.66%** | **6.72%** | **9.79%** | Multilingual |
+| 🥉 | Whisper-large-v3 | Whisper | 28.82% | 9.44% | 14.52% | Multilingual |
+| 4 | Whisper-large-v3-turbo | Whisper | 32.01% | 10.37% | 13.36% | Multilingual |
+| 5 | Whisper-medium | Whisper | 41.64% | 15.85% | 21.54% | Multilingual |
+| 6 | Whisper-tiny | Whisper | 254.00% | 244.76% | 915.55% | Multilingual |
+
+### Excluded Models (language mismatch — no Hindi support)
+
+| Model | Backend | Reason |
+|-------|---------|--------|
+| Parakeet-TDT-0.6B | NeMo | English-only — romanized Hindi audio |
+| Canary-1B-Flash | NeMo | EN/DE/FR/ES only — no Hindi support |
+| Streaming Zipformer | Sherpa-ONNX | English-only (LibriSpeech) — output nonsense on Hindi |
+| IndicConformer-Hindi | NeMo | Requires AI4Bharat's NeMo fork (`nemo-v2`), incompatible with standard NeMo |
+
 ## Project Structure
 
 ```
 banking_asr_eval/
 ├── data/
-│   ├── synthetic/           # Banking dialogue scripts + TTS generation
-│   │   ├── banking_scripts.py   # 60 banking dialogue templates
+│   ├── synthetic/              # Banking dialogue scripts + TTS generation
+│   │   ├── banking_scripts.py      # 60 banking dialogue templates
 │   │   └── generate_banking_data.py
-│   └── loaders.py           # Manifest + HuggingFace dataset loading
+│   └── loaders.py              # Manifest + HuggingFace dataset loading
 ├── models/
-│   ├── model_registry.py    # Lazy-loading model registry
-│   └── inference/           # Per-backend inference wrappers
-│       ├── whisper_local.py     # Whisper (tiny→large-v3)
-│       ├── nemo_local.py        # NeMo (Parakeet, Canary)
-│       └── huggingface_generic.py  # AI4Bharat models
+│   ├── model_registry.py       # Lazy-loading model registry (6 backends)
+│   └── inference/
+│       ├── whisper_local.py        # Whisper (tiny→large-v3)
+│       ├── nemo_local.py           # NeMo (Parakeet, Canary, IndicConformer)
+│       ├── huggingface_generic.py  # AI4Bharat CTC models (IndicWav2Vec)
+│       ├── voxtral_local.py        # Mistral Voxtral Mini-3B
+│       └── sherpa_onnx_local.py    # Sherpa-ONNX streaming models (Zipformer)
 ├── metrics/
-│   ├── normalize.py         # Hindi/English/banking text normalization
-│   ├── core.py              # WER, CER, MER, WIL via jiwer
-│   ├── number_er.py         # Number Error Rate
-│   ├── entity_accuracy.py   # Banking entity accuracy
-│   └── codeswitching.py     # Per-language-segment WER
-├── evaluate.py              # Main evaluation loop (with checkpointing)
-├── benchmark.py             # Latency + quality (RTF measurement)
-└── visualize.py             # Pareto plots, heatmaps, breakdowns
+│   ├── normalize.py            # Hindi/English/banking text normalization
+│   ├── core.py                 # WER, CER, MER, WIL via jiwer
+│   ├── number_er.py            # Number Error Rate
+│   ├── entity_accuracy.py      # Banking entity accuracy
+│   └── codeswitching.py        # Per-language-segment WER
+├── evaluate.py                 # Main evaluation loop (with checkpointing)
+├── benchmark.py                # Latency + quality (RTF measurement)
+└── visualize.py                # Pareto plots, heatmaps, breakdowns
 ```
 
 ## Metric Layers
@@ -71,16 +96,15 @@ banking_asr_eval/
 | 2 | CS-WER | Per-language accuracy in code-switched text |
 | 3 | RTF | Real-time factor (latency/duration) |
 
-## Models
+## Supported Model Backends
 
-| Model | Backend | Mac Mini | Param Rudra |
-|-------|---------|----------|-------------|
-| whisper-tiny | whisper | ✓ (standin) | ✓ |
-| whisper-large-v3-turbo | whisper | ✗ | ✓ |
-| parakeet-tdt-0.6b-v3 | nemo | ✗ | ✓ |
-| canary-1b-flash | nemo | ✗ | ✓ |
-| indicwav2vec-hindi | huggingface | ✗ | ✓ |
-| indicconformer-hindi | huggingface | ✗ | ✓ |
+| Backend | Models | Notes |
+|---------|--------|-------|
+| `whisper` | OpenAI Whisper (tiny → large-v3) | `transformers` pipeline, auto GPU |
+| `nemo` | NVIDIA Parakeet, Canary, IndicConformer | Requires `nemo_toolkit[asr]` |
+| `huggingface` | AI4Bharat IndicWav2Vec | Manual CTC loading for GPU compatibility |
+| `voxtral` | Mistral Voxtral-Mini-3B | Requires `mistral-common[audio]` |
+| `sherpa-onnx` | k2-fsa Zipformer | CPU/ONNX streaming inference |
 
 ## Development Workflow
 
@@ -91,9 +115,48 @@ Write scripts             Run full evaluation sweeps
 Test on 10 samples        Whisper fine-tuning (12hr jobs)
 Build synthetic data      RTF benchmarking
 Analyze result CSVs       Model comparison
-Make plots                ← rsync results back
+Make plots                ← git push/pull results back
 Write blog drafts
 ```
+
+### Offline Cluster Usage
+
+For compute nodes without internet access:
+```bash
+# 1. On login node (has internet): cache all models
+python pre_download.py
+
+# 2. On compute node (no internet): run offline
+HF_HUB_OFFLINE=1 python -m banking_asr_eval.evaluate \
+  --config config.yaml \
+  --manifest ./data/manifests/kathbath_hindi.json
+```
+
+> **Note:** Voxtral requires internet due to `mistral_common` tokenizer limitations. Run it on an internet-connected node.
+
+### Evaluating with a Local IndicSUPERB / Kathbath Copy
+
+If you already have a local copy of the IndicSUPERB (Kathbath) dataset on the cluster, you can prepare the evaluation manifest in two ways:
+
+#### Option A: If it is already in your HuggingFace Cache
+If the dataset has been loaded before on the cluster, HuggingFace will resolve it from `~/.cache/huggingface/datasets`. You can build the manifest offline using:
+```bash
+HF_HUB_OFFLINE=1 python prepare_indic_superb.py \
+  --dataset ai4bharat/Kathbath \
+  --language hindi \
+  --split valid \
+  --output ./data/manifests/kathbath_hindi.json
+```
+
+#### Option B: If you have a raw directory of audio and transcription files
+If the dataset is saved in a raw directory (containing audio files like `.wav`/`.m4a` and transcription files like `transcription.txt` or `text`), our updated script will recursively find, match, compute durations, and generate the manifest:
+```bash
+python prepare_indic_superb.py \
+  --dataset /path/to/local/indicsuperb/kathbath/hindi \
+  --language hindi \
+  --output ./data/manifests/kathbath_hindi.json
+```
+The script supports common transcription structures (e.g. Kaldi `text` format, tab-separated metadata transcripts) and uses `librosa` to compute durations automatically.
 
 ## Config
 
@@ -106,6 +169,34 @@ Edit `config.yaml` to:
 ---
 
 ## Pillar 5 — ASR Quality for Indian Banking: Detailed Roadmap
+
+### Progress Tracker
+
+| Phase | Task | Status |
+|-------|------|--------|
+| **Week 1** | Set up eval pipeline | ✅ Complete |
+| **Week 1** | Implement metric stack (WER/CER/NER/Entity/CS-WER) | ✅ Complete |
+| **Week 1** | Run all models on Kathbath Hindi (3,151 samples) | ✅ Complete (6/10 models produced valid Hindi) |
+| **Week 1** | Integrate new model backends (Voxtral, Sherpa-ONNX) | ✅ Complete |
+| **Week 2** | Build synthetic banking test set (100+ samples) | ✅ Complete (100 samples generated using gTTS, saved to `data/synthetic/` with real durations) |
+| **Week 2** | Run RTF latency benchmarks on A100 | 🔲 Ready for cluster run (script verified locally on synthetic data) |
+| **Week 2** | Generate Pareto plots (WER vs RTF) | 🔲 Ready for cluster run (visualizer verified locally on benchmark output) |
+| **Week 3** | Fine-tune Whisper-medium on Kathbath + synthetic data | 🔲 Not started |
+| **Week 4** | Fine-tune IndicWav2Vec on banking data | 🔲 Not started |
+| **Week 5** | Error analysis, final visualizations | 🔲 Not started |
+| **Week 6** | Write blog draft | 🔲 Not started |
+
+### Key Findings (Week 1 & 2)
+
+1. **IndicWav2Vec dominates** on Hindi-only audio (11.6% WER) — native Hindi CTC model with clean Devanagari output.
+2. **Voxtral-Mini-3B is surprisingly strong** at 17.7% WER — a 3B multimodal LLM competitive with much larger models.
+3. **Whisper family degrades on Hindi** — even `large-v3` achieves only 28.8% WER with Devanagari spelling errors.
+4. **English-only models fail completely** on Hindi — Parakeet, Canary, and Zipformer produce English romanization or gibberish.
+5. **NER correlates with WER** but not perfectly — IndicWav2Vec's 2.5% NER vs Voxtral's 9.8% shows the gap widens on numbers.
+6. **Synthetic Dataset Generation Successful** — Generated 100 high-quality banking dialogue audio clips across 6 domains (balance inquiries, loans/EMI, cards, KYC, fund transfer, complaints) in Hindi, English, and Hindi-English code-switched styles.
+7. **Latency Benchmark Pipeline Verified** — Benchmark and visualizer scripts validated locally using `whisper-tiny` on CPU, producing standard outputs (`benchmark_*.csv` and Pareto plots). Ready to execute sweeps on Param Rudra A100.
+
+---
 
 ### First, understand what WER actually measures (and where it breaks)
 
@@ -240,86 +331,34 @@ Build a small (50–100 hours) test set:
 
 ### Models to benchmark
 
-* **Category 1 — English-first models**: `faster-whisper large-v3-turbo`, `nvidia/parakeet-tdt-0.6b-v3`, `nvidia/canary-1b-flash`
-* **Category 2 — Indic-native models**: `ai4bharat/indicwav2vec-v2-hindi`, `ai4bharat/indicconformer-hi`, `ai4bharat/whisper-medium-hi`
-* **Category 3 — Multilingual vLLM-compatible**: `Voxtral-Mini-3B-2507`, `openai/whisper-large-v3`
-* **Category 4 — Fine-tuned by you**: Parakeet or Whisper-medium fine-tuned on banking Hindi.
-
----
-
-### Evaluation pipeline architecture
-
-```
-banking_asr_eval/
-├── data/
-│   ├── datasets/          # downloaded datasets
-│   ├── synthetic/         # your generated test set
-│   └── manifests/         # JSON metadata files
-├── models/
-│   ├── model_registry.py  # maps model names to inference functions
-│   └── inference/         # per-model inference wrappers
-├── metrics/
-│   ├── wer.py             # WER/CER/MER/WIL via jiwer
-│   ├── ner_accuracy.py    # named entity accuracy
-│   ├── number_er.py       # number error rate
-│   ├── codeswitching.py   # language segment detection + per-segment WER
-│   └── normalize.py       # text normalization (critical)
-├── evaluate.py            # main evaluation loop
-├── benchmark.py           # latency + quality combined (RTF + WER)
-└── visualize.py           # Pareto plots, heatmaps, error analysis
-```
-
-**The evaluation loop logic:**
-```python
-for model_name, model_fn in model_registry.items():
-    for dataset_name, dataset in datasets.items():
-        results = []
-        for sample in dataset:
-            t0 = time.perf_counter()
-            hypothesis = model_fn(sample['audio_path'])
-            latency = time.perf_counter() - t0
-            
-            ref_norm = normalize(sample['reference'])
-            hyp_norm = normalize(hypothesis)
-            
-            results.append({
-                'model': model_name,
-                'dataset': dataset_name,
-                'accent': sample['accent_region'],
-                'language_mix': sample['dominant_language'],
-                'wer': jiwer.wer(ref_norm, hyp_norm),
-                'cer': jiwer.cer(ref_norm, hyp_norm),
-                'ner': number_error_rate(ref_norm, hyp_norm),
-                'rtf': latency / sample['duration'],
-            })
-        
-        df = pd.DataFrame(results)
-```
+* **Category 1 — English-first models**: `whisper large-v3-turbo`, `nvidia/parakeet-tdt-0.6b-v3`, `nvidia/canary-1b-flash`
+* **Category 2 — Indic-native models**: `ai4bharat/indicwav2vec-hindi`, `ai4bharat/indicconformer-hi`
+* **Category 3 — Multilingual**: `Voxtral-Mini-3B-2507`, `openai/whisper-large-v3`
+* **Category 4 — Fine-tuned by you**: IndicWav2Vec or Whisper-medium fine-tuned on banking Hindi.
 
 ---
 
 ### Fine-tuning roadmap
 
-* **Stage 1 — Establish baselines (week 1–2)**: Run zero-shot models on IndicSUPERB + synthetic set.
-* **Stage 2 — Data preparation (week 2–3)**: Collect 10–50 hours of training data in HF `datasets` format.
+* **Stage 1 — Establish baselines (week 1–2)**: Run zero-shot models on Kathbath Hindi. ✅ Complete
+* **Stage 2 — Data preparation (week 2–3)**: Build banking-specific synthetic test set.
 * **Stage 3 — Fine-tune Whisper (week 3–4)**: Fine-tune `whisper-medium` using HF `Seq2SeqTrainer` with 1e-5 learning rate.
-* **Stage 4 — Fine-tune IndicConformer or IndicWav2Vec (week 4–5)**: Fine-tune specialized models.
+* **Stage 4 — Fine-tune IndicWav2Vec (week 4–5)**: Fine-tune on banking domain data.
 * **Stage 5 — Error analysis (week 5–6)**: Breakdown error categories (substitutions of numbers, entities, code-switched text, etc.).
 
 ---
 
 ### The comparison table your blog should land on
 
-| Model | Hindi WER | Code-switch WER | Number ER | RTF (A100) | Fine-tuned? |
+| Model | Hindi WER | CER | Number ER | RTF (A100) | Fine-tuned? |
 |---|---|---|---|---|---|
-| Whisper large-v3-turbo | ? | ? | ? | 0.45 | No |
-| Parakeet-TDT-0.6B | ? | ? | ? | 0.097 | No |
-| Canary-1B-Flash | ? | ? | ? | 0.132 | No |
-| IndicConformer-Hi | ? | ? | ? | ? | No |
-| IndicWav2Vec-v2 | ? | ? | ? | ? | No |
-| Whisper-medium-hi (AI4B) | ? | ? | ? | ? | No |
+| IndicWav2Vec-Hindi | 11.64% | 3.30% | 2.53% | ? | No |
+| Voxtral-Mini-3B | 17.66% | 6.72% | 9.79% | ? | No |
+| Whisper large-v3 | 28.82% | 9.44% | 14.52% | ? | No |
+| Whisper large-v3-turbo | 32.01% | 10.37% | 13.36% | ? | No |
+| Whisper-medium | 41.64% | 15.85% | 21.54% | ? | No |
 | **Whisper-medium (yours)** | ? | ? | ? | ? | **Yes** |
-| **Parakeet (yours)** | ? | ? | ? | ? | **Yes** |
+| **IndicWav2Vec (yours)** | ? | ? | ? | ? | **Yes** |
 
 ---
 
@@ -330,16 +369,3 @@ for model_name, model_fn in model_registry.items():
 3. **Zero-shot benchmark** — Models, metrics, and Pareto plots.
 4. **Fine-tuning** — Process, improvements, and error analysis.
 5. **What it means for production** — Given latency/quality tradeoffs, find the optimal deployment model.
-
----
-
-### Realistic timeline
-
-| Week | Work |
-|---|---|
-| 1 | Set up eval pipeline, run all models on IndicSUPERB, get baseline numbers |
-| 2 | Build synthetic banking test set (100 samples minimum), run all models on it |
-| 3 | Fine-tune Whisper-medium on Kathbath subset + synthetic data |
-| 4 | Fine-tune IndicWav2Vec or IndicConformer on same data |
-| 5 | Error analysis, Pareto plots, connect back to latency harness |
-| 6 | Write Blog 6 draft |
