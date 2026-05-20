@@ -14,15 +14,17 @@ from typing import Callable
 
 def _load_nemo_manually(nemo_asr, model_id: str):
     """
-    Fix NeMo 2.x extraction issue for IndicConformer.
+    Fix NeMo 2.x loading for IndicConformer.
 
-    NeMo's from_pretrained downloads the .nemo archive but doesn't extract it,
-    then DELETES the cache dir on retry ("prevent duplicates"), wiping any
-    manual extraction. The fix:
-    1. Copy the .nemo file to /tmp (outside NeMo's cache)
-    2. Use the specific model class (not abstract ASRModel) with restore_from
-    3. restore_from on a .nemo FILE triggers proper tar extraction + tokenizer setup
+    NeMo's from_pretrained fails because:
+    1. It doesn't extract model_config.yaml from the .nemo archive
+    2. Even with restore_from, the tokenizer.dir config key is missing
+
+    The fix: manually extract the .nemo archive, patch the tokenizer config
+    to point to the extracted tokenizer files, then restore_from with the
+    patched config.
     """
+    import tarfile
     import glob
     import shutil
 
@@ -38,7 +40,6 @@ def _load_nemo_manually(nemo_asr, model_id: str):
         nemo_path = matching[0]
 
     if not nemo_path:
-        # Try downloading via huggingface_hub
         try:
             from huggingface_hub import hf_hub_download
             nemo_path = hf_hub_download(
@@ -56,17 +57,70 @@ def _load_nemo_manually(nemo_asr, model_id: str):
 
     print(f"[NeMo] Found .nemo archive: {nemo_path}")
 
-    # Step 2: Copy .nemo to /tmp to prevent NeMo from deleting it
+    # Step 2: Copy .nemo to /tmp (NeMo deletes its own cache dir on retry)
     tmp_nemo = os.path.join("/tmp", os.path.basename(nemo_path))
     if not os.path.exists(tmp_nemo):
         print(f"[NeMo] Copying .nemo to {tmp_nemo}...")
         shutil.copy2(nemo_path, tmp_nemo)
 
-    # Step 3: Load using the specific model class (not abstract ASRModel)
-    # Passing a .nemo FILE path (not directory) triggers proper tar extraction
+    # Step 3: Extract the .nemo archive to inspect and patch config
+    extract_dir = os.path.join("/tmp", "nemo_indicconf_extract")
+    if os.path.exists(extract_dir):
+        shutil.rmtree(extract_dir)
+    os.makedirs(extract_dir)
+
+    print(f"[NeMo] Extracting .nemo to {extract_dir}...")
+    with tarfile.open(tmp_nemo, "r:*") as tar:
+        tar.extractall(extract_dir)
+
+    # List extracted contents for debugging
+    extracted_files = []
+    for root, dirs, files in os.walk(extract_dir):
+        for f in files:
+            rel = os.path.relpath(os.path.join(root, f), extract_dir)
+            extracted_files.append(rel)
+    print(f"[NeMo] Extracted files: {extracted_files}")
+
+    # Step 4: Load config and patch tokenizer.dir
+    config_path = os.path.join(extract_dir, "model_config.yaml")
+    if not os.path.exists(config_path):
+        # Search subdirectories
+        found = glob.glob(os.path.join(extract_dir, "**", "model_config.yaml"), recursive=True)
+        if found:
+            config_path = found[0]
+
+    from omegaconf import OmegaConf
+    config = OmegaConf.load(config_path)
+
+    # Find tokenizer files (.model files used by SentencePiece)
+    tokenizer_files = glob.glob(os.path.join(extract_dir, "**", "*.model"), recursive=True)
+    if tokenizer_files:
+        tokenizer_dir = os.path.dirname(tokenizer_files[0])
+    else:
+        # Fallback: use extract_dir itself
+        tokenizer_dir = extract_dir
+
+    print(f"[NeMo] Tokenizer files found: {tokenizer_files}")
+    print(f"[NeMo] Setting tokenizer.dir = {tokenizer_dir}")
+
+    # Patch the tokenizer config
+    if hasattr(config, "tokenizer"):
+        config.tokenizer.dir = tokenizer_dir
+    else:
+        config.tokenizer = OmegaConf.create({"dir": tokenizer_dir})
+
+    # Save patched config
+    patched_config_path = os.path.join(extract_dir, "model_config_patched.yaml")
+    OmegaConf.save(config, patched_config_path)
+    print(f"[NeMo] Saved patched config to {patched_config_path}")
+
+    # Step 5: Load using the specific model class with patched config
     from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
-    print(f"[NeMo] Loading via EncDecHybridRNNTCTCBPEModel.restore_from({tmp_nemo})...")
-    model = EncDecHybridRNNTCTCBPEModel.restore_from(restore_path=tmp_nemo)
+    print(f"[NeMo] Loading EncDecHybridRNNTCTCBPEModel with patched config...")
+    model = EncDecHybridRNNTCTCBPEModel.restore_from(
+        restore_path=tmp_nemo,
+        override_config_path=patched_config_path,
+    )
     return model
 
 
