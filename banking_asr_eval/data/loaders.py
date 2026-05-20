@@ -19,12 +19,29 @@ def load_manifest(manifest_path: str) -> List[Dict]:
     with open(manifest_path, encoding="utf-8") as f:
         manifest = json.load(f)
 
-    # Resolve relative audio paths
+    # Resolve relative audio paths or mismatched absolute paths from other machines
     manifest_dir = os.path.dirname(os.path.abspath(manifest_path))
     for sample in manifest:
         audio_path = sample.get("audio_path", "")
-        if audio_path and not os.path.isabs(audio_path):
-            sample["audio_path"] = os.path.join(manifest_dir, audio_path)
+        if audio_path:
+            if not os.path.isabs(audio_path):
+                sample["audio_path"] = os.path.abspath(os.path.join(manifest_dir, audio_path))
+            elif not os.path.exists(audio_path):
+                filename = os.path.basename(audio_path)
+                # Try resolving relative to manifest directory
+                candidate_same_dir = os.path.abspath(os.path.join(manifest_dir, filename))
+                candidate_audio_dir = os.path.abspath(os.path.join(manifest_dir, "audio", filename))
+                
+                # Try resolving relative to project root
+                project_root = os.path.abspath(os.path.join(manifest_dir, "..", ".."))
+                candidate_root_data = os.path.abspath(os.path.join(project_root, "data", "audio", filename))
+
+                if os.path.exists(candidate_audio_dir):
+                    sample["audio_path"] = candidate_audio_dir
+                elif os.path.exists(candidate_same_dir):
+                    sample["audio_path"] = candidate_same_dir
+                elif os.path.exists(candidate_root_data):
+                    sample["audio_path"] = candidate_root_data
 
     return manifest
 
