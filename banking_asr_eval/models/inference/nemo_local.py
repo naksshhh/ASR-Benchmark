@@ -14,15 +14,15 @@ from typing import Callable
 
 def _load_nemo_manually(nemo_asr, model_id: str):
     """
-    Fix NeMo 2.x loading for IndicConformer.
+    Fully manual loading for IndicConformer on NeMo 2.x.
 
-    NeMo's from_pretrained fails because:
-    1. It doesn't extract model_config.yaml from the .nemo archive
-    2. Even with restore_from, the tokenizer.dir config key is missing
+    NeMo 2.7.3's save_restore_connector is fundamentally broken for this model:
+    - from_pretrained doesn't extract model_config.yaml
+    - restore_from ignores override_config_path for tokenizer patching
+    - The AI4Bharat config format is incompatible with standard NeMo
 
-    The fix: manually extract the .nemo archive, patch the tokenizer config
-    to point to the extracted tokenizer files, then restore_from with the
-    patched config.
+    The fix: bypass NeMo's loader entirely. Extract the .nemo archive,
+    patch the config, instantiate the model directly, and load weights.
     """
     import tarfile
     import glob
@@ -63,7 +63,7 @@ def _load_nemo_manually(nemo_asr, model_id: str):
         print(f"[NeMo] Copying .nemo to {tmp_nemo}...")
         shutil.copy2(nemo_path, tmp_nemo)
 
-    # Step 3: Extract the .nemo archive to inspect and patch config
+    # Step 3: Extract the .nemo archive
     extract_dir = os.path.join("/tmp", "nemo_indicconf_extract")
     if os.path.exists(extract_dir):
         shutil.rmtree(extract_dir)
@@ -73,7 +73,7 @@ def _load_nemo_manually(nemo_asr, model_id: str):
     with tarfile.open(tmp_nemo, "r:*") as tar:
         tar.extractall(extract_dir)
 
-    # List extracted contents for debugging
+    # List extracted contents
     extracted_files = []
     for root, dirs, files in os.walk(extract_dir):
         for f in files:
@@ -81,49 +81,67 @@ def _load_nemo_manually(nemo_asr, model_id: str):
             extracted_files.append(rel)
     print(f"[NeMo] Extracted files: {extracted_files}")
 
-    # Step 4: Load config and patch tokenizer.dir
+    # Step 4: Load config
     config_path = os.path.join(extract_dir, "model_config.yaml")
     if not os.path.exists(config_path):
-        # Search subdirectories
         found = glob.glob(os.path.join(extract_dir, "**", "model_config.yaml"), recursive=True)
         if found:
             config_path = found[0]
 
-    from omegaconf import OmegaConf
+    from omegaconf import OmegaConf, open_dict
     config = OmegaConf.load(config_path)
 
-    # Find tokenizer files (.model files used by SentencePiece)
+    # Debug: print tokenizer config before patching
+    if hasattr(config, "tokenizer"):
+        print(f"[NeMo] Original tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
+    else:
+        print(f"[NeMo] No tokenizer section in config!")
+
+    # Step 5: Find tokenizer files and patch config
     tokenizer_files = glob.glob(os.path.join(extract_dir, "**", "*.model"), recursive=True)
     if tokenizer_files:
         tokenizer_dir = os.path.dirname(tokenizer_files[0])
     else:
-        # Fallback: use extract_dir itself
         tokenizer_dir = extract_dir
 
-    print(f"[NeMo] Tokenizer files found: {tokenizer_files}")
-    print(f"[NeMo] Setting tokenizer.dir = {tokenizer_dir}")
+    print(f"[NeMo] Tokenizer files: {tokenizer_files}")
 
-    # Patch the tokenizer config
-    if hasattr(config, "tokenizer"):
+    # Force-patch tokenizer config (open_dict allows adding new keys)
+    with open_dict(config):
+        if not hasattr(config, "tokenizer"):
+            config.tokenizer = {}
         config.tokenizer.dir = tokenizer_dir
-        # IndicConformer uses SentencePiece (bpe) tokenizer
-        if not hasattr(config.tokenizer, "type") or config.tokenizer.type is None:
-            config.tokenizer.type = "bpe"
-    else:
-        config.tokenizer = OmegaConf.create({"dir": tokenizer_dir, "type": "bpe"})
+        config.tokenizer.type = "bpe"
 
-    # Save patched config
-    patched_config_path = os.path.join(extract_dir, "model_config_patched.yaml")
-    OmegaConf.save(config, patched_config_path)
-    print(f"[NeMo] Saved patched config to {patched_config_path}")
+    print(f"[NeMo] Patched tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
 
-    # Step 5: Load using the specific model class with patched config
+    # Step 6: Find weights file
+    weights_path = None
+    for candidate in ["model_weights.ckpt", "model_weights.bin"]:
+        wp = os.path.join(extract_dir, candidate)
+        if os.path.exists(wp):
+            weights_path = wp
+            break
+    if not weights_path:
+        found = glob.glob(os.path.join(extract_dir, "**", "*.ckpt"), recursive=True)
+        if found:
+            weights_path = found[0]
+
+    if not weights_path:
+        raise FileNotFoundError(f"No model weights found in {extract_dir}")
+    print(f"[NeMo] Weights file: {weights_path}")
+
+    # Step 7: Instantiate model from config and load weights
+    # This bypasses save_restore_connector entirely
     from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
-    print(f"[NeMo] Loading EncDecHybridRNNTCTCBPEModel with patched config...")
-    model = EncDecHybridRNNTCTCBPEModel.restore_from(
-        restore_path=tmp_nemo,
-        override_config_path=patched_config_path,
-    )
+    print(f"[NeMo] Instantiating EncDecHybridRNNTCTCBPEModel from patched config...")
+
+    model = EncDecHybridRNNTCTCBPEModel(cfg=config)
+
+    print(f"[NeMo] Loading weights from {weights_path}...")
+    state_dict = torch.load(weights_path, map_location="cpu")
+    model.load_state_dict(state_dict, strict=False)
+
     return model
 
 
