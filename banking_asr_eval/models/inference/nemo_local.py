@@ -111,16 +111,43 @@ def _load_nemo_manually(nemo_asr, model_id: str):
     print(f"[NeMo] Patched tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
 
     # Step 6: Strip AI4Bharat-specific config keys incompatible with NeMo 2.7.3
-    # The AI4Bharat fork adds custom parameters that standard NeMo doesn't support
-    ai4bharat_keys_to_remove = {
-        "decoder": ["multisoftmax"],
-        "joint": ["multisoftmax"],
+    # Instead of hardcoding keys, introspect actual NeMo classes to find unsupported params
+    import inspect
+
+    classes_to_check = {
+        "decoder": "nemo.collections.asr.modules.rnnt.RNNTDecoder",
+        "joint": "nemo.collections.asr.modules.rnnt.RNNTJoint",
     }
-    for section, keys in ai4bharat_keys_to_remove.items():
-        if hasattr(config, section):
-            for key in keys:
-                if key in config[section]:
-                    print(f"[NeMo] Removing unsupported config key: {section}.{key}")
+    for section, class_path in classes_to_check.items():
+        if not hasattr(config, section):
+            continue
+        try:
+            parts = class_path.rsplit(".", 1)
+            mod = __import__(parts[0], fromlist=[parts[1]])
+            cls = getattr(mod, parts[1])
+            sig = inspect.signature(cls.__init__)
+            valid_params = set(sig.parameters.keys()) - {"self"}
+            has_kwargs = any(
+                p.kind == inspect.Parameter.VAR_KEYWORD
+                for p in sig.parameters.values()
+            )
+            if not has_kwargs:
+                # Only strip if class doesn't accept **kwargs
+                section_keys = set(OmegaConf.to_container(config[section]).keys())
+                # Keep _target_ and other hydra keys
+                hydra_keys = {k for k in section_keys if k.startswith("_")}
+                unsupported = section_keys - valid_params - hydra_keys
+                if unsupported:
+                    print(f"[NeMo] Removing unsupported keys from {section}: {unsupported}")
+                    with open_dict(config):
+                        for key in unsupported:
+                            del config[section][key]
+        except Exception as e:
+            print(f"[NeMo] Warning: could not introspect {class_path}: {e}")
+            # Fallback: remove known AI4Bharat keys
+            for key in ["multisoftmax", "multilingual", "num_langs", "lang_ids"]:
+                if key in config.get(section, {}):
+                    print(f"[NeMo] Removing known AI4Bharat key: {section}.{key}")
                     with open_dict(config):
                         del config[section][key]
 
