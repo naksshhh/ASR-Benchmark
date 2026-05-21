@@ -61,8 +61,7 @@ def main():
             return_tensors="pt",
             padding=True
         )
-        with processor.as_target_processor():
-            batch["labels"] = processor(batch["sentence"]).input_ids
+        batch["labels"] = processor.tokenizer(batch["sentence"]).input_ids
         batch["input_values"] = inputs.input_values[0]
         batch["input_length"] = len(batch["input_values"])
         return batch
@@ -89,8 +88,7 @@ def main():
             label_features = [{"input_ids": f["labels"]} for f in features]
             
             batch = self.processor.pad(input_features, padding=self.padding, return_tensors="pt")
-            with self.processor.as_target_processor():
-                labels_batch = self.processor.pad(label_features, padding=self.padding, return_tensors="pt")
+            labels_batch = self.processor.tokenizer.pad(label_features, padding=self.padding, return_tensors="pt")
             
             labels = labels_batch["input_ids"].masked_fill(
                 labels_batch.attention_mask.ne(1), -100
@@ -116,7 +114,7 @@ def main():
         group_by_length=True,
         per_device_train_batch_size=8,
         gradient_accumulation_steps=2,
-        evaluation_strategy="steps",
+        eval_strategy="steps",
         num_train_epochs=30,
         fp16=True,
         save_steps=500,
