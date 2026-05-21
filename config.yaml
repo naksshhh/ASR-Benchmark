@@ -91,8 +91,8 @@ models:
   # ── Category 4: Fine-tuned Models ──
   indicwav2vec-banking:
     backend: "huggingface"
-    model_id: "/scratch/$USER/checkpoints/indicwav2vec-banking-configC/final"
-    enabled: false
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configB/checkpoint-500"
+    enabled: true
 
   whisper-medium-banking:
     backend: "whisper"
