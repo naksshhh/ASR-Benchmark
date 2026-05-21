@@ -139,7 +139,15 @@ def main():
         processing_class=processor,
     )
 
-    trainer.train()
+    # Check for existing checkpoints to resume automatically
+    import glob
+    checkpoints = glob.glob(f"{out_dir}/checkpoint-*")
+    if checkpoints:
+        print(f"Resuming training from latest checkpoint in {out_dir}")
+        trainer.train(resume_from_checkpoint=True)
+    else:
+        trainer.train()
+        
     trainer.save_model(f"{out_dir}/final")
 
 if __name__ == "__main__":
