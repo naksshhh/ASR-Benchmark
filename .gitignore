@@ -29,6 +29,8 @@ data/audio
 
 # Jupyter
 .ipynb_checkpoints/
-
+*.tar
 # Secrets
 *.env
+musan.tar.gz
+*.aria2
