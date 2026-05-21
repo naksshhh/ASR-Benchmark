@@ -18,7 +18,7 @@ model_cache/
 checkpoints/
 data/audio
 # Results (regeneratable)
-
+data/synthetic/audio
 
 # IDE
 .vscode/
