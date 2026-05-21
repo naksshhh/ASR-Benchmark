@@ -76,7 +76,7 @@ def main():
         trust_remote_code=True
     )
 
-    model.freeze_feature_extractor()
+    model.freeze_feature_encoder()
 
     @dataclass
     class DataCollatorCTCWithPadding:
@@ -137,7 +137,7 @@ def main():
         compute_metrics=compute_metrics,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
-        tokenizer=processor.feature_extractor,
+        processing_class=processor,
     )
 
     trainer.train()

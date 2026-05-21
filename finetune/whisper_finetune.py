@@ -143,7 +143,7 @@ def main():
         eval_dataset=eval_dataset,
         data_collator=data_collator,
         compute_metrics=compute_metrics,
-        tokenizer=processor.feature_extractor,
+        processing_class=processor,
     )
 
     trainer.train()
