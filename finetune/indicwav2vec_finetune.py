@@ -50,7 +50,7 @@ def main():
     train_dataset = split["train"]
     eval_dataset = split["test"]
 
-    MODEL_ID = "ai4bharat/indicwav2vec2-hindi"
+    MODEL_ID = "ai4bharat/indicwav2vec-hindi"
     processor = Wav2Vec2Processor.from_pretrained(MODEL_ID)
 
     def prepare_batch(batch):
