@@ -110,7 +110,21 @@ def _load_nemo_manually(nemo_asr, model_id: str):
 
     print(f"[NeMo] Patched tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
 
-    # Step 6: Save modified config back into the extracted dir and repack
+    # Step 6: Strip AI4Bharat-specific config keys incompatible with NeMo 2.7.3
+    # The AI4Bharat fork adds custom parameters that standard NeMo doesn't support
+    ai4bharat_keys_to_remove = {
+        "decoder": ["multisoftmax"],
+        "joint": ["multisoftmax"],
+    }
+    for section, keys in ai4bharat_keys_to_remove.items():
+        if hasattr(config, section):
+            for key in keys:
+                if key in config[section]:
+                    print(f"[NeMo] Removing unsupported config key: {section}.{key}")
+                    with open_dict(config):
+                        del config[section][key]
+
+    # Step 7: Save modified config back into the extracted dir and repack
     OmegaConf.save(config, config_path)
     print(f"[NeMo] Saved patched config to {config_path}")
 
