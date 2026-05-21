@@ -51,7 +51,7 @@ def main():
     eval_dataset = split["test"]
 
     MODEL_ID = "ai4bharat/indicwav2vec-hindi"
-    processor = Wav2Vec2Processor.from_pretrained(MODEL_ID)
+    processor = Wav2Vec2Processor.from_pretrained(MODEL_ID, trust_remote_code=True)
 
     def prepare_batch(batch):
         audio = batch["audio"]
@@ -74,6 +74,7 @@ def main():
         MODEL_ID,
         ctc_loss_reduction="mean",
         pad_token_id=processor.tokenizer.pad_token_id,
+        trust_remote_code=True
     )
 
     model.freeze_feature_extractor()
