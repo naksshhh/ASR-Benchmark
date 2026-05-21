@@ -91,57 +91,41 @@ def _load_nemo_manually(nemo_asr, model_id: str):
     from omegaconf import OmegaConf, open_dict
     config = OmegaConf.load(config_path)
 
-    # Debug: print tokenizer config before patching
-    if hasattr(config, "tokenizer"):
-        print(f"[NeMo] Original tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
-    else:
-        print(f"[NeMo] No tokenizer section in config!")
+    # Step 5: Simplify multilingual tokenizer config to Hindi-only
+    # The model has per-language tokenizers under config.tokenizer.langs.{lang}
+    # Standard NeMo expects a flat tokenizer config with dir, type, model_path
+    hi_tok = config.tokenizer.langs.hi
+    print(f"[NeMo] Hindi tokenizer config: {OmegaConf.to_yaml(hi_tok)}")
 
-    # Step 5: Find tokenizer files and patch config
-    tokenizer_files = glob.glob(os.path.join(extract_dir, "**", "*.model"), recursive=True)
-    if tokenizer_files:
-        tokenizer_dir = os.path.dirname(tokenizer_files[0])
-    else:
-        tokenizer_dir = extract_dir
-
-    print(f"[NeMo] Tokenizer files: {tokenizer_files}")
-
-    # Force-patch tokenizer config (open_dict allows adding new keys)
+    # Replace the entire tokenizer config with flat Hindi-only version
+    # Keep nemo: prefixed paths — restore_from resolves them to extracted files
     with open_dict(config):
-        if not hasattr(config, "tokenizer"):
-            config.tokenizer = {}
-        config.tokenizer.dir = tokenizer_dir
-        config.tokenizer.type = "bpe"
+        config.tokenizer = OmegaConf.create({
+            "dir": extract_dir,  # Will be overwritten by restore_from
+            "type": str(hi_tok.type),
+            "model_path": str(hi_tok.model_path),
+            "vocab_path": str(hi_tok.vocab_path),
+            "spe_tokenizer_vocab": str(hi_tok.spe_tokenizer_vocab),
+        })
 
     print(f"[NeMo] Patched tokenizer config: {OmegaConf.to_yaml(config.tokenizer)}")
 
-    # Step 6: Find weights file
-    weights_path = None
-    for candidate in ["model_weights.ckpt", "model_weights.bin"]:
-        wp = os.path.join(extract_dir, candidate)
-        if os.path.exists(wp):
-            weights_path = wp
-            break
-    if not weights_path:
-        found = glob.glob(os.path.join(extract_dir, "**", "*.ckpt"), recursive=True)
-        if found:
-            weights_path = found[0]
+    # Step 6: Save modified config back into the extracted dir and repack
+    OmegaConf.save(config, config_path)
+    print(f"[NeMo] Saved patched config to {config_path}")
 
-    if not weights_path:
-        raise FileNotFoundError(f"No model weights found in {extract_dir}")
-    print(f"[NeMo] Weights file: {weights_path}")
+    # Repack the .nemo archive with the modified config
+    repacked_nemo = os.path.join("/tmp", "indicconformer_hi_repacked.nemo")
+    print(f"[NeMo] Repacking .nemo archive to {repacked_nemo}...")
+    with tarfile.open(repacked_nemo, "w:gz") as tar:
+        for item in os.listdir(extract_dir):
+            tar.add(os.path.join(extract_dir, item), arcname=item)
 
-    # Step 7: Instantiate model from config and load weights
-    # This bypasses save_restore_connector entirely
+    # Step 7: Load using restore_from on the repacked archive
+    # restore_from extracts to its own temp dir and resolves nemo: paths
     from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
-    print(f"[NeMo] Instantiating EncDecHybridRNNTCTCBPEModel from patched config...")
-
-    model = EncDecHybridRNNTCTCBPEModel(cfg=config)
-
-    print(f"[NeMo] Loading weights from {weights_path}...")
-    state_dict = torch.load(weights_path, map_location="cpu")
-    model.load_state_dict(state_dict, strict=False)
-
+    print(f"[NeMo] Loading EncDecHybridRNNTCTCBPEModel via restore_from...")
+    model = EncDecHybridRNNTCTCBPEModel.restore_from(restore_path=repacked_nemo)
     return model
 
 
