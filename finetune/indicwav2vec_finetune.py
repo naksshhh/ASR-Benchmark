@@ -11,8 +11,17 @@ from transformers import Wav2Vec2Processor, Wav2Vec2ForCTC, TrainingArguments, T
 from augment import augment_dataset
 
 def load_manifest(manifest_path):
-    with open(manifest_path) as f:
-        samples = [json.loads(l) for l in f]
+    import json
+    try:
+        with open(manifest_path) as f:
+            try:
+                content = f.read()
+                samples = json.loads(content)
+            except json.JSONDecodeError:
+                f.seek(0)
+                samples = [json.loads(l) for l in f if l.strip()]
+    except FileNotFoundError:
+        return None
     
     return Dataset.from_dict({
         "audio": [s["audio_filepath"] for s in samples],
@@ -30,12 +39,16 @@ def main():
         print(f"Manifest {manifest_path} not found. Did you run prepare_data.py?")
         return
 
-    train_dataset = load_manifest(manifest_path)
+    train_dataset_full = load_manifest(manifest_path)
     # Optional: apply augmentation
-    # train_dataset = Dataset.from_list(augment_dataset(train_dataset, copies=1))
+    # train_dataset_full = Dataset.from_list(augment_dataset(train_dataset_full, copies=1))
 
-    # Eval on our banking test set
-    eval_dataset = load_manifest("data/manifests/banking_100_test.json")
+    # Always split 10% for validation (Trainer uses this for eval_loss / early stopping)
+    # The 100 sample test set is strictly reserved for the final evaluate.py script
+    print("Splitting 10% of train set for validation.")
+    split = train_dataset_full.train_test_split(test_size=0.1, seed=42)
+    train_dataset = split["train"]
+    eval_dataset = split["test"]
 
     MODEL_ID = "ai4bharat/indicwav2vec2-hindi"
     processor = Wav2Vec2Processor.from_pretrained(MODEL_ID)
@@ -115,6 +128,7 @@ def main():
         metric_for_best_model="wer",
         greater_is_better=False,
         report_to="none",
+        disable_tqdm=True,  # Keeps SLURM logs clean by removing progress bar spam
     )
 
     trainer = Trainer(

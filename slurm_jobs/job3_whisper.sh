@@ -12,4 +12,4 @@ export CUDA_VISIBLE_DEVICES=1
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-python finetune/whisper_finetune.py --config C
+python finetune/whisper_finetune.py --config B
