@@ -4,7 +4,15 @@ import os
 def read_manifest(path):
     try:
         with open(path) as f:
-            return [json.loads(l) for l in f]
+            # First try reading as a single JSON array
+            try:
+                # Seek back to start in case of multiple attempts (though read() resets it)
+                content = f.read()
+                return json.loads(content)
+            except json.JSONDecodeError:
+                # If that fails, try reading as JSON Lines
+                f.seek(0)
+                return [json.loads(l) for l in f if l.strip()]
     except FileNotFoundError:
         print(f"Warning: {path} not found.")
         return []
