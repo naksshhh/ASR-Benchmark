@@ -88,6 +88,19 @@ models:
     model_id: "csukuangfj/sherpa-onnx-streaming-zipformer-en-2023-02-21"
     enabled: false
 
+  # ── Category 4: Fine-tuned Models ──
+  indicwav2vec-banking:
+    backend: "huggingface"
+    model_id: "/scratch/$USER/checkpoints/indicwav2vec-banking-configC/final"
+    enabled: false
+
+  whisper-medium-banking:
+    backend: "whisper"
+    model_id: "/scratch/$USER/checkpoints/whisper-medium-banking-configC/final"
+    language: "hi"
+    task: "transcribe"
+    enabled: false
+
 # ─── Evaluation ──────────────────────────────────────────
 evaluation:
   # Text normalization settings

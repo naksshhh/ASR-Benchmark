@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH --job-name=eval_finetuned
+#SBATCH --output=logs/%j_eval.out
+#SBATCH --error=logs/%j_eval.err
+#SBATCH --gres=gpu:1
+#SBATCH --mem=60G
+#SBATCH --time=03:00:00
+
+source ~/.bashrc
+conda activate asr-eval
+export CUDA_VISIBLE_DEVICES=1
+export HF_HOME=/scratch/$USER/hf_cache
+export HF_HUB_OFFLINE=1
+
+echo "Evaluating on Banking 100 Test Set..."
+python -m banking_asr_eval.evaluate \
+  --config config.yaml \
+  --manifest data/manifests/banking_100_test.json \
+  --models indicwav2vec-banking,whisper-medium-banking,voxtral-mini-3b
+
+echo "Evaluating on Kathbath Hindi..."
+python -m banking_asr_eval.evaluate \
+  --config config.yaml \
+  --manifest data/manifests/kathbath_hindi.json \
+  --models indicwav2vec-banking,indicwav2vec-hindi
+
+echo "Visualizing Results..."
+python -m banking_asr_eval.visualize --results results/
