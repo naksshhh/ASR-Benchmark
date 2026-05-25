@@ -2,8 +2,9 @@
 #SBATCH --job-name=prep_aug
 #SBATCH --output=logs/%j_prep.out
 #SBATCH --error=logs/%j_prep.err
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem=60G
+#SBATCH --mem=32G
 #SBATCH --time=02:00:00
 
 source ~/.bashrc

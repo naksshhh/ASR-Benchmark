@@ -2,8 +2,9 @@
 #SBATCH --job-name=whisper_c
 #SBATCH --output=logs/%j_whisper_c.out
 #SBATCH --error=logs/%j_whisper_c.err
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem=60G
+#SBATCH --mem=32G
 #SBATCH --time=08:00:00
 
 source ~/.bashrc

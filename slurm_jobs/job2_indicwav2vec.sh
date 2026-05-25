@@ -2,8 +2,9 @@
 #SBATCH --job-name=indicwav2vec_c
 #SBATCH --output=logs/%j_indic_c.out
 #SBATCH --error=logs/%j_indic_c.err
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem=60G
+#SBATCH --mem=32G
 #SBATCH --time=06:00:00
 
 source ~/.bashrc

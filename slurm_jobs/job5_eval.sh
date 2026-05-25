@@ -2,8 +2,9 @@
 #SBATCH --job-name=eval_finetuned
 #SBATCH --output=logs/%j_eval.out
 #SBATCH --error=logs/%j_eval.err
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem=60G
+#SBATCH --mem=32G
 #SBATCH --time=03:00:00
 
 source ~/.bashrc
