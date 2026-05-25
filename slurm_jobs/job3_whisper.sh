@@ -3,7 +3,7 @@
 #SBATCH --output=logs/%j_whisper_c.out
 #SBATCH --error=logs/%j_whisper_c.err
 #SBATCH --partition=gpu
-#SBATCH --qos=gpu
+# #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
 # #SBATCH --mem=32G
 #SBATCH --time=08:00:00
