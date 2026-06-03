@@ -9,24 +9,22 @@ if os.path.exists(f"/scratch/{user}"):
     os.environ["HF_HOME"] = scratch_cache
     os.environ["HF_DATASETS_CACHE"] = os.path.join(scratch_cache, "datasets")
 
+# Increase Hugging Face download timeout to 10 minutes to prevent timeouts on large files
+os.environ["HF_HUB_DOWNLOAD_TIMEOUT"] = "600"
+
 import json
 from datasets import load_dataset
 
 def main():
-    # Hindi-belt districts prioritized for banking customer base
+    # Core Hindi-belt districts capturing the major regional accents (Bhojpuri, Awadhi, Haryana, West)
+    # Reduced from 17 to 6 to make the download highly manageable (~2 hours instead of 10 hours)
     PRIORITY_DISTRICTS = [
-        # Bihar
-        ("Bihar", "Patna"), ("Bihar", "Gaya"), ("Bihar", "Muzaffarpur"),
-        ("Bihar", "Bhagalpur"), ("Bihar", "Darbhanga"),
-        # Uttar Pradesh
+        # Bihar (East / Bhojpuri)
+        ("Bihar", "Patna"), ("Bihar", "Gaya"),
+        # Uttar Pradesh (Central / Awadhi)
         ("UttarPradesh", "Lucknow"), ("UttarPradesh", "Varanasi"),
-        ("UttarPradesh", "Kanpur"), ("UttarPradesh", "Agra"),
-        ("UttarPradesh", "Meerut"), ("UttarPradesh", "Allahabad"),
-        # Punjab / Haryana
-        ("Punjab", "Ludhiana"), ("Punjab", "Amritsar"),
-        ("Haryana", "Rohtak"), ("Haryana", "Gurugram"),
-        # Rajasthan
-        ("Rajasthan", "Jaipur"), ("Rajasthan", "Jodhpur"),
+        # Haryana / Rajasthan (North / West)
+        ("Haryana", "Gurugram"), ("Rajasthan", "Jaipur"),
     ]
 
     manifest = []
@@ -44,6 +42,12 @@ def main():
                 token=hf_token,
                 split="train"
             )
+            
+            # Verify if the transcription column exists (some untranscribed subsets lack this column entirely)
+            if "transcription" not in ds.column_names:
+                print(f"  Skipped {state}/{district}: 'transcription' column not found in dataset features.")
+                continue
+
             # Vaani is ~10% transcribed — filter to transcribed only
             transcribed = ds.filter(lambda x: x["transcription"] and len(x["transcription"].strip()) > 5)
             

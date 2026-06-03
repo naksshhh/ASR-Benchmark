@@ -30,4 +30,5 @@ python -m banking_asr_eval.evaluate \
   --manifest data/manifests/lahaja.json \
   --models indicwav2vec-hindi,whisper-medium-hi \
   --output results/ \
-  --stratify-by accent_group
+  --stratify-by accent_group \
+  --workers 1
