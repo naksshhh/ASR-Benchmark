@@ -149,8 +149,8 @@ def main():
     
     training_args = TrainingArguments(
         output_dir=out_dir,
-        per_device_train_batch_size=8,
-        gradient_accumulation_steps=2,
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=8,
         eval_strategy="steps",
         num_train_epochs=30,
         fp16=True,
