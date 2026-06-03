@@ -34,3 +34,7 @@ data/synthetic/audio
 *.env
 musan.tar.gz
 *.aria2
+logs/
+data/manifests/*.json
+data/noise/
+data/synthetic/transcripts.json
