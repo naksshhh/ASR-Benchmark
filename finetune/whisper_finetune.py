@@ -48,6 +48,8 @@ def main():
     parser.add_argument("--config", choices=["A", "B", "C", "D"], help="Ablation config (A, B, C, or D)")
     parser.add_argument("--train-manifests", nargs="+", help="Explicit list of training manifest files")
     parser.add_argument("--output", help="Explicit output directory for checkpoints")
+    parser.add_argument("--epochs", type=float, help="Number of training epochs (overrides max-steps if set)")
+    parser.add_argument("--max-steps", type=int, default=4000, help="Max training steps")
     args = parser.parse_args()
 
     if not args.config and not args.train_manifests:
@@ -97,6 +99,22 @@ def main():
     )
     model.config.suppress_tokens = []
 
+    # Instantiate IndicNLP normalizer once for reuse
+    from indicnlp.normalize.indic_normalize import IndicNormalizerFactory
+    factory = IndicNormalizerFactory()
+    normalizer = factory.get_normalizer("hi")
+
+    # Filter out sequences that are too long for Whisper (max length 448) BEFORE feature extraction
+    # This avoids loading and parsing heavy audio feature files for excluded samples
+    def is_labels_short(batch):
+        normalized = normalizer.normalize(batch["sentence"])
+        labels = processor.tokenizer(normalized).input_ids
+        return len(labels) < 440
+
+    print("Filtering datasets by token length...")
+    train_dataset = train_dataset.filter(is_labels_short, load_from_cache_file=False)
+    eval_dataset = eval_dataset.filter(is_labels_short, load_from_cache_file=False)
+
     def prepare_dataset(batch):
         audio = batch["audio"]
         batch["input_features"] = processor(
@@ -105,22 +123,13 @@ def main():
             return_tensors="pt"
         ).input_features[0]
         
-        # Use IndicNLP normalization for Hindi text
-        from indicnlp.normalize.indic_normalize import IndicNormalizerFactory
-        factory = IndicNormalizerFactory()
-        normalizer = factory.get_normalizer("hi")
         normalized = normalizer.normalize(batch["sentence"])
-        
         batch["labels"] = processor.tokenizer(normalized).input_ids
         return batch
 
+    print("Extracting features and tokenizing datasets...")
     train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
     eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
-
-    # Filter out sequences that are too long for Whisper (max length 448)
-    # We use load_from_cache_file=False to force execution in case of corrupted cache
-    train_dataset = train_dataset.filter(lambda x: len(x["labels"]) < 440, load_from_cache_file=False)
-    eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) < 440, load_from_cache_file=False)
 
     @dataclass  
     class DataCollatorSpeechSeq2SeqWithPadding:
@@ -155,13 +164,21 @@ def main():
     else:
         out_dir = f"/scratch/{os.environ.get('USER', 'default')}/checkpoints/whisper-medium-banking-config{config_name}"
 
+    if args.epochs is not None:
+        num_epochs = args.epochs
+        max_steps = -1
+    else:
+        num_epochs = 3.0
+        max_steps = args.max_steps
+
     training_args = Seq2SeqTrainingArguments(
         output_dir=out_dir,
         per_device_train_batch_size=16,
         gradient_accumulation_steps=2,
         learning_rate=1e-5,
         warmup_steps=500,
-        max_steps=4000,
+        max_steps=max_steps,
+        num_train_epochs=num_epochs,
         gradient_checkpointing=True,
         fp16=True,
         eval_strategy="steps",

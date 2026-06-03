@@ -8,6 +8,7 @@ def main():
     parser.add_argument("--respin-dir", default="data/datasets/respin/hindi_finance", help="Path to RESPIN root directory containing extracted folders")
     parser.add_argument("--output", default="data/manifests/respin_finance_train.json", help="Output manifest path")
     parser.add_argument("--domain", default="BANK", help="Filter by domain in filename (e.g. BANK)")
+    parser.add_argument("--split", choices=["train", "test", "all"], default="train", help="Include train or test splits")
     args = parser.parse_args()
 
     respin_dir = args.respin_dir
@@ -22,6 +23,12 @@ def main():
 
     print(f"Scanning for transcript files in {respin_dir}...")
     for root, _, files in os.walk(respin_dir):
+        # Exclude 'test' subdirectory for train split and vice versa
+        if args.split == "train" and "test" in root.lower():
+            continue
+        if args.split == "test" and "test" not in root.lower():
+            continue
+
         for file in files:
             if file.endswith(".txt"):
                 txt_path = os.path.join(root, file)

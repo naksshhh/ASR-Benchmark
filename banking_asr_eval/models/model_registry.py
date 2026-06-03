@@ -6,6 +6,7 @@ a transcript string. The registry handles lazy loading so models are
 only loaded when first used.
 """
 
+import os
 import time
 from typing import Callable, Dict, Optional
 from pathlib import Path
@@ -61,26 +62,27 @@ class ModelRegistry:
 
         config = self._configs[name]
         backend = config.get("backend", "whisper")
+        model_id = os.path.expandvars(config["model_id"])
 
         if backend == "whisper":
             from .inference.whisper_local import create_whisper_model
             return create_whisper_model(
-                model_id=config["model_id"],
+                model_id=model_id,
                 language=config.get("language", "hi"),
                 task=config.get("task", "transcribe"),
             )
         elif backend == "nemo":
             from .inference.nemo_local import create_nemo_model
-            return create_nemo_model(model_id=config["model_id"])
+            return create_nemo_model(model_id=model_id)
         elif backend == "huggingface":
             from .inference.huggingface_generic import create_hf_model
-            return create_hf_model(model_id=config["model_id"])
+            return create_hf_model(model_id=model_id)
         elif backend == "sherpa-onnx":
             from .inference.sherpa_onnx_local import create_sherpa_onnx_model
-            return create_sherpa_onnx_model(model_id=config["model_id"])
+            return create_sherpa_onnx_model(model_id=model_id)
         elif backend == "voxtral":
             from .inference.voxtral_local import create_voxtral_model
-            return create_voxtral_model(model_id=config["model_id"])
+            return create_voxtral_model(model_id=model_id)
         else:
             raise ValueError(f"Unknown backend: {backend}")
 

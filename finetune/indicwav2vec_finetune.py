@@ -53,6 +53,7 @@ def main():
     parser.add_argument("--config", choices=["A", "B", "C", "D"], help="Ablation config (A, B, C, or D)")
     parser.add_argument("--train-manifests", nargs="+", help="Explicit list of training manifest files")
     parser.add_argument("--output", help="Explicit output directory for checkpoints")
+    parser.add_argument("--epochs", type=int, default=30, help="Number of training epochs")
     args = parser.parse_args()
 
     if not args.config and not args.train_manifests:
@@ -163,7 +164,7 @@ def main():
         per_device_train_batch_size=2,
         gradient_accumulation_steps=8,
         eval_strategy="steps",
-        num_train_epochs=30,
+        num_train_epochs=args.epochs,
         fp16=True,
         save_steps=500,
         eval_steps=500,

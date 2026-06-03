@@ -29,9 +29,9 @@ export HF_HUB_OFFLINE=1
 echo "====== Starting Config D Fine-Tuning Sweep ======"
 
 echo "1. Running IndicWav2Vec Config D Fine-tuning..."
-python finetune/indicwav2vec_finetune.py --config D
+python finetune/indicwav2vec_finetune.py --config D --epochs 5
 
 echo "2. Running Whisper-medium Config D Fine-tuning..."
-python finetune/whisper_finetune.py --config D
+python finetune/whisper_finetune.py --config D --epochs 1.0
 
 echo "====== Config D Fine-Tuning Sweep Completed ======"

@@ -1,4 +1,14 @@
 import os
+import sys
+
+# Ensure Hugging Face uses scratch for caching on the cluster to avoid home quota limits
+user = os.environ.get("USER", "nakshatrak_iitp")
+scratch_cache = f"/scratch/{user}/hf_cache"
+if os.path.exists(f"/scratch/{user}"):
+    os.makedirs(scratch_cache, exist_ok=True)
+    os.environ["HF_HOME"] = scratch_cache
+    os.environ["HF_DATASETS_CACHE"] = os.path.join(scratch_cache, "datasets")
+
 import json
 from datasets import load_dataset
 
