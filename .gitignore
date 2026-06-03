@@ -18,7 +18,10 @@ model_cache/
 checkpoints/
 data/audio
 # Results (regeneratable)
-
+logs/
+data/manifests/*.json
+data/noise/
+data/synthetic/transcripts.json
 
 # IDE
 .vscode/
