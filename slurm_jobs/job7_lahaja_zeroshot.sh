@@ -1,11 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=whisper_ablations
-#SBATCH --output=logs/%j_whisper_ablations.out
-#SBATCH --error=logs/%j_whisper_ablations.err
+#SBATCH --job-name=lahaja_zeroshot
+#SBATCH --output=logs/%j_lahaja_zeroshot.out
+#SBATCH --error=logs/%j_lahaja_zeroshot.err
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-# #SBATCH --mem=32G
-#SBATCH --time=24:00:00
+#SBATCH --time=02:00:00
 
 source ~/.bashrc
 conda activate asr 2>/dev/null || conda activate asr-eval
@@ -23,11 +22,12 @@ else
 fi
 cd "$REPO_ROOT"
 
-export CUDA_VISIBLE_DEVICES=1
+# export CUDA_VISIBLE_DEVICES=1
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-for config in A B C; do
-    echo "Running Whisper Fine-tuning for Config $config"
-    python finetune/whisper_finetune.py --config $config
-done
+python -m banking_asr_eval.evaluate \
+  --manifest data/manifests/lahaja.json \
+  --models indicwav2vec-hindi,voxtral-mini-3b,whisper-large-v3 \
+  --output results/ \
+  --stratify-by accent_group

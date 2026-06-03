@@ -28,6 +28,8 @@ def main():
     
     mucs_train = read_manifest("data/manifests/mucs_finance_train.json")
     synthetic_train = read_manifest("data/synthetic/manifest.json")
+    respin_train = read_manifest("data/manifests/respin_finance_train.json")
+    vaani_train = read_manifest("data/manifests/vaani_hindi_belt.json")
     
     # Config A: MUCS Finance subset (~94h)
     write_manifest(mucs_train, "data/manifests/finetune_configA.json")
@@ -37,6 +39,9 @@ def main():
     
     # Config C: MUCS Finance + Synthetic banking
     write_manifest(mucs_train + synthetic_train, "data/manifests/finetune_configC.json")
+
+    # Config D: RESPIN finance + Vaani Hindi-belt + MUCS + Synthetic
+    write_manifest(respin_train + vaani_train + mucs_train + synthetic_train, "data/manifests/finetune_configD.json")
 
 if __name__ == "__main__":
     main()

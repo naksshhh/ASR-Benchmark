@@ -24,23 +24,58 @@ def load_manifest(manifest_path):
     except FileNotFoundError:
         return None
     
+    audio_paths = []
+    sentences = []
+    durations = []
+    
+    for s in samples:
+        path = s.get("audio_filepath") or s.get("audio_path")
+        sentence = s.get("text") or s.get("reference_transcript")
+        duration = s.get("duration") or s.get("duration_seconds") or 0
+        if path and sentence:
+            audio_paths.append(path)
+            sentences.append(sentence)
+            durations.append(duration)
+            
     return Dataset.from_dict({
-        "audio": [s["audio_filepath"] for s in samples],
-        "sentence": [s["text"] for s in samples],
-        "duration": [s.get("duration", 0) for s in samples],
+        "audio": audio_paths,
+        "sentence": sentences,
+        "duration": durations,
     }).cast_column("audio", Audio(sampling_rate=16000))
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", choices=["A", "B", "C"], required=True, help="Ablation config (A, B, or C)")
+    parser.add_argument("--config", choices=["A", "B", "C", "D"], help="Ablation config (A, B, C, or D)")
+    parser.add_argument("--train-manifests", nargs="+", help="Explicit list of training manifest files")
+    parser.add_argument("--output", help="Explicit output directory for checkpoints")
     args = parser.parse_args()
 
-    manifest_path = f"data/manifests/finetune_config{args.config}.json"
-    if not os.path.exists(manifest_path):
-        print(f"Manifest {manifest_path} not found.")
+    if not args.config and not args.train_manifests:
+        parser.error("Either --config or --train-manifests must be specified.")
+
+    manifest_paths = []
+    config_name = "custom"
+    if args.config:
+        config_name = args.config
+        manifest_paths = [f"data/manifests/finetune_config{args.config}.json"]
+    if args.train_manifests:
+        manifest_paths = args.train_manifests
+
+    datasets = []
+    for path in manifest_paths:
+        if not os.path.exists(path):
+            print(f"Manifest {path} not found. Did you run prepare_data.py?")
+            return
+        ds = load_manifest(path)
+        if ds is not None:
+            datasets.append(ds)
+
+    if not datasets:
+        print("No valid datasets loaded.")
         return
 
-    train_dataset_full = load_manifest(manifest_path)
+    from datasets import concatenate_datasets
+    train_dataset_full = concatenate_datasets(datasets)
     
     # Always split 10% for validation (Trainer uses this for eval_loss / early stopping)
     # The 100 sample test set is strictly reserved for the final evaluate.py script
@@ -82,6 +117,13 @@ def main():
     train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
     eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
 
+    # Filter out sequences that are too long for Whisper (max length 448)
+    def is_in_length_range(length):
+        return length < 448
+
+    train_dataset = train_dataset.filter(lambda x: is_in_length_range(len(x["labels"])))
+    eval_dataset = eval_dataset.filter(lambda x: is_in_length_range(len(x["labels"])))
+
     @dataclass  
     class DataCollatorSpeechSeq2SeqWithPadding:
         processor: Any
@@ -110,7 +152,10 @@ def main():
         wer = jiwer.wer(label_str, pred_str)
         return {"wer": wer}
 
-    out_dir = f"/scratch/{os.environ.get('USER', 'default')}/checkpoints/whisper-medium-banking-config{args.config}"
+    if args.output:
+        out_dir = args.output
+    else:
+        out_dir = f"/scratch/{os.environ.get('USER', 'default')}/checkpoints/whisper-medium-banking-config{config_name}"
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=out_dir,

@@ -91,6 +91,11 @@ def evaluate_sample(
         "insertions": core["insertions"],
     }
 
+    # Copy any additional metadata fields from the sample (e.g. accent_group, native_language, gender, age_group, etc.)
+    for k, v in sample.items():
+        if k not in result and k not in ["audio_path", "reference_transcript"]:
+            result[k] = v
+
     # RTF
     duration = sample.get("duration_seconds", 0)
     if duration and duration > 0:
@@ -202,6 +207,8 @@ def run_evaluation(
     checkpoint_interval: int = 50,
     num_workers: Optional[int] = None,
     gpus: Optional[List[int]] = None,
+    models: Optional[List[str]] = None,
+    stratify_by: Optional[str] = None,
 ) -> str:
     """
     Run full evaluation: all enabled models × all samples.
@@ -255,8 +262,14 @@ def run_evaluation(
 
     # Load models registry to discover enabled models
     registry = ModelRegistry.from_config(config_path)
-    enabled_models = [name for name, cfg in registry._configs.items() if cfg.get("enabled", False)]
-    print(f"Enabled models: {enabled_models}\n")
+    if models:
+        for m in models:
+            if m not in registry._configs:
+                raise KeyError(f"Model '{m}' is not registered in config.yaml")
+        enabled_models = models
+    else:
+        enabled_models = [name for name, cfg in registry._configs.items() if cfg.get("enabled", False)]
+    print(f"Models to evaluate: {enabled_models}\n")
 
     all_results = []
 
@@ -366,6 +379,11 @@ def run_evaluation(
             if len(rtf_valid) > 0:
                 print(f"  RTF:  {rtf_valid['rtf'].mean():.4f} (mean)")
 
+        if stratify_by and stratify_by in valid.columns:
+            print(f"  Stratified by {stratify_by}:")
+            for val, val_df in valid.groupby(stratify_by):
+                print(f"    {val}: WER = {val_df['wer'].mean():.4f} (count: {len(val_df)})")
+
     print(f"\nResults saved to: {results_csv}")
     return results_csv
 
@@ -379,12 +397,18 @@ def main():
     parser.add_argument("--checkpoint-interval", type=int, default=50, help="Checkpoint every N samples")
     parser.add_argument("--workers", type=int, default=None, help="Number of parallel worker processes")
     parser.add_argument("--gpus", default=None, help="Comma-separated list of GPU IDs to use (e.g. 0,1)")
+    parser.add_argument("--models", default=None, help="Comma-separated list of models to evaluate")
+    parser.add_argument("--stratify-by", default=None, help="Field to stratify evaluation by (e.g. accent_group)")
 
     args = parser.parse_args()
 
     gpus_list = None
     if args.gpus:
         gpus_list = [int(x.strip()) for x in args.gpus.split(",") if x.strip()]
+
+    models_list = None
+    if args.models:
+        models_list = [m.strip() for m in args.models.split(",") if m.strip()]
 
     run_evaluation(
         config_path=args.config,
@@ -394,6 +418,8 @@ def main():
         checkpoint_interval=args.checkpoint_interval,
         num_workers=args.workers,
         gpus=gpus_list,
+        models=models_list,
+        stratify_by=args.stratify_by,
     )
 
 

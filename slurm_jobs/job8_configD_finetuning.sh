@@ -1,11 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=indicwav2vec_ablation
-#SBATCH --output=logs/%j_indic_ablation.out
-#SBATCH --error=logs/%j_indic_ablation.err
+#SBATCH --job-name=configD_finetune
+#SBATCH --output=logs/%j_configD_finetune.out
+#SBATCH --error=logs/%j_configD_finetune.err
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-# #SBATCH --mem=32G
-#SBATCH --time=08:00:00
+#SBATCH --time=12:00:00
 
 source ~/.bashrc
 conda activate asr 2>/dev/null || conda activate asr-eval
@@ -23,11 +22,16 @@ else
 fi
 cd "$REPO_ROOT"
 
-export CUDA_VISIBLE_DEVICES=1
+# export CUDA_VISIBLE_DEVICES=1
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-for config in A B; do
-    echo "Running Config $config"
-    python finetune/indicwav2vec_finetune.py --config $config
-done
+echo "====== Starting Config D Fine-Tuning Sweep ======"
+
+echo "1. Running IndicWav2Vec Config D Fine-tuning..."
+python finetune/indicwav2vec_finetune.py --config D
+
+echo "2. Running Whisper-medium Config D Fine-tuning..."
+python finetune/whisper_finetune.py --config D
+
+echo "====== Config D Fine-Tuning Sweep Completed ======"

@@ -37,4 +37,28 @@ With both models successfully fine-tuned, we updated `config.yaml` to point to o
 *   `indicwav2vec-banking` → `.../indicwav2vec-banking-configB/final`
 *   `whisper-medium-banking` → `.../whisper-medium-banking-configB/checkpoint-1000`
 
-Both models are now fully enabled and primed for the final `job5_eval.sh` execution to benchmark their quality and latency against the baseline open-source models!
+Both models are now fully enabled and primed for evaluation!
+
+## 7. Accent-Aware Evaluation & Config D Fine-Tuning Setup
+
+To study regional accents and optimize performance on dialect-rich call center audio, we extended the repository to incorporate LAHAJA, RESPIN-S1.0, and Project Vaani:
+
+1. **Obsolete Job Deletion**: Cleaned up the repository by removing obsolete SLURM scripts (`job4_ablation.sh`, `job5_eval.sh`, and `job6_whisper_ablations.sh`).
+2. **Dynamic Evaluation Options**: Modified `banking_asr_eval/evaluate.py` to:
+   - Accept a `--models` argument (comma-separated) to select specific models dynamically.
+   - Accept a `--stratify-by` argument to automatically group evaluation metrics (e.g. by `accent_group` or `native_language`) and print the mean WER for each group.
+   - Automatically copy all custom manifest columns (like `accent_group`, `native_language`, `occupation_domain`) into the final results dataframe to enable stratification on any variable.
+3. **Training Script Extensions**: Upgraded both `finetune/indicwav2vec_finetune.py` and `finetune/whisper_finetune.py` to:
+   - Accept `--config D` to train on the combined RESPIN, Vaani, MUCS, and Synthetic datasets.
+   - Accept explicit `--train-manifests` and `--output` directory arguments for flexible command-line custom fine-tuning.
+   - Support dual-compatibility in `load_manifest` to correctly read both NeMo-style (`audio_filepath`/`text`) and evaluation-style (`audio_path`/`reference_transcript`) keys.
+4. **Data Preparation & Manifest Scripts**:
+   - `prepare_lahaja.py`: Maps native speaker languages to five major accent groups (`hindi_belt`, `punjab_haryana`, `south_india`, `east_india`, `west_india`) and creates the evaluation manifest `data/manifests/lahaja.json`.
+   - `prepare_respin.py`: Parses RESPIN Kaldi-style formats (`wav.scp`, `text`, `utt2dur`) and writes `data/manifests/respin_finance_train.json` with correct durations.
+   - `prepare_vaani.py`: Downloads prioritized transcribed Hindi-belt district subsets of the IISc Vaani dataset, fixes duration calculations from the audio arrays, and writes `data/manifests/vaani_hindi_belt.json`.
+   - Updated `finetune/prepare_data.py` to automatically combine these sources and compile `data/manifests/finetune_configD.json`.
+5. **Config YAML Registration**: Registered `indicwav2vec-banking-configD` and `whisper-medium-banking-configD` in `config.yaml`.
+6. **New SLURM Scripts**:
+   - `slurm_jobs/job7_lahaja_zeroshot.sh`: Runs baseline models on LAHAJA with accent stratification.
+   - `slurm_jobs/job8_configD_finetuning.sh`: Executes training of both models on Config D.
+
