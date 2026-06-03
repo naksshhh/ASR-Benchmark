@@ -118,11 +118,9 @@ def main():
     eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
 
     # Filter out sequences that are too long for Whisper (max length 448)
-    def is_in_length_range(length):
-        return length < 448
-
-    train_dataset = train_dataset.filter(lambda x: is_in_length_range(len(x["labels"])))
-    eval_dataset = eval_dataset.filter(lambda x: is_in_length_range(len(x["labels"])))
+    # We use load_from_cache_file=False to force execution in case of corrupted cache
+    train_dataset = train_dataset.filter(lambda x: len(x["labels"]) < 440, load_from_cache_file=False)
+    eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) < 440, load_from_cache_file=False)
 
     @dataclass  
     class DataCollatorSpeechSeq2SeqWithPadding:
