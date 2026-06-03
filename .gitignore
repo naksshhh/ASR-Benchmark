@@ -18,10 +18,7 @@ model_cache/
 checkpoints/
 data/audio
 # Results (regeneratable)
-logs/
-data/manifests/*.json
-data/noise/
-data/synthetic/transcripts.json
+data/synthetic/audio
 
 # IDE
 .vscode/
@@ -32,6 +29,12 @@ data/synthetic/transcripts.json
 
 # Jupyter
 .ipynb_checkpoints/
-
+*.tar
 # Secrets
 *.env
+musan.tar.gz
+*.aria2
+logs/
+data/manifests/*.json
+data/noise/
+data/synthetic/transcripts.json
