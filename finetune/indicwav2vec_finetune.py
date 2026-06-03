@@ -12,6 +12,7 @@ from augment import augment_dataset
 
 def load_manifest(manifest_path):
     import json
+    import re
     try:
         with open(manifest_path) as f:
             try:
@@ -31,6 +32,11 @@ def load_manifest(manifest_path):
         path = s.get("audio_filepath") or s.get("audio_path")
         sentence = s.get("text") or s.get("reference_transcript")
         duration = s.get("duration") or s.get("duration_seconds") or 0
+        
+        # Filter out Latin/English characters for Devanagari-only indicwav2vec
+        if sentence and re.search(r'[a-zA-Z]', sentence):
+            continue
+            
         if path and sentence:
             audio_paths.append(path)
             sentences.append(sentence)
@@ -103,6 +109,11 @@ def main():
 
     train_dataset = train_dataset.map(prepare_batch, remove_columns=train_dataset.column_names)
     eval_dataset = eval_dataset.map(prepare_batch, remove_columns=eval_dataset.column_names)
+
+    # Filter out empty labels or labels that exceed the downsampled audio frames (Wav2Vec2 downsamples by 320)
+    # This prevents CTC loss from exploding to infinity/nan
+    train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
+    eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
 
     model = Wav2Vec2ForCTC.from_pretrained(
         MODEL_ID,
