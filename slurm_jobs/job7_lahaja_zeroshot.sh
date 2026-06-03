@@ -28,6 +28,6 @@ export HF_HUB_OFFLINE=1
 
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/lahaja.json \
-  --models indicwav2vec-hindi,voxtral-mini-3b,whisper-large-v3 \
+  --models indicwav2vec-hindi,whisper-medium-hi \
   --output results/ \
   --stratify-by accent_group
