@@ -43,13 +43,13 @@ def main():
                 split="train"
             )
             
-            # Verify if the transcription column exists (some untranscribed subsets lack this column entirely)
-            if "transcription" not in ds.column_names:
-                print(f"  Skipped {state}/{district}: 'transcription' column not found in dataset features.")
+            # Verify if the transcript column exists (some untranscribed subsets lack this column entirely)
+            if "transcript" not in ds.column_names:
+                print(f"  Skipped {state}/{district}: 'transcript' column not found in dataset features.")
                 continue
 
             # Vaani is ~10% transcribed — filter to transcribed only
-            transcribed = ds.filter(lambda x: x["transcription"] and len(x["transcription"].strip()) > 5)
+            transcribed = ds.filter(lambda x: x["transcript"] and len(x["transcript"].strip()) > 5)
             
             for sample in transcribed:
                 audio_data = sample["audio"]
@@ -64,8 +64,8 @@ def main():
                     # Dual compatibility
                     "audio_path": audio_data["path"],
                     "audio_filepath": audio_data["path"],
-                    "reference_transcript": sample["transcription"],
-                    "text": sample["transcription"],
+                    "reference_transcript": sample["transcript"],
+                    "text": sample["transcript"],
                     "duration_seconds": round(duration, 2),
                     "duration": round(duration, 2),
                     "state": state,
