@@ -85,6 +85,9 @@ def main():
     split = train_dataset_full.train_test_split(test_size=0.1, seed=42)
     train_dataset = split["train"]
     eval_dataset = split["test"]
+    if len(eval_dataset) > 1000:
+        print(f"Capping validation dataset from {len(eval_dataset)} to 1000 samples to prevent evaluation bottlenecks.")
+        eval_dataset = eval_dataset.select(range(1000))
 
     MODEL_ID = "openai/whisper-medium"
     LANGUAGE = "hi"
@@ -156,6 +159,11 @@ def main():
         label_ids[label_ids == -100] = processor.tokenizer.pad_token_id
         pred_str = processor.tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
         label_str = processor.tokenizer.batch_decode(label_ids, skip_special_tokens=True)
+        
+        # Apply Devanagari normalization to prevent format/unicode mismatch from skewing WER
+        pred_str = [normalizer.normalize(s) for s in pred_str]
+        label_str = [normalizer.normalize(s) for s in label_str]
+        
         wer = jiwer.wer(label_str, pred_str)
         return {"wer": wer}
 
@@ -173,20 +181,20 @@ def main():
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=out_dir,
-        per_device_train_batch_size=16,
+        per_device_train_batch_size=16,          # Kept at 16 to be 100% safe against OOM with gradient_checkpointing=False
         gradient_accumulation_steps=2,
         learning_rate=1e-5,
         warmup_steps=500,
         max_steps=max_steps,
         num_train_epochs=num_epochs,
-        gradient_checkpointing=True,
+        gradient_checkpointing=False,           # Changed to False for a ~30% speedup since we have ample VRAM
         fp16=True,
         eval_strategy="steps",
-        per_device_eval_batch_size=8,
+        per_device_eval_batch_size=32,          # Increased from 8 to dramatically speed up evaluation
         predict_with_generate=True,
         generation_max_length=225,
-        save_steps=500,
-        eval_steps=500,
+        save_steps=1000,                         # Increased from 500 to evaluate less frequently
+        eval_steps=1000,                         # Increased from 500 to evaluate less frequently
         logging_steps=100,
         report_to="none",
         load_best_model_at_end=True,

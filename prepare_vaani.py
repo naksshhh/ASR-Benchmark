@@ -24,7 +24,7 @@ def main():
         # Uttar Pradesh (Central / Awadhi)
         ("UttarPradesh", "Lucknow"), ("UttarPradesh", "Varanasi"),
         # Haryana / Rajasthan (North / West)
-        ("Haryana", "Gurugram"), ("Rajasthan", "Jaipur"),
+        ("Haryana", "Rohtak"), ("Rajasthan", "Jaipur"),
     ]
 
     manifest = []

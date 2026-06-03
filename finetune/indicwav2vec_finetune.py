@@ -91,6 +91,9 @@ def main():
     split = train_dataset_full.train_test_split(test_size=0.1, seed=42)
     train_dataset = split["train"]
     eval_dataset = split["test"]
+    if len(eval_dataset) > 1000:
+        print(f"Capping validation dataset from {len(eval_dataset)} to 1000 samples to prevent evaluation bottlenecks.")
+        eval_dataset = eval_dataset.select(range(1000))
 
     MODEL_ID = "ai4bharat/indicwav2vec-hindi"
     processor = Wav2Vec2Processor.from_pretrained(MODEL_ID, trust_remote_code=True)
@@ -161,13 +164,14 @@ def main():
     
     training_args = TrainingArguments(
         output_dir=out_dir,
-        per_device_train_batch_size=2,
-        gradient_accumulation_steps=8,
+        per_device_train_batch_size=16,          # Increased from 2 to 16 for better GPU utilization
+        gradient_accumulation_steps=1,           # Reduced from 8 to 1 (keeps effective batch size at 16)
         eval_strategy="steps",
+        per_device_eval_batch_size=32,          # Added to speed up evaluation runs
         num_train_epochs=args.epochs,
         fp16=True,
-        save_steps=500,
-        eval_steps=500,
+        save_steps=1000,                         # Increased from 500 to evaluate/save less frequently
+        eval_steps=1000,                         # Increased from 500 to evaluate/save less frequently
         logging_steps=100,
         learning_rate=1e-4,
         warmup_steps=500,
