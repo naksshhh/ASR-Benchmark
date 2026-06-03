@@ -19,7 +19,7 @@ def main():
 
     manifest = []
     missing_audio = 0
-    total_parsed = 0
+    candidates = []
 
     print(f"Scanning for transcript files in {respin_dir}...")
     for root, _, files in os.walk(respin_dir):
@@ -45,32 +45,43 @@ def main():
                         if args.domain and args.domain not in audio_id:
                             continue
                             
-                        # Audio file should be in the same directory
-                        audio_path = os.path.join(root, f"{audio_id}.wav")
-                        if not os.path.exists(audio_path):
-                            missing_audio += 1
-                            continue
-                            
-                        total_parsed += 1
-                        
-                        # Get duration
-                        try:
-                            duration = sf.info(audio_path).duration
-                        except Exception:
-                            duration = 5.0 # fallback default
-                            
-                        manifest.append({
-                            "audio_id": audio_id,
-                            # Dual compatibility
-                            "audio_path": os.path.abspath(audio_path),
-                            "audio_filepath": os.path.abspath(audio_path),
-                            "reference_transcript": transcript,
-                            "text": transcript,
-                            "duration_seconds": round(duration, 2),
-                            "duration": round(duration, 2),
-                            "source": "respin",
-                            "language": "hi",
-                        })
+                        candidates.append((root, audio_id, transcript))
+
+    # Helper function to process each candidate in parallel
+    def process_candidate(item):
+        root, audio_id, transcript = item
+        audio_path = os.path.join(root, f"{audio_id}.wav")
+        if not os.path.exists(audio_path):
+            return None
+            
+        # Get duration
+        try:
+            duration = sf.info(audio_path).duration
+        except Exception:
+            duration = 5.0 # fallback default
+            
+        return {
+            "audio_id": audio_id,
+            "audio_path": os.path.abspath(audio_path),
+            "audio_filepath": os.path.abspath(audio_path),
+            "reference_transcript": transcript,
+            "text": transcript,
+            "duration_seconds": round(duration, 2),
+            "duration": round(duration, 2),
+            "source": "respin",
+            "language": "hi",
+        }
+
+    from concurrent.futures import ThreadPoolExecutor
+    print(f"Found {len(candidates)} candidate transcripts. Verifying files and reading durations in parallel...")
+    
+    with ThreadPoolExecutor(max_workers=32) as executor:
+        results = list(executor.map(process_candidate, candidates))
+        for r in results:
+            if r is not None:
+                manifest.append(r)
+            else:
+                missing_audio += 1
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
