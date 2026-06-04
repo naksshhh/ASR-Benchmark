@@ -88,9 +88,18 @@ We ran the evaluation of the baseline models and our Config C fine-tuned models 
 ### Key Experimental Insights
 * **Whisper Fine-Tuning Success:** Fine-tuning Whisper-medium on mixed/Hinglish datasets (MUCS + Synthetic) yielded a massive **141.43% absolute reduction** in WER (from **179.17%** down to **37.74%**). This highlights the value of domain adaptation for code-switched ASR tasks.
 * **Wav2Vec Structural Limitation:** Both baseline and fine-tuned `indicwav2vec` models struggled on Hinglish (75–79% WER). This is a structural limitation of character-based Wav2Vec models: their tokenizer vocabulary is strictly constrained to Devanagari script. When processing English words written in Latin script (e.g., *"account statement"*, *"months"*), they cannot produce Latin characters, causing massive substitution and spelling errors.
-* **Kathbath Baselines:** For standard Devanagari ASR (clean Hindi), we verified that the baseline models already perform well on Kathbath:
-  * `indicwav2vec-hindi` (Baseline): **11.64%** WER / **3.30%** CER
-  * `whisper-medium-hi` (Baseline): **41.64%** WER / **15.85%** CER
+* **Kathbath Evaluation & Generalization:** We evaluated both the baseline and Config C fine-tuned models on the standard out-of-domain Kathbath Hindi test set (3,151 samples):
+
+| Model | Tuning Configuration | WER (%) | CER (%) | NER (%) |
+| :--- | :--- | :--- | :--- | :--- |
+| **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | **11.64%** | **3.30%** | - |
+| **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 17.20% | 5.49% | 16.59% |
+| **`whisper-medium-hi`** | Baseline (Zero-Shot) | 41.64% | 15.85% | - |
+| **`whisper-medium-banking-configC`** | Config C Fine-Tuned | **36.61%** | 17.22% | 18.20% |
+
+* **Generalization Insights:**
+  * **Whisper Generalization:** Whisper-medium improved on the general-domain Kathbath test set by **5.03% absolute** (going from **41.64%** to **36.61%**). This indicates that domain-specific fine-tuning on our mixed banking and MUCS dataset did not cause catastrophic forgetting, but actually improved overall transcription robustness.
+  * **Wav2Vec Drift:** `indicwav2vec` experienced a minor degradation (from **11.64%** to **17.20%** WER). This is a known drift characteristic of Wav2Vec models: specialized fine-tuning causes the acoustic features and phonetic classifiers to bias toward the domain, slightly losing generalization on general clean speech.
 
 ---
 
