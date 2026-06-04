@@ -146,20 +146,13 @@ def main():
         eval_dataset = eval_dataset.filter(is_labels_short_batched, batched=True, input_columns=["sentence"], num_proc=num_proc, load_from_cache_file=True)
 
         def prepare_dataset(batch):
-            audio = batch["audio"]
-            batch["input_features"] = processor(
-                audio["array"],
-                sampling_rate=audio["sampling_rate"],
-                return_tensors="pt"
-            ).input_features[0]
-            
             normalized = normalizer.normalize(batch["sentence"])
             batch["labels"] = processor.tokenizer(normalized).input_ids
             return batch
 
-        print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
+        print("Tokenizing datasets...")
+        train_dataset = train_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=["sentence", "duration"])
+        eval_dataset = eval_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=["sentence", "duration"])
 
         # Save to disk
         processed_dataset = DatasetDict({
@@ -177,9 +170,20 @@ def main():
     class DataCollatorSpeechSeq2SeqWithPadding:
         processor: Any
 
-        def __call__(self, features: List[Dict[str, Union[List[int], torch.Tensor]]]):
-            input_features = [{"input_features": f["input_features"]} for f in features]
+        def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
+            # Extract log-mel spectrogram features on-the-fly
+            input_features = []
+            for f in features:
+                audio = f["audio"]
+                inputs = self.processor(
+                    audio["array"],
+                    sampling_rate=audio["sampling_rate"],
+                    return_tensors="pt"
+                )
+                input_features.append({"input_features": inputs.input_features[0]})
+                
             batch = self.processor.feature_extractor.pad(input_features, return_tensors="pt")
+            
             label_features = [{"input_ids": f["labels"]} for f in features]
             labels_batch = self.processor.tokenizer.pad(label_features, return_tensors="pt")
             labels = labels_batch["input_ids"].masked_fill(
