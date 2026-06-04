@@ -158,8 +158,8 @@ def main():
             return batch
 
         print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=eval_dataset.column_names)
+        train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
+        eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
 
         # Save to disk
         processed_dataset = DatasetDict({
