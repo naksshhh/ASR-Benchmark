@@ -72,4 +72,30 @@ To handle the scale of large datasets (RESPIN ~90h clean / ~90h seminoisy, Vaani
 4. **Command-Line Epoch Configuration**: Added `--epochs` and `--max-steps` options to both training scripts to dynamically scale down the epoch counts for large datasets, and updated `job8_configD_finetuning.sh` to train for 5 epochs (IndicWav2Vec) and 1 epoch (Whisper).
 5. **Deadlock Elimination**: Fixed a CUDA context initialization deadlock on older kernels (`4.18.0`) by modifying `job7_lahaja_zeroshot.sh` to run sequentially (`--workers 1`), which runs extremely fast on the A100 (~10 minutes) and shows a real-time progress bar.
 
+## 9. Config C Evaluation & Code-Switched ASR Findings
 
+We ran the evaluation of the baseline models and our Config C fine-tuned models on a newly reconstructed, non-overlapping code-switched test set (`data/manifests/synthetic_100.json`) consisting of 100 template-based banking queries (Hinglish).
+
+### Evaluation Comparison on `synthetic_100`
+
+| Model | Tuning Configuration | WER (%) | CER (%) | NER (%) |
+| :--- | :--- | :--- | :--- | :--- |
+| **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | 75.49% | 71.41% | 90.91% |
+| **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 78.95% | 71.24% | 100.00% |
+| **`whisper-medium-hi`** | Baseline (Zero-Shot) | 179.17% | 167.22% | 92.93% |
+| **`whisper-medium-banking-configC`** | Config C Fine-Tuned | **37.74%** | **25.36%** | 91.41% |
+
+### Key Experimental Insights
+* **Whisper Fine-Tuning Success:** Fine-tuning Whisper-medium on mixed/Hinglish datasets (MUCS + Synthetic) yielded a massive **141.43% absolute reduction** in WER (from **179.17%** down to **37.74%**). This highlights the value of domain adaptation for code-switched ASR tasks.
+* **Wav2Vec Structural Limitation:** Both baseline and fine-tuned `indicwav2vec` models struggled on Hinglish (75–79% WER). This is a structural limitation of character-based Wav2Vec models: their tokenizer vocabulary is strictly constrained to Devanagari script. When processing English words written in Latin script (e.g., *"account statement"*, *"months"*), they cannot produce Latin characters, causing massive substitution and spelling errors.
+* **Kathbath Baselines:** For standard Devanagari ASR (clean Hindi), we verified that the baseline models already perform well on Kathbath:
+  * `indicwav2vec-hindi` (Baseline): **11.64%** WER / **3.30%** CER
+  * `whisper-medium-hi` (Baseline): **41.64%** WER / **15.85%** CER
+
+---
+
+## 10. SLURM Memory & Node Misconfiguration Patches
+
+During job submission, we encountered cluster-specific constraints:
+* **The Problem:** The Whisper evaluation job was terminated with exit code `0:9` (SIGKILL) due to CPU host memory exhaustion. However, adding `#SBATCH --mem=32G` failed with *`sbatch: error: Batch job submission failed: Requested node configuration is not available`* because the cluster's nodes are misconfigured in SLURM to have only `1` MB of memory capacity.
+* **The Solution:** We commented out `#SBATCH --mem` in all job scripts so the scheduler accepts submissions. To bypass the actual CPU host RAM exhaustion, we set `--workers 1` in our evaluation commands. Running sequentially in a single process eliminates the duplicated memory footprint of multi-process execution, allowing the jobs to complete safely.
