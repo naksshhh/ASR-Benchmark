@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=configD_finetune
-#SBATCH --output=logs/%j_configD_finetune.out
-#SBATCH --error=logs/%j_configD_finetune.err
+#SBATCH --job-name=indicwav2vec_d
+#SBATCH --output=logs/%j_indic_d.out
+#SBATCH --error=logs/%j_indic_d.err
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 
 source ~/.bashrc
 conda activate asr 2>/dev/null || conda activate asr-eval
@@ -22,16 +22,10 @@ else
 fi
 cd "$REPO_ROOT"
 
-# export CUDA_VISIBLE_DEVICES=1
+# Set scratch paths
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-echo "====== Starting Config D Fine-Tuning Sweep ======"
-
-echo "1. Running IndicWav2Vec Config D Fine-tuning..."
-python finetune/indicwav2vec_finetune.py --config D --epochs 5
-
-echo "2. Running Whisper-medium Config D Fine-tuning..."
-python finetune/whisper_finetune.py --config D --epochs 1.0
-
-echo "====== Config D Fine-Tuning Sweep Completed ======"
+echo "====== Starting IndicWav2Vec Config D Fine-Tuning ======"
+python finetune/indicwav2vec_finetune.py --config D --epochs 1
+echo "====== IndicWav2Vec Config D Fine-Tuning Completed ======"

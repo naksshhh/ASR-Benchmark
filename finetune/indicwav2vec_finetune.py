@@ -164,8 +164,8 @@ def main():
     
     training_args = TrainingArguments(
         output_dir=out_dir,
-        per_device_train_batch_size=16,          # Increased from 2 to 16 for better GPU utilization
-        gradient_accumulation_steps=1,           # Reduced from 8 to 1 (keeps effective batch size at 16)
+        per_device_train_batch_size=32,          # Increased from 16 to 32 to maximize VRAM utilization on A100 80GB
+        gradient_accumulation_steps=1,           # Kept at 1 (effective batch size 32)
         eval_strategy="steps",
         per_device_eval_batch_size=32,          # Added to speed up evaluation runs
         num_train_epochs=args.epochs,

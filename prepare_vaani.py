@@ -49,7 +49,7 @@ def main():
                 continue
 
             # Vaani is ~10% transcribed — filter to transcribed only
-            transcribed = ds.filter(lambda x: x["transcript"] and len(x["transcript"].strip()) > 5)
+            transcribed = ds.filter(lambda x: x.get("isTranscriptionAvailable") == "Yes" and x.get("transcript") is not None and len(str(x["transcript"]).strip()) > 5)
             
             for sample in transcribed:
                 audio_data = sample["audio"]
