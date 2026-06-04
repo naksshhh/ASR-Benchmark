@@ -87,8 +87,8 @@ def main():
         # Filter out audios longer than 15 seconds (240,000 samples at 16kHz) to prevent CUDA OOM
         # This allows us to reuse the existing cache instantly without rebuilding it!
         print("Filtering out sequences longer than 15 seconds from loaded cache...")
-        train_dataset = train_dataset.filter(lambda x: x["input_length"] <= 240000)
-        eval_dataset = eval_dataset.filter(lambda x: x["input_length"] <= 240000)
+        train_dataset = train_dataset.filter(lambda x: [l <= 240000 for l in x], batched=True, input_columns=["input_length"])
+        eval_dataset = eval_dataset.filter(lambda x: [l <= 240000 for l in x], batched=True, input_columns=["input_length"])
     else:
         datasets = []
         for path in manifest_paths:
