@@ -28,11 +28,33 @@ def main():
     ]
 
     manifest = []
+    existing_districts = set()
+    output_dir = "data/manifests"
+    output_path = os.path.join(output_dir, "vaani_hindi_belt.json")
+
+    # Load existing manifest to skip already processed districts
+    if os.path.exists(output_path):
+        try:
+            with open(output_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.strip():
+                        item = json.loads(line)
+                        manifest.append(item)
+                        existing_districts.add((item.get("state"), item.get("district")))
+            print(f"Loaded {len(manifest)} existing samples from {output_path} (covering districts: {list(existing_districts)})")
+        except Exception as e:
+            print(f"Could not read existing manifest: {e}. Starting fresh.")
+            manifest = []
+            existing_districts = set()
+
     hf_token = os.environ.get("HF_TOKEN")
 
     print("Starting Vaani download and preparation (this requires internet and HF access)...")
 
     for state, district in PRIORITY_DISTRICTS:
+        if (state, district) in existing_districts:
+            print(f"Skipping {state}/{district} (already processed).")
+            continue
         subset_name = f"{state}_{district}"
         try:
             print(f"Loading subset: {subset_name}...")
