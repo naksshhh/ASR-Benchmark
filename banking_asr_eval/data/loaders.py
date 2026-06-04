@@ -35,24 +35,45 @@ def load_manifest(manifest_path: str) -> List[Dict]:
 
         audio_path = sample.get("audio_path", "")
         if audio_path:
-            if not os.path.isabs(audio_path):
-                sample["audio_path"] = os.path.abspath(os.path.join(manifest_dir, audio_path))
-            elif not os.path.exists(audio_path):
-                filename = os.path.basename(audio_path)
-                # Try resolving relative to manifest directory
-                candidate_same_dir = os.path.abspath(os.path.join(manifest_dir, filename))
-                candidate_audio_dir = os.path.abspath(os.path.join(manifest_dir, "audio", filename))
+            resolved_path = None
+            
+            # 1. If it's absolute, check if it exists
+            if os.path.isabs(audio_path) and os.path.exists(audio_path):
+                resolved_path = audio_path
+            else:
+                # 2. Try resolving relative to current working directory (project root)
+                candidate_cwd = os.path.abspath(audio_path)
+                # 3. Try resolving relative to manifest directory
+                candidate_manifest = os.path.abspath(os.path.join(manifest_dir, audio_path))
                 
-                # Try resolving relative to project root
-                project_root = os.path.abspath(os.path.join(manifest_dir, "..", ".."))
-                candidate_root_data = os.path.abspath(os.path.join(project_root, "data", "audio", filename))
+                if os.path.exists(candidate_cwd):
+                    resolved_path = candidate_cwd
+                elif os.path.exists(candidate_manifest):
+                    resolved_path = candidate_manifest
+                else:
+                    # 4. Try standard candidate directories using the filename
+                    filename = os.path.basename(audio_path)
+                    candidate_same_dir = os.path.abspath(os.path.join(manifest_dir, filename))
+                    candidate_audio_dir = os.path.abspath(os.path.join(manifest_dir, "audio", filename))
+                    
+                    project_root = os.path.abspath(os.path.join(manifest_dir, "..", ".."))
+                    candidate_root_data = os.path.abspath(os.path.join(project_root, "data", "audio", filename))
+                    
+                    if os.path.exists(candidate_audio_dir):
+                        resolved_path = candidate_audio_dir
+                    elif os.path.exists(candidate_same_dir):
+                        resolved_path = candidate_same_dir
+                    elif os.path.exists(candidate_root_data):
+                        resolved_path = candidate_root_data
 
-                if os.path.exists(candidate_audio_dir):
-                    sample["audio_path"] = candidate_audio_dir
-                elif os.path.exists(candidate_same_dir):
-                    sample["audio_path"] = candidate_same_dir
-                elif os.path.exists(candidate_root_data):
-                    sample["audio_path"] = candidate_root_data
+            # Fallback if nothing was resolved
+            if resolved_path is None:
+                if os.path.isabs(audio_path):
+                    resolved_path = audio_path
+                else:
+                    resolved_path = os.path.abspath(os.path.join(manifest_dir, audio_path))
+                    
+            sample["audio_path"] = resolved_path
 
     return manifest
 
