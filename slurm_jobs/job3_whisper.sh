@@ -5,7 +5,7 @@
 #SBATCH --partition=gpu
 # #SBATCH --qos=gpu
 #SBATCH --gres=gpu:1
-#SBATCH --mem=32G
+# #SBATCH --mem=32G
 #SBATCH --time=08:00:00
 
 source ~/.bashrc
