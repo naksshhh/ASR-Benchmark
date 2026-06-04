@@ -5,6 +5,8 @@
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --time=02:00:00
+#SBATCH --mem=32G
+
 
 source ~/.bashrc
 conda activate asr 2>/dev/null || conda activate asr-eval
