@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=eval_configC
-#SBATCH --output=logs/%j_eval_configC.out
-#SBATCH --error=logs/%j_eval_configC.err
+#SBATCH --job-name=eval_kathbath
+#SBATCH --output=logs/%j_eval_kathbath.out
+#SBATCH --error=logs/%j_eval_kathbath.err
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 #SBATCH --time=04:00:00
@@ -26,20 +26,10 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-echo "====== Starting Config C Evaluation ======"
-
-echo "1. Evaluating on Kathbath Hindi benchmark..."
+echo "====== Starting Kathbath Evaluation ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/kathbath_hindi.json \
   --models indicwav2vec-hindi,whisper-medium-hi,indicwav2vec-banking-configC,whisper-medium-banking-configC \
   --output results/ \
   --workers 1
-
-echo "2. Evaluating on Synthetic 100 banking manifest..."
-python -m banking_asr_eval.evaluate \
-  --manifest data/synthetic/manifest.json \
-  --models indicwav2vec-hindi,whisper-medium-hi,indicwav2vec-banking-configC,whisper-medium-banking-configC \
-  --output results/ \
-  --workers 1
-
-echo "====== Config C Evaluation Completed ======"
+echo "====== Kathbath Evaluation Completed ======"
