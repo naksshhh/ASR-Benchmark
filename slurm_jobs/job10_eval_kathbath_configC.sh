@@ -29,10 +29,17 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-echo "====== Starting Kathbath Evaluation ======"
+echo "====== Starting Kathbath Evaluation (IndicWav2Vec) ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/kathbath_hindi.json \
-  --models indicwav2vec-banking-configC,whisper-medium-banking-configC \
+  --models indicwav2vec-banking-configC \
   --output results/ \
   --workers 1
-echo "====== Kathbath Evaluation Completed ======"
+
+echo "====== Starting Kathbath Evaluation (Whisper) ======"
+python -m banking_asr_eval.evaluate \
+  --manifest data/manifests/kathbath_hindi.json \
+  --models whisper-medium-banking-configC \
+  --output results/ \
+  --workers 1
+

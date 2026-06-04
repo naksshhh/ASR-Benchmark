@@ -29,9 +29,19 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
+echo "====== Starting Lahaja Zero-Shot Evaluation (IndicWav2Vec) ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/lahaja.json \
-  --models indicwav2vec-hindi,whisper-medium-hi \
+  --models indicwav2vec-hindi \
   --output results/ \
   --stratify-by accent_group \
   --workers 1
+
+echo "====== Starting Lahaja Zero-Shot Evaluation (Whisper) ======"
+python -m banking_asr_eval.evaluate \
+  --manifest data/manifests/lahaja.json \
+  --models whisper-medium-hi \
+  --output results/ \
+  --stratify-by accent_group \
+  --workers 1
+

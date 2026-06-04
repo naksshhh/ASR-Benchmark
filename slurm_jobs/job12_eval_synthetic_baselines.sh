@@ -27,10 +27,17 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
-echo "====== Starting Synthetic 100 Baseline Evaluation ======"
+echo "====== Starting Synthetic 100 Baseline Evaluation (IndicWav2Vec) ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/synthetic_100.json \
-  --models indicwav2vec-hindi,whisper-medium-hi \
+  --models indicwav2vec-hindi \
   --output results/ \
   --workers 1
-echo "====== Synthetic 100 Baseline Evaluation Completed ======"
+
+echo "====== Starting Synthetic 100 Baseline Evaluation (Whisper) ======"
+python -m banking_asr_eval.evaluate \
+  --manifest data/manifests/synthetic_100.json \
+  --models whisper-medium-hi \
+  --output results/ \
+  --workers 1
+
