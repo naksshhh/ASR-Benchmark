@@ -84,6 +84,11 @@ def main():
     from datasets import load_from_disk, DatasetDict
     user = os.environ.get("USER", "nakshatrak_iitp")
     prep_dir = f"/scratch/{user}/preprocessed_datasets/whisper_config{config_name}"
+    
+    # Dynamically detect allocated CPU cores in SLURM to scale multiprocessing memory safely
+    num_cpus = int(os.environ.get("SLURM_CPUS_ON_NODE", 1))
+    num_proc = num_cpus if num_cpus > 1 else None
+    print(f"Allocated CPUs: {num_cpus}. Using num_proc={num_proc} for preprocessing.")
 
     if os.path.exists(prep_dir):
         print(f"Loading preprocessed dataset from {prep_dir}...")
@@ -124,15 +129,21 @@ def main():
 
         # Filter out sequences that are too long for Whisper (max length 448) BEFORE feature extraction
         # This avoids loading and parsing heavy audio feature files for excluded samples
-        def is_labels_short(batch):
-            normalized = normalizer.normalize(batch["sentence"])
-            labels = processor.tokenizer(normalized).input_ids
-            return len(labels) < 440
+        def is_labels_short_batched(sentences):
+            res = []
+            for s in sentences:
+                if s is None:
+                    res.append(False)
+                    continue
+                normalized = normalizer.normalize(s)
+                labels = processor.tokenizer(normalized).input_ids
+                res.append(len(labels) < 440)
+            return res
 
         print("Filtering datasets by token length...")
-        # Use num_proc=8 for a significant speedup in case it needs to be processed
-        train_dataset = train_dataset.filter(is_labels_short, num_proc=8, load_from_cache_file=True)
-        eval_dataset = eval_dataset.filter(is_labels_short, num_proc=8, load_from_cache_file=True)
+        # Use batched filtering with dynamic num_proc for maximum speed
+        train_dataset = train_dataset.filter(is_labels_short_batched, batched=True, input_columns=["sentence"], num_proc=num_proc, load_from_cache_file=True)
+        eval_dataset = eval_dataset.filter(is_labels_short_batched, batched=True, input_columns=["sentence"], num_proc=num_proc, load_from_cache_file=True)
 
         def prepare_dataset(batch):
             audio = batch["audio"]
@@ -147,8 +158,8 @@ def main():
             return batch
 
         print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
+        train_dataset = train_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=train_dataset.column_names)
+        eval_dataset = eval_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=eval_dataset.column_names)
 
         # Save to disk
         processed_dataset = DatasetDict({

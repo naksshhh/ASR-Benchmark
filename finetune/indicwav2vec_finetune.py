@@ -74,6 +74,11 @@ def main():
     from datasets import load_from_disk, DatasetDict
     user = os.environ.get("USER", "nakshatrak_iitp")
     prep_dir = f"/scratch/{user}/preprocessed_datasets/indicwav2vec_config{config_name}"
+    
+    # Dynamically detect allocated CPU cores in SLURM to scale multiprocessing memory safely
+    num_cpus = int(os.environ.get("SLURM_CPUS_ON_NODE", 1))
+    num_proc = num_cpus if num_cpus > 1 else None
+    print(f"Allocated CPUs: {num_cpus}. Using num_proc={num_proc} for preprocessing.")
 
     MODEL_ID = "ai4bharat/indicwav2vec-hindi"
     processor = Wav2Vec2Processor.from_pretrained(MODEL_ID, trust_remote_code=True)
@@ -128,14 +133,14 @@ def main():
             return batch
 
         print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_batch, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_batch, remove_columns=eval_dataset.column_names)
+        train_dataset = train_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=train_dataset.column_names)
+        eval_dataset = eval_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=eval_dataset.column_names)
 
         # Filter out empty labels or labels that exceed the downsampled audio frames (Wav2Vec2 downsamples by 320)
         # This prevents CTC loss from exploding to infinity/nan
         print("Filtering invalid CTC sequences...")
-        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
-        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
+        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=num_proc)
+        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=num_proc)
 
         # Save to disk
         processed_dataset = DatasetDict({
