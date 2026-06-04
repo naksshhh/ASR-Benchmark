@@ -108,3 +108,18 @@ We ran the evaluation of the baseline models and our Config C fine-tuned models 
 During job submission, we encountered cluster-specific constraints:
 * **The Problem:** The Whisper evaluation job was terminated with exit code `0:9` (SIGKILL) due to CPU host memory exhaustion. However, adding `#SBATCH --mem=32G` failed with *`sbatch: error: Batch job submission failed: Requested node configuration is not available`* because the cluster's nodes are misconfigured in SLURM to have only `1` MB of memory capacity.
 * **The Solution:** We commented out `#SBATCH --mem` in all job scripts so the scheduler accepts submissions. To bypass the actual CPU host RAM exhaustion, we set `--workers 1` in our evaluation commands. Running sequentially in a single process eliminates the duplicated memory footprint of multi-process execution, allowing the jobs to complete safely.
+
+---
+
+## 11. NeMo & IndicConformer Dependency Constraints
+
+When evaluating the pipeline, we attempted to test `indicconformer-hindi` (based on NeMo). However, running this model in standard Python environments introduces severe package conflicts:
+* **The Problem:** The standard PyPI package `nemo_toolkit[asr]` fails to load the AI4Bharat checkpoint (`ai4bharat/indicconformer_stt_hi_hybrid_ctc_rnnt_large`). The model uses custom config fields (e.g. multilingual tokenizers, multi-softmax, and custom joint configurations) that throw parsing errors inside vanilla NeMo.
+* **The Solution:** To run this model, you must clone and install **AI4Bharat's custom fork of NeMo** (`nemo-v2` branch) from source:
+  ```bash
+  git clone https://github.com/AI4Bharat/NeMo.git
+  cd NeMo
+  git checkout nemo-v2
+  bash reinstall.sh
+  ```
+* **Current Status:** Because this fork is not installed in the general conda/pip environments by default, we have set `indicconformer-hindi` to `enabled: false` in [config.yaml](file:///c:/Users/naksh/OneDrive/Desktop/Sem 6/Krim/ASR-Benchmark/config.yaml) to ensure evaluation scripts run without crashing.

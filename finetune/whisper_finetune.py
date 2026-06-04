@@ -63,32 +63,6 @@ def main():
     if args.train_manifests:
         manifest_paths = args.train_manifests
 
-    datasets = []
-    for path in manifest_paths:
-        if not os.path.exists(path):
-            print(f"Manifest {path} not found. Did you run prepare_data.py?")
-            return
-        ds = load_manifest(path)
-        if ds is not None:
-            datasets.append(ds)
-
-    if not datasets:
-        print("No valid datasets loaded.")
-        return
-
-    from datasets import concatenate_datasets
-    train_dataset_full = concatenate_datasets(datasets)
-    
-    # Always split 10% for validation (Trainer uses this for eval_loss / early stopping)
-    # The 100 sample test set is strictly reserved for the final evaluate.py script
-    print("Splitting 10% of train set for validation.")
-    split = train_dataset_full.train_test_split(test_size=0.1, seed=42)
-    train_dataset = split["train"]
-    eval_dataset = split["test"]
-    if len(eval_dataset) > 1000:
-        print(f"Capping validation dataset from {len(eval_dataset)} to 1000 samples to prevent evaluation bottlenecks.")
-        eval_dataset = eval_dataset.select(range(1000))
-
     MODEL_ID = "openai/whisper-medium"
     LANGUAGE = "hi"
     TASK = "transcribe"
@@ -102,37 +76,87 @@ def main():
     )
     model.config.suppress_tokens = []
 
-    # Instantiate IndicNLP normalizer once for reuse
-    from indicnlp.normalize.indic_normalize import IndicNormalizerFactory
-    factory = IndicNormalizerFactory()
-    normalizer = factory.get_normalizer("hi")
+    from datasets import load_from_disk, DatasetDict
+    user = os.environ.get("USER", "nakshatrak_iitp")
+    prep_dir = f"/scratch/{user}/preprocessed_datasets/whisper_config{config_name}"
 
-    # Filter out sequences that are too long for Whisper (max length 448) BEFORE feature extraction
-    # This avoids loading and parsing heavy audio feature files for excluded samples
-    def is_labels_short(batch):
-        normalized = normalizer.normalize(batch["sentence"])
-        labels = processor.tokenizer(normalized).input_ids
-        return len(labels) < 440
+    if os.path.exists(prep_dir):
+        print(f"Loading preprocessed dataset from {prep_dir}...")
+        processed_dataset = load_from_disk(prep_dir)
+        train_dataset = processed_dataset["train"]
+        eval_dataset = processed_dataset["eval"]
+    else:
+        datasets = []
+        for path in manifest_paths:
+            if not os.path.exists(path):
+                print(f"Manifest {path} not found. Did you run prepare_data.py?")
+                return
+            ds = load_manifest(path)
+            if ds is not None:
+                datasets.append(ds)
 
-    print("Filtering datasets by token length...")
-    train_dataset = train_dataset.filter(is_labels_short, load_from_cache_file=False)
-    eval_dataset = eval_dataset.filter(is_labels_short, load_from_cache_file=False)
+        if not datasets:
+            print("No valid datasets loaded.")
+            return
 
-    def prepare_dataset(batch):
-        audio = batch["audio"]
-        batch["input_features"] = processor(
-            audio["array"],
-            sampling_rate=audio["sampling_rate"],
-            return_tensors="pt"
-        ).input_features[0]
+        from datasets import concatenate_datasets
+        train_dataset_full = concatenate_datasets(datasets)
         
-        normalized = normalizer.normalize(batch["sentence"])
-        batch["labels"] = processor.tokenizer(normalized).input_ids
-        return batch
+        # Always split 10% for validation (Trainer uses this for eval_loss / early stopping)
+        # The 100 sample test set is strictly reserved for the final evaluate.py script
+        print("Splitting 10% of train set for validation.")
+        split = train_dataset_full.train_test_split(test_size=0.1, seed=42)
+        train_dataset = split["train"]
+        eval_dataset = split["test"]
+        if len(eval_dataset) > 1000:
+            print(f"Capping validation dataset from {len(eval_dataset)} to 1000 samples to prevent evaluation bottlenecks.")
+            eval_dataset = eval_dataset.select(range(1000))
 
-    print("Extracting features and tokenizing datasets...")
-    train_dataset = train_dataset.map(prepare_dataset, remove_columns=train_dataset.column_names)
-    eval_dataset = eval_dataset.map(prepare_dataset, remove_columns=eval_dataset.column_names)
+        # Instantiate IndicNLP normalizer once for reuse
+        from indicnlp.normalize.indic_normalize import IndicNormalizerFactory
+        factory = IndicNormalizerFactory()
+        normalizer = factory.get_normalizer("hi")
+
+        # Filter out sequences that are too long for Whisper (max length 448) BEFORE feature extraction
+        # This avoids loading and parsing heavy audio feature files for excluded samples
+        def is_labels_short(batch):
+            normalized = normalizer.normalize(batch["sentence"])
+            labels = processor.tokenizer(normalized).input_ids
+            return len(labels) < 440
+
+        print("Filtering datasets by token length...")
+        # Use num_proc=8 for a significant speedup in case it needs to be processed
+        train_dataset = train_dataset.filter(is_labels_short, num_proc=8, load_from_cache_file=True)
+        eval_dataset = eval_dataset.filter(is_labels_short, num_proc=8, load_from_cache_file=True)
+
+        def prepare_dataset(batch):
+            audio = batch["audio"]
+            batch["input_features"] = processor(
+                audio["array"],
+                sampling_rate=audio["sampling_rate"],
+                return_tensors="pt"
+            ).input_features[0]
+            
+            normalized = normalizer.normalize(batch["sentence"])
+            batch["labels"] = processor.tokenizer(normalized).input_ids
+            return batch
+
+        print("Extracting features and tokenizing datasets...")
+        # Use num_proc=4 for feature extraction speedup
+        train_dataset = train_dataset.map(prepare_dataset, num_proc=4, remove_columns=train_dataset.column_names)
+        eval_dataset = eval_dataset.map(prepare_dataset, num_proc=4, remove_columns=eval_dataset.column_names)
+
+        # Save to disk
+        processed_dataset = DatasetDict({
+            "train": train_dataset,
+            "eval": eval_dataset
+        })
+        print(f"Saving preprocessed dataset to {prep_dir}...")
+        try:
+            os.makedirs(os.path.dirname(prep_dir), exist_ok=True)
+            processed_dataset.save_to_disk(prep_dir)
+        except Exception as e:
+            print(f"Warning: Could not save preprocessed dataset to disk: {e}")
 
     @dataclass  
     class DataCollatorSpeechSeq2SeqWithPadding:

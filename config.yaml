@@ -61,7 +61,7 @@ models:
   indicconformer-hindi:  # requires AI4Bharat NeMo fork
     backend: "nemo"
     model_id: "ai4bharat/indicconformer_stt_hi_hybrid_ctc_rnnt_large"
-    enabled: true
+    enabled: false
 
   whisper-medium-hi:  #done
     backend: "whisper"
