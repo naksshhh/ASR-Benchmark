@@ -35,7 +35,7 @@ python -m banking_asr_eval.evaluate \
   --models indicwav2vec-hindi \
   --output results/ \
   --stratify-by accent_group \
-  --workers 1
+  --workers 4
 
 echo "====== Starting Lahaja Zero-Shot Evaluation (Whisper) ======"
 python -m banking_asr_eval.evaluate \
@@ -43,5 +43,5 @@ python -m banking_asr_eval.evaluate \
   --models whisper-medium-hi \
   --output results/ \
   --stratify-by accent_group \
-  --workers 1
+  --workers 4
 

@@ -32,12 +32,12 @@ python -m banking_asr_eval.evaluate \
   --manifest data/manifests/synthetic_100.json \
   --models indicwav2vec-hindi \
   --output results/ \
-  --workers 1
+  --workers 4
 
 echo "====== Starting Synthetic 100 Baseline Evaluation (Whisper) ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/synthetic_100.json \
   --models whisper-medium-hi \
   --output results/ \
-  --workers 1
+  --workers 4
 

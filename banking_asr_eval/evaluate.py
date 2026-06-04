@@ -189,13 +189,16 @@ def evaluate_chunk_worker(args) -> List[Dict]:
             except Exception:
                 pass
                 
-    # Cleanup local checkpoint if successfully completed
-    if os.path.exists(checkpoint_path):
-        try:
-            os.remove(checkpoint_path)
-        except Exception:
-            pass
-            
+    # Print peak VRAM usage for this worker process
+    try:
+        import torch
+        if torch.cuda.is_available():
+            allocated = torch.cuda.max_memory_allocated() / (1024 * 1024)  # MB
+            reserved = torch.cuda.max_memory_reserved() / (1024 * 1024)    # MB
+            print(f"[Worker {worker_idx}] Peak VRAM: Allocated = {allocated:.2f} MB, Reserved = {reserved:.2f} MB")
+    except Exception:
+        pass
+
     return results
 
 

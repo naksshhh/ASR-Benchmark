@@ -33,7 +33,7 @@ python -m banking_asr_eval.evaluate \
   --models indicwav2vec-banking-configD \
   --output results/ \
   --stratify-by accent_group \
-  --workers 1
+  --workers 4
 
 echo "====== Starting Lahaja Evaluation Config D (Whisper) ======"
 python -m banking_asr_eval.evaluate \
@@ -41,4 +41,4 @@ python -m banking_asr_eval.evaluate \
   --models whisper-medium-banking-configD \
   --output results/ \
   --stratify-by accent_group \
-  --workers 1
+  --workers 4
