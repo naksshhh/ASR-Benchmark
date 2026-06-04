@@ -55,7 +55,7 @@ def main():
             "repo_name": "whisper-medium-banking-configB"
         },
         {
-            "local_dir": f"/scratch/{user}/checkpoints/indicwav2vec-banking-configB/checkpoint-500",  # Checkpoint B final is checkpoint-500 according to config.yaml
+            "local_dir": f"/scratch/{user}/checkpoints/indicwav2vec-banking-configB/final",  # Checkpoint B final is checkpoint-500 according to config.yaml
             "repo_name": "indicwav2vec-banking-configB"
         },
         {
