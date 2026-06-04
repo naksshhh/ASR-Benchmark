@@ -37,6 +37,10 @@ def load_manifest(manifest_path):
         if sentence and re.search(r'[a-zA-Z]', sentence):
             continue
             
+        # Filter out extremely long audios (> 15 seconds) to prevent CUDA OOM and speed up training
+        if duration > 15.0:
+            continue
+            
         if path and sentence:
             audio_paths.append(path)
             sentences.append(sentence)
@@ -79,6 +83,12 @@ def main():
         processed_dataset = load_from_disk(prep_dir)
         train_dataset = processed_dataset["train"]
         eval_dataset = processed_dataset["eval"]
+        
+        # Filter out audios longer than 15 seconds (240,000 samples at 16kHz) to prevent CUDA OOM
+        # This allows us to reuse the existing cache instantly without rebuilding it!
+        print("Filtering out sequences longer than 15 seconds from loaded cache...")
+        train_dataset = train_dataset.filter(lambda x: x["input_length"] <= 240000)
+        eval_dataset = eval_dataset.filter(lambda x: x["input_length"] <= 240000)
     else:
         datasets = []
         for path in manifest_paths:

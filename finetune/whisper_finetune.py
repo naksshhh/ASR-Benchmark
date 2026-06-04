@@ -32,6 +32,11 @@ def load_manifest(manifest_path):
         path = s.get("audio_filepath") or s.get("audio_path")
         sentence = s.get("text") or s.get("reference_transcript")
         duration = s.get("duration") or s.get("duration_seconds") or 0
+        
+        # Filter out extremely long audios (> 15 seconds) to prevent slow training/truncation
+        if duration > 15.0:
+            continue
+            
         if path and sentence:
             audio_paths.append(path)
             sentences.append(sentence)
