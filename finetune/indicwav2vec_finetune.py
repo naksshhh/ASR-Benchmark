@@ -118,14 +118,14 @@ def main():
             return batch
 
         print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_batch, num_proc=4, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_batch, num_proc=4, remove_columns=eval_dataset.column_names)
+        train_dataset = train_dataset.map(prepare_batch, remove_columns=train_dataset.column_names)
+        eval_dataset = eval_dataset.map(prepare_batch, remove_columns=eval_dataset.column_names)
 
         # Filter out empty labels or labels that exceed the downsampled audio frames (Wav2Vec2 downsamples by 320)
         # This prevents CTC loss from exploding to infinity/nan
         print("Filtering invalid CTC sequences...")
-        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=8)
-        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=8)
+        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
+        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320)
 
         # Save to disk
         processed_dataset = DatasetDict({
