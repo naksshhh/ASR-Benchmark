@@ -255,7 +255,7 @@ def main():
 
     # Check for existing checkpoints to resume automatically
     import glob
-    checkpoints = glob.glob(f"{out_dir}/checkpoint-*")
+    checkpoints = [d for d in glob.glob(f"{out_dir}/checkpoint-*") if d.split("-")[-1].isdigit()]
     if checkpoints:
         print(f"Resuming training from latest checkpoint in {out_dir}")
         trainer.train(resume_from_checkpoint=True)
