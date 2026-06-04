@@ -90,7 +90,7 @@ def main():
     num_proc = num_cpus if num_cpus > 1 else None
     print(f"Allocated CPUs: {num_cpus}. Using num_proc={num_proc} for preprocessing.")
 
-    if os.path.exists(prep_dir):
+    if False:
         print(f"Loading preprocessed dataset from {prep_dir}...")
         processed_dataset = load_from_disk(prep_dir)
         train_dataset = processed_dataset["train"]
@@ -154,17 +154,8 @@ def main():
         train_dataset = train_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=["sentence", "duration"])
         eval_dataset = eval_dataset.map(prepare_dataset, num_proc=num_proc, remove_columns=["sentence", "duration"])
 
-        # Save to disk
-        processed_dataset = DatasetDict({
-            "train": train_dataset,
-            "eval": eval_dataset
-        })
-        print(f"Saving preprocessed dataset to {prep_dir}...")
-        try:
-            os.makedirs(os.path.dirname(prep_dir), exist_ok=True)
-            processed_dataset.save_to_disk(prep_dir)
-        except Exception as e:
-            print(f"Warning: Could not save preprocessed dataset to disk: {e}")
+        # Caching disabled since tokenization is extremely fast and light
+        pass
 
     @dataclass  
     class DataCollatorSpeechSeq2SeqWithPadding:

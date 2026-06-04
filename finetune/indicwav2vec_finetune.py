@@ -83,7 +83,7 @@ def main():
     MODEL_ID = "ai4bharat/indicwav2vec-hindi"
     processor = Wav2Vec2Processor.from_pretrained(MODEL_ID, trust_remote_code=True)
 
-    if os.path.exists(prep_dir):
+    if False:
         print(f"Loading preprocessed dataset from {prep_dir}...")
         processed_dataset = load_from_disk(prep_dir)
         train_dataset = processed_dataset["train"]
@@ -120,39 +120,21 @@ def main():
             eval_dataset = eval_dataset.select(range(1000))
 
         def prepare_batch(batch):
-            audio = batch["audio"]
-            inputs = processor(
-                audio["array"],
-                sampling_rate=audio["sampling_rate"],
-                return_tensors="pt",
-                padding=True
-            )
             batch["labels"] = processor.tokenizer(batch["sentence"]).input_ids
-            batch["input_values"] = inputs.input_values[0]
-            batch["input_length"] = len(batch["input_values"])
             return batch
 
-        print("Extracting features and tokenizing datasets...")
-        train_dataset = train_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=train_dataset.column_names)
-        eval_dataset = eval_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=eval_dataset.column_names)
+        print("Tokenizing datasets...")
+        train_dataset = train_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=["sentence", "duration"])
+        eval_dataset = eval_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=["sentence", "duration"])
 
         # Filter out empty labels or labels that exceed the downsampled audio frames (Wav2Vec2 downsamples by 320)
         # This prevents CTC loss from exploding to infinity/nan
         print("Filtering invalid CTC sequences...")
-        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=num_proc)
-        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= x["input_length"] // 320, num_proc=num_proc)
+        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= len(x["audio"]["array"]) // 320, num_proc=num_proc)
+        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= len(x["audio"]["array"]) // 320, num_proc=num_proc)
 
-        # Save to disk
-        processed_dataset = DatasetDict({
-            "train": train_dataset,
-            "eval": eval_dataset
-        })
-        print(f"Saving preprocessed dataset to {prep_dir}...")
-        try:
-            os.makedirs(os.path.dirname(prep_dir), exist_ok=True)
-            processed_dataset.save_to_disk(prep_dir)
-        except Exception as e:
-            print(f"Warning: Could not save preprocessed dataset to disk: {e}")
+        # Caching disabled since tokenization is extremely fast and light
+        pass
 
     model = Wav2Vec2ForCTC.from_pretrained(
         MODEL_ID,
@@ -169,10 +151,19 @@ def main():
         padding: Union[bool, str] = True
 
         def __call__(self, features: List[Dict]) -> Dict[str, torch.Tensor]:
-            input_features = [{"input_values": f["input_values"]} for f in features]
-            label_features = [{"input_ids": f["labels"]} for f in features]
-            
+            # Extract raw audio features on-the-fly
+            input_features = []
+            for f in features:
+                audio = f["audio"]
+                inputs = self.processor(
+                    audio["array"],
+                    sampling_rate=audio["sampling_rate"],
+                    return_tensors="pt"
+                )
+                input_features.append({"input_values": inputs.input_values[0]})
+                
             batch = self.processor.pad(input_features, padding=self.padding, return_tensors="pt")
+            label_features = [{"input_ids": f["labels"]} for f in features]
             labels_batch = self.processor.tokenizer.pad(label_features, padding=self.padding, return_tensors="pt")
             
             labels = labels_batch["input_ids"].masked_fill(
