@@ -94,7 +94,12 @@ models:
     model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configB/checkpoint-500"
     enabled: true
 
-  whisper-medium-banking:
+  indicwav2vec-banking-configC:
+    backend: "huggingface"
+    model_id: "/scratch/$USER/checkpoints/indicwav2vec-banking-configC/final"
+    enabled: false
+
+  whisper-medium-banking-configC:
     backend: "whisper"
     model_id: "/scratch/$USER/checkpoints/whisper-medium-banking-configC/final"
     language: "hi"
