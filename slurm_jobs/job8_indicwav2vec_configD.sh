@@ -30,6 +30,11 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export HF_HUB_OFFLINE=1
 
+# Disable NCCL P2P/IB and tokenizer parallelism to prevent deadlocks on kernel < 5.5.0
+export NCCL_P2P_DISABLE=1
+export NCCL_IB_DISABLE=1
+export TOKENIZERS_PARALLELISM=false
+
 echo "====== Starting IndicWav2Vec Config D Fine-Tuning ======"
 python finetune/indicwav2vec_finetune.py --config D --epochs 1
 echo "====== IndicWav2Vec Config D Fine-Tuning Completed ======"
