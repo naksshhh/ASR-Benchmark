@@ -236,6 +236,7 @@ def main():
         greater_is_better=False,
         save_total_limit=3,
         disable_tqdm=True,  # Keeps SLURM logs clean by removing progress bar spam
+        remove_unused_columns=False,
     )
 
     trainer = Seq2SeqTrainer(

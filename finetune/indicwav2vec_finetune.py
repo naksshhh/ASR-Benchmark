@@ -127,11 +127,14 @@ def main():
         train_dataset = train_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=["sentence", "duration"])
         eval_dataset = eval_dataset.map(prepare_batch, num_proc=num_proc, remove_columns=["sentence", "duration"])
 
+        def is_valid_ctc_batched(labels_list, audio_list):
+            return [len(labels) > 0 and len(labels) <= len(audio["array"]) // 320 for labels, audio in zip(labels_list, audio_list)]
+
         # Filter out empty labels or labels that exceed the downsampled audio frames (Wav2Vec2 downsamples by 320)
         # This prevents CTC loss from exploding to infinity/nan
         print("Filtering invalid CTC sequences...")
-        train_dataset = train_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= len(x["audio"]["array"]) // 320, num_proc=num_proc)
-        eval_dataset = eval_dataset.filter(lambda x: len(x["labels"]) > 0 and len(x["labels"]) <= len(x["audio"]["array"]) // 320, num_proc=num_proc)
+        train_dataset = train_dataset.filter(is_valid_ctc_batched, batched=True, input_columns=["labels", "audio"], num_proc=num_proc)
+        eval_dataset = eval_dataset.filter(is_valid_ctc_batched, batched=True, input_columns=["labels", "audio"], num_proc=num_proc)
 
         # Caching disabled since tokenization is extremely fast and light
         pass
@@ -207,6 +210,7 @@ def main():
         greater_is_better=False,
         report_to="none",
         disable_tqdm=True,  # Keeps SLURM logs clean by removing progress bar spam
+        remove_unused_columns=False,
     )
 
     trainer = Trainer(
