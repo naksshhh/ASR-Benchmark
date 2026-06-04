@@ -384,6 +384,29 @@ def run_evaluation(
             for val, val_df in valid.groupby(stratify_by):
                 print(f"    {val}: WER = {val_df['wer'].mean():.4f} (count: {len(val_df)})")
 
+
+    # Print resource utilization metrics
+    try:
+        import resource
+        self_rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024  # MB
+        child_rss = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss / 1024  # MB
+        print(f"\nResource Utilization Summary:")
+        print(f"  Peak CPU Memory (Parent Process): {self_rss:.2f} MB")
+        print(f"  Peak CPU Memory (Child Workers):  {child_rss:.2f} MB")
+    except ImportError:
+        pass
+
+    try:
+        import torch
+        if torch.cuda.is_available():
+            print(f"  CUDA Devices: {torch.cuda.device_count()}")
+            for device_idx in range(torch.cuda.device_count()):
+                allocated = torch.cuda.max_memory_allocated(device_idx) / (1024 * 1024)  # MB
+                reserved = torch.cuda.max_memory_reserved(device_idx) / (1024 * 1024)    # MB
+                print(f"    [Device {device_idx}] Peak VRAM: Allocated = {allocated:.2f} MB, Reserved = {reserved:.2f} MB")
+    except ImportError:
+        pass
+
     print(f"\nResults saved to: {results_csv}")
     return results_csv
 
