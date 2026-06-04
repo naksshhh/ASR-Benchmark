@@ -13,6 +13,7 @@ if os.path.exists(f"/scratch/{user}"):
 os.environ["HF_HUB_DOWNLOAD_TIMEOUT"] = "600"
 
 import json
+import soundfile as sf
 from datasets import load_dataset
 
 def main():
@@ -31,6 +32,13 @@ def main():
     existing_districts = set()
     output_dir = "data/manifests"
     output_path = os.path.join(output_dir, "vaani_hindi_belt.json")
+    
+    if os.path.exists(f"/scratch/{user}"):
+        vaani_wav_dir = f"/scratch/{user}/vaani_wavs"
+    else:
+        vaani_wav_dir = os.path.abspath("data/datasets/vaani/wavs")
+    os.makedirs(vaani_wav_dir, exist_ok=True)
+
 
     # Load existing manifest to skip already processed districts
     if os.path.exists(output_path):
@@ -81,11 +89,27 @@ def main():
                 else:
                     duration = 5.0
 
+                # Save the audio array to a physical wav file on scratch
+                raw_filename = os.path.basename(audio_data['path'])
+                clean_filename = raw_filename.replace("$", "").replace("?", "").replace("&", "")
+                if not clean_filename.endswith(".wav"):
+                    clean_filename = f"{clean_filename}.wav"
+                
+                wav_path = os.path.join(vaani_wav_dir, f"vaani_{subset_name}_{clean_filename}")
+                
+                # Write to disk if it doesn't exist
+                if not os.path.exists(wav_path):
+                    try:
+                        sf.write(wav_path, audio_data["array"], audio_data["sampling_rate"])
+                    except Exception as e:
+                        print(f"Error writing wav file {wav_path}: {e}")
+                        continue
+
                 manifest.append({
-                    "audio_id": f"vaani_{subset_name}_{os.path.basename(audio_data['path'])}",
+                    "audio_id": f"vaani_{subset_name}_{clean_filename}",
                     # Dual compatibility
-                    "audio_path": audio_data["path"],
-                    "audio_filepath": audio_data["path"],
+                    "audio_path": os.path.abspath(wav_path),
+                    "audio_filepath": os.path.abspath(wav_path),
                     "reference_transcript": sample["transcript"],
                     "text": sample["transcript"],
                     "duration_seconds": round(duration, 2),
