@@ -28,17 +28,16 @@ export HF_HUB_OFFLINE=1
 
 echo "====== Starting Config C Evaluation ======"
 
-echo "1. Evaluating on LAHAJA accented test set (with accent stratification)..."
+echo "1. Evaluating on Kathbath Hindi benchmark..."
 python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/lahaja.json \
+  --manifest data/manifests/kathbath_hindi.json \
   --models indicwav2vec-hindi,whisper-medium-hi,indicwav2vec-banking-configC,whisper-medium-banking-configC \
   --output results/ \
-  --stratify-by accent_group \
   --workers 1
 
-echo "2. Evaluating on RESPIN finance test set..."
+echo "2. Evaluating on Synthetic 100 banking manifest..."
 python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/respin_finance_test.json \
+  --manifest data/synthetic/manifest.json \
   --models indicwav2vec-hindi,whisper-medium-hi,indicwav2vec-banking-configC,whisper-medium-banking-configC \
   --output results/ \
   --workers 1
