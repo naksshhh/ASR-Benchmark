@@ -36,5 +36,6 @@ musan.tar.gz
 *.aria2
 logs/
 data/manifests/*.json
+!data/manifests/synthetic_100.json
 data/noise/
 data/synthetic/transcripts.json

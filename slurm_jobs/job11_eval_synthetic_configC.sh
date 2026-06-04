@@ -28,7 +28,7 @@ export HF_HUB_OFFLINE=1
 
 echo "====== Starting Synthetic 100 Evaluation ======"
 python -m banking_asr_eval.evaluate \
-  --manifest data/synthetic/manifest.json \
+  --manifest data/manifests/synthetic_100.json \
   --models indicwav2vec-banking-configC,whisper-medium-banking-configC \
   --output results/ \
   --workers 1
