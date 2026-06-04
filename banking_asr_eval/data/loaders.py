@@ -17,11 +17,22 @@ def load_manifest(manifest_path: str) -> List[Dict]:
     scenario, accent_region, noise_level
     """
     with open(manifest_path, encoding="utf-8") as f:
-        manifest = json.load(f)
+        try:
+            content = f.read()
+            manifest = json.loads(content)
+        except json.JSONDecodeError:
+            f.seek(0)
+            manifest = [json.loads(line) for line in f if line.strip()]
 
     # Resolve relative audio paths or mismatched absolute paths from other machines
     manifest_dir = os.path.dirname(os.path.abspath(manifest_path))
     for sample in manifest:
+        # Standardize keys for downstream evaluation compatibility
+        if "audio_path" not in sample and "audio_filepath" in sample:
+            sample["audio_path"] = sample["audio_filepath"]
+        if "reference_transcript" not in sample and "text" in sample:
+            sample["reference_transcript"] = sample["text"]
+
         audio_path = sample.get("audio_path", "")
         if audio_path:
             if not os.path.isabs(audio_path):
