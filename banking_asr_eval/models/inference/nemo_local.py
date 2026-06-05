@@ -331,6 +331,7 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                     _orig = _cls._get_prompt_index
                     def _make_patch(orig):
                         def _patched(self, lang):
+                            print(f"[NeMo DEBUG] _patched_get_prompt_index called with: lang={repr(lang)}, _default_lang={repr(_default_lang)}", flush=True)
                             if lang is None or str(lang) == 'None' or str(lang).strip() == '':
                                 lang = _default_lang
                             
@@ -343,10 +344,11 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                             else:
                                 # Fallback for other regional Indian languages in Lahaja/Vaani
                                 lang = 'hi-IN'
+                            print(f"[NeMo DEBUG] _patched_get_prompt_index resolved to: lang={repr(lang)}", flush=True)
                             return orig(self, lang)
                         return _patched
                     _cls._get_prompt_index = _make_patch(_orig)
-                    print(f"[NeMo] Monkeypatched {_cls_name}._get_prompt_index to default None and map manifest tags")
+                    print(f"[NeMo] Monkeypatched {_cls_name}._get_prompt_index to default None and map manifest tags", flush=True)
         except Exception as e:
             print(f"[NeMo] Warning: Could not monkeypatch _get_prompt_index: {e}")
 
@@ -442,13 +444,16 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
             elif is_nemotron:
                 from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
                 _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang, num_workers=0, batch_size=1)
+                print(f"[NeMo DEBUG] Transcribing file: {converted_path} with target_lang={target_lang}", flush=True)
                 transcriptions = model.transcribe(
                     [converted_path], override_config=_tcfg
                 )
+                print(f"[NeMo DEBUG] Raw transcriptions: {repr(transcriptions)}", flush=True)
             else:
                 transcriptions = model.transcribe([converted_path])
 
             result = _extract_text(transcriptions)
+            print(f"[NeMo DEBUG] Extracted transcript: {repr(result)}", flush=True)
 
             # Strip language tags if model is Nemotron (e.g. <hi-IN> or <en-US> at end of text)
             if is_nemotron and result:
