@@ -141,6 +141,7 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 | **`whisper-medium-banking-configC`** | Config C Fine-Tuned | **37.74%** | **25.36%** | 91.41% |
 | **`whisper-medium-banking-configD`** | Config D Fine-Tuned | 48.73% | 35.83% | **86.36%** |
 | **`nemotron-3.5-asr`** | Zero-Shot (Streaming) | 67.81% | — | — |
+| **`stt-hi-conformer-ctc-large`** | Zero-Shot (Bilingual) | 73.61% | 68.76% | 87.25% |
 
 *   **Insight:** Config D achieves the best Hinglish banking results for the IndicWav2Vec architecture, dropping WER by **5.60% absolute** compared to Config C. For the Whisper architecture, Config D achieves a WER of **48.73%** and the lowest overall Number Error Rate (NER) of **86.36%**, although Config C remains the overall WER leader on this Hinglish dataset (37.74%).
 *   **Nemotron-3.5-ASR Streaming Latency:** Nemotron-3.5-ASR (RNN-T autoregressive decoding, 600M params) achieves a zero-shot WER of **67.81%** on this Hinglish dataset with an offline mean RTF of **0.174** (mean latency of **0.675s**, P95 latency of **1.019s**). Since Nemotron is a streaming model, comparing it solely on offline RTF is not fully representative of its production experience. Streaming models process audio chunk-by-chunk in real time, delivering tokens as the user speaks and achieving extremely low user-perceived final delay compared to batch models like Whisper.
@@ -151,6 +152,8 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 | Model | Tuning Configuration | WER (%) | CER (%) | NER (%) |
 | :--- | :--- | :---: | :---: | :---: |
 | **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | **11.64%** | **3.30%** | - |
+| **`nemotron-3.5-asr`** | Zero-Shot (Streaming) | 13.00% | 4.44% | 3.34% |
+| **`stt-hi-conformer-ctc-large`** | Zero-Shot (Bilingual) | 13.26% | 3.99% | 3.23% |
 | **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 17.20% | 5.49% | 16.59% |
 | **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | 14.52% | 4.36% | 2.76% |
 | **`whisper-medium-hi`** | Baseline (Zero-Shot) | 41.64% | 15.85% | - |
@@ -161,15 +164,15 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 
 ### 3. Comparative Accent-Stratified Results on `lahaja`
 
-| Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` | `whisper-medium-banking-configD` |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **punjab_haryana** | 236 | 106.62% | 304.38% | **101.76%** | 241.83% (n=213) |
-| **hindi_belt** | 287 | **101.81%** | 209.24% | 102.45% | N/A (all errored) |
-| **south_india** | 1334 | 116.94% | 196.74% | **115.14%** | 231.40% (n=700) |
-| **east_india** | 792 | 126.29% | 161.56% | **125.27%** | 192.50% (n=327) |
-| **west_india** | 694 | 139.65% | 160.37% | **136.55%** | 194.14% (n=462) |
-| **other** | 2809 | 147.63% | 224.27% | **143.99%** | 220.96% (n=1374) |
-| **Overall Mean** | **6152** | **133.62%** | **205.39%** | **130.93%** | **217.73%** (n=3076 valid) |
+| Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `stt-hi-conformer-ctc-large` (Baseline) | `nemotron-3.5-asr` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` | `whisper-medium-banking-configD` |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **punjab_haryana** | 236 | 106.62% | 103.71% | 101.77% | 304.38% | **101.76%** | 241.83% (n=213) |
+| **hindi_belt** | 287 | 101.81% | 99.86% | **99.26%** | 209.24% | 102.45% | N/A (all errored) |
+| **south_india** | 1334 | 116.94% | 113.72% | 114.97% | 196.74% | **115.14%** | 231.40% (n=700) |
+| **east_india** | 792 | 126.29% | 120.04% | 126.53% | 161.56% | **125.27%** | 192.50% (n=327) |
+| **west_india** | 694 | 139.65% | 136.03% | 139.19% | 160.37% | **136.55%** | 194.14% (n=462) |
+| **other** | 2809 | 147.63% | 145.00% | 147.45% | 224.27% | **143.99%** | 220.96% (n=1374) |
+| **Overall Mean** | **6152** | 133.62% | **130.30%** | 132.78% | 205.39% | 130.93% | 217.73% (n=3076 valid) |
 
 *   **Insight & Analysis:**
     *   **Config D Improvements:** Fine-tuning on Config D (`indicwav2vec-banking-configD`) yields a consistent **2.69% absolute improvement** in overall WER (dropping to **130.93%** from the baseline **133.62%**), with improvements across almost every accent group.

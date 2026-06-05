@@ -40,11 +40,13 @@ python -m banking_asr_eval.visualize --results results/eval_results_*.csv
 | Rank | Model | Backend | WER ↓ | CER ↓ | NER ↓ | Hindi Native? |
 |------|-------|---------|-------|-------|-------|---------------|
 | 🥇 | **IndicWav2Vec-Hindi** | HuggingFace (CTC) | **11.64%** | **3.30%** | **2.53%** | ✅ Yes |
-| 🥈 | **Voxtral-Mini-3B** | Voxtral | **17.66%** | **6.72%** | **9.79%** | Multilingual |
-| 🥉 | Whisper-large-v3 | Whisper | 28.82% | 9.44% | 14.52% | Multilingual |
-| 4 | Whisper-large-v3-turbo | Whisper | 32.01% | 10.37% | 13.36% | Multilingual |
-| 5 | Whisper-medium | Whisper | 41.64% | 15.85% | 21.54% | Multilingual |
-| 6 | Whisper-tiny | Whisper | 254.00% | 244.76% | 915.55% | Multilingual |
+| 🥈 | **Nemotron-3.5-ASR** | NeMo (RNN-T) | **13.00%** | **4.44%** | **3.34%** | ✅ Yes (Bilingual) |
+| 🥉 | **Conformer-CTC Large** | NeMo (CTC) | **13.26%** | **3.99%** | **3.23%** | ✅ Yes (Bilingual) |
+| 4 | Voxtral-Mini-3B | Voxtral | 17.66% | 6.72% | 9.79% | Multilingual |
+| 5 | Whisper-large-v3 | Whisper | 28.82% | 9.44% | 14.52% | Multilingual |
+| 6 | Whisper-large-v3-turbo | Whisper | 32.01% | 10.37% | 13.36% | Multilingual |
+| 7 | Whisper-medium | Whisper | 41.64% | 15.85% | 21.54% | Multilingual |
+| 8 | Whisper-tiny | Whisper | 254.00% | 244.76% | 915.55% | Multilingual |
 
 ### Excluded Models (language mismatch — no Hindi support)
 
@@ -376,6 +378,8 @@ Build a small (50–100 hours) test set:
 | Model | Category | Hindi WER ↓ | CER ↓ | Number ER ↓ | Fine-tuned? |
 |---|---|---|---|---|---|
 | IndicWav2Vec-Hindi | Indic-native | **11.64%** | **3.30%** | **2.53%** | No |
+| **Nemotron-3.5-ASR** | Multilingual | **13.00%** | **4.44%** | **3.34%** | No |
+| **Conformer-CTC Large** | Indic-native | **13.26%** | **3.99%** | **3.23%** | No |
 | Voxtral-Mini-3B | Multilingual | 17.66% | 6.72% | 9.79% | No |
 | Whisper large-v3 | Multilingual | 28.82% | 9.44% | 14.52% | No |
 | Whisper large-v3-turbo | English-first | 32.01% | 10.37% | 13.36% | No |
@@ -398,6 +402,7 @@ Build a small (50–100 hours) test set:
 | Whisper large-v3 | 46.32% | 33.53% | 67.0% | 1.49 | ❌ No |
 | Whisper large-v3-turbo | 55.52% | 39.72% | 62.0% | 0.50 | ✅ Yes |
 | **Nemotron-3.5-ASR** | **67.81%** | — | — | **0.17** | ✅ Yes (Streaming) |
+| **Conformer-CTC Large** | **73.61%** | **68.76%** | — | **0.013** | ✅ Yes (Streaming) |
 | IndicWav2Vec-Hindi | 75.49% | 71.41% | 29.0% | **0.09** | ✅ Yes |
 | Whisper-medium-hi | 179.17% | 167.22% | 74.0% | 0.96 | ✅ Yes |
 | Whisper-tiny | 299.93% | 239.27% | 66.0% | 0.59 | ✅ Yes |
