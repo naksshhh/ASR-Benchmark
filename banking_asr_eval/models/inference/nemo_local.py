@@ -380,6 +380,7 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                 audio_array = librosa.resample(audio_array, orig_sr=sr, target_sr=16000)
 
         tmp = tempfile.NamedTemporaryFile(suffix=".wav", delete=False)
+        tmp.close()
         sf.write(tmp.name, audio_array, 16000)
         return tmp.name
 
