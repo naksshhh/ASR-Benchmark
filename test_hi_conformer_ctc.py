@@ -41,37 +41,66 @@ def main():
     print(f"Loading NeMo Conformer-CTC: {model_id}")
     print(f"==========================================\n")
 
-    try:
-        from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
-        model = EncDecCTCModelBPE.from_pretrained(model_id)
-        print("Model loaded successfully!")
-    except Exception as e:
-        print(f"\n[Warning] Failed to load '{model_id}' directly: {type(e).__name__}: {e}")
-        
-        # List available models to help diagnose
+    model = None
+    
+    # Check for local downloaded files (e.g. downloaded via NGC CLI)
+    import glob
+    search_paths = [
+        "./stt_hi_conformer_ctc_large_v*/*.nemo",
+        "./stt_hi_conformer_ctc_large_v*/stt_hi_conformer_ctc_large.nemo",
+        "./stt_hi_conformer_ctc_large.nemo",
+        "stt_hi_conformer_ctc_large.nemo",
+        os.path.expanduser("~/stt_hi_conformer_ctc_large_v*/*.nemo"),
+        os.path.expanduser("~/stt_hi_conformer_ctc_large.nemo"),
+    ]
+    local_file = None
+    for p in search_paths:
+        matches = glob.glob(p)
+        if matches and os.path.exists(matches[0]):
+            local_file = matches[0]
+            break
+
+    if local_file:
+        print(f"Found local checkpoint at: {local_file}")
         try:
             from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
-            all_models = EncDecCTCModelBPE.list_available_models()
-            hindi_models = [m.model_name for m in all_models if getattr(m, 'language', '') == 'hi' or 'stt_hi' in m.model_name]
-            print("\nAvailable pre-trained Hindi models in your local NeMo registry:")
-            for name in hindi_models:
-                print(f"  - {name}")
-        except Exception as list_err:
-            print(f"Could not list available models: {list_err}")
+            model = EncDecCTCModelBPE.restore_from(local_file)
+            print("Model loaded successfully from local file!")
+        except Exception as e:
+            print(f"Failed to load from local file {local_file}: {e}")
 
-        # Fallback to the medium model
-        fallback_id = "stt_hi_conformer_ctc_medium"
-        print(f"\nAttempting fallback to registered model: '{fallback_id}'...")
+    if model is None:
         try:
-            model = EncDecCTCModelBPE.from_pretrained(fallback_id)
-            model_id = fallback_id
-            print(f"Successfully loaded fallback model: '{model_id}'!")
-        except Exception as fallback_err:
-            print(f"[ERROR] Fallback model loading also failed: {fallback_err}")
-            print("\nTo use the large model, download the '.nemo' file manually from NGC:")
-            print("https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_hi_conformer_ctc_large")
-            print("And load it using `EncDecCTCModelBPE.restore_from('path/to/stt_hi_conformer_ctc_large.nemo')`")
-            sys.exit(1)
+            from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
+            model = EncDecCTCModelBPE.from_pretrained(model_id)
+            print("Model loaded successfully!")
+        except Exception as e:
+            print(f"\n[Warning] Failed to load '{model_id}' directly: {type(e).__name__}: {e}")
+            
+            # List available models to help diagnose
+            try:
+                from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
+                all_models = EncDecCTCModelBPE.list_available_models()
+                hindi_models = [m.model_name for m in all_models if getattr(m, 'language', '') == 'hi' or 'stt_hi' in m.model_name]
+                print("\nAvailable pre-trained Hindi models in your local NeMo registry:")
+                for name in hindi_models:
+                    print(f"  - {name}")
+            except Exception as list_err:
+                print(f"Could not list available models: {list_err}")
+
+            # Fallback to the medium model
+            fallback_id = "stt_hi_conformer_ctc_medium"
+            print(f"\nAttempting fallback to registered model: '{fallback_id}'...")
+            try:
+                model = EncDecCTCModelBPE.from_pretrained(fallback_id)
+                model_id = fallback_id
+                print(f"Successfully loaded fallback model: '{model_id}'!")
+            except Exception as fallback_err:
+                print(f"[ERROR] Fallback model loading also failed: {fallback_err}")
+                print("\nTo use the large model, download the '.nemo' file manually from NGC:")
+                print("https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_hi_conformer_ctc_large")
+                print("And load it using `EncDecCTCModelBPE.restore_from('path/to/stt_hi_conformer_ctc_large.nemo')`")
+                sys.exit(1)
 
     # Determine device
     target_device = args.device

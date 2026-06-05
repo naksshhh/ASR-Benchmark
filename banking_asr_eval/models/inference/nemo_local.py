@@ -278,10 +278,13 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
             # Check for local downloaded files
             import glob
             search_paths = [
+                "./stt_hi_conformer_ctc_large_v*/*.nemo",
+                "./stt_hi_conformer_ctc_large_v*/stt_hi_conformer_ctc_large.nemo",
                 "./stt_hi_conformer_ctc_large.nemo",
                 "stt_hi_conformer_ctc_large.nemo",
                 "/scratch/*/stt_hi_conformer_ctc_large.nemo",
                 "/scratch/*/*/stt_hi_conformer_ctc_large.nemo",
+                os.path.expanduser("~/stt_hi_conformer_ctc_large_v*/*.nemo"),
                 os.path.expanduser("~/stt_hi_conformer_ctc_large.nemo"),
                 os.path.expanduser("~/.cache/torch/NeMo/stt_hi_conformer_ctc_large.nemo"),
             ]
