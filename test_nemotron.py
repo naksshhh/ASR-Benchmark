@@ -165,21 +165,49 @@ def main():
         else:
             sys.exit(1)
 
+    # Force RNNT decoder for Nemotron (pure RNN-T model loaded as hybrid)
+    if hasattr(model, "cur_decoder"):
+        model.cur_decoder = "rnnt"
+        print(f"Set cur_decoder = 'rnnt'")
+
     # Run dummy transcription to verify end-to-end forward pass
     print("\nRunning dummy transcription to verify forward pass...")
     wav_path = "silence.wav"
     create_silence_wav(wav_path)
-    try:
-        # Test transcribing with target_lang
-        transcriptions = model.transcribe([wav_path], target_lang="hi-IN")
-        print(f"Transcription result: {repr(transcriptions)}")
-        print("\n[SUCCESS] End-to-end load and transcription works perfectly!")
-    except Exception as e:
-        print(f"\n[ERROR] Transcription failed: {type(e).__name__}: {e}")
+
+    # Try multiple approaches to pass the language prompt
+    approaches = [
+        ("target_lang='hi-IN'", dict(target_lang="hi-IN")),
+        ("prompt='hi-IN'",      dict(prompt="hi-IN")),
+        ("prompt=6 (numeric)",  dict(prompt=6)),
+        ("no prompt kwargs",    dict()),
+    ]
+
+    success = False
+    for desc, kwargs in approaches:
+        try:
+            print(f"\n  Trying transcribe with {desc}...")
+            transcriptions = model.transcribe([wav_path], **kwargs)
+            print(f"  Transcription result: {repr(transcriptions)}")
+            print(f"\n[SUCCESS] End-to-end load and transcription works with {desc}!")
+            success = True
+            break
+        except Exception as e:
+            print(f"  Failed with {desc}: {type(e).__name__}: {e}")
+
+    if os.path.exists(wav_path):
+        os.remove(wav_path)
+
+    if not success:
+        # Last resort: inspect the transcribe method signature
+        import inspect
+        sig = inspect.signature(model.transcribe)
+        print(f"\n[DEBUG] model.transcribe signature: {sig}")
+        print(f"[DEBUG] model class: {model.__class__.__name__}")
+        print(f"[DEBUG] model MRO: {[c.__name__ for c in model.__class__.__mro__]}")
+        if hasattr(model, "prompt_dictionary"):
+            print(f"[DEBUG] prompt_dictionary keys: {list(model.prompt_dictionary.keys())[:10]}...")
         sys.exit(1)
-    finally:
-        if os.path.exists(wav_path):
-            os.remove(wav_path)
 
 if __name__ == "__main__":
     main()
