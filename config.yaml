@@ -63,6 +63,12 @@ models:
     model_id: "ai4bharat/indicconformer_stt_hi_hybrid_ctc_rnnt_large"
     enabled: false
 
+  nemotron-3.5-asr:
+    backend: "nemo"
+    model_id: "nvidia/nemotron-3.5-asr-streaming-0.6b"
+    target_lang: "hi-IN"  # Or "auto" for auto language detection
+    enabled: false
+
   whisper-medium-hi:  #done
     backend: "whisper"
     model_id: "openai/whisper-medium"

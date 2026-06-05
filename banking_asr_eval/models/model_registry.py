@@ -73,7 +73,10 @@ class ModelRegistry:
             )
         elif backend == "nemo":
             from .inference.nemo_local import create_nemo_model
-            return create_nemo_model(model_id=model_id)
+            return create_nemo_model(
+                model_id=model_id,
+                target_lang=config.get("target_lang", "hi-IN")
+            )
         elif backend == "huggingface":
             from .inference.huggingface_generic import create_hf_model
             return create_hf_model(model_id=model_id)

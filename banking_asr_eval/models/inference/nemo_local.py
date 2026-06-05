@@ -170,12 +170,13 @@ def _load_nemo_manually(nemo_asr, model_id: str):
     return model
 
 
-def create_nemo_model(model_id: str) -> Callable[[str], str]:
+def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[str], str]:
     """
     Create a NeMo ASR inference function.
 
     Args:
         model_id: NeMo model identifier (e.g., nvidia/parakeet-tdt-0.6b-v3)
+        target_lang: Target language tag for multilingual/conditioned models (e.g., hi-IN, auto)
 
     Returns:
         Callable that takes audio_path and returns transcript string.
@@ -190,6 +191,7 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
 
     # Load the model — handle NeMo 2.x extraction issues for IndicConformer
     is_indicconformer = "indicconformer" in model_id.lower()
+    is_nemotron = "nemotron" in model_id.lower()
 
     try:
         model = nemo_asr.models.ASRModel.from_pretrained(model_id)
@@ -213,7 +215,7 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
 
     def _ensure_wav_16k(audio_path: str) -> str:
         """
-        IndicConformer requires 16kHz mono WAV input.
+        IndicConformer and Nemotron require 16kHz mono WAV input.
         If the input is not WAV or not 16kHz, convert it in-place to a temp file.
         """
         import soundfile as sf
@@ -300,10 +302,20 @@ def create_nemo_model(model_id: str) -> Callable[[str], str]:
                 transcriptions = model.transcribe(
                     [converted_path], batch_size=1, logprobs=False, language_id="hi"
                 )
+            elif is_nemotron:
+                transcriptions = model.transcribe(
+                    [converted_path], target_lang=target_lang
+                )
             else:
                 transcriptions = model.transcribe([converted_path])
 
             result = _extract_text(transcriptions)
+
+            # Strip language tags if model is Nemotron (e.g. <hi-IN> or <en-US> at end of text)
+            if is_nemotron and result:
+                import re
+                result = re.sub(r'<[a-zA-Z]{2,3}(-[a-zA-Z]{2,4})?>', '', result)
+                result = re.sub(r'\s+', ' ', result).strip()
 
             # If we got nothing, try RNNT decoder as fallback for hybrid models
             if not result and is_indicconformer and hasattr(model, "cur_decoder"):
