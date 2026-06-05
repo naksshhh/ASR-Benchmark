@@ -35,10 +35,10 @@ python -m banking_asr_eval.evaluate \
   --stratify-by accent_group \
   --workers 4
 
-echo "====== Starting Lahaja Evaluation Config D (Whisper) ======"
-python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/lahaja.json \
-  --models whisper-medium-banking-configD \
-  --output results/ \
-  --stratify-by accent_group \
-  --workers 4
+# echo "====== Starting Lahaja Evaluation Config D (Whisper) ======"
+# python -m banking_asr_eval.evaluate \
+#   --manifest data/manifests/lahaja.json \
+#   --models whisper-medium-banking-configD \
+#   --output results/ \
+#   --stratify-by accent_group \
+#   --workers 4

@@ -61,6 +61,14 @@ def main():
         {
             "local_dir": f"/scratch/{user}/checkpoints/indicwav2vec-banking-configC/final",
             "repo_name": "indicwav2vec-banking-configC"
+        },
+        {
+            "local_dir": f"/scratch/{user}/checkpoints/indicwav2vec-banking-configD/final",
+            "repo_name": "indicwav2vec-banking-configD"
+        },
+        {
+            "local_dir": f"/scratch/{user}/checkpoints/whisper-medium-banking-configD/final",
+            "repo_name": "whisper-medium-banking-configD"
         }
     ]
 

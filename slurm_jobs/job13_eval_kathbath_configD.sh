@@ -34,9 +34,9 @@ python -m banking_asr_eval.evaluate \
   --output results/ \
   --workers 4
 
-echo "====== Starting Kathbath Evaluation Config D (Whisper) ======"
-python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/kathbath_hindi.json \
-  --models whisper-medium-banking-configD \
-  --output results/ \
-  --workers 4
+# echo "====== Starting Kathbath Evaluation Config D (Whisper) ======"
+# python -m banking_asr_eval.evaluate \
+#   --manifest data/manifests/kathbath_hindi.json \
+#   --models whisper-medium-banking-configD \
+#   --output results/ \
+#   --workers 4
