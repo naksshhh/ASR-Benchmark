@@ -108,9 +108,10 @@ def run_benchmark(
     manifest_path: str,
     output_dir: str = "./results",
     max_samples: Optional[int] = None,
+    models: Optional[List[str]] = None,
 ) -> str:
     """
-    Run latency+quality benchmark for all enabled models.
+    Run latency+quality benchmark for enabled or specified models.
 
     Returns path to results CSV.
     """
@@ -135,7 +136,18 @@ def run_benchmark(
     registry = ModelRegistry.from_config(config_path)
     all_results = []
 
-    for model_name, model_fn in registry.enabled_models():
+    # Get models to benchmark
+    target_models = []
+    if models:
+        for m_name in models:
+            try:
+                target_models.append((m_name, registry.get_model(m_name)))
+            except KeyError:
+                print(f"Warning: Model '{m_name}' not registered in config.yaml")
+    else:
+        target_models = list(registry.enabled_models())
+
+    for model_name, model_fn in target_models:
         print(f"\n── Benchmarking: {model_name} ──")
 
         for sample in tqdm(manifest):
@@ -155,6 +167,9 @@ def run_benchmark(
             all_results.append(result)
 
     # Save
+    if not all_results:
+        print("No benchmarks were run.")
+        return ""
     results_csv = os.path.join(output_dir, f"benchmark_{timestamp}.csv")
     df = pd.DataFrame(all_results)
     df.to_csv(results_csv, index=False)
@@ -184,13 +199,20 @@ def main():
     parser.add_argument("--manifest", required=True, help="Path to evaluation manifest JSON")
     parser.add_argument("--output", default="./results", help="Output directory")
     parser.add_argument("--max-samples", type=int, default=None, help="Limit samples")
+    parser.add_argument("--models", default=None, help="Comma-separated list of models to evaluate")
 
     args = parser.parse_args()
+    
+    models_list = None
+    if args.models:
+        models_list = [m.strip() for m in args.models.split(",")]
+
     run_benchmark(
         config_path=args.config,
         manifest_path=args.manifest,
         output_dir=args.output,
         max_samples=args.max_samples,
+        models=models_list,
     )
 
 

@@ -69,6 +69,11 @@ models:
     target_lang: "hi-IN"  # Or "auto" for auto language detection
     enabled: true
 
+  stt-hi-conformer-ctc-large:
+    backend: "nemo"
+    model_id: "stt_hi_conformer_ctc_large"
+    enabled: false
+
   whisper-medium-hi:  #done
     backend: "whisper"
     model_id: "openai/whisper-medium"
