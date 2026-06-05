@@ -26,7 +26,7 @@ cd "$REPO_ROOT"
 
 # Set scratch paths
 export HF_HOME=/scratch/$USER/hf_cache
-export HF_HUB_OFFLINE=1
+# export HF_HUB_OFFLINE=1 # Commented out since compute nodes have internet connectivity
 
 # Disable NCCL P2P/IB and tokenizer parallelism to prevent deadlocks on kernel < 5.5.0
 export NCCL_P2P_DISABLE=1

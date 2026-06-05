@@ -3,13 +3,32 @@
 Quick test: verify Nemotron-3.5 ASR loading and transcription works.
 
 Usage (on Param Rudra compute/login node):
-    python test_nemotron.py
+    python test_nemotron.py [--device cpu/cuda]
 """
 
 import sys
 import os
+import argparse
+import wave
+import struct
+
+def create_silence_wav(filename="silence.wav", duration_sec=1.0, sr=16000):
+    """Create a temporary mono 16kHz 16-bit WAV file with silence."""
+    with wave.open(filename, "w") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(sr)
+        num_frames = int(sr * duration_sec)
+        for _ in range(num_frames):
+            w.writeframesraw(struct.pack('<h', 0))
+    return filename
 
 def main():
+    parser = argparse.ArgumentParser(description="Test Nemotron model loading.")
+    parser.add_argument("--device", type=str, default=None, choices=["cpu", "cuda"],
+                        help="Device to load model on. Defaults to CPU if CUDA is OOM or not requested.")
+    args = parser.parse_args()
+
     try:
         import nemo.collections.asr as nemo_asr
     except ImportError:
@@ -57,15 +76,59 @@ def main():
         print("\n[ERROR] All loading methods failed.")
         sys.exit(1)
         
-    print(f"\nModel class loaded: {model.__class__.__name__}")
+    print(f"\nModel class successfully loaded: {model.__class__.__name__}")
     
-    # Check device and verify we can run basic steps
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Using device: {device}")
-    model.freeze()
-    model = model.to(device)
-    model.eval()
-    print("Model successfully loaded onto device and set to eval mode.")
+    # Determine target device
+    target_device = args.device
+    if target_device is None:
+        # If user didn't specify, try CUDA if available, but fall back to CPU on OOM
+        if torch.cuda.is_available():
+            try:
+                # Test a small allocation to check if CUDA is OOM
+                _ = torch.zeros(1, device="cuda")
+                target_device = "cuda"
+            except RuntimeError as e:
+                if "out of memory" in str(e).lower():
+                    print("\n[Warning] CUDA is out of memory/busy. Falling back to CPU for verification.")
+                    target_device = "cpu"
+                else:
+                    raise e
+        else:
+            target_device = "cpu"
+
+    device = torch.device(target_device)
+    print(f"Transferring model to device: {device}...")
+    try:
+        model.freeze()
+        model = model.to(device)
+        model.eval()
+        print("Model successfully loaded onto device and set to eval mode.")
+    except Exception as e:
+        print(f"[ERROR] Failed to transfer model to {device}: {e}")
+        if device.type == "cuda":
+            print("Retrying on CPU...")
+            device = torch.device("cpu")
+            model = model.to(device)
+            model.eval()
+            print("Model successfully loaded onto CPU.")
+        else:
+            sys.exit(1)
+
+    # Run dummy transcription to verify end-to-end forward pass
+    print("\nRunning dummy transcription to verify forward pass...")
+    wav_path = "silence.wav"
+    create_silence_wav(wav_path)
+    try:
+        # Test transcribing with target_lang
+        transcriptions = model.transcribe([wav_path], target_lang="hi-IN")
+        print(f"Transcription result: {repr(transcriptions)}")
+        print("\n[SUCCESS] End-to-end load and transcription works perfectly!")
+    except Exception as e:
+        print(f"\n[ERROR] Transcription failed: {type(e).__name__}: {e}")
+        sys.exit(1)
+    finally:
+        if os.path.exists(wav_path):
+            os.remove(wav_path)
 
 if __name__ == "__main__":
     main()
