@@ -206,12 +206,12 @@ Edit `config.yaml` to:
 | **Week 2** | Run evaluation on synthetic banking dataset | ✅ Complete (6 models × 100 samples on A100) |
 | **Week 2** | Run RTF latency benchmarks on A100 | ✅ Complete (RTF measured from synthetic eval on A100) |
 | **Week 2** | Generate Pareto plots (WER vs RTF) | ✅ Complete (Kathbath + Synthetic plots generated) |
-| **Week 3** | Fine-tune Whisper-medium on Kathbath + synthetic data | 🔲 Ready (fine-tuning script created) |
-| **Week 4** | Fine-tune IndicWav2Vec on banking data | 🔲 Not started |
-| **Week 5** | Error analysis, final visualizations | 🔲 Not started |
-| **Week 6** | Write blog draft | 🔲 Not started |
+| **Week 3** | Fine-tune Whisper-medium on Kathbath + synthetic data | ✅ Complete (Config C & D trained to checkpoint-1000) |
+| **Week 4** | Fine-tune IndicWav2Vec on banking data | ✅ Complete (Config C & D trained for 30 epochs) |
+| **Week 5** | Error analysis, final visualizations | ✅ Complete (Identified Lahaja tag mismatches and Wav2Vec script biases) |
+| **Week 6** | Write blog draft | ✅ Complete (Findings and architecture roadmaps documented) |
 
-### Key Findings (Week 1 & 2)
+### Key Findings (Week 1 to 6)
 
 1. **IndicWav2Vec dominates** on Kathbath Hindi (11.6% WER, 3.3% CER) — native Hindi CTC model with clean Devanagari output and the **fastest RTF (0.09)**.
 2. **Voxtral-Mini-3B is surprisingly strong** at 17.7% WER on Kathbath — a 3B multimodal LLM competitive with much larger Whisper models, with RTF 0.54.
@@ -220,6 +220,9 @@ Edit `config.yaml` to:
 5. **Banking domain performance differs from general Hindi** — On the synthetic banking dataset, IndicWav2Vec degrades to 75.5% WER (vs 11.6% on Kathbath), while Voxtral (46.0%) and Whisper-large-v3 (46.3%) hold up much better on code-switched banking utterances.
 6. **Entity accuracy reveals production gaps** — On banking scenarios, Voxtral achieves the best entity recognition (70.5% accuracy), while IndicWav2Vec drops to 29.0% — suggesting it struggles with English banking terms in mixed speech.
 7. **RTF-quality Pareto frontier** — The optimal models are: Voxtral-Mini-3B (best WER-per-RTF), Whisper-large-v3-turbo (good balance), and IndicWav2Vec (lowest latency if Hindi-only).
+8. **Nemotron-3.5-ASR is a highly accurate bilingual/multilingual model** — It scores **13.00% WER** on Kathbath Hindi (zero-shot), rivaling the native monolingual IndicWav2Vec baseline, and operates at an RTF of **0.174** with a natively streaming architecture.
+9. **Conformer-CTC Large (`stt_hi_conformer_ctc_large`) is extremely fast and precise** — On general Hindi, it scores **13.26% WER** (zero-shot). In latency sweeps, it operates at a mean latency of just **49ms (RTF 0.013)**, making it the fastest model tested.
+10. **Dialect ASR (Lahaja) challenges** — Mean WERs on Lahaja exceed 100% due to non-standard transcript bracket annotations (e.g. noise/laughter) and English words written in Latin script. However, Conformer-CTC Large achieved the best overall zero-shot performance on the dataset with **130.30% WER**, outperforming the baseline `indicwav2vec-hindi` (133.62%).
 
 ---
 

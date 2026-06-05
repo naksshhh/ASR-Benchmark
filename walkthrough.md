@@ -182,3 +182,28 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
         *   **Script / Tokenization Mismatch:** The LAHAJA test transcripts contain a large portion of non-standard Devanagari script markers, bracketed tags (e.g. noise/laughter annotations), or romanized English words. 
         *   Because `indicwav2vec` uses a strict character-level CTC tokenizer restricted solely to standard Devanagari, any romanized word or special character results in a 100% substitution error rate.
         *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%.
+
+---
+
+## 13. Concluding Project Summary & Architectural Recommendations
+
+With all evaluations completed, we have compiled the key findings and architectural recommendations for deploying Krim.ai's production banking voice bot:
+
+### 1. Key ASR Performance Findings
+*   **The Monolingual script barrier:** Monolingual models like `indicwav2vec-hindi` perform exceptionally well on pure Hindi audio (11.64% WER on Kathbath), but degrade severely to **73-75% WER** on code-switched Hinglish banking data. Their vocabulary is strictly limited to Devanagari script, forcing English banking terms (like *"credit card"*, *"CIBIL score"*) to trigger 100% spelling error rates.
+*   **The Power of Domain Adaptation:** Fine-tuning Whisper-medium on code-switched banking datasets (`whisper-medium-banking-configC`) yielded a massive **141.43% absolute reduction in Hinglish WER** (slashing it from **179.17% down to 37.74%**). This highlights that target-domain training is essential for code-switched corporate usage.
+*   **Generalization vs. Drift:** Fine-tuning on native speech corpora (Vaani & RESPIN) under **Config D** recovered significant general Hindi performance (reducing Whisper's Kathbath WER to **20.57%**), proving that large-scale native speech datasets are key to preventing domain drift (forgetting).
+*   **Dialect ASR Mismatch:** Models evaluated on LAHAJA suffered from high insertion and substitution errors (WERs > 100%). This is primarily an artifact of non-standard transcripts in dialect corpora, which contain bracketed noise/laughter annotations and romanized English words that monolingual tokenizers cannot map. Conformer-CTC Large achieved the best zero-shot baseline on Lahaja (**130.30%**), outperforming the baseline `indicwav2vec-hindi` (133.62%).
+
+### 2. Latency & Concurrency Champions
+*   **Conformer-CTC Large (`stt_hi_conformer_ctc_large`):** The absolute speed champion. Operating at a mean latency of **49ms (RTF 0.013)**, it runs almost instantly. Since it uses a non-autoregressive CTC decoder, it consumes minimal compute and is highly scalable.
+*   **Nemotron-3.5-ASR-Streaming-0.6B:** The native streaming champion. Operating at **0.174 RTF (mean latency 0.675s)**, it processes audio chunk-by-chunk in real time as the user speaks. The user-perceived final delay is extremely low, making it ideal for live, interactive voice assistants.
+
+### 3. Concluding Recommendations for Production BOT
+If you are designing the ASR frontend for a voice bot scaling to **500+ simultaneous calls**, we recommend:
+
+1.  **Avoid Autoregressive Multimodal LLMs (like Voxtral 3B) in direct ASR loops:** While Voxtral is highly accurate zero-shot, running autoregressive text generation for 500+ concurrent audio streams is computationally heavy, expensive, and cannot natively run in chunk-based streaming mode.
+2.  **For Native Live Streaming (Low Latency):** Deploy **Nemotron-3.5-ASR-Streaming-0.6B** using NeMo's streaming pipeline, ensuring that `target_lang="auto"` is set so the model can dynamically switch between Latin and Devanagari scripts for English and Hindi speakers.
+3.  **For Maximum Concurrency and Cost Efficiency (500+ Calls):** Deploy a **Bilingual Conformer-CTC** model (with combined Latin + Devanagari vocabulary) served on **NVIDIA Triton Inference Server** with TensorRT-ASR. This non-autoregressive setup aggregates hundreds of incoming audio chunks in parallel on GPU tensor cores, bringing chunk latency down to milliseconds and keeping hosting hardware costs extremely low.
+4.  **For Batch/Offline Analytics (Highest Accuracy):** Use the **Fine-Tuned Whisper-Medium (Config C/D)** model, which delivers state-of-the-art transcriptions on code-switched banking speech.
+
