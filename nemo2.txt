@@ -1,0 +1,620 @@
+Installed torch.nn.Module.load_state_dict monkeypatch (strict=False)
+[NeMo W 2026-06-05 20:00:35 <frozen importlib:241] Megatron num_microbatches_calculator not found, using Apex version.
+OneLogger: Setting error_handling_strategy to DISABLE_QUIETLY_AND_REPORT_METRIC_ERROR for rank (rank=0) with OneLogger disabled. To override: explicitly set error_handling_strategy parameter.
+No exporters were provided. This means that no telemetry data will be collected.
+Successfully mapped EncDecRNNTBPEModelWithPrompt -> EncDecHybridRNNTCTCBPEModelWithPrompt
+Installed pytorch_lightning.LightningModule.load_state_dict monkeypatch
+Installed nemo.core.classes.ModelPT.load_state_dict monkeypatch
+==========================================
+Testing loading of: nvidia/nemotron-3.5-asr-streaming-0.6b
+==========================================
+Method 1: Loading via nemo_asr.models.ASRModel.from_pretrained...
+[NeMo I 2026-06-05 20:01:37 mixins:69] Tokenizer SentencePieceTokenizer initialized with 13087 tokens
+[NeMo I 2026-06-05 20:01:41 common:621] 
+    Replacing placholder number of classes (-1) with actual number of classes - 13087
+[NeMo W 2026-06-05 20:01:43 mixins:108] You tried to register an artifact under config key=tokenizer.model_path but an artifact for it has already been registered.
+[NeMo W 2026-06-05 20:01:43 mixins:128] You tried to register an artifact under config key=tokenizer.vocab_path but an artifact for it has already been registered.
+[NeMo I 2026-06-05 20:01:43 mixins:69] Tokenizer SentencePieceTokenizer initialized with 13087 tokens
+[NeMo W 2026-06-05 20:01:56 rnnt_models:63] If you intend to do training or fine-tuning, please call the ModelPT.setup_training_data() method and provide a valid configuration file to setup the train data loader.
+    Train config : 
+    manifest_filepath: null
+    sample_rate: 16000
+    use_lhotse: true
+    shard_manifests: true
+    batch_duration: 200
+    quadratic_duration: 15
+    num_buckets: 30
+    shuffle: true
+    num_workers: 8
+    pin_memory: true
+    max_duration: 20
+    min_duration: 0.1
+    is_tarred: true
+    tarred_audio_filepaths: null
+    shuffle_n: 2048
+    slice_length: 100
+    bucketing_strategy: fully_randomized
+    bucketing_batch_size: null
+    bucket_buffer_size: 10000
+    shuffle_buffer_size: 10000
+    prompt_field: target_lang
+    prompt_dictionary:
+      en-US: 0
+      en: 0
+      en-GB: 1
+      enGB: 1
+      es-ES: 2
+      esES: 2
+      es-US: 3
+      es: 3
+      zh-CN: 4
+      zh-ZH: 4
+      zh-TW: 5
+      hi-IN: 6
+      hi: 6
+      hi-HI: 6
+      ar-AR: 7
+      ar: 7
+      fr-FR: 8
+      fr: 8
+      de-DE: 9
+      de: 9
+      ja-JP: 10
+      ja-JA: 10
+      ru-RU: 11
+      ru: 11
+      pt-BR: 12
+      pt-PT: 13
+      pt: 13
+      ko-KR: 14
+      ko: 14
+      ko-KO: 14
+      it-IT: 15
+      it: 15
+      nl-NL: 16
+      nl: 16
+      pl-PL: 17
+      pl: 17
+      tr-TR: 18
+      tr: 18
+      uk-UA: 19
+      uk: 19
+      ro-RO: 20
+      ro: 20
+      el-GR: 21
+      el: 21
+      cs-CZ: 22
+      cs: 22
+      hu-HU: 23
+      hu: 23
+      sv-SE: 24
+      sv: 24
+      da-DK: 25
+      da: 25
+      fi-FI: 26
+      fi: 26
+      no-NO: 27
+      'no': 27
+      nb-NO: 103
+      nb: 103
+      nn-NO: 104
+      nn: 104
+      sk-SK: 28
+      sk: 28
+      hr-HR: 29
+      hr: 29
+      bg-BG: 30
+      bg: 30
+      lt-LT: 31
+      lt: 31
+      et-EE: 60
+      et: 60
+      lv-LV: 61
+      lv: 61
+      sl-SI: 62
+      sl: 62
+      th-TH: 32
+      vi-VN: 33
+      id-ID: 34
+      ms-MY: 35
+      bn-IN: 36
+      ur-PK: 37
+      fa-IR: 38
+      ta-IN: 39
+      te-IN: 40
+      mr-IN: 41
+      gu-IN: 42
+      kn-IN: 43
+      ml-IN: 44
+      si-LK: 45
+      ne-NP: 46
+      km-KH: 47
+      sw-KE: 48
+      am-ET: 49
+      ha-NG: 50
+      zu-ZA: 51
+      yo-NG: 52
+      ig-NG: 53
+      af-ZA: 54
+      rw-RW: 55
+      so-SO: 56
+      ny-MW: 57
+      ln-CD: 58
+      or-KE: 59
+      he-IL: 64
+      ku-TR: 65
+      az-AZ: 66
+      ka-GE: 67
+      hy-AM: 68
+      uz-UZ: 69
+      tg-TJ: 70
+      ky-KG: 71
+      qu-PE: 80
+      ay-BO: 81
+      gn-PY: 82
+      nah-MX: 83
+      mi-NZ: 96
+      haw-US: 97
+      sm-WS: 98
+      to-TO: 99
+      fr-CA: 100
+      mt-MT: 102
+      auto: 101
+    num_prompts: 128
+    subsampling_factor: 8
+    lang_field: target_lang
+    training_mode: true
+    input_cfg: null
+    use_bucketing: true
+    defer_setup: true
+    
+[NeMo W 2026-06-05 20:01:56 rnnt_models:63] If you intend to do validation, please call the ModelPT.setup_validation_data() or ModelPT.setup_multiple_validation_data() method and provide a valid configuration file to setup the validation data loader(s). 
+    Validation config : 
+    manifest_filepath: null
+    sample_rate: 16000
+    batch_size: 2
+    shuffle: false
+    use_start_end_token: false
+    num_workers: 2
+    pin_memory: true
+    batch_duration: null
+    use_lhotse: true
+    use_bucketing: false
+    max_cuts: 8
+    prompt_field: target_lang
+    prompt_dictionary:
+      en-US: 0
+      en: 0
+      en-GB: 1
+      enGB: 1
+      es-ES: 2
+      esES: 2
+      es-US: 3
+      es: 3
+      zh-CN: 4
+      zh-ZH: 4
+      zh-TW: 5
+      hi-IN: 6
+      hi: 6
+      hi-HI: 6
+      ar-AR: 7
+      ar: 7
+      fr-FR: 8
+      fr: 8
+      de-DE: 9
+      de: 9
+      ja-JP: 10
+      ja-JA: 10
+      ru-RU: 11
+      ru: 11
+      pt-BR: 12
+      pt-PT: 13
+      pt: 13
+      ko-KR: 14
+      ko: 14
+      ko-KO: 14
+      it-IT: 15
+      it: 15
+      nl-NL: 16
+      nl: 16
+      pl-PL: 17
+      pl: 17
+      tr-TR: 18
+      tr: 18
+      uk-UA: 19
+      uk: 19
+      ro-RO: 20
+      ro: 20
+      el-GR: 21
+      el: 21
+      cs-CZ: 22
+      cs: 22
+      hu-HU: 23
+      hu: 23
+      sv-SE: 24
+      sv: 24
+      da-DK: 25
+      da: 25
+      fi-FI: 26
+      fi: 26
+      no-NO: 27
+      'no': 27
+      nb-NO: 103
+      nb: 103
+      nn-NO: 104
+      nn: 104
+      sk-SK: 28
+      sk: 28
+      hr-HR: 29
+      hr: 29
+      bg-BG: 30
+      bg: 30
+      lt-LT: 31
+      lt: 31
+      et-EE: 60
+      et: 60
+      lv-LV: 61
+      lv: 61
+      sl-SI: 62
+      sl: 62
+      th-TH: 32
+      vi-VN: 33
+      id-ID: 34
+      ms-MY: 35
+      bn-IN: 36
+      ur-PK: 37
+      fa-IR: 38
+      ta-IN: 39
+      te-IN: 40
+      mr-IN: 41
+      gu-IN: 42
+      kn-IN: 43
+      ml-IN: 44
+      si-LK: 45
+      ne-NP: 46
+      km-KH: 47
+      sw-KE: 48
+      am-ET: 49
+      ha-NG: 50
+      zu-ZA: 51
+      yo-NG: 52
+      ig-NG: 53
+      af-ZA: 54
+      rw-RW: 55
+      so-SO: 56
+      ny-MW: 57
+      ln-CD: 58
+      or-KE: 59
+      he-IL: 64
+      ku-TR: 65
+      az-AZ: 66
+      ka-GE: 67
+      hy-AM: 68
+      uz-UZ: 69
+      tg-TJ: 70
+      ky-KG: 71
+      qu-PE: 80
+      ay-BO: 81
+      gn-PY: 82
+      nah-MX: 83
+      mi-NZ: 96
+      haw-US: 97
+      sm-WS: 98
+      to-TO: 99
+      fr-CA: 100
+      mt-MT: 102
+      auto: 101
+    num_prompts: 128
+    subsampling_factor: 8
+    training_mode: true
+    name: null
+    
+[NeMo W 2026-06-05 20:01:56 rnnt_models:63] Please call the ModelPT.setup_test_data() or ModelPT.setup_multiple_test_data() method and provide a valid configuration file to setup the test data loader(s).
+    Test config : 
+    manifest_filepath: null
+    sample_rate: 16000
+    batch_size: 16
+    shuffle: false
+    use_start_end_token: false
+    num_workers: 8
+    pin_memory: true
+    use_lhotse: true
+    use_bucketing: false
+    prompt_field: target_lang
+    prompt_dictionary:
+      en-US: 0
+      en: 0
+      en-GB: 1
+      enGB: 1
+      es-ES: 2
+      esES: 2
+      es-US: 3
+      es: 3
+      zh-CN: 4
+      zh-ZH: 4
+      zh-TW: 5
+      hi-IN: 6
+      hi: 6
+      hi-HI: 6
+      ar-AR: 7
+      ar: 7
+      fr-FR: 8
+      fr: 8
+      de-DE: 9
+      de: 9
+      ja-JP: 10
+      ja-JA: 10
+      ru-RU: 11
+      ru: 11
+      pt-BR: 12
+      pt-PT: 13
+      pt: 13
+      ko-KR: 14
+      ko: 14
+      ko-KO: 14
+      it-IT: 15
+      it: 15
+      nl-NL: 16
+      nl: 16
+      pl-PL: 17
+      pl: 17
+      tr-TR: 18
+      tr: 18
+      uk-UA: 19
+      uk: 19
+      ro-RO: 20
+      ro: 20
+      el-GR: 21
+      el: 21
+      cs-CZ: 22
+      cs: 22
+      hu-HU: 23
+      hu: 23
+      sv-SE: 24
+      sv: 24
+      da-DK: 25
+      da: 25
+      fi-FI: 26
+      fi: 26
+      no-NO: 27
+      'no': 27
+      nb-NO: 103
+      nb: 103
+      nn-NO: 104
+      nn: 104
+      sk-SK: 28
+      sk: 28
+      hr-HR: 29
+      hr: 29
+      bg-BG: 30
+      bg: 30
+      lt-LT: 31
+      lt: 31
+      et-EE: 60
+      et: 60
+      lv-LV: 61
+      lv: 61
+      sl-SI: 62
+      sl: 62
+      th-TH: 32
+      vi-VN: 33
+      id-ID: 34
+      ms-MY: 35
+      bn-IN: 36
+      ur-PK: 37
+      fa-IR: 38
+      ta-IN: 39
+      te-IN: 40
+      mr-IN: 41
+      gu-IN: 42
+      kn-IN: 43
+      ml-IN: 44
+      si-LK: 45
+      ne-NP: 46
+      km-KH: 47
+      sw-KE: 48
+      am-ET: 49
+      ha-NG: 50
+      zu-ZA: 51
+      yo-NG: 52
+      ig-NG: 53
+      af-ZA: 54
+      rw-RW: 55
+      so-SO: 56
+      ny-MW: 57
+      ln-CD: 58
+      or-KE: 59
+      he-IL: 64
+      ku-TR: 65
+      az-AZ: 66
+      ka-GE: 67
+      hy-AM: 68
+      uz-UZ: 69
+      tg-TJ: 70
+      ky-KG: 71
+      qu-PE: 80
+      ay-BO: 81
+      gn-PY: 82
+      nah-MX: 83
+      mi-NZ: 96
+      haw-US: 97
+      sm-WS: 98
+      to-TO: 99
+      fr-CA: 100
+      mt-MT: 102
+      auto: 101
+    num_prompts: 128
+    subsampling_factor: 8
+    training_mode: false
+    
+[NeMo I 2026-06-05 20:02:02 rnnt_models:83] Using RNNT Loss : warprnnt_numba
+    Loss warprnnt_numba_kwargs: {'fastemit_lambda': 0.005, 'clamp': -1.0}
+[NeMo I 2026-06-05 20:02:02 rnnt_models:231] Using RNNT Loss : warprnnt_numba
+    Loss warprnnt_numba_kwargs: {'fastemit_lambda': 0.005, 'clamp': -1.0}
+[NeMo W 2026-06-05 20:02:03 rnnt_label_looping:259] No conditional node support for Cuda.
+    Cuda graphs with while loops are disabled, decoding speed will be slower
+    Reason: Driver supports cuda toolkit version 12.4, but the driver needs to support at least 12,6. Please update your cuda driver.
+[NeMo I 2026-06-05 20:02:05 rnnt_models:231] Using RNNT Loss : warprnnt_numba
+    Loss warprnnt_numba_kwargs: {'fastemit_lambda': 0.005, 'clamp': -1.0}
+[NeMo W 2026-06-05 20:02:05 rnnt_label_looping:259] No conditional node support for Cuda.
+    Cuda graphs with while loops are disabled, decoding speed will be slower
+    Reason: Driver supports cuda toolkit version 12.4, but the driver needs to support at least 12,6. Please update your cuda driver.
+[NeMo I 2026-06-05 20:02:05 hybrid_rnnt_ctc_bpe_models_prompt:132] Model with prompt feature has been initialized
+[NeMo W 2026-06-05 20:02:05 rnnt_label_looping:259] No conditional node support for Cuda.
+    Cuda graphs with while loops are disabled, decoding speed will be slower
+    Reason: Driver supports cuda toolkit version 12.4, but the driver needs to support at least 12,6. Please update your cuda driver.
+[NeMo I 2026-06-05 20:02:09 modelPT:501] Model EncDecHybridRNNTCTCBPEModelWithPrompt was successfully restored from /home/nakshatrak_iitp/.cache/huggingface/hub/models--nvidia--nemotron-3.5-asr-streaming-0.6b/snapshots/3d84923842d4425b4c10a8eca776858b8af9765c/nemotron-3.5-asr-streaming-0.6b.nemo.
+[NeMo W 2026-06-05 20:02:10 dataloader:335] The following configuration keys are ignored by Lhotse dataloader: window_stride,num_prompts,prompt_field,initialize_prompt_feature,subsampling_factor,labels,trim_silence,default_lang,prompt_dictionary
+[NeMo W 2026-06-05 20:02:10 dataloader:341] You are using a non-tarred dataset and requested tokenization during data sampling (pretokenize=True). This will cause the tokenization to happen in the main (GPU) process,possibly impacting the training speed if your tokenizer is very large.If the impact is noticable, set pretokenize=False in dataloader config.(note: that will disable token-per-second filtering and 2D bucketing features)
+Method 1 Success!
+
+Model class successfully loaded: EncDecHybridRNNTCTCBPEModelWithPrompt
+Transferring model to device: cuda...
+Model successfully loaded onto device and set to eval mode.
+Set cur_decoder = 'rnnt'
+
+Running dummy transcription to verify forward pass...
+
+  Approach 1: Using override_config with HybridRNNTCTCPromptTranscribeConfig...
+    Config signature: (use_lhotse: bool = True, batch_size: int = 4, return_hypotheses: bool = False, num_workers: Optional[int] = None, channel_selector: Union[int, Iterable[int], str] = None, augmentor: Optional[omegaconf.dictconfig.DictConfig] = None, timestamps: Optional[bool] = None, verbose: bool = True, partial_hypothesis: Optional[List[Any]] = None, _internal: Optional[nemo.collections.asr.parts.mixins.transcription.InternalTranscribeConfig] = None, target_lang: str = 'en-US', prompt_field: str = 'lang') -> None
+    prompt_tag failed: HybridRNNTCTCPromptTranscribeConfig.__init__() got an unexpected keyword argument 'prompt_tag'
+Transcribing: 0it [00:00, ?it/s]Transcribing: 0it [00:00, ?it/s]
+    target_lang failed: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/ASR-Benchmark/test_nemotron.py", line 193, in main
+    cfg = HybridRNNTCTCPromptTranscribeConfig(prompt_tag="hi-IN")
+TypeError: HybridRNNTCTCPromptTranscribeConfig.__init__() got an unexpected keyword argument 'prompt_tag'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 351, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = self.dataset[possibly_batched_index]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 121, in __getitem__
+    prompt_targets = [
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 124, in <listcomp>
+    self.prompt_to_target(
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 95, in prompt_to_target
+    prompt_id = self._get_prompt_index(cut.supervisions[0].language)
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 76, in _get_prompt_index
+    raise ValueError(
+ValueError: Unknown prompt key: 'None'. Available prompts: ['en-US', 'en', 'en-GB', 'enGB', 'es-ES', 'esES', 'es-US', 'es', 'zh-CN', 'zh-ZH']...
+
+
+  Approach 2: Creating JSONL manifest with target_lang field...
+[NeMo I 2026-06-05 20:02:12 hybrid_rnnt_ctc_bpe_models_prompt:1002] Setting up Lhotse dataset with prompt support
+[NeMo I 2026-06-05 20:02:12 dataloader:301] We will be using a Lhotse DataLoader.
+[NeMo W 2026-06-05 20:02:12 dataloader:335] The following configuration keys are ignored by Lhotse dataloader: training_mode,num_prompts,prompt_field,subsampling_factor,use_start_end_token,prompt_dictionary
+[NeMo W 2026-06-05 20:02:12 dataloader:341] You are using a non-tarred dataset and requested tokenization during data sampling (pretokenize=True). This will cause the tokenization to happen in the main (GPU) process,possibly impacting the training speed if your tokenizer is very large.If the impact is noticable, set pretokenize=False in dataloader config.(note: that will disable token-per-second filtering and 2D bucketing features)
+[NeMo I 2026-06-05 20:02:12 dataloader:341] Creating a Lhotse DynamicCutSampler (bucketing is disabled, (max_batch_duration=None max_batch_size=1)
+Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/ASR-Benchmark/test_nemotron.py", line 235, in main
+    for batch in model.test_dataloader():
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 701, in __next__
+    data = self._next_data()
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1465, in _next_data
+    return self._process_data(data)
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1491, in _process_data
+    data.reraise()
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/_utils.py", line 715, in reraise
+    raise exception
+ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 351, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = self.dataset[possibly_batched_index]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 121, in __getitem__
+    prompt_targets = [
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 124, in <listcomp>
+    self.prompt_to_target(
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 95, in prompt_to_target
+    prompt_id = self._get_prompt_index(cut.supervisions[0].language)
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 76, in _get_prompt_index
+    raise ValueError(
+ValueError: Unknown prompt key: 'None'. Available prompts: ['en-US', 'en', 'en-GB', 'enGB', 'es-ES', 'esES', 'es-US', 'es', 'zh-CN', 'zh-ZH']...
+
+    Approach 2 failed: ValueError: Caught ValueError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 351, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 54, in fetch
+    data = self.dataset[possibly_batched_index]
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 121, in __getitem__
+    prompt_targets = [
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 124, in <listcomp>
+    self.prompt_to_target(
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 95, in prompt_to_target
+    prompt_id = self._get_prompt_index(cut.supervisions[0].language)
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/site-packages/nemo/collections/asr/data/audio_to_text_lhotse_prompt.py", line 76, in _get_prompt_index
+    raise ValueError(
+ValueError: Unknown prompt key: 'None'. Available prompts: ['en-US', 'en', 'en-GB', 'enGB', 'es-ES', 'esES', 'es-US', 'es', 'zh-CN', 'zh-ZH']...
+
+
+  Approach 3: Monkeypatching _transcribe_input_manifest_processing...
+    |     @torch.no_grad()
+    |     def transcribe(
+    |         self,
+    |         audio: List[str],
+    |         batch_size: int = 4,
+    |         return_hypotheses: bool = False,
+    |         partial_hypothesis: Optional[List['Hypothesis']] = None,
+    |         num_workers: int = 0,
+    |         channel_selector: Optional[ChannelSelectorType] = None,
+    |         augmentor: DictConfig = None,
+    |         verbose: bool = True,
+    |         timestamps: Optional[bool] = None,
+    |         override_config: Optional[HybridRNNTCTCPromptTranscribeConfig] = None,
+    |         **prompt,
+    |     ) -> TranscriptionReturnType:
+    |         """
+    |         Uses greedy decoding to transcribe audio files. Use this method for debugging and prototyping.
+    | 
+    |         Args:
+    |             audio: (a single or list) of paths to audio files or a np.ndarray audio array.
+    |                 Can also be a dataloader object that provides values that can be consumed by the model.
+    |                 Recommended length per file is between 5 and 25 seconds. \
+    |                 But it is possible to pass a few hours long file if enough GPU memory is available.
+    |             batch_size: (int) batch size to use during inference. \
+    |                 Bigger will result in better throughput performance but would use more memory.
+    |             return_hypotheses: (bool) Either return hypotheses or text
+    |                 With hypotheses can do some postprocessing like getting timestamp or rescoring
+    |             partial_hypothesis: (Optional[List['Hypothesis']]) partial hypotheses for streaming
+    |             num_workers: (int) number of workers for DataLoader
+    |             channel_selector: (Optional[ChannelSelectorType]) select a single channel or a subset of channels from
+    |                 multi-channel audio. If set to `'average'`, it performs averaging across channels. Disabled if set
+    |                 to `None`. Defaults to `None`. Uses zero-based indexing.
+    |             augmentor: (DictConfig): Augment audio samples during transcription if augmentor is applied.
+    |             verbose: (bool) whether to display tqdm progress bar
+    |             timestamps: (Optional[bool]) timestamps will be returned if set to True as part of hypothesis object
+    |             override_config: (Optional[HybridRNNTCTCPromptTranscribeConfig]) override transcription config pre-defined by the user.
+    |             **prompt: Optional input to construct the prompts for the model. Accepted formats include:
+    |                 target_lang: (str) target language ID for transcription (e.g., "en-US", "de-DE")
+    |                 prompt_field: (str) field name to use for prompt extraction from manifest
+    |                 Additional prompt parameters can be passed and will be forwarded to the transcription config.
+    ... (112 total lines)
+
+[ERROR] All transcription approaches failed.
+[DEBUG] Dumping model prompt-related attributes:
+  model.num_prompts = 128
+Exception in thread QueueFeederThread:
+Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/multiprocessing/queues.py", line 239, in _feed
+Exception ignored in: <function _ConnectionBase.__del__ at 0x7f59bdd22200>
+Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/multiprocessing/connection.py", line 132, in __del__
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/multiprocessing/connection.py", line 361, in _close
+OSError: [Errno 9] Bad file descriptor
+    reader_close()
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/multiprocessing/connection.py", line 177, in close
+    self._close()
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/multiprocessing/connection.py", line 361, in _close
+    _close(self._handle)
+OSError: [Errno 9] Bad file descriptor
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/nakshatrak_iitp/.conda/envs/asr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
