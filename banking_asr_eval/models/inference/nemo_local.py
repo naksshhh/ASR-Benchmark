@@ -189,6 +189,15 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
             "This is only supported on Param Rudra (requires GPU + heavy deps)."
         )
 
+    # Alias module path for Nemotron-3.5 prompt models to handle NeMo version discrepancies
+    import sys
+    try:
+        import nemo.collections.asr.models.rnnt_bpe_models as rnnt_bpe_models
+        sys.modules['nemo.collections.asr.models.rnnt_bpe_models_prompt'] = rnnt_bpe_models
+        print("[NeMo] Successfully registered sys.modules alias: rnnt_bpe_models_prompt -> rnnt_bpe_models")
+    except ImportError as e:
+        print(f"[NeMo] Warning: Could not register module alias: {e}")
+
     # Load the model — handle NeMo 2.x extraction issues for IndicConformer
     is_indicconformer = "indicconformer" in model_id.lower()
     is_nemotron = "nemotron" in model_id.lower()

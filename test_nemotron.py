@@ -37,6 +37,15 @@ def main():
         
     import torch
 
+    # Register module alias to handle NeMo version class path discrepancies
+    import sys
+    try:
+        import nemo.collections.asr.models.rnnt_bpe_models as rnnt_bpe_models
+        sys.modules['nemo.collections.asr.models.rnnt_bpe_models_prompt'] = rnnt_bpe_models
+        print("Successfully registered sys.modules alias: rnnt_bpe_models_prompt -> rnnt_bpe_models")
+    except ImportError as e:
+        print(f"Warning: Could not register module alias: {e}")
+
     model_id = "nvidia/nemotron-3.5-asr-streaming-0.6b"
     print(f"==========================================")
     print(f"Testing loading of: {model_id}")
@@ -51,6 +60,8 @@ def main():
         print("Method 1 Success!")
     except Exception as e:
         print(f"Method 1 Failed: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
         
     # 2. Try EncDecHybridRNNTCTCBPEModel
     if model is None:
