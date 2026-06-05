@@ -1,0 +1,4475 @@
+[
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0000_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0001_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0002_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0003_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0004_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0005_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0006_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0007_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0008_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0009_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0010_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0011_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0012_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0013_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0014_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0015_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0016_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0017_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0018_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0019_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0020_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0021_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0022_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0023_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0024_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0025_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0026_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0027_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0028_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0029_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0030_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0031_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0032_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0033_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0034_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0035_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0036_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0037_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0038_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0039_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0040_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0041_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0042_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0043_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0044_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0045_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0046_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0047_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0048_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0049_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0050_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0051_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0052_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0053_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0054_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0055_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0056_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0057_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0058_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0059_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0060_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0061_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0062_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0063_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0064_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0065_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0066_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0067_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0068_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0069_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0070_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0071_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0072_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0073_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0074_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0075_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0076_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0077_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0078_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0079_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0080_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0081_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0082_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0083_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0084_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0085_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0086_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0087_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0088_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0089_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0090_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0091_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0092_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0093_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0094_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0095_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0096_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0097_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0098_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0099_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0100_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0101_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0102_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0103_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0104_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0105_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0106_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0107_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0108_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0109_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0110_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0111_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0112_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0113_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0114_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0115_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0116_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0117_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0118_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0119_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0120_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0121_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0122_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0123_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0124_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0125_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0126_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0127_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0128_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0129_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0130_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0131_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0132_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0133_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0134_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0135_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0136_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0137_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0138_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0139_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0140_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0141_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0142_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0143_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0144_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0145_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0146_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0147_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0148_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0149_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0150_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0151_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0152_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0153_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0154_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0155_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0156_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0157_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0158_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0159_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0160_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0161_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0162_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0163_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0164_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0165_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0166_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0167_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0168_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0169_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0170_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0171_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0172_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0173_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0174_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0175_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0176_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0177_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0178_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0179_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0180_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0181_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0182_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0183_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0184_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0185_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0186_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0187_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0188_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0189_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0190_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0191_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0192_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0193_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0194_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0195_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0196_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0197_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0198_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0199_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0200_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0201_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0202_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0203_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0204_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0205_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0206_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0207_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0208_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0209_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0210_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0211_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0212_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0213_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0214_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0215_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0216_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0217_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0218_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0219_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0220_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0221_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0222_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0223_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0224_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0225_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0226_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0227_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0228_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0229_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0230_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0231_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0232_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0233_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0234_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0235_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0236_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0237_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0238_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0239_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0240_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0241_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0242_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0243_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0244_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0245_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0246_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0247_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0248_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0249_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0250_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0251_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0252_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0253_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0254_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0255_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0256_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0257_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0258_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0259_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0260_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0261_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0262_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0263_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0264_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0265_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0266_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0267_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0268_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0269_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0270_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0271_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0272_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0273_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0274_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0275_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0276_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0277_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0278_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0279_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0280_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0281_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0282_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0283_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0284_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0285_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0286_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0287_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0288_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0289_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0290_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0291_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0292_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0293_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0294_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0295_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0296_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0297_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0298_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0299_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0300_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0301_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0302_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0303_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0304_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0305_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0306_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0307_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0308_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0309_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0310_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0311_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0312_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0313_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0314_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0315_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0316_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0317_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0318_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0319_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0320_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0321_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0322_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0323_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0324_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0325_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0326_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0327_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0328_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0329_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0330_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0331_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0332_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0333_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0334_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0335_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0336_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0337_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0338_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0339_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0340_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0341_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0342_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0343_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0344_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0345_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0346_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0347_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0348_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0349_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0350_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0351_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0352_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0353_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0354_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0355_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0356_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0357_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0358_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0359_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0360_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0361_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0362_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0363_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0364_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0365_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0366_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0367_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0368_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0369_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0370_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0371_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0372_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0373_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0374_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0375_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0376_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0377_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0378_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0379_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0380_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0381_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0382_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0383_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0384_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0385_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0386_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0387_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0388_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0389_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0390_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0391_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0392_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0393_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0394_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0395_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0396_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0397_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0398_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0399_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0400_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0401_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0402_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0403_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0404_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0405_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0406_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0407_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0408_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0409_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0410_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0411_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0412_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0413_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0414_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0415_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0416_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0417_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0418_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0419_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0420_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0421_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0422_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0423_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0424_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0425_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0426_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0427_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0428_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0429_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0430_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0431_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0432_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0433_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0434_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0435_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0436_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0437_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0438_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0439_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0440_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0441_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0442_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0443_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0444_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0445_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0446_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0447_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0448_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0449_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0450_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0451_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0452_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0453_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0454_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0455_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0456_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0457_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0458_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0459_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0460_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0461_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0462_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0463_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0464_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0465_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0466_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0467_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0468_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0469_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0470_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0471_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0472_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0473_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0474_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0475_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0476_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0477_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0478_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0479_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0480_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0481_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0482_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0483_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0484_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0485_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0486_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0487_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0488_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0489_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0490_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0491_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0492_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0493_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0494_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0495_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0496_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0497_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0498_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0499_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0500_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0501_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0502_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0503_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0504_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0505_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0506_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0507_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0508_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0509_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0510_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0511_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0512_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0513_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0514_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0515_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0516_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0517_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0518_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0519_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0520_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0521_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0522_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0523_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0524_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0525_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0526_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0527_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0528_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0529_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0530_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0531_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0532_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0533_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0534_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0535_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0536_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0537_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0538_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0539_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0540_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0541_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0542_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0543_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0544_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0545_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0546_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0547_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0548_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0549_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0550_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0551_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0552_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0553_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0554_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0555_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0556_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0557_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0558_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0559_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0560_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0561_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0562_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0563_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0564_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0565_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0566_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0567_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0568_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0569_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0570_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0571_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0572_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0573_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0574_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0575_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0576_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0577_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0578_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0579_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0580_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0581_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0582_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0583_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0584_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0585_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0586_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0587_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0588_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0589_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0590_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0591_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0592_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0593_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0594_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0595_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0596_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0597_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0598_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0599_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0600_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0601_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0602_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0603_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0604_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0605_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0606_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0607_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0608_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0609_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0610_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0611_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0612_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0613_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0614_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0615_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0616_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0617_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0618_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0619_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0620_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0621_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0622_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0623_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0624_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0625_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0626_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0627_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0628_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0629_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0630_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0631_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0632_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0633_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0634_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0635_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0636_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0637_agent.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  },
+  {
+    "audio_id": "unknown",
+    "error": "[Errno 2] No such file or directory: '/home/nakshatrak_iitp/ASR-Benchmark/data/synthetic/data/synthetic/audio/synth_0638_customer.wav'",
+    "wer": null,
+    "model": "whisper-medium-banking-configC",
+    "dataset": "manifest.json"
+  }
+]
