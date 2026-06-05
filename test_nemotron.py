@@ -199,7 +199,7 @@ def main():
     success = False
     try:
         from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG)
+        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG, num_workers=0)
         print(f"Calling model.transcribe with override_config(target_lang='{TARGET_LANG}')...")
         transcriptions = model.transcribe([wav_path], override_config=cfg)
         print(f"Transcription result: {repr(transcriptions)}")

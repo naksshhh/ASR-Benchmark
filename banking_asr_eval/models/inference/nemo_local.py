@@ -396,7 +396,7 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                 )
             elif is_nemotron:
                 from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-                _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang)
+                _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang, num_workers=0)
                 transcriptions = model.transcribe(
                     [converted_path], override_config=_tcfg
                 )
