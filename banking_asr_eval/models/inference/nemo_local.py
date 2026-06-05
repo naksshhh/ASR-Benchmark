@@ -204,6 +204,8 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
 
     # Register module alias and map missing prompt module to existing hybrid prompt class
     try:
+        import sys
+        import types
         import nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt as hybrid_prompt
         EncDecHybridRNNTCTCBPEModelWithPrompt = hybrid_prompt.EncDecHybridRNNTCTCBPEModelWithPrompt
         
