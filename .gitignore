@@ -17,6 +17,8 @@ data/datasets/
 model_cache/
 checkpoints/
 data/audio
+lahaja/data/
+lahaja/audio/
 # Results (regeneratable)
 !results/
 data/synthetic/audio
