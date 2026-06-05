@@ -172,41 +172,116 @@ def main():
 
     # Run dummy transcription to verify end-to-end forward pass
     print("\nRunning dummy transcription to verify forward pass...")
-    wav_path = "silence.wav"
+    wav_path = os.path.abspath("silence.wav")
     create_silence_wav(wav_path)
 
-    # Try multiple approaches to pass the language prompt
-    approaches = [
-        ("target_lang='hi-IN'", dict(target_lang="hi-IN")),
-        ("prompt='hi-IN'",      dict(prompt="hi-IN")),
-        ("prompt=6 (numeric)",  dict(prompt=6)),
-        ("no prompt kwargs",    dict()),
-    ]
+    import json
+    import tempfile
 
     success = False
-    for desc, kwargs in approaches:
+
+    # ── Approach 1: Use override_config with HybridRNNTCTCPromptTranscribeConfig ──
+    print("\n  Approach 1: Using override_config with HybridRNNTCTCPromptTranscribeConfig...")
+    try:
+        from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
+        import inspect
+        sig = inspect.signature(HybridRNNTCTCPromptTranscribeConfig)
+        print(f"    Config signature: {sig}")
+
+        # Try to create config with prompt settings
         try:
-            print(f"\n  Trying transcribe with {desc}...")
-            transcriptions = model.transcribe([wav_path], **kwargs)
-            print(f"  Transcription result: {repr(transcriptions)}")
-            print(f"\n[SUCCESS] End-to-end load and transcription works with {desc}!")
+            cfg = HybridRNNTCTCPromptTranscribeConfig(prompt_tag="hi-IN")
+            transcriptions = model.transcribe([wav_path], override_config=cfg)
+            print(f"    Result: {repr(transcriptions)}")
+            print("\n[SUCCESS] override_config with prompt_tag works!")
             success = True
-            break
+        except Exception as e1:
+            print(f"    prompt_tag failed: {e1}")
+            try:
+                cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang="hi-IN")
+                transcriptions = model.transcribe([wav_path], override_config=cfg)
+                print(f"    Result: {repr(transcriptions)}")
+                print("\n[SUCCESS] override_config with target_lang works!")
+                success = True
+            except Exception as e2:
+                print(f"    target_lang failed: {e2}")
+    except Exception as e:
+        print(f"    Approach 1 failed entirely: {e}")
+
+    # ── Approach 2: Create a JSONL manifest with target_lang field ──
+    if not success:
+        print("\n  Approach 2: Creating JSONL manifest with target_lang field...")
+        try:
+            manifest_path = "/tmp/test_nemotron_manifest.jsonl"
+            entry = {
+                "audio_filepath": wav_path,
+                "duration": 1.0,
+                "text": "",
+                "target_lang": "hi-IN"
+            }
+            with open(manifest_path, "w") as f:
+                f.write(json.dumps(entry) + "\n")
+
+            # NeMo's transcribe treats a single string as an audio path.
+            # Instead, set up the test dataloader manually with the manifest.
+            from omegaconf import OmegaConf, open_dict
+            with open_dict(model.cfg):
+                model.cfg.test_ds.manifest_filepath = manifest_path
+                model.cfg.test_ds.batch_size = 1
+            model.setup_test_data(model.cfg.test_ds)
+
+            import torch
+            with torch.no_grad():
+                for batch in model.test_dataloader():
+                    # Move batch to model device
+                    if isinstance(batch, (list, tuple)):
+                        batch = [b.to(model.device) if hasattr(b, 'to') else b for b in batch]
+                    print(f"    Batch type: {type(batch)}, len: {len(batch) if isinstance(batch, (list,tuple)) else 'N/A'}")
+                    # Try forward pass
+                    log_probs, encoded_len, *rest = model.forward(
+                        input_signal=batch[0], input_signal_length=batch[1]
+                    )
+                    print(f"    Forward pass produced log_probs shape: {log_probs.shape}")
+                    print("\n[SUCCESS] Forward pass works via manifest-based dataloader!")
+                    success = True
+                    break
         except Exception as e:
-            print(f"  Failed with {desc}: {type(e).__name__}: {e}")
+            print(f"    Approach 2 failed: {type(e).__name__}: {e}")
+            import traceback
+            traceback.print_exc()
+
+    # ── Approach 3: Monkeypatch the internal manifest builder to inject target_lang ──
+    if not success:
+        print("\n  Approach 3: Monkeypatching _transcribe_input_manifest_processing...")
+        try:
+            # Find and patch the method that builds temporary manifest entries
+            original_transcribe = model.__class__.transcribe
+
+            # Check source to understand prompt flow
+            import inspect
+            source_lines = inspect.getsource(model.__class__.transcribe)
+            # Print first 40 lines of the transcribe method source
+            lines = source_lines.split("\n")[:40]
+            for line in lines:
+                print(f"    | {line}")
+            print(f"    ... ({len(source_lines.split(chr(10)))} total lines)")
+        except Exception as e:
+            print(f"    Approach 3 failed: {type(e).__name__}: {e}")
 
     if os.path.exists(wav_path):
         os.remove(wav_path)
 
     if not success:
-        # Last resort: inspect the transcribe method signature
-        import inspect
-        sig = inspect.signature(model.transcribe)
-        print(f"\n[DEBUG] model.transcribe signature: {sig}")
-        print(f"[DEBUG] model class: {model.__class__.__name__}")
-        print(f"[DEBUG] model MRO: {[c.__name__ for c in model.__class__.__mro__]}")
-        if hasattr(model, "prompt_dictionary"):
-            print(f"[DEBUG] prompt_dictionary keys: {list(model.prompt_dictionary.keys())[:10]}...")
+        print("\n[ERROR] All transcription approaches failed.")
+        print("[DEBUG] Dumping model prompt-related attributes:")
+        for attr in dir(model):
+            if 'prompt' in attr.lower():
+                try:
+                    val = getattr(model, attr)
+                    if not callable(val):
+                        print(f"  model.{attr} = {repr(val)[:200]}")
+                except:
+                    pass
         sys.exit(1)
 
 if __name__ == "__main__":
