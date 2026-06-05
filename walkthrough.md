@@ -150,19 +150,22 @@ We successfully executed evaluation sweeps for `indicwav2vec-banking-configD` (f
 
 *   **Insight:** Config D significantly reduces the domain drift (forgetting) seen in Config C, recovering **2.68% absolute** in general-domain Hindi WER. This is due to the regularizing effect of mixing the large-scale Project Vaani (Hindi-Belt) and RESPIN datasets.
 
-### 3. Accent-Stratified Results on `lahaja`
+### 3. Comparative Accent-Stratified Results on `lahaja`
 
-| Accent Group | Sample Count | WER (%) | CER (%) |
-| :--- | :---: | :---: | :---: |
-| **punjab_haryana** | 236 | 101.76% | - |
-| **hindi_belt** | 287 | 102.45% | - |
-| **south_india** | 1334 | 115.14% | - |
-| **east_india** | 792 | 125.27% | - |
-| **west_india** | 694 | 136.55% | - |
-| **other** | 2809 | 143.99% | - |
-| **Overall Mean** | **6152** | **130.93%** | **139.19%** |
+| Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` |
+| :--- | :---: | :---: | :---: | :---: |
+| **punjab_haryana** | 236 | 106.62% | 304.38% | **101.76%** |
+| **hindi_belt** | 287 | **101.81%** | 209.24% | 102.45% |
+| **south_india** | 1334 | 116.94% | 196.74% | **115.14%** |
+| **east_india** | 792 | 126.29% | 161.56% | **125.27%** |
+| **west_india** | 694 | 139.65% | 160.37% | **136.55%** |
+| **other** | 2809 | 147.63% | 224.27% | **143.99%** |
+| **Overall Mean** | **6152** | **133.62%** | **205.39%** | **130.93%** |
 
-*   **Why the Lahaja WER/CER is > 100%:** 
-    *   **Script / Tokenization Mismatch:** The LAHAJA test transcripts contain a large portion of non-standard Devanagari script markers, bracketed tags (e.g. noise/laughter annotations), or romanized English words. 
-    *   Because `indicwav2vec` uses a strict character-level CTC tokenizer restricted solely to standard Devanagari, any romanized word or special character results in a 100% substitution error rate.
-    *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%. We will see if the BPE-based Whisper tokenizer handles this vocabulary mismatch better once Whisper Config D finishes training.
+*   **Insight & Analysis:**
+    *   **Config D Improvements:** Fine-tuning on Config D (`indicwav2vec-banking-configD`) yields a consistent **2.69% absolute improvement** in overall WER (dropping to **130.93%** from the baseline **133.62%**), with improvements across almost every accent group.
+    *   **Catastrophic Whisper Baseline Failure:** The baseline `whisper-medium-hi` struggles heavily on this dataset, scoring an overall mean WER of **205.39%**. This is primarily caused by insertion errors, hallucinated repeats, and severe script confusion on local dialect audio compared to the reference transcripts.
+    *   **Why the Lahaja WER/CER is > 100%:** 
+        *   **Script / Tokenization Mismatch:** The LAHAJA test transcripts contain a large portion of non-standard Devanagari script markers, bracketed tags (e.g. noise/laughter annotations), or romanized English words. 
+        *   Because `indicwav2vec` uses a strict character-level CTC tokenizer restricted solely to standard Devanagari, any romanized word or special character results in a 100% substitution error rate.
+        *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%. We will see if the BPE-based Whisper tokenizer handles this vocabulary mismatch better once Whisper Config D finishes training.
