@@ -291,17 +291,28 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
     # when transcribing from raw audio paths. Patch to use target_lang as default.
     if is_nemotron:
         try:
+            import inspect as _inspect
             import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
-            _orig_get_prompt_index = lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index
             _default_lang = target_lang
 
-            def _patched_get_prompt_index(self, lang):
-                if lang is None or str(lang) == 'None':
-                    lang = _default_lang
-                return _orig_get_prompt_index(self, lang)
+            patched_count = 0
+            for name, cls in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass):
+                if hasattr(cls, '_get_prompt_index'):
+                    original_fn = cls._get_prompt_index
 
-            lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index = _patched_get_prompt_index
-            print(f"[NeMo] Monkeypatched _get_prompt_index to default to '{target_lang}' when language is None")
+                    def make_patch(orig, default_lang):
+                        def patched(self, lang):
+                            if lang is None or str(lang) == 'None':
+                                lang = default_lang
+                            return orig(self, lang)
+                        return patched
+
+                    cls._get_prompt_index = make_patch(original_fn, _default_lang)
+                    patched_count += 1
+                    print(f"[NeMo] Monkeypatched {name}._get_prompt_index to default None -> '{target_lang}'")
+
+            if patched_count == 0:
+                print(f"[NeMo] Warning: No classes with _get_prompt_index found in {lhotse_prompt_mod.__name__}")
         except Exception as e:
             print(f"[NeMo] Warning: Could not monkeypatch _get_prompt_index: {e}")
 

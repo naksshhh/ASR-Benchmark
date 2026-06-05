@@ -180,20 +180,33 @@ def main():
     # when transcribing from raw audio paths. We patch it to use a default.
     TARGET_LANG = "hi-IN"
     try:
+        import inspect as _inspect
         import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
         
-        original_get_prompt_index = lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index
+        patched_count = 0
+        for name, cls in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass):
+            if hasattr(cls, '_get_prompt_index'):
+                original_fn = cls._get_prompt_index
+                _tl = TARGET_LANG  # capture in closure
+                
+                def make_patch(orig, default_lang):
+                    def patched(self, lang):
+                        if lang is None or str(lang) == 'None':
+                            lang = default_lang
+                        return orig(self, lang)
+                    return patched
+                
+                cls._get_prompt_index = make_patch(original_fn, _tl)
+                patched_count += 1
+                print(f"Monkeypatched {name}._get_prompt_index to default None -> '{TARGET_LANG}'")
         
-        def patched_get_prompt_index(self, lang):
-            if lang is None or str(lang) == 'None':
-                lang = TARGET_LANG
-                print(f"    [PATCH] Replaced None language with '{lang}'", flush=True)
-            return original_get_prompt_index(self, lang)
-        
-        lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index = patched_get_prompt_index
-        print(f"Monkeypatched _get_prompt_index to default to '{TARGET_LANG}' when language is None")
+        if patched_count == 0:
+            print(f"Warning: No classes with _get_prompt_index found in {lhotse_prompt_mod.__name__}")
+            print(f"  Available classes: {[n for n, c in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass)]}")
     except Exception as e:
         print(f"Warning: Could not monkeypatch _get_prompt_index: {e}")
+        import traceback
+        traceback.print_exc()
 
     # Now transcribe with override_config
     success = False
