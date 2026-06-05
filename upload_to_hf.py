@@ -40,6 +40,8 @@ def main():
     parser = argparse.ArgumentParser(description="Upload fine-tuned model checkpoints to Hugging Face Hub")
     parser.add_argument("--token", default=os.environ.get("HF_TOKEN"), help="Hugging Face write token (defaults to HF_TOKEN env var)")
     parser.add_argument("--public", action="store_true", help="Set repository to public (default is private)")
+    parser.add_argument("--model", help="Specify a specific model repo name to upload (e.g., indicwav2vec-banking-configD)")
+    parser.add_argument("--config", help="Specify a specific config to upload (e.g., B, C, or D)")
     args = parser.parse_args()
 
     # Define the models we want to upload (Targeting only the final folders)
@@ -71,6 +73,22 @@ def main():
             "repo_name": "whisper-medium-banking-configD"
         }
     ]
+
+    # Filter models if arguments are provided
+    if args.model:
+        models_to_upload = [m for m in models_to_upload if m["repo_name"] == args.model]
+        if not models_to_upload:
+            print(f"Error: Model '{args.model}' not found in the predefined list.")
+            return
+
+    if args.config:
+        config_suffix = f"config{args.config.upper()}"
+        models_to_upload = [m for m in models_to_upload if config_suffix in m["repo_name"]]
+        if not models_to_upload:
+            print(f"Error: No models matching config '{args.config}' found.")
+            return
+
+    print(f"Selected models for upload: {[m['repo_name'] for m in models_to_upload]}")
 
     for model in models_to_upload:
         if os.path.exists(model["local_dir"]):
