@@ -74,6 +74,11 @@ models:
     model_id: "stt_hi_conformer_ctc_large"
     enabled: false
 
+  stt-hi-conformer-ctc-medium:
+    backend: "nemo"
+    model_id: "stt_hi_conformer_ctc_medium"
+    enabled: false
+
   whisper-medium-hi:  #done
     backend: "whisper"
     model_id: "openai/whisper-medium"

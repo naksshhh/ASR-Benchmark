@@ -272,6 +272,35 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
             print(f"[NeMo] from_pretrained failed (missing model_config.yaml). "
                   f"Attempting manual .nemo archive extraction...")
             model = _load_nemo_manually(nemo_asr, model_id)
+        elif "stt_hi_conformer_ctc_large" in model_id:
+            print(f"[NeMo] Warning: Model '{model_id}' was not found in the local NeMo registry: {e}")
+            
+            # Check for local downloaded files
+            import glob
+            search_paths = [
+                "./stt_hi_conformer_ctc_large.nemo",
+                "stt_hi_conformer_ctc_large.nemo",
+                "/scratch/*/stt_hi_conformer_ctc_large.nemo",
+                "/scratch/*/*/stt_hi_conformer_ctc_large.nemo",
+                os.path.expanduser("~/stt_hi_conformer_ctc_large.nemo"),
+                os.path.expanduser("~/.cache/torch/NeMo/stt_hi_conformer_ctc_large.nemo"),
+            ]
+            local_file = None
+            for p in search_paths:
+                matches = glob.glob(p)
+                if matches and os.path.exists(matches[0]):
+                    local_file = matches[0]
+                    break
+            
+            if local_file:
+                print(f"[NeMo] Found local checkpoint at {local_file}. Restoring...")
+                from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
+                model = EncDecCTCModelBPE.restore_from(local_file)
+            else:
+                fallback_id = "stt_hi_conformer_ctc_medium"
+                print(f"[NeMo] No local checkpoint found for '{model_id}'. Falling back to registered model: '{fallback_id}'")
+                from nemo.collections.asr.models.ctc_bpe_models import EncDecCTCModelBPE
+                model = EncDecCTCModelBPE.from_pretrained(fallback_id)
         else:
             raise
 
