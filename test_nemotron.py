@@ -175,113 +175,46 @@ def main():
     wav_path = os.path.abspath("silence.wav")
     create_silence_wav(wav_path)
 
-    import json
-    import tempfile
+    # ── Root cause fix: monkeypatch _get_prompt_index to handle None language ──
+    # NeMo's Lhotse dataset reads cut.supervisions[0].language which is None
+    # when transcribing from raw audio paths. We patch it to use a default.
+    TARGET_LANG = "hi-IN"
+    try:
+        import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
+        
+        original_get_prompt_index = lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index
+        
+        def patched_get_prompt_index(self, lang):
+            if lang is None or str(lang) == 'None':
+                lang = TARGET_LANG
+                print(f"    [PATCH] Replaced None language with '{lang}'", flush=True)
+            return original_get_prompt_index(self, lang)
+        
+        lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index = patched_get_prompt_index
+        print(f"Monkeypatched _get_prompt_index to default to '{TARGET_LANG}' when language is None")
+    except Exception as e:
+        print(f"Warning: Could not monkeypatch _get_prompt_index: {e}")
 
+    # Now transcribe with override_config
     success = False
-
-    # ── Approach 1: Use override_config with HybridRNNTCTCPromptTranscribeConfig ──
-    print("\n  Approach 1: Using override_config with HybridRNNTCTCPromptTranscribeConfig...")
     try:
         from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-        import inspect
-        sig = inspect.signature(HybridRNNTCTCPromptTranscribeConfig)
-        print(f"    Config signature: {sig}")
-
-        # Try to create config with prompt settings
-        try:
-            cfg = HybridRNNTCTCPromptTranscribeConfig(prompt_tag="hi-IN")
-            transcriptions = model.transcribe([wav_path], override_config=cfg)
-            print(f"    Result: {repr(transcriptions)}")
-            print("\n[SUCCESS] override_config with prompt_tag works!")
-            success = True
-        except Exception as e1:
-            print(f"    prompt_tag failed: {e1}")
-            try:
-                cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang="hi-IN")
-                transcriptions = model.transcribe([wav_path], override_config=cfg)
-                print(f"    Result: {repr(transcriptions)}")
-                print("\n[SUCCESS] override_config with target_lang works!")
-                success = True
-            except Exception as e2:
-                print(f"    target_lang failed: {e2}")
+        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG)
+        print(f"Calling model.transcribe with override_config(target_lang='{TARGET_LANG}')...")
+        transcriptions = model.transcribe([wav_path], override_config=cfg)
+        print(f"Transcription result: {repr(transcriptions)}")
+        print(f"\n[SUCCESS] End-to-end load and transcription works!")
+        success = True
     except Exception as e:
-        print(f"    Approach 1 failed entirely: {e}")
-
-    # ── Approach 2: Create a JSONL manifest with target_lang field ──
-    if not success:
-        print("\n  Approach 2: Creating JSONL manifest with target_lang field...")
-        try:
-            manifest_path = "/tmp/test_nemotron_manifest.jsonl"
-            entry = {
-                "audio_filepath": wav_path,
-                "duration": 1.0,
-                "text": "",
-                "target_lang": "hi-IN"
-            }
-            with open(manifest_path, "w") as f:
-                f.write(json.dumps(entry) + "\n")
-
-            # NeMo's transcribe treats a single string as an audio path.
-            # Instead, set up the test dataloader manually with the manifest.
-            from omegaconf import OmegaConf, open_dict
-            with open_dict(model.cfg):
-                model.cfg.test_ds.manifest_filepath = manifest_path
-                model.cfg.test_ds.batch_size = 1
-            model.setup_test_data(model.cfg.test_ds)
-
-            import torch
-            with torch.no_grad():
-                for batch in model.test_dataloader():
-                    # Move batch to model device
-                    if isinstance(batch, (list, tuple)):
-                        batch = [b.to(model.device) if hasattr(b, 'to') else b for b in batch]
-                    print(f"    Batch type: {type(batch)}, len: {len(batch) if isinstance(batch, (list,tuple)) else 'N/A'}")
-                    # Try forward pass
-                    log_probs, encoded_len, *rest = model.forward(
-                        input_signal=batch[0], input_signal_length=batch[1]
-                    )
-                    print(f"    Forward pass produced log_probs shape: {log_probs.shape}")
-                    print("\n[SUCCESS] Forward pass works via manifest-based dataloader!")
-                    success = True
-                    break
-        except Exception as e:
-            print(f"    Approach 2 failed: {type(e).__name__}: {e}")
-            import traceback
-            traceback.print_exc()
-
-    # ── Approach 3: Monkeypatch the internal manifest builder to inject target_lang ──
-    if not success:
-        print("\n  Approach 3: Monkeypatching _transcribe_input_manifest_processing...")
-        try:
-            # Find and patch the method that builds temporary manifest entries
-            original_transcribe = model.__class__.transcribe
-
-            # Check source to understand prompt flow
-            import inspect
-            source_lines = inspect.getsource(model.__class__.transcribe)
-            # Print first 40 lines of the transcribe method source
-            lines = source_lines.split("\n")[:40]
-            for line in lines:
-                print(f"    | {line}")
-            print(f"    ... ({len(source_lines.split(chr(10)))} total lines)")
-        except Exception as e:
-            print(f"    Approach 3 failed: {type(e).__name__}: {e}")
+        print(f"[ERROR] Transcription with override_config failed: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
 
     if os.path.exists(wav_path):
         os.remove(wav_path)
 
     if not success:
-        print("\n[ERROR] All transcription approaches failed.")
-        print("[DEBUG] Dumping model prompt-related attributes:")
-        for attr in dir(model):
-            if 'prompt' in attr.lower():
-                try:
-                    val = getattr(model, attr)
-                    if not callable(val):
-                        print(f"  model.{attr} = {repr(val)[:200]}")
-                except:
-                    pass
+        print("\n[ERROR] Transcription failed. See traceback above.")
         sys.exit(1)
 
 if __name__ == "__main__":

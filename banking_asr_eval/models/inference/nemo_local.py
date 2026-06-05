@@ -286,6 +286,25 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
         model.cur_decoder = "rnnt"
         print(f"[NeMo] Set cur_decoder='rnnt' for Nemotron-3.5")
 
+    # Monkeypatch Lhotse prompt dataset to handle None language during transcription
+    # NeMo's Lhotse dataset reads cut.supervisions[0].language which is None
+    # when transcribing from raw audio paths. Patch to use target_lang as default.
+    if is_nemotron:
+        try:
+            import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
+            _orig_get_prompt_index = lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index
+            _default_lang = target_lang
+
+            def _patched_get_prompt_index(self, lang):
+                if lang is None or str(lang) == 'None':
+                    lang = _default_lang
+                return _orig_get_prompt_index(self, lang)
+
+            lhotse_prompt_mod.PromptedAudioToTextLhotseDataset._get_prompt_index = _patched_get_prompt_index
+            print(f"[NeMo] Monkeypatched _get_prompt_index to default to '{target_lang}' when language is None")
+        except Exception as e:
+            print(f"[NeMo] Warning: Could not monkeypatch _get_prompt_index: {e}")
+
     def _ensure_wav_16k(audio_path: str) -> str:
         """
         IndicConformer and Nemotron require 16kHz mono WAV input.
@@ -376,8 +395,10 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                     [converted_path], batch_size=1, logprobs=False, language_id="hi"
                 )
             elif is_nemotron:
+                from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
+                _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang)
                 transcriptions = model.transcribe(
-                    [converted_path], target_lang=target_lang
+                    [converted_path], override_config=_tcfg
                 )
             else:
                 transcriptions = model.transcribe([converted_path])
