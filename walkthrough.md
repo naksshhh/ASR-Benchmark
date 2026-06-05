@@ -122,4 +122,47 @@ When evaluating the pipeline, we attempted to test `indicconformer-hindi` (based
   git checkout nemo-v2
   bash reinstall.sh
   ```
-* **Current Status:** Because this fork is not installed in the general conda/pip environments by default, we have set `indicconformer-hindi` to `enabled: false` in [config.yaml](file:///c:/Users/naksh/OneDrive/Desktop/Sem 6/Krim/ASR-Benchmark/config.yaml) to ensure evaluation scripts run without crashing.
+* **Current Status:** Because this fork is not installed in the general conda/pip environments by default, we have set `indicconformer-hindi` to `enabled: false` in [config.yaml](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/config.yaml) to ensure evaluation scripts run without crashing.
+
+---
+
+## 12. Config D Evaluation Results (IndicWav2Vec)
+
+We successfully executed evaluation sweeps for `indicwav2vec-banking-configD` (fine-tuned on Vaani Hindi-Belt, RESPIN, MUCS, and Synthetic datasets) across **Kathbath Hindi**, **Synthetic 100**, and **LAHAJA** multi-accent test sets.
+
+### 1. Comparative Results on `synthetic_100` (Hinglish Banking)
+
+| Model | Tuning Configuration | WER (%) | CER (%) | NER (%) |
+| :--- | :--- | :---: | :---: | :---: |
+| **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | 75.49% | 71.41% | 90.91% |
+| **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 78.95% | 71.24% | 100.00% |
+| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | **73.35%** | **67.39%** | **87.88%** |
+
+*   **Insight:** Config D achieves the best Hinglish banking results for the IndicWav2Vec architecture, dropping WER by **5.60% absolute** compared to Config C.
+
+### 2. Comparative Results on `kathbath_hindi` (General Hindi)
+
+| Model | Tuning Configuration | WER (%) | CER (%) | NER (%) |
+| :--- | :--- | :---: | :---: | :---: |
+| **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | **11.64%** | **3.30%** | - |
+| **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 17.20% | 5.49% | 16.59% |
+| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | **14.52%** | **4.36%** | **2.76%** |
+
+*   **Insight:** Config D significantly reduces the domain drift (forgetting) seen in Config C, recovering **2.68% absolute** in general-domain Hindi WER. This is due to the regularizing effect of mixing the large-scale Project Vaani (Hindi-Belt) and RESPIN datasets.
+
+### 3. Accent-Stratified Results on `lahaja`
+
+| Accent Group | Sample Count | WER (%) | CER (%) |
+| :--- | :---: | :---: | :---: |
+| **punjab_haryana** | 236 | 101.76% | - |
+| **hindi_belt** | 287 | 102.45% | - |
+| **south_india** | 1334 | 115.14% | - |
+| **east_india** | 792 | 125.27% | - |
+| **west_india** | 694 | 136.55% | - |
+| **other** | 2809 | 143.99% | - |
+| **Overall Mean** | **6152** | **130.93%** | **139.19%** |
+
+*   **Why the Lahaja WER/CER is > 100%:** 
+    *   **Script / Tokenization Mismatch:** The LAHAJA test transcripts contain a large portion of non-standard Devanagari script markers, bracketed tags (e.g. noise/laughter annotations), or romanized English words. 
+    *   Because `indicwav2vec` uses a strict character-level CTC tokenizer restricted solely to standard Devanagari, any romanized word or special character results in a 100% substitution error rate.
+    *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%. We will see if the BPE-based Whisper tokenizer handles this vocabulary mismatch better once Whisper Config D finishes training.

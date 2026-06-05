@@ -18,6 +18,7 @@ model_cache/
 checkpoints/
 data/audio
 # Results (regeneratable)
+!results/
 data/synthetic/audio
 
 # IDE
