@@ -37,14 +37,14 @@ export TOKENIZERS_PARALLELISM=false
 # We will disable HF_HUB_OFFLINE temporarily if needed. Run "python test_nemotron.py"
 # on the login node first to pre-cache the model weights and verify loading works.
 
-echo "====== Starting Kathbath Evaluation (Nemotron-3.5 ASR, target_lang=hi-IN) ======"
-# Make sure target_lang is set to hi-IN
-sed -i 's/target_lang: "auto"/target_lang: "hi-IN"/g' config.yaml
-python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/kathbath_hindi.json \
-  --models nemotron-3.5-asr \
-  --output results/ \
-  --workers 1
+# echo "====== Starting Kathbath Evaluation (Nemotron-3.5 ASR, target_lang=hi-IN) ======"
+# # Make sure target_lang is set to hi-IN
+# sed -i 's/target_lang: "auto"/target_lang: "hi-IN"/g' config.yaml
+# python -m banking_asr_eval.evaluate \
+#   --manifest data/manifests/kathbath_hindi.json \
+#   --models nemotron-3.5-asr \
+#   --output results/ \
+#   --workers 1
 
 echo "====== Starting Synthetic 100 Evaluation (Nemotron-3.5 ASR, target_lang=auto) ======"
 # Change target_lang to auto for code-switching/language detection
@@ -55,13 +55,13 @@ python -m banking_asr_eval.evaluate \
   --output results/ \
   --workers 1
 
-echo "====== Starting Lahaja Evaluation (Nemotron-3.5 ASR, target_lang=auto) ======"
-python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/lahaja.json \
-  --models nemotron-3.5-asr \
-  --output results/ \
-  --stratify-by accent_group \
-  --workers 1
+# echo "====== Starting Lahaja Evaluation (Nemotron-3.5 ASR, target_lang=auto) ======"
+# python -m banking_asr_eval.evaluate \
+#   --manifest data/manifests/lahaja.json \
+#   --models nemotron-3.5-asr \
+#   --output results/ \
+#   --stratify-by accent_group \
+#   --workers 1
 
 # Restore default target_lang to hi-IN
 sed -i 's/target_lang: "auto"/target_lang: "hi-IN"/g' config.yaml

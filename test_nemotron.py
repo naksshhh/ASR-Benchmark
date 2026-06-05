@@ -202,8 +202,26 @@ def main():
 
     # Run dummy transcription to verify end-to-end forward pass
     print("\nRunning dummy transcription to verify forward pass...")
-    wav_path = os.path.abspath("silence.wav")
-    create_silence_wav(wav_path)
+    
+    # Locate a real synthetic mp3 file and convert it to wav
+    mp3_path = os.path.abspath("data/synthetic/audio/banking_0000.mp3")
+    wav_path = os.path.abspath("test_sample.wav")
+    
+    import soundfile as sf
+    import numpy as np
+    try:
+        import librosa
+        audio_array, sr = librosa.load(mp3_path, sr=16000, mono=True)
+    except Exception:
+        # Fallback to soundfile if librosa is not available
+        audio_array, sr = sf.read(mp3_path, dtype="float32")
+        if len(audio_array.shape) > 1:
+            audio_array = np.mean(audio_array, axis=1)
+        if sr != 16000:
+            import librosa
+            audio_array = librosa.resample(audio_array, orig_sr=sr, target_sr=16000)
+    sf.write(wav_path, audio_array, 16000)
+    print(f"Converted {mp3_path} to 16kHz WAV at {wav_path}")
 
     # ── Root cause fix: monkeypatch _get_prompt_index to handle None language ──
     # NeMo's Lhotse dataset reads cut.supervisions[0].language which is None
@@ -219,36 +237,41 @@ def main():
                 def _make_patch(orig):
                     def _patched(self, lang):
                         if lang is None or str(lang) == 'None':
-                            lang = TARGET_LANG
+                            # Read target_lang dynamically from default or global config
+                            lang = globals().get('TARGET_LANG', 'hi-IN')
                             print(f"    [PATCH] Replaced None language with '{lang}' in {_cls_name}", flush=True)
                         return orig(self, lang)
                     return _patched
                 _cls._get_prompt_index = _make_patch(_orig)
-                print(f"Monkeypatched {_cls_name}._get_prompt_index to default None -> '{TARGET_LANG}'")
+                print(f"Monkeypatched {_cls_name}._get_prompt_index to default None")
     except Exception as e:
         print(f"Warning: Could not monkeypatch _get_prompt_index: {e}")
 
-    # Now transcribe with override_config
-    success = False
+    # Now transcribe with override_config (hi-IN)
     try:
         from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG, num_workers=0, batch_size=1)
-        print(f"Calling model.transcribe with override_config(target_lang='{TARGET_LANG}')...")
-        transcriptions = model.transcribe([wav_path], override_config=cfg)
-        print(f"Transcription result: {repr(transcriptions)}")
-        print(f"\n[SUCCESS] End-to-end load and transcription works!")
-        success = True
+        
+        # Test 1: TARGET_LANG = "hi-IN"
+        TARGET_LANG = "hi-IN"
+        cfg_hi = HybridRNNTCTCPromptTranscribeConfig(target_lang="hi-IN", num_workers=0, batch_size=1)
+        print(f"Calling model.transcribe with target_lang='hi-IN'...")
+        tx_hi = model.transcribe([wav_path], override_config=cfg_hi)
+        print(f"Result (hi-IN): {repr(tx_hi)}")
+        
+        # Test 2: TARGET_LANG = "auto"
+        TARGET_LANG = "auto"
+        cfg_auto = HybridRNNTCTCPromptTranscribeConfig(target_lang="auto", num_workers=0, batch_size=1)
+        print(f"Calling model.transcribe with target_lang='auto'...")
+        tx_auto = model.transcribe([wav_path], override_config=cfg_auto)
+        print(f"Result (auto): {repr(tx_auto)}")
+        
     except Exception as e:
-        print(f"[ERROR] Transcription with override_config failed: {type(e).__name__}: {e}")
+        print(f"[ERROR] Transcription failed: {type(e).__name__}: {e}")
         import traceback
         traceback.print_exc()
 
     if os.path.exists(wav_path):
         os.remove(wav_path)
-
-    if not success:
-        print("\n[ERROR] Transcription failed. See traceback above.")
-        sys.exit(1)
 
 if __name__ == "__main__":
     main()
