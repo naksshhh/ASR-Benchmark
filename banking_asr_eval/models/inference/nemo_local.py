@@ -286,6 +286,37 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
         model.cur_decoder = "rnnt"
         print(f"[NeMo] Set cur_decoder='rnnt' for Nemotron-3.5")
 
+    # Monkeypatch model.forward to temporarily replace torch.cat to fix off-by-one prompt shape mismatch
+    if is_nemotron:
+        _orig_model_forward = model.forward
+        def _patched_model_forward(self, *args, **kwargs):
+            import torch
+            import torch.nn.functional as F
+            _orig_cat = torch.cat
+            
+            def _patched_cat(tensors, dim=-1, *cat_args, **cat_kwargs):
+                if len(tensors) == 2 and isinstance(tensors[0], torch.Tensor) and isinstance(tensors[1], torch.Tensor):
+                    t0, t1 = tensors
+                    if t0.dim() == 3 and t1.dim() == 3:
+                        if (dim == -1 or dim == 2) and t0.shape[1] != t1.shape[1]:
+                            diff = t0.shape[1] - t1.shape[1]
+                            if diff > 0:
+                                t1 = F.pad(t1, (0, 0, 0, diff))
+                            else:
+                                t1 = t1[:, :t0.shape[1], :]
+                            tensors = [t0, t1]
+                return _orig_cat(tensors, dim, *cat_args, **cat_kwargs)
+                
+            torch.cat = _patched_cat
+            try:
+                return _orig_model_forward(*args, **kwargs)
+            finally:
+                torch.cat = _orig_cat
+
+        import types
+        model.forward = types.MethodType(_patched_model_forward, model)
+        print("[NeMo] Patched model.forward to resolve prompt shape mismatch", flush=True)
+
     # Monkeypatch Lhotse prompt dataset to handle None language during transcription
     # NeMo's Lhotse dataset reads cut.supervisions[0].language which is None
     # when transcribing from raw audio paths. Patch to use target_lang as default.

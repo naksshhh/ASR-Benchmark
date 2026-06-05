@@ -170,6 +170,36 @@ def main():
         model.cur_decoder = "rnnt"
         print(f"Set cur_decoder = 'rnnt'")
 
+    # Monkeypatch model.forward to temporarily replace torch.cat to fix off-by-one prompt shape mismatch
+    _orig_model_forward = model.forward
+    def _patched_model_forward(self, *args, **kwargs):
+        import torch
+        import torch.nn.functional as F
+        _orig_cat = torch.cat
+        
+        def _patched_cat(tensors, dim=-1, *cat_args, **cat_kwargs):
+            if len(tensors) == 2 and isinstance(tensors[0], torch.Tensor) and isinstance(tensors[1], torch.Tensor):
+                t0, t1 = tensors
+                if t0.dim() == 3 and t1.dim() == 3:
+                    if (dim == -1 or dim == 2) and t0.shape[1] != t1.shape[1]:
+                        diff = t0.shape[1] - t1.shape[1]
+                        if diff > 0:
+                            t1 = F.pad(t1, (0, 0, 0, diff))
+                        else:
+                            t1 = t1[:, :t0.shape[1], :]
+                        tensors = [t0, t1]
+            return _orig_cat(tensors, dim, *cat_args, **cat_kwargs)
+            
+        torch.cat = _patched_cat
+        try:
+            return _orig_model_forward(*args, **kwargs)
+        finally:
+            torch.cat = _orig_cat
+
+    import types
+    model.forward = types.MethodType(_patched_model_forward, model)
+    print("[NeMo] Patched model.forward to resolve prompt shape mismatch", flush=True)
+
     # Run dummy transcription to verify end-to-end forward pass
     print("\nRunning dummy transcription to verify forward pass...")
     wav_path = os.path.abspath("silence.wav")
