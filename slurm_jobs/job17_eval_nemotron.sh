@@ -34,9 +34,8 @@ export NCCL_IB_DISABLE=1
 export TOKENIZERS_PARALLELISM=false
 
 # First, ensure the model is pre-downloaded/cached since the compute nodes are offline.
-# We will disable HF_HUB_OFFLINE temporarily if needed, but since HFApi or NeMo caches are shared, 
-# you should run "python -c \"import nemo.collections.asr as nemo_asr; nemo_asr.models.ASRModel.from_pretrained('nvidia/nemotron-3.5-asr-streaming-0.6b')\""
-# on the login node first to pre-cache the model weights.
+# We will disable HF_HUB_OFFLINE temporarily if needed. Run "python test_nemotron.py"
+# on the login node first to pre-cache the model weights and verify loading works.
 
 echo "====== Starting Kathbath Evaluation (Nemotron-3.5 ASR, target_lang=hi-IN) ======"
 # Make sure target_lang is set to hi-IN

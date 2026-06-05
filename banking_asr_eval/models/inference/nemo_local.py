@@ -193,8 +193,31 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
     is_indicconformer = "indicconformer" in model_id.lower()
     is_nemotron = "nemotron" in model_id.lower()
 
+    model = None
     try:
         model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    except TypeError as e:
+        if "abstract" in str(e).lower():
+            print(f"[NeMo] ASRModel.from_pretrained failed with abstract class error: {e}. "
+                  f"Trying specific concrete classes...")
+            # Try loading with concrete classes
+            try:
+                from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
+                print(f"[NeMo] Attempting to load using EncDecHybridRNNTCTCBPEModel...")
+                model = EncDecHybridRNNTCTCBPEModel.from_pretrained(model_id)
+                print(f"[NeMo] Loaded successfully using EncDecHybridRNNTCTCBPEModel")
+            except Exception as e_hybrid:
+                print(f"[NeMo] EncDecHybridRNNTCTCBPEModel failed: {e_hybrid}")
+                try:
+                    from nemo.collections.asr.models import EncDecRNNTBPEModel
+                    print(f"[NeMo] Attempting to load using EncDecRNNTBPEModel...")
+                    model = EncDecRNNTBPEModel.from_pretrained(model_id)
+                    print(f"[NeMo] Loaded successfully using EncDecRNNTBPEModel")
+                except Exception as e_rnnt:
+                    print(f"[NeMo] EncDecRNNTBPEModel failed: {e_rnnt}")
+                    raise e
+        else:
+            raise
     except FileNotFoundError as e:
         if "model_config.yaml" in str(e) and is_indicconformer:
             print(f"[NeMo] from_pretrained failed (missing model_config.yaml). "
