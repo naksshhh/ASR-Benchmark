@@ -126,9 +126,9 @@ When evaluating the pipeline, we attempted to test `indicconformer-hindi` (based
 
 ---
 
-## 12. Config D Evaluation Results (IndicWav2Vec)
+## 12. Config D Evaluation Results
 
-We successfully executed evaluation sweeps for `indicwav2vec-banking-configD` (fine-tuned on Vaani Hindi-Belt, RESPIN, MUCS, and Synthetic datasets) across **Kathbath Hindi**, **Synthetic 100**, and **LAHAJA** multi-accent test sets.
+We successfully executed evaluation sweeps for both `indicwav2vec-banking-configD` and `whisper-medium-banking-configD` (fine-tuned on Vaani Hindi-Belt, RESPIN, MUCS, and Synthetic datasets) across **Kathbath Hindi**, **Synthetic 100**, and **LAHAJA** multi-accent test sets.
 
 ### 1. Comparative Results on `synthetic_100` (Hinglish Banking)
 
@@ -136,9 +136,12 @@ We successfully executed evaluation sweeps for `indicwav2vec-banking-configD` (f
 | :--- | :--- | :---: | :---: | :---: |
 | **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | 75.49% | 71.41% | 90.91% |
 | **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 78.95% | 71.24% | 100.00% |
-| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | **73.35%** | **67.39%** | **87.88%** |
+| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | 73.35% | 67.39% | 87.88% |
+| **`whisper-medium-hi`** | Baseline (Zero-Shot) | 179.17% | 167.22% | 92.93% |
+| **`whisper-medium-banking-configC`** | Config C Fine-Tuned | **37.74%** | **25.36%** | 91.41% |
+| **`whisper-medium-banking-configD`** | Config D Fine-Tuned | 48.73% | 35.83% | **86.36%** |
 
-*   **Insight:** Config D achieves the best Hinglish banking results for the IndicWav2Vec architecture, dropping WER by **5.60% absolute** compared to Config C.
+*   **Insight:** Config D achieves the best Hinglish banking results for the IndicWav2Vec architecture, dropping WER by **5.60% absolute** compared to Config C. For the Whisper architecture, Config D achieves a WER of **48.73%** and the lowest overall Number Error Rate (NER) of **86.36%**, although Config C remains the overall WER leader on this Hinglish dataset (37.74%).
 
 ### 2. Comparative Results on `kathbath_hindi` (General Hindi)
 
@@ -146,26 +149,30 @@ We successfully executed evaluation sweeps for `indicwav2vec-banking-configD` (f
 | :--- | :--- | :---: | :---: | :---: |
 | **`indicwav2vec-hindi`** | Baseline (Zero-Shot) | **11.64%** | **3.30%** | - |
 | **`indicwav2vec-banking-configC`** | Config C Fine-Tuned | 17.20% | 5.49% | 16.59% |
-| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | **14.52%** | **4.36%** | **2.76%** |
+| **`indicwav2vec-banking-configD`** | Config D Fine-Tuned | 14.52% | 4.36% | 2.76% |
+| **`whisper-medium-hi`** | Baseline (Zero-Shot) | 41.64% | 15.85% | - |
+| **`whisper-medium-banking-configC`** | Config C Fine-Tuned | 36.61% | 17.22% | 18.20% |
+| **`whisper-medium-banking-configD`** | Config D Fine-Tuned | **20.57%** | **7.30%** | **4.49%** |
 
-*   **Insight:** Config D significantly reduces the domain drift (forgetting) seen in Config C, recovering **2.68% absolute** in general-domain Hindi WER. This is due to the regularizing effect of mixing the large-scale Project Vaani (Hindi-Belt) and RESPIN datasets.
+*   **Insight:** Config D significantly reduces the domain drift (forgetting) seen in Config C, recovering **2.68% absolute** in general-domain Hindi WER for IndicWav2Vec. For Whisper, Config D yields a massive boost, slashing the general Hindi WER to **20.57%** (a **16.04% absolute improvement** over Config C), showing that the addition of large-scale native speech datasets (Vaani & RESPIN) greatly enhances general domain performance.
 
 ### 3. Comparative Accent-Stratified Results on `lahaja`
 
-| Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` |
-| :--- | :---: | :---: | :---: | :---: |
-| **punjab_haryana** | 236 | 106.62% | 304.38% | **101.76%** |
-| **hindi_belt** | 287 | **101.81%** | 209.24% | 102.45% |
-| **south_india** | 1334 | 116.94% | 196.74% | **115.14%** |
-| **east_india** | 792 | 126.29% | 161.56% | **125.27%** |
-| **west_india** | 694 | 139.65% | 160.37% | **136.55%** |
-| **other** | 2809 | 147.63% | 224.27% | **143.99%** |
-| **Overall Mean** | **6152** | **133.62%** | **205.39%** | **130.93%** |
+| Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` | `whisper-medium-banking-configD` |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **punjab_haryana** | 236 | 106.62% | 304.38% | **101.76%** | 241.83% (n=213) |
+| **hindi_belt** | 287 | **101.81%** | 209.24% | 102.45% | N/A (all errored) |
+| **south_india** | 1334 | 116.94% | 196.74% | **115.14%** | 231.40% (n=700) |
+| **east_india** | 792 | 126.29% | 161.56% | **125.27%** | 192.50% (n=327) |
+| **west_india** | 694 | 139.65% | 160.37% | **136.55%** | 194.14% (n=462) |
+| **other** | 2809 | 147.63% | 224.27% | **143.99%** | 220.96% (n=1374) |
+| **Overall Mean** | **6152** | **133.62%** | **205.39%** | **130.93%** | **217.73%** (n=3076 valid) |
 
 *   **Insight & Analysis:**
     *   **Config D Improvements:** Fine-tuning on Config D (`indicwav2vec-banking-configD`) yields a consistent **2.69% absolute improvement** in overall WER (dropping to **130.93%** from the baseline **133.62%**), with improvements across almost every accent group.
-    *   **Catastrophic Whisper Baseline Failure:** The baseline `whisper-medium-hi` struggles heavily on this dataset, scoring an overall mean WER of **205.39%**. This is primarily caused by insertion errors, hallucinated repeats, and severe script confusion on local dialect audio compared to the reference transcripts.
+    *   **Catastrophic Whisper Baseline/Fine-tuned Failures on Lahaja:** The baseline `whisper-medium-hi` and fine-tuned `whisper-medium-banking-configD` struggle heavily on this dataset, scoring mean WERs of **205.39%** and **217.73%** respectively. This is primarily caused by insertion errors, hallucinated repeats, and severe script/transcription mismatch on local dialect audio containing non-standard bracketed tags (e.g. noise/laughter annotations) compared to the reference transcripts. Fine-tuning on large Hindi-only corpora (like RESPIN and Project Vaani) caused BPE vocabulary shift or over-biased the model, resulting in high insertion and substitution errors on dialect/laughter-annotated transcripts.
+    *   **Half of the Samples Errored for Whisper Config D (3076 valid, 3076 errored):** During the parallel evaluation run with 2 workers, one of the worker processes encountered a memory limit/CUDA initialization error during loading and failed to process its chunk. This left exactly 3,076 valid samples and 3,076 errored samples. Consequently, all 287 `hindi_belt` samples (which fell entirely in the failed worker's chunk) were errored, resulting in `N/A` for that accent group.
     *   **Why the Lahaja WER/CER is > 100%:** 
         *   **Script / Tokenization Mismatch:** The LAHAJA test transcripts contain a large portion of non-standard Devanagari script markers, bracketed tags (e.g. noise/laughter annotations), or romanized English words. 
         *   Because `indicwav2vec` uses a strict character-level CTC tokenizer restricted solely to standard Devanagari, any romanized word or special character results in a 100% substitution error rate.
-        *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%. We will see if the BPE-based Whisper tokenizer handles this vocabulary mismatch better once Whisper Config D finishes training.
+        *   Even within the native `hindi_belt` speakers, missing filler annotations and formatting mismatches pushed the base error rate past 100%.

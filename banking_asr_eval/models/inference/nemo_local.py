@@ -291,28 +291,21 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
     # when transcribing from raw audio paths. Patch to use target_lang as default.
     if is_nemotron:
         try:
-            import inspect as _inspect
             import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
             _default_lang = target_lang
 
-            patched_count = 0
-            for name, cls in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass):
-                if hasattr(cls, '_get_prompt_index'):
-                    original_fn = cls._get_prompt_index
-
-                    def make_patch(orig, default_lang):
-                        def patched(self, lang):
+            for _cls_name in ['PromptedAudioToTextLhotseDataset', 'LhotseSpeechToTextBpeDatasetWithPrompt']:
+                _cls = getattr(lhotse_prompt_mod, _cls_name, None)
+                if _cls and hasattr(_cls, '_get_prompt_index'):
+                    _orig = _cls._get_prompt_index
+                    def _make_patch(orig):
+                        def _patched(self, lang):
                             if lang is None or str(lang) == 'None':
-                                lang = default_lang
+                                lang = _default_lang
                             return orig(self, lang)
-                        return patched
-
-                    cls._get_prompt_index = make_patch(original_fn, _default_lang)
-                    patched_count += 1
-                    print(f"[NeMo] Monkeypatched {name}._get_prompt_index to default None -> '{target_lang}'")
-
-            if patched_count == 0:
-                print(f"[NeMo] Warning: No classes with _get_prompt_index found in {lhotse_prompt_mod.__name__}")
+                        return _patched
+                    _cls._get_prompt_index = _make_patch(_orig)
+                    print(f"[NeMo] Monkeypatched {_cls_name}._get_prompt_index to default None -> '{target_lang}'")
         except Exception as e:
             print(f"[NeMo] Warning: Could not monkeypatch _get_prompt_index: {e}")
 
@@ -407,7 +400,7 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                 )
             elif is_nemotron:
                 from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-                _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang, num_workers=0)
+                _tcfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=target_lang, num_workers=0, batch_size=1)
                 transcriptions = model.transcribe(
                     [converted_path], override_config=_tcfg
                 )

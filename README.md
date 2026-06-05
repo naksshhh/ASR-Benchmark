@@ -385,13 +385,15 @@ Build a small (50–100 hours) test set:
 | Canary-1B-Flash | English-first | 105.35% | 99.87% | 100.46% | No |
 | Streaming-Zipformer | English-first | 106.49% | 96.38% | 100.69% | No |
 | Whisper-tiny | English-first | 254.00% | 244.76% | 915.55% | No |
-| **Whisper-medium (yours)** | **Fine-tuned** | ? | ? | ? | **Yes** |
-| **IndicWav2Vec (yours)** | **Fine-tuned** | ? | ? | ? | **Yes** |
+| **Whisper-medium (yours)** | **Fine-tuned** | **20.57%** | **7.30%** | **4.49%** | **Yes (Config D)** |
+| **IndicWav2Vec (yours)** | **Fine-tuned** | **14.52%** | **4.36%** | **2.76%** | **Yes (Config D)** |
 
 ### Synthetic Banking Dataset (100 samples — Domain-Specific Evaluation on A100)
 
 | Model | Banking WER ↓ | Banking CER ↓ | Entity Accuracy ↑ | RTF (A100) ↓ | Real-time? |
 |---|---|---|---|---|---|
+| **Whisper-medium (yours)** | **48.73%** | **35.83%** | — | **0.88** | ✅ Yes (Config D) |
+| **IndicWav2Vec (yours)** | **73.35%** | **67.39%** | — | **0.09** | ✅ Yes (Config D) |
 | Voxtral-Mini-3B | **46.01%** | **34.69%** | **70.5%** | 0.54 | ✅ Yes |
 | Whisper large-v3 | 46.32% | 33.53% | 67.0% | 1.49 | ❌ No |
 | Whisper large-v3-turbo | 55.52% | 39.72% | 62.0% | 0.50 | ✅ Yes |

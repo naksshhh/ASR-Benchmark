@@ -12,7 +12,7 @@ import argparse
 import wave
 import struct
 
-def create_silence_wav(filename="silence.wav", duration_sec=1.0, sr=16000):
+def create_silence_wav(filename="silence.wav", duration_sec=5.0, sr=16000):
     """Create a temporary mono 16kHz 16-bit WAV file with silence."""
     with wave.open(filename, "w") as w:
         w.setnchannels(1)
@@ -180,39 +180,29 @@ def main():
     # when transcribing from raw audio paths. We patch it to use a default.
     TARGET_LANG = "hi-IN"
     try:
-        import inspect as _inspect
         import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
         
-        patched_count = 0
-        for name, cls in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass):
-            if hasattr(cls, '_get_prompt_index'):
-                original_fn = cls._get_prompt_index
-                _tl = TARGET_LANG  # capture in closure
-                
-                def make_patch(orig, default_lang):
-                    def patched(self, lang):
+        for _cls_name in ['PromptedAudioToTextLhotseDataset', 'LhotseSpeechToTextBpeDatasetWithPrompt']:
+            _cls = getattr(lhotse_prompt_mod, _cls_name, None)
+            if _cls and hasattr(_cls, '_get_prompt_index'):
+                _orig = _cls._get_prompt_index
+                def _make_patch(orig):
+                    def _patched(self, lang):
                         if lang is None or str(lang) == 'None':
-                            lang = default_lang
+                            lang = TARGET_LANG
+                            print(f"    [PATCH] Replaced None language with '{lang}' in {_cls_name}", flush=True)
                         return orig(self, lang)
-                    return patched
-                
-                cls._get_prompt_index = make_patch(original_fn, _tl)
-                patched_count += 1
-                print(f"Monkeypatched {name}._get_prompt_index to default None -> '{TARGET_LANG}'")
-        
-        if patched_count == 0:
-            print(f"Warning: No classes with _get_prompt_index found in {lhotse_prompt_mod.__name__}")
-            print(f"  Available classes: {[n for n, c in _inspect.getmembers(lhotse_prompt_mod, _inspect.isclass)]}")
+                    return _patched
+                _cls._get_prompt_index = _make_patch(_orig)
+                print(f"Monkeypatched {_cls_name}._get_prompt_index to default None -> '{TARGET_LANG}'")
     except Exception as e:
         print(f"Warning: Could not monkeypatch _get_prompt_index: {e}")
-        import traceback
-        traceback.print_exc()
 
     # Now transcribe with override_config
     success = False
     try:
         from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt import HybridRNNTCTCPromptTranscribeConfig
-        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG, num_workers=0)
+        cfg = HybridRNNTCTCPromptTranscribeConfig(target_lang=TARGET_LANG, num_workers=0, batch_size=1)
         print(f"Calling model.transcribe with override_config(target_lang='{TARGET_LANG}')...")
         transcriptions = model.transcribe([wav_path], override_config=cfg)
         print(f"Transcription result: {repr(transcriptions)}")
