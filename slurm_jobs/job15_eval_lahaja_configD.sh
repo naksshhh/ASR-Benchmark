@@ -25,17 +25,17 @@ cd "$REPO_ROOT"
 
 # Set scratch paths
 export HF_HOME=/scratch/$USER/hf_cache
-export HF_HUB_OFFLINE=1
+# export HF_HUB_OFFLINE=1
 
-echo "====== Starting Lahaja Evaluation Config D (IndicWav2Vec) ======"
-python -m banking_asr_eval.evaluate \
-  --manifest data/manifests/lahaja.json \
-  --models indicwav2vec-banking-configD \
-  --output results/ \
-  --stratify-by accent_group \
-  --workers 4
+# echo "====== Starting Lahaja Evaluation Config D (IndicWav2Vec) ======"
+# python -m banking_asr_eval.evaluate \
+#   --manifest data/manifests/lahaja.json \
+#   --models indicwav2vec-banking-configD \
+#   --output results/ \
+#   --stratify-by accent_group \
+#   --workers 4
 
-# echo "====== Starting Lahaja Evaluation Config D (Whisper) ======"
+echo "====== Starting Lahaja Evaluation Config D (Whisper) ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/lahaja.json \
   --models whisper-medium-banking-configD \
