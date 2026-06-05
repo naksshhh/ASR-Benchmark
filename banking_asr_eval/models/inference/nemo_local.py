@@ -189,14 +189,52 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
             "This is only supported on Param Rudra (requires GPU + heavy deps)."
         )
 
-    # Alias module path for Nemotron-3.5 prompt models to handle NeMo version discrepancies
-    import sys
+    # Define a helper to patch load_state_dict on any class/module
+    def make_patched_load_state_dict(original_fn):
+        def patched(self, state_dict, strict=True):
+            class_name = self.__class__.__name__
+            if any(p in class_name for p in ["EncDec", "RNNT", "CTC", "Joint", "Model", "Prompt"]):
+                strict = False
+            return original_fn(self, state_dict, strict=strict)
+        return patched
+
+    # Apply to torch.nn.Module first
+    torch.nn.Module.load_state_dict = make_patched_load_state_dict(torch.nn.Module.load_state_dict)
+    print("[NeMo] Installed torch.nn.Module.load_state_dict monkeypatch (strict=False)", flush=True)
+
+    # Register module alias and map missing prompt module to existing hybrid prompt class
     try:
-        import nemo.collections.asr.models.rnnt_bpe_models as rnnt_bpe_models
-        sys.modules['nemo.collections.asr.models.rnnt_bpe_models_prompt'] = rnnt_bpe_models
-        print("[NeMo] Successfully registered sys.modules alias: rnnt_bpe_models_prompt -> rnnt_bpe_models")
-    except ImportError as e:
-        print(f"[NeMo] Warning: Could not register module alias: {e}")
+        import nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models_prompt as hybrid_prompt
+        EncDecHybridRNNTCTCBPEModelWithPrompt = hybrid_prompt.EncDecHybridRNNTCTCBPEModelWithPrompt
+        
+        module_name = 'nemo.collections.asr.models.rnnt_bpe_models_prompt'
+        m = types.ModuleType(module_name)
+        m.EncDecRNNTBPEModelWithPrompt = EncDecHybridRNNTCTCBPEModelWithPrompt
+        sys.modules[module_name] = m
+        
+        # Also bind to the parent models module
+        import nemo.collections.asr.models as models
+        models.rnnt_bpe_models_prompt = m
+        print("[NeMo] Successfully mapped EncDecRNNTBPEModelWithPrompt -> EncDecHybridRNNTCTCBPEModelWithPrompt", flush=True)
+    except Exception as e:
+        print(f"[NeMo] Warning: Could not set up module mapping: {e}", flush=True)
+
+    # Now import and patch other class load_state_dict methods if they override it
+    try:
+        import pytorch_lightning as pl
+        if hasattr(pl.LightningModule, "load_state_dict"):
+            pl.LightningModule.load_state_dict = make_patched_load_state_dict(pl.LightningModule.load_state_dict)
+            print("[NeMo] Installed pytorch_lightning.LightningModule.load_state_dict monkeypatch", flush=True)
+    except Exception:
+        pass
+
+    try:
+        import nemo.core.classes as nemo_classes
+        if hasattr(nemo_classes.ModelPT, "load_state_dict"):
+            nemo_classes.ModelPT.load_state_dict = make_patched_load_state_dict(nemo_classes.ModelPT.load_state_dict)
+            print("[NeMo] Installed nemo.core.classes.ModelPT.load_state_dict monkeypatch", flush=True)
+    except Exception:
+        pass
 
     # Load the model — handle NeMo 2.x extraction issues for IndicConformer
     is_indicconformer = "indicconformer" in model_id.lower()
@@ -244,6 +282,9 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
     if is_indicconformer and hasattr(model, "cur_decoder"):
         model.cur_decoder = "ctc"
         print(f"[NeMo] Set cur_decoder='ctc' for IndicConformer")
+    elif is_nemotron and hasattr(model, "cur_decoder"):
+        model.cur_decoder = "rnnt"
+        print(f"[NeMo] Set cur_decoder='rnnt' for Nemotron-3.5")
 
     def _ensure_wav_16k(audio_path: str) -> str:
         """
