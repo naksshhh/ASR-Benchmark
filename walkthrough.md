@@ -140,8 +140,11 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 | **`whisper-medium-hi`** | Baseline (Zero-Shot) | 179.17% | 167.22% | 92.93% |
 | **`whisper-medium-banking-configC`** | Config C Fine-Tuned | **37.74%** | **25.36%** | 91.41% |
 | **`whisper-medium-banking-configD`** | Config D Fine-Tuned | 48.73% | 35.83% | **86.36%** |
+| **`nemotron-3.5-asr`** | Zero-Shot (Streaming) | 67.81% | — | — |
 
 *   **Insight:** Config D achieves the best Hinglish banking results for the IndicWav2Vec architecture, dropping WER by **5.60% absolute** compared to Config C. For the Whisper architecture, Config D achieves a WER of **48.73%** and the lowest overall Number Error Rate (NER) of **86.36%**, although Config C remains the overall WER leader on this Hinglish dataset (37.74%).
+*   **Nemotron-3.5-ASR Streaming Latency:** Nemotron-3.5-ASR (RNN-T autoregressive decoding, 600M params) achieves a zero-shot WER of **67.81%** on this Hinglish dataset with an offline mean RTF of **0.174** (mean latency of **0.675s**, P95 latency of **1.019s**). Since Nemotron is a streaming model, comparing it solely on offline RTF is not fully representative of its production experience. Streaming models process audio chunk-by-chunk in real time, delivering tokens as the user speaks and achieving extremely low user-perceived final delay compared to batch models like Whisper.
+*   **Other Streaming Models:** The registry also includes **Streaming Zipformer (Sherpa-ONNX)** (currently English-only), **Parakeet-TDT**, and **Canary-1B-Flash** (which can be configured/exported for streaming transducer decoding).
 
 ### 2. Comparative Results on `kathbath_hindi` (General Hindi)
 

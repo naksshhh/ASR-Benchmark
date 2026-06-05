@@ -397,11 +397,19 @@ Build a small (50–100 hours) test set:
 | Voxtral-Mini-3B | **46.01%** | **34.69%** | **70.5%** | 0.54 | ✅ Yes |
 | Whisper large-v3 | 46.32% | 33.53% | 67.0% | 1.49 | ❌ No |
 | Whisper large-v3-turbo | 55.52% | 39.72% | 62.0% | 0.50 | ✅ Yes |
+| **Nemotron-3.5-ASR** | **67.81%** | — | — | **0.17** | ✅ Yes (Streaming) |
 | IndicWav2Vec-Hindi | 75.49% | 71.41% | 29.0% | **0.09** | ✅ Yes |
 | Whisper-medium-hi | 179.17% | 167.22% | 74.0% | 0.96 | ✅ Yes |
 | Whisper-tiny | 299.93% | 239.27% | 66.0% | 0.59 | ✅ Yes |
 
 > **Key Insight:** IndicWav2Vec is the best model for pure Hindi transcription (Kathbath), but struggles on code-switched banking speech. Voxtral-Mini-3B offers the best quality-latency tradeoff for real-world banking scenarios with mixed Hindi-English input.
+> 
+> **Streaming ASR Latency Nuance:** Nemotron-3.5-ASR is a native **streaming** model. Comparing streaming models to offline models purely on offline RTF (0.17 for Nemotron vs 0.50 for Whisper Turbo) can be misleading. In production, a streaming ASR processes audio chunk-by-chunk as the audio is spoken, leading to extremely low user-perceived final delay (chunk latency), whereas offline models must wait for the entire audio segment to end before starting transcription.
+>
+> **Other Streaming ASRs in the Registry:**
+> - **Streaming Zipformer (Sherpa-ONNX)**: Lightweight CPU/ONNX streaming pruned transducer model. Low latency, but currently English-only.
+> - **Parakeet-TDT (NeMo)**: FastConformer with Time-Delay Transducer decoding. Skips frames dynamically for high-speed streaming capability.
+> - **Canary-1B-Flash (NeMo)**: FastConformer RNN-T model designed with streaming-compatible architectures.
 
 ---
 
