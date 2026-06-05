@@ -317,9 +317,9 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
         model.forward = types.MethodType(_patched_model_forward, model)
         print("[NeMo] Patched model.forward to resolve prompt shape mismatch", flush=True)
 
-    # Monkeypatch Lhotse prompt dataset to handle None language during transcription
-    # NeMo's Lhotse dataset reads cut.supervisions[0].language which is None
-    # when transcribing from raw audio paths. Patch to use target_lang as default.
+    # Monkeypatch Lhotse prompt dataset to handle None language and map manifest tags during transcription
+    # NeMo's Lhotse dataset reads cut.supervisions[0].language which resolves to tags in the manifest
+    # (like "hindi", "mixed", "english", "auto") that are invalid in Nemotron's vocabulary.
     if is_nemotron:
         try:
             import nemo.collections.asr.data.audio_to_text_lhotse_prompt as lhotse_prompt_mod
@@ -331,12 +331,22 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
                     _orig = _cls._get_prompt_index
                     def _make_patch(orig):
                         def _patched(self, lang):
-                            if lang is None or str(lang) == 'None':
+                            if lang is None or str(lang) == 'None' or str(lang).strip() == '':
                                 lang = _default_lang
+                            
+                            # Map language/dialect tags to valid Nemotron prompt locales
+                            lang_str = str(lang).lower().strip()
+                            if lang_str in ['hi', 'hindi', 'hi-in', 'mixed', 'auto']:
+                                lang = 'hi-IN'
+                            elif lang_str in ['en', 'english', 'en-us']:
+                                lang = 'en-US'
+                            else:
+                                # Fallback for other regional Indian languages in Lahaja/Vaani
+                                lang = 'hi-IN'
                             return orig(self, lang)
                         return _patched
                     _cls._get_prompt_index = _make_patch(_orig)
-                    print(f"[NeMo] Monkeypatched {_cls_name}._get_prompt_index to default None -> '{target_lang}'")
+                    print(f"[NeMo] Monkeypatched {_cls_name}._get_prompt_index to default None and map manifest tags")
         except Exception as e:
             print(f"[NeMo] Warning: Could not monkeypatch _get_prompt_index: {e}")
 
