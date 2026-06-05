@@ -37,7 +37,8 @@ def main():
         
         for _, row in df.iterrows():
             filename = row["fname"]
-            audio_path = f"lahaja/audio/{filename}.wav"
+            idx = len(manifest)
+            audio_path = f"lahaja/audio/{filename}_{idx}.wav"
             
             # Write the raw wav bytes if not already extracted
             if not os.path.exists(audio_path):
@@ -50,7 +51,7 @@ def main():
                     continue
             
             manifest.append({
-                "audio_id": str(filename),
+                "audio_id": f"{filename}_{idx}",
                 # Dual compatibility: evaluate.py (audio_path/reference_transcript) & HF/NeMo (audio_filepath/text)
                 "audio_path": os.path.abspath(audio_path),
                 "audio_filepath": os.path.abspath(audio_path),
