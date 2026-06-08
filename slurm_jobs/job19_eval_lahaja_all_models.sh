@@ -27,15 +27,6 @@ cd "$REPO_ROOT"
 export HF_HOME=/scratch/$USER/hf_cache
 export TOKENIZERS_PARALLELISM=false
 
-echo "====== Step 1: Cleaning and Re-preparing Lahaja Dataset ======"
-# Clean old duplicate audio files to save space
-if [ -d "lahaja/audio" ]; then
-    echo "Removing old duplicate Lahaja audio directory..."
-    rm -rf lahaja/audio
-fi
-
-# Run the data preparation script with the uniqueness fix
-python prepare_lahaja.py
 
 echo "====== Step 2: Running Evaluation on All Models on Lahaja ======"
 python -m banking_asr_eval.evaluate \
