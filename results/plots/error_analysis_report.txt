@@ -1,0 +1,83 @@
+ASR ERROR ANALYSIS REPORT ON SYNTHETIC 100 HINGLISH
+====================================================
+
+Model: indicwav2vec-banking-configC
+----------------------------------------
+Total mismatch errors (words): 736
+  - number_substitution   :  214 words (29.08%)
+  - entity_deletion       :  349 words (47.42%)
+  - codeswitched_miss     :   31 words (4.21%)
+  - hindi_romanized       :  128 words (17.39%)
+  - hallucination         :    1 words (0.14%)
+  - general_deletion      :    1 words (0.14%)
+  - general_substitution  :   12 words (1.63%)
+  * Script vocabulary limit (Latin script mismatch) drives 21.60% of errors.
+
+Model: indicwav2vec-banking-configD
+----------------------------------------
+Total mismatch errors (words): 688
+  - number_substitution   :  151 words (21.95%)
+  - entity_deletion       :  423 words (61.48%)
+  - codeswitched_miss     :   24 words (3.49%)
+  - hindi_romanized       :   80 words (11.63%)
+  - hallucination         :    1 words (0.15%)
+  - general_deletion      :    0 words (0.00%)
+  - general_substitution  :    9 words (1.31%)
+  * Script vocabulary limit (Latin script mismatch) drives 15.12% of errors.
+
+Model: indicwav2vec-hindi
+----------------------------------------
+Total mismatch errors (words): 706
+  - number_substitution   :  182 words (25.78%)
+  - entity_deletion       :  420 words (59.49%)
+  - codeswitched_miss     :   13 words (1.84%)
+  - hindi_romanized       :   72 words (10.20%)
+  - hallucination         :    1 words (0.14%)
+  - general_deletion      :    0 words (0.00%)
+  - general_substitution  :   18 words (2.55%)
+  * Script vocabulary limit (Latin script mismatch) drives 12.04% of errors.
+
+Model: nemotron-3.5-asr
+----------------------------------------
+Total mismatch errors (words): 1816
+  - number_substitution   :  200 words (11.01%)
+  - entity_deletion       : 1120 words (61.67%)
+  - codeswitched_miss     :  246 words (13.55%)
+  - hindi_romanized       :   38 words (2.09%)
+  - hallucination         :    0 words (0.00%)
+  - general_deletion      :  212 words (11.67%)
+  - general_substitution  :    0 words (0.00%)
+
+Model: whisper-medium-banking-configC
+----------------------------------------
+Total mismatch errors (words): 688
+  - number_substitution   :  298 words (43.31%)
+  - entity_deletion       :  162 words (23.55%)
+  - codeswitched_miss     :   18 words (2.62%)
+  - hindi_romanized       :  198 words (28.78%)
+  - hallucination         :    4 words (0.58%)
+  - general_deletion      :    8 words (1.16%)
+  - general_substitution  :    0 words (0.00%)
+
+Model: whisper-medium-banking-configD
+----------------------------------------
+Total mismatch errors (words): 418
+  - number_substitution   :  124 words (29.67%)
+  - entity_deletion       :  159 words (38.04%)
+  - codeswitched_miss     :    7 words (1.67%)
+  - hindi_romanized       :   71 words (16.99%)
+  - hallucination         :   52 words (12.44%)
+  - general_deletion      :    0 words (0.00%)
+  - general_substitution  :    5 words (1.20%)
+
+Model: whisper-medium-hi
+----------------------------------------
+Total mismatch errors (words): 1879
+  - number_substitution   :  183 words (9.74%)
+  - entity_deletion       :  104 words (5.53%)
+  - codeswitched_miss     :   18 words (0.96%)
+  - hindi_romanized       :   64 words (3.41%)
+  - hallucination         : 1474 words (78.45%)
+  - general_deletion      :    6 words (0.32%)
+  - general_substitution  :   30 words (1.60%)
+

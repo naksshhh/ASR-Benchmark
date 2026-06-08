@@ -110,26 +110,38 @@ models:
     model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configB/checkpoint-500"
     enabled: true
 
+  indicwav2vec-banking-configB:
+    backend: "huggingface"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configB/checkpoint-500"
+    enabled: false
+
+  whisper-medium-banking-configB:
+    backend: "whisper"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/whisper-medium-banking-configB/checkpoint-1000"
+    language: "hi"
+    task: "transcribe"
+    enabled: false
+
   indicwav2vec-banking-configC:
     backend: "huggingface"
-    model_id: "/scratch/$USER/checkpoints/indicwav2vec-banking-configC/final"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configC/final"
     enabled: false
 
   whisper-medium-banking-configC:
     backend: "whisper"
-    model_id: "/scratch/$USER/checkpoints/whisper-medium-banking-configC/final"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/whisper-medium-banking-configC/final"
     language: "hi"
     task: "transcribe"
     enabled: false
 
   indicwav2vec-banking-configD:
     backend: "huggingface"
-    model_id: "/scratch/$USER/checkpoints/indicwav2vec-banking-configD/final"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/indicwav2vec-banking-configD/final"
     enabled: false
 
   whisper-medium-banking-configD:
     backend: "whisper"
-    model_id: "/scratch/$USER/checkpoints/whisper-medium-banking-configD/final"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/whisper-medium-banking-configD/final"
     language: "hi"
     task: "transcribe"
     enabled: false

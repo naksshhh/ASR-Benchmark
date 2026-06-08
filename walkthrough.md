@@ -167,19 +167,19 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 
 | Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `stt-hi-conformer-ctc-large` (Baseline) | `nemotron-3.5-asr` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` | `whisper-medium-banking-configD` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **punjab_haryana** | 236 | 28.16% | **19.74%** | 21.89% | 158.68% | 26.67% | 169.33% |
-| **hindi_belt** | 287 | 26.48% | **18.37%** | 20.19% | 96.72% | 27.20% | 108.80% |
-| **south_india** | 1334 | 35.11% | **25.46%** | 26.25% | 179.50% | 36.09% | 165.45% |
-| **east_india** | 792 | 32.81% | 26.15% | **26.13%** | 170.74% | 34.79% | 211.90% |
-| **west_india** | 694 | 30.41% | **20.36%** | 20.75% | 149.30% | 32.13% | 110.88% |
-| **other** | 2809 | 34.24% | **25.80%** | 26.08% | 192.50% | 36.73% | 163.71% |
-| **Overall Mean** | **6152** | 33.22% | **24.58%** | 25.09% | 176.24% | 34.99% | 161.99% |
+| **punjab_haryana** | 236 | 28.16% | **19.74%** | 21.89% | 55.37% | 26.67% | 30.73% |
+| **hindi_belt** | 287 | 26.48% | **18.37%** | 20.19% | 49.53% | 27.20% | 29.44% |
+| **south_india** | 1334 | 35.11% | **25.46%** | 26.25% | 55.43% | 36.09% | 36.38% |
+| **east_india** | 792 | 32.81% | 26.15% | **26.13%** | 54.25% | 34.79% | 37.71% |
+| **west_india** | 694 | 30.41% | **20.36%** | 20.75% | 51.21% | 32.13% | 34.74% |
+| **other** | 2809 | 34.24% | **25.80%** | 26.08% | 54.58% | 36.73% | 41.74% |
+| **Overall Mean** | **6152** | 33.22% | **24.58%** | 25.09% | 54.14% | 34.99% | **38.27%** |
 
 *   **Insight & Analysis:**
     *   **Audio Mismatch Bug Resolved:** Previously, a bug in `prepare_lahaja.py` mapped multiple segments from the same session to a single file, resulting in wrong audios being transcribed for subsequent segments. After resolving this via `{fname}_{idx}.wav` unique segment mapping and running a sequential re-evaluation via `job19` (completing with 0 errors across all 6152 samples), the overall WERs for non-Whisper models dropped to healthy, expected ranges: **24.58%** for `stt-hi-conformer-ctc-large`, **25.09%** for `nemotron-3.5-asr`, and **33.22%** for the baseline `indicwav2vec-hindi`.
     *   **Conformer-CTC Large Leads on Dialect ASR:** `stt-hi-conformer-ctc-large` achieved the best performance with an overall mean WER of **24.58%** (zero-shot), outperforming `nemotron-3.5-asr` (**25.09%**) and monolingual `indicwav2vec-hindi` (**33.22%**).
-    *   **Whisper Repetition and Truncation Failures:** Both Whisper models (`whisper-medium-hi` and `whisper-medium-banking-configD`) still suffer from extremely high WERs (**176.24%** and **161.99%**). This is a known issue with Whisper models on conversational dialect data containing background noises, hesitation sounds, and short utterances. The autoregressive decoder enters infinite repetition loops (repeating words like "जो", "समय", or "अअ" hundreds of times) or skips initial phrases (deleting the first 30 words), inflating insertions/deletions. 
-    *   **The Whisper Generation Fix:** We have updated [whisper_local.py](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/banking_asr_eval/models/inference/whisper_local.py) to pass robust generation settings (`condition_on_prev_tokens=False`, `repetition_penalty=1.1`, `no_repeat_ngram_size=4`, and `compression_ratio_threshold=1.35`) to suppress these loop and carry-over hallucination modes in future evaluations.
+    *   **Whisper Repetition and Truncation Failures Resolved:** Both Whisper models (`whisper-medium-hi` and `whisper-medium-banking-configD`) previously suffered from extremely high WERs (**176.24%** and **161.99%**) due to infinite autoregressive repetition loops and initial prefix deletions. By applying robust inference parameters, their overall WERs plummeted to **54.14%** (baseline) and **38.27%** (Config D fine-tuned).
+    *   **The Whisper Generation Fix:** We updated [whisper_local.py](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/banking_asr_eval/models/inference/whisper_local.py) to pass robust generation settings (`condition_on_prev_tokens=False`, `repetition_penalty=1.1`, `no_repeat_ngram_size=4`, and `compression_ratio_threshold=1.35`) which successfully eliminated carry-over hallucinations and stabilized greedy decoding on conversational dialects.
 
 ---
 
@@ -191,7 +191,7 @@ With all evaluations completed, we have compiled the key findings and architectu
 *   **The Monolingual script barrier:** Monolingual models like `indicwav2vec-hindi` perform exceptionally well on pure Hindi audio (11.64% WER on Kathbath), but degrade severely to **73-75% WER** on code-switched Hinglish banking data. Their vocabulary is strictly limited to Devanagari script, forcing English banking terms (like *"credit card"*, *"CIBIL score"*) to trigger 100% spelling error rates.
 *   **The Power of Domain Adaptation:** Fine-tuning Whisper-medium on code-switched banking datasets (`whisper-medium-banking-configC`) yielded a massive **141.43% absolute reduction in Hinglish WER** (slashing it from **179.17% down to 37.74%**). This highlights that target-domain training is essential for code-switched corporate usage.
 *   **Generalization vs. Drift:** Fine-tuning on native speech corpora (Vaani & RESPIN) under **Config D** recovered significant general Hindi performance (reducing Whisper's Kathbath WER to **20.57%**), proving that large-scale native speech datasets are key to preventing domain drift (forgetting).
-*   **Dialect ASR Mismatch:** Models evaluated on LAHAJA suffered from high insertion and substitution errors (WERs > 100%). This is primarily an artifact of non-standard transcripts in dialect corpora, which contain bracketed noise/laughter annotations and romanized English words that monolingual tokenizers cannot map. Conformer-CTC Large achieved the best zero-shot baseline on Lahaja (**130.30%**), outperforming the baseline `indicwav2vec-hindi` (133.62%).
+*   **Dialect ASR robustness:** Models evaluated on LAHAJA after resolving segment mismatch show very strong performance under dialect-rich speech. Conformer-CTC Large achieved the best overall zero-shot performance with **24.58% WER**, while the fine-tuned **`whisper-medium-banking-configD`** achieved **38.27% WER** after deploying robust generation parameters to suppress repetition loops.
 
 ### 2. Latency & Concurrency Champions
 *   **Conformer-CTC Large (`stt_hi_conformer_ctc_large`):** The absolute speed champion. Operating at a mean latency of **49ms (RTF 0.013)**, it runs almost instantly. Since it uses a non-autoregressive CTC decoder, it consumes minimal compute and is highly scalable.
@@ -204,4 +204,54 @@ If you are designing the ASR frontend for a voice bot scaling to **500+ simultan
 2.  **For Native Live Streaming (Low Latency):** Deploy **Nemotron-3.5-ASR-Streaming-0.6B** using NeMo's streaming pipeline, ensuring that `target_lang="auto"` is set so the model can dynamically switch between Latin and Devanagari scripts for English and Hindi speakers.
 3.  **For Maximum Concurrency and Cost Efficiency (500+ Calls):** Deploy a **Bilingual Conformer-CTC** model (with combined Latin + Devanagari vocabulary) served on **NVIDIA Triton Inference Server** with TensorRT-ASR. This non-autoregressive setup aggregates hundreds of incoming audio chunks in parallel on GPU tensor cores, bringing chunk latency down to milliseconds and keeping hosting hardware costs extremely low.
 4.  **For Batch/Offline Analytics (Highest Accuracy):** Use the **Fine-Tuned Whisper-Medium (Config C/D)** model, which delivers state-of-the-art transcriptions on code-switched banking speech.
+
+---
+
+## 14. ASR Error Analysis Findings (Hinglish Banking Speech)
+
+To understand model limitations, we ran an alignment-based classifier on the `synthetic_100` results to categorize word-level error categories:
+
+| Error Category | `indicwav2vec-configC` | `whisper-configC` | `whisper-medium-hi` (Baseline) |
+| :--- | :---: | :---: | :---: |
+| **Entity Deletions** | **47.42%** | 23.55% | 5.53% |
+| **Number Substitutions** | 29.08% | **43.31%** | 9.74% |
+| **Hindi/Latin Script Mismatch** | 17.39% | 28.78% | 3.41% |
+| **Hallucinations (Insertions)** | 0.14% | **0.58%** | **78.45%** |
+| **Other Substitutions/Deletions** | 5.97% | 3.78% | 2.87% |
+
+*   **Whisper Hallucination Suppression:** Fine-tuning on Config C dramatically resolved the autoregressive repetition loops of the baseline `whisper-medium-hi` model, slashing the hallucination rate from **78.45% to 0.58%**.
+*   **Script Barrier:** Character-based `indicwav2vec` suffers from vocabulary limits on English/Hinglish terms written in Latin script, causing **21.60%** of all errors to stem from script and code-switching mismatches.
+
+---
+
+## 15. Quality-Latency Pareto Frontier Plots
+
+We compiled all model results and generated two high-resolution Pareto plots under `results/plots/`:
+1.  **General Hindi Pareto Plot** (`results/plots/kathbath_pareto.png`):
+    *   **Conformer-CTC Large** & **IndicWav2Vec-Hindi** occupy the optimal low-latency frontier (RTF < 0.025).
+    *   **Whisper-large-v3-turbo** dominates the mid-latency, mid-WER frontier.
+2.  **Banking Hinglish Pareto Plot** (`results/plots/synthetic_pareto.png`):
+    *   **Fine-Tuned Whisper-Medium (Config C)** dominates the high-accuracy frontier (WER 37.74%).
+    *   **Nemotron-3.5-ASR** occupies the native streaming balance frontier.
+
+---
+
+## 16. Technical Blog Posts Outlines
+
+We have successfully drafted the following blog posts in the repository:
+*   [blog_part_a.md](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/docs/blog_part_a.md): "WER Is Not Enough — Benchmarking ASR for Indian Banking" (covers zero-shot findings, multi-dimensional metrics, and Pareto speed vs quality trade-offs).
+*   [blog_part_b.md](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/docs/blog_part_b.md): "Fine-Tuning ASR for Indian Accents and Banking Domain" (covers domain adaptation configs, catastrophic forgetting prevention, Lahaja regional accent results, and error profile analysis).
+
+---
+
+## 17. Remaining Task: LAHAJA Ablation Run on Cluster
+
+To complete the final set of accent-stratified results for Config B and C fine-tuned models, please run the following command on the cluster:
+
+```bash
+sbatch slurm_jobs/job20_eval_lahaja_ablation.sh
+```
+
+Once the job finishes, the results will be written to `results/eval_results_*.csv`. We will verify the final output file upon completion.
+
 
