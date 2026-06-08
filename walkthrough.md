@@ -167,21 +167,19 @@ We successfully executed evaluation sweeps for both `indicwav2vec-banking-config
 
 | Accent Group | Sample Count | `indicwav2vec-hindi` (Baseline) | `stt-hi-conformer-ctc-large` (Baseline) | `nemotron-3.5-asr` (Baseline) | `whisper-medium-hi` (Baseline) | `indicwav2vec-banking-configD` | `whisper-medium-banking-configD` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **punjab_haryana** | 236 | 106.62% | 103.71% | 101.77% | 304.38% | **101.76%** | 241.83% (n=213) |
-| **hindi_belt** | 287 | 101.81% | 99.86% | **99.26%** | 209.24% | 102.45% | N/A (all errored) |
-| **south_india** | 1334 | 116.94% | 113.72% | 114.97% | 196.74% | **115.14%** | 231.40% (n=700) |
-| **east_india** | 792 | 126.29% | 120.04% | 126.53% | 161.56% | **125.27%** | 192.50% (n=327) |
-| **west_india** | 694 | 139.65% | 136.03% | 139.19% | 160.37% | **136.55%** | 194.14% (n=462) |
-| **other** | 2809 | 147.63% | 145.00% | 147.45% | 224.27% | **143.99%** | 220.96% (n=1374) |
-| **Overall Mean** | **6152** | 133.62% | **130.30%** | 132.78% | 205.39% | 130.93% | 217.73% (n=3076 valid) |
+| **punjab_haryana** | 236 | 28.16% | **19.74%** | 21.89% | 158.68% | 26.67% | 169.33% |
+| **hindi_belt** | 287 | 26.48% | **18.37%** | 20.19% | 96.72% | 27.20% | 108.80% |
+| **south_india** | 1334 | 35.11% | **25.46%** | 26.25% | 179.50% | 36.09% | 165.45% |
+| **east_india** | 792 | 32.81% | 26.15% | **26.13%** | 170.74% | 34.79% | 211.90% |
+| **west_india** | 694 | 30.41% | **20.36%** | 20.75% | 149.30% | 32.13% | 110.88% |
+| **other** | 2809 | 34.24% | **25.80%** | 26.08% | 192.50% | 36.73% | 163.71% |
+| **Overall Mean** | **6152** | 33.22% | **24.58%** | 25.09% | 176.24% | 34.99% | 161.99% |
 
 *   **Insight & Analysis:**
-    *   **Config D Improvements:** Fine-tuning on Config D (`indicwav2vec-banking-configD`) yields a consistent **2.69% absolute improvement** in overall WER (dropping to **130.93%** from the baseline **133.62%**), with improvements across almost every accent group.
-    *   **Catastrophic Whisper Baseline/Fine-tuned Failures on Lahaja:** The baseline `whisper-medium-hi` and fine-tuned `whisper-medium-banking-configD` struggle heavily on this dataset, scoring mean WERs of **205.39%** and **217.73%** respectively. This is primarily caused by insertion errors, hallucinated repeats, and severe script/transcription mismatch on local dialect audio containing non-standard bracketed tags (e.g. noise/laughter annotations) compared to the reference transcripts. Fine-tuning on large Hindi-only corpora (like RESPIN and Project Vaani) caused BPE vocabulary shift or over-biased the model, resulting in high insertion and substitution errors on dialect/laughter-annotated transcripts.
-    *   **Half of the Samples Errored for Whisper Config D (3076 valid, 3076 errored):** During the parallel evaluation run with 2 workers, one of the worker processes encountered a memory limit/CUDA initialization error during loading and failed to process its chunk. This left exactly 3,076 valid samples and 3,076 errored samples. Consequently, all 287 `hindi_belt` samples (which fell entirely in the failed worker's chunk) were errored, resulting in `N/A` for that accent group.
-    *   **The Underlying Cause of the > 100% WER and Errors (Critical Bug Discovery):** 
-        *   **Audio Mismatch Bug:** We discovered a major bug in `prepare_lahaja.py` where multiple utterances within the same session ID (`fname`) were saved to the exact same audio filename (`{fname}.wav`). Because the script skipped extraction if the file existed, only the first segment's audio was written to disk, and all other segments in that session reused it. This caused all models to load the wrong audio for subsequent segments, comparing the transcription of segment 1 against the reference transcript of segment N, inflating WERs across all models to > 100%.
-        *   **The Re-evaluation Job (`job19`):** To resolve both the CUDA OOM and the segment mismatch bugs, we patched `prepare_lahaja.py` to write unique files (`{fname}_{idx}.wav`) and created `slurm_jobs/job19_eval_lahaja_all_models.sh`. This job runs sequentially (`--workers 1`) to avoid OOM crashes and re-runs the evaluations for all models on a clean, correctly-aligned dataset mapping.
+    *   **Audio Mismatch Bug Resolved:** Previously, a bug in `prepare_lahaja.py` mapped multiple segments from the same session to a single file, resulting in wrong audios being transcribed for subsequent segments. After resolving this via `{fname}_{idx}.wav` unique segment mapping and running a sequential re-evaluation via `job19` (completing with 0 errors across all 6152 samples), the overall WERs for non-Whisper models dropped to healthy, expected ranges: **24.58%** for `stt-hi-conformer-ctc-large`, **25.09%** for `nemotron-3.5-asr`, and **33.22%** for the baseline `indicwav2vec-hindi`.
+    *   **Conformer-CTC Large Leads on Dialect ASR:** `stt-hi-conformer-ctc-large` achieved the best performance with an overall mean WER of **24.58%** (zero-shot), outperforming `nemotron-3.5-asr` (**25.09%**) and monolingual `indicwav2vec-hindi` (**33.22%**).
+    *   **Whisper Repetition and Truncation Failures:** Both Whisper models (`whisper-medium-hi` and `whisper-medium-banking-configD`) still suffer from extremely high WERs (**176.24%** and **161.99%**). This is a known issue with Whisper models on conversational dialect data containing background noises, hesitation sounds, and short utterances. The autoregressive decoder enters infinite repetition loops (repeating words like "जो", "समय", or "अअ" hundreds of times) or skips initial phrases (deleting the first 30 words), inflating insertions/deletions. 
+    *   **The Whisper Generation Fix:** We have updated [whisper_local.py](file:///c:/Users/naksh/OneDrive/Desktop/Sem%206/Krim/ASR-Benchmark/banking_asr_eval/models/inference/whisper_local.py) to pass robust generation settings (`condition_on_prev_tokens=False`, `repetition_penalty=1.1`, `no_repeat_ngram_size=4`, and `compression_ratio_threshold=1.35`) to suppress these loop and carry-over hallucination modes in future evaluations.
 
 ---
 

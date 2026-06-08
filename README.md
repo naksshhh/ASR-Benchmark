@@ -222,7 +222,7 @@ Edit `config.yaml` to:
 7. **RTF-quality Pareto frontier** — The optimal models are: Voxtral-Mini-3B (best WER-per-RTF), Whisper-large-v3-turbo (good balance), and IndicWav2Vec (lowest latency if Hindi-only).
 8. **Nemotron-3.5-ASR is a highly accurate bilingual/multilingual model** — It scores **13.00% WER** on Kathbath Hindi (zero-shot), rivaling the native monolingual IndicWav2Vec baseline, and operates at an RTF of **0.174** with a natively streaming architecture.
 9. **Conformer-CTC Large (`stt_hi_conformer_ctc_large`) is extremely fast and precise** — On general Hindi, it scores **13.26% WER** (zero-shot). In latency sweeps, it operates at a mean latency of just **49ms (RTF 0.013)**, making it the fastest model tested.
-10. **Dialect ASR (Lahaja) challenges** — Mean WERs on Lahaja exceed 100% due to non-standard transcript bracket annotations (e.g. noise/laughter) and English words written in Latin script. However, Conformer-CTC Large achieved the best overall zero-shot performance on the dataset with **130.30% WER**, outperforming the baseline `indicwav2vec-hindi` (133.62%).
+10. **Corrected Dialect ASR (Lahaja) results** — After resolving a segment alignment bug (where session segments were incorrectly reusing the first segment's audio), the actual zero-shot WERs dropped to healthy ranges: **24.58%** for `stt-hi-conformer-ctc-large`, **25.09%** for `nemotron-3.5-asr`, and **33.22%** for `indicwav2vec-hindi`. However, baseline Whisper models still suffer from severe repetition loops and truncation on colloquial speech, showing extremely high WERs (**176.24%** and **161.99%**) until safety generation options are configured.
 
 ---
 

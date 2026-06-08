@@ -83,6 +83,10 @@ def create_whisper_model(
             generate_kwargs={
                 "language": language,
                 "task": task,
+                "condition_on_prev_tokens": False,
+                "repetition_penalty": 1.1,
+                "no_repeat_ngram_size": 4,
+                "compression_ratio_threshold": 1.35,
             },
             return_timestamps=False,
         )
