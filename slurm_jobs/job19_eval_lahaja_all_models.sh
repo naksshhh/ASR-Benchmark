@@ -40,7 +40,7 @@ python prepare_lahaja.py
 echo "====== Step 2: Running Evaluation on All Models on Lahaja ======"
 python -m banking_asr_eval.evaluate \
   --manifest data/manifests/lahaja.json \
-  --models indicwav2vec-hindi,stt-hi-conformer-ctc-large,nemotron-3.5-asr,whisper-medium-hi,indicwav2vec-banking-configD,whisper-medium-banking-configD \
+  --models whisper-medium-hi,whisper-medium-banking-configD \
   --output results/ \
   --stratify-by accent_group \
   --workers 1
