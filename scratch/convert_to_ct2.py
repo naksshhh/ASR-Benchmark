@@ -1,8 +1,11 @@
 import sys
 import os
+import json
+import torch
+import numpy as np
 import transformers
 
-# Monkeypatch WhisperForConditionalGeneration.__init__ to remove the 'dtype' argument if passed.
+# 1. Monkeypatch WhisperForConditionalGeneration.__init__ to remove the 'dtype' argument if passed.
 # This fixes the ctranslate2 converter compatibility bug in newer transformers versions (>=4.41.0).
 _orig_init = transformers.WhisperForConditionalGeneration.__init__
 def _patched_init(self, *args, **kwargs):
@@ -11,6 +14,25 @@ def _patched_init(self, *args, **kwargs):
 transformers.WhisperForConditionalGeneration.__init__ = _patched_init
 
 print("[Patch] Successfully monkeypatched WhisperForConditionalGeneration.__init__ to strip 'dtype'", flush=True)
+
+# 2. Monkeypatch json.JSONEncoder.default to serialize torch and numpy dtype objects to strings.
+# This prevents: TypeError: Object of type dtype is not JSON serializable.
+_orig_default = json.JSONEncoder.default
+def _patched_default(self, o):
+    if isinstance(o, torch.dtype):
+        return str(o).replace("torch.", "")
+    if isinstance(o, np.dtype) or o.__class__.__name__ == "dtype":
+        return str(o)
+    try:
+        return _orig_default(self, o)
+    except TypeError:
+        # Fallback for other non-serializable dtype-like objects
+        if "dtype" in str(type(o)).lower():
+            return str(o)
+        raise
+
+json.JSONEncoder.default = _patched_default
+print("[Patch] Successfully monkeypatched json.JSONEncoder.default to serialize dtypes", flush=True)
 
 import ctranslate2.converters.transformers as transformers_converter
 
