@@ -243,8 +243,57 @@ def create_nemo_model(model_id: str, target_lang: str = "hi-IN") -> Callable[[st
     is_nemotron = "nemotron" in model_id.lower()
 
     model = None
-    try:
-        model = nemo_asr.models.ASRModel.from_pretrained(model_id)
+    local_path = None
+    if os.path.exists(model_id):
+        local_path = model_id
+    else:
+        expanded = os.path.expandvars(model_id)
+        if os.path.exists(expanded):
+            local_path = expanded
+
+    if local_path:
+        if os.path.isdir(local_path):
+            import glob
+            nemo_files = glob.glob(os.path.join(local_path, "**", "*.nemo"), recursive=True)
+            if nemo_files:
+                best_file = None
+                min_wer = float('inf')
+                for f in nemo_files:
+                    basename = os.path.basename(f)
+                    if "val_wer=" in basename:
+                        try:
+                            parts = basename.split("val_wer=")
+                            wer_str = parts[1].split("-")[0].replace(".nemo", "")
+                            wer = float(wer_str)
+                            if wer < min_wer:
+                                min_wer = wer
+                                best_file = f
+                        except Exception:
+                            pass
+                if best_file:
+                    local_path = best_file
+                else:
+                    nemo_files.sort(key=os.path.getmtime)
+                    local_path = nemo_files[-1]
+                print(f"[NeMo] Found local .nemo files in directory. Selected: {local_path}")
+            else:
+                raise FileNotFoundError(f"No .nemo files found in directory {local_path}")
+
+        print(f"[NeMo] Restoring model from local path: {local_path}")
+        from nemo.collections.asr.models.hybrid_rnnt_ctc_bpe_models import EncDecHybridRNNTCTCBPEModel
+        try:
+            model = EncDecHybridRNNTCTCBPEModel.restore_from(local_path)
+        except Exception as e_hybrid:
+            print(f"[NeMo] EncDecHybridRNNTCTCBPEModel.restore_from failed: {e_hybrid}. Trying ASRModel.restore_from...")
+            try:
+                model = nemo_asr.models.ASRModel.restore_from(local_path)
+            except Exception as e_asr:
+                from nemo.collections.asr.models import EncDecRNNTBPEModel
+                print(f"[NeMo] ASRModel.restore_from failed: {e_asr}. Trying EncDecRNNTBPEModel.restore_from...")
+                model = EncDecRNNTBPEModel.restore_from(local_path)
+    else:
+        try:
+            model = nemo_asr.models.ASRModel.from_pretrained(model_id)
     except TypeError as e:
         if "abstract" in str(e).lower():
             print(f"[NeMo] ASRModel.from_pretrained failed with abstract class error: {e}. "

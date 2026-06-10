@@ -146,6 +146,20 @@ models:
     task: "transcribe"
     enabled: false
 
+  whisper-turbo-banking-configE:
+    backend: "whisper"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/whisper-turbo-banking-configE/final"
+    language: "hi"
+    task: "transcribe"
+    enabled: false
+
+  nemotron-banking-configE:
+    backend: "nemo"
+    model_id: "/scratch/nakshatrak_iitp/checkpoints/nemotron-3.5-banking-configE"
+    target_lang: "hi-IN"
+    enabled: false
+
+
 # ─── Evaluation ──────────────────────────────────────────
 evaluation:
   # Text normalization settings

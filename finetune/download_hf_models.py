@@ -11,8 +11,13 @@ def download():
     print("Downloading openai/whisper-medium...")
     WhisperProcessor.from_pretrained("openai/whisper-medium")
     WhisperForConditionalGeneration.from_pretrained("openai/whisper-medium")
+
+    print("Downloading openai/whisper-large-v3-turbo...")
+    WhisperProcessor.from_pretrained("openai/whisper-large-v3-turbo")
+    WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v3-turbo")
     
     print("Done! Models are now in your scratch HF cache.")
 
 if __name__ == "__main__":
     download()
+

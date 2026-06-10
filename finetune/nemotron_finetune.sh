@@ -38,7 +38,7 @@ export TOKENIZERS_PARALLELISM=false
 
 # Setup directory for checkpoints
 OUT_DIR="/scratch/$USER/checkpoints/nemotron-3.5-banking-configE"
-os.makedirs -p "$OUT_DIR"
+mkdir -p "$OUT_DIR"
 
 echo "====== Step 1: Pre-downloading Nemotron Checkpoint (Login Node equivalent) ======"
 # Pull the .nemo model weights locally before running offline on compute node
