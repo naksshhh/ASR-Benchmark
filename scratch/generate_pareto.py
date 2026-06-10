@@ -57,7 +57,7 @@ def load_all_results():
     kathbath_durs = load_kathbath_durations()
     print(f"Loaded {len(kathbath_durs)} durations from Kathbath manifest.")
     
-    all_rows = []
+    file_candidates = []
     for f in files:
         try:
             df = pd.read_csv(f)
@@ -67,70 +67,82 @@ def load_all_results():
             if "dataset" not in df.columns or "model" not in df.columns:
                 continue
                 
-            # Compute/override RTF values
-            for _, row in df.iterrows():
-                dataset_val = str(row["dataset"]).lower()
-                model_val = str(row["model"])
-                wer_val = row.get("wer")
-                rtf_val = row.get("rtf")
+            # Prepare space for computed RTF
+            df["computed_rtf"] = df.get("rtf", np.nan)
+            
+            # Determine if this file contains Kathbath evaluations
+            is_kathbath_file = any("kathbath" in str(d).lower() for d in df["dataset"].unique())
+            
+            for idx, row in df.iterrows():
                 audio_id_val = row.get("audio_id")
                 latency_val = row.get("latency_seconds")
+                rtf_val = row.get("rtf")
                 
-                # Categorize dataset
-                dataset_group = None
-                if "kathbath" in dataset_val:
-                    dataset_group = "kathbath"
-                elif "synthetic" in dataset_val:
-                    dataset_group = "synthetic"
-                    
-                if not dataset_group or pd.isna(wer_val):
-                    continue
-                
-                # For Kathbath, check if we need to calculate RTF manually
-                if dataset_group == "kathbath":
+                if is_kathbath_file:
                     duration = kathbath_durs.get(audio_id_val, 0)
                     if duration > 0 and pd.notna(latency_val):
-                        rtf_val = latency_val / duration
+                        df.at[idx, "computed_rtf"] = latency_val / duration
                     elif "latency_mean" in row and duration > 0:
-                        rtf_val = row["latency_mean"] / duration
+                        df.at[idx, "computed_rtf"] = row["latency_mean"] / duration
+                else:
+                    if pd.isna(rtf_val) and pd.notna(latency_val):
+                        dur_val = row.get("duration_seconds")
+                        if pd.notna(dur_val) and dur_val > 0:
+                            df.at[idx, "computed_rtf"] = latency_val / dur_val
+            
+            # Group by model and dataset *within this file*
+            for (model_val, dataset_val), sub_df in df.groupby(["model", "dataset"]):
+                dataset_val_str = str(dataset_val).lower()
+                dataset_group = None
+                if "kathbath" in dataset_val_str:
+                    dataset_group = "kathbath"
+                elif "synthetic" in dataset_val_str:
+                    dataset_group = "synthetic"
+                    
+                if not dataset_group:
+                    continue
+                    
+                wer_mean = sub_df["wer"].mean()
+                rtf_mean = sub_df["computed_rtf"].dropna().mean()
                 
-                # Fallback calculation if rtf is NaN but latency and duration exist in row
-                if pd.isna(rtf_val) and pd.notna(latency_val):
-                    dur_val = row.get("duration_seconds")
-                    if pd.notna(dur_val) and dur_val > 0:
-                        rtf_val = latency_val / dur_val
-                        
-                all_rows.append({
-                    "dataset": dataset_group,
-                    "model": model_val,
-                    "wer": wer_val,
-                    "rtf": rtf_val
-                })
+                if pd.notna(wer_mean):
+                    file_candidates.append({
+                        "dataset": dataset_group,
+                        "model": model_val,
+                        "wer": wer_mean,
+                        "rtf": rtf_mean,
+                        "file": os.path.basename(f)
+                    })
         except Exception as e:
             print(f"Error reading {f}: {e}")
             
-    return pd.DataFrame(all_rows)
+    df_candidates = pd.DataFrame(file_candidates)
+    if df_candidates.empty:
+        return pd.DataFrame()
+        
+    # For each dataset and model, pick the run with the lowest WER
+    best_runs = []
+    for (dataset_group, model_val), group in df_candidates.groupby(["dataset", "model"]):
+        best_row = group.sort_values("wer").iloc[0]
+        best_runs.append(best_row)
+        
+    return pd.DataFrame(best_runs)
 
 def plot_pareto(df_group, dataset_name, output_path):
-    # Group by model
-    model_stats = df_group.groupby("model").agg(
-        wer_mean=("wer", "mean"),
-        rtf_mean=("rtf", "mean")
-    ).reset_index()
-    
     # Convert WER to percentage
-    model_stats["wer_pct"] = model_stats["wer_mean"] * 100
+    df_group = df_group.copy()
+    df_group["wer_pct"] = df_group["wer"] * 100
     
     print(f"\nStats for {dataset_name}:")
-    print(model_stats.to_string())
+    print(df_group[["model", "wer", "rtf", "wer_pct", "file"]].to_string())
     
     fig, ax = plt.subplots(figsize=(12, 9))
     
     # Plot points
-    for _, row in model_stats.iterrows():
+    for _, row in df_group.iterrows():
         model = row["model"]
         wer = row["wer_pct"]
-        rtf = row["rtf_mean"]
+        rtf = row["rtf"]
         
         # Don't plot if RTF is missing
         if pd.isna(rtf):
@@ -154,8 +166,7 @@ def plot_pareto(df_group, dataset_name, output_path):
         )
         
     # Calculate and plot Pareto frontier line
-    # A point is Pareto optimal if no other point has BOTH lower WER and lower RTF
-    points = model_stats[["wer_pct", "rtf_mean", "model"]].dropna().values.tolist()
+    points = df_group[["wer_pct", "rtf", "model"]].dropna().values.tolist()
     
     if points:
         # Sort by WER ascending
@@ -163,7 +174,6 @@ def plot_pareto(df_group, dataset_name, output_path):
         
         pareto_points = [points[0]]
         for p in points[1:]:
-            # Since sorted by WER, if this point has lower or equal RTF than the last pareto point, it's on the frontier
             if p[1] <= pareto_points[-1][1]:
                 pareto_points.append(p)
                 
@@ -184,9 +194,9 @@ def plot_pareto(df_group, dataset_name, output_path):
     ax.set_ylabel("Real-Time Factor (RTF) ↓", fontsize=13, labelpad=10)
     
     # Log scale for Y (RTF) if range is large
-    if not model_stats["rtf_mean"].dropna().empty:
-        min_rtf = model_stats["rtf_mean"].dropna().min()
-        max_rtf = model_stats["rtf_mean"].dropna().max()
+    if not df_group["rtf"].dropna().empty:
+        min_rtf = df_group["rtf"].dropna().min()
+        max_rtf = df_group["rtf"].dropna().max()
         if min_rtf > 0 and max_rtf / min_rtf > 10:
             ax.set_yscale("log")
             ax.yaxis.set_major_formatter(plt.FormatStrFormatter('%.3f'))

@@ -223,6 +223,7 @@ Edit `config.yaml` to:
 8. **Nemotron-3.5-ASR is a highly accurate bilingual/multilingual model** — It scores **13.00% WER** on Kathbath Hindi (zero-shot), rivaling the native monolingual IndicWav2Vec baseline, and operates at an RTF of **0.174** with a natively streaming architecture.
 9. **Conformer-CTC Large (`stt_hi_conformer_ctc_large`) is extremely fast and precise** — On general Hindi, it scores **13.26% WER** (zero-shot). In latency sweeps, it operates at a mean latency of just **49ms (RTF 0.013)**, making it the fastest model tested.
 10. **Corrected Dialect ASR (Lahaja) results** — After resolving a segment alignment bug (where session segments were incorrectly reusing the first segment's audio), the actual zero-shot WERs dropped to healthy ranges: **24.58%** for `stt-hi-conformer-ctc-large`, **25.09%** for `nemotron-3.5-asr`, and **33.22%** for `indicwav2vec-hindi`. In addition, by configuring robust inference parameters (disabling context carry-over and adding repetition penalties), Whisper's repetition loops on Lahaja were completely resolved, with `whisper-medium-hi` dropping to **54.14%** and `whisper-medium-banking-configD` dropping to **38.27%** WER.
+11. **ASR Error Analysis & Technical Blog Series** — We conducted detailed alignment-based error classification on the Hinglish banking dataset (showing that Whisper fine-tuning successfully suppressed hallucinations from 78.45% down to 0.58%) and drafted a complete two-part technical blog post series in the repository outlining the findings, accent-aware evaluations, and production architecture recommendations.
 
 ---
 
@@ -392,15 +393,19 @@ Build a small (50–100 hours) test set:
 | Canary-1B-Flash | English-first | 105.35% | 99.87% | 100.46% | No |
 | Streaming-Zipformer | English-first | 106.49% | 96.38% | 100.69% | No |
 | Whisper-tiny | English-first | 254.00% | 244.76% | 915.55% | No |
-| **Whisper-medium (yours)** | **Fine-tuned** | **20.57%** | **7.30%** | **4.49%** | **Yes (Config D)** |
-| **IndicWav2Vec (yours)** | **Fine-tuned** | **14.52%** | **4.36%** | **2.76%** | **Yes (Config D)** |
+| **Whisper-medium (yours, Config D)** | **Fine-tuned** | **20.57%** | **7.30%** | **4.49%** | **Yes (Config D)** |
+| **Whisper-medium (yours, Config C)** | **Fine-tuned** | **36.61%** | **17.22%** | **18.20%** | **Yes (Config C)** |
+| **IndicWav2Vec (yours, Config D)** | **Fine-tuned** | **14.52%** | **4.36%** | **2.76%** | **Yes (Config D)** |
+| **IndicWav2Vec (yours, Config C)** | **Fine-tuned** | **17.20%** | **5.49%** | **16.59%** | **Yes (Config C)** |
 
 ### Synthetic Banking Dataset (100 samples — Domain-Specific Evaluation on A100)
 
 | Model | Banking WER ↓ | Banking CER ↓ | Entity Accuracy ↑ | RTF (A100) ↓ | Real-time? |
 |---|---|---|---|---|---|
-| **Whisper-medium (yours)** | **48.73%** | **35.83%** | — | **0.88** | ✅ Yes (Config D) |
-| **IndicWav2Vec (yours)** | **73.35%** | **67.39%** | — | **0.09** | ✅ Yes (Config D) |
+| **Whisper-medium (yours, Config C)** | **37.74%** | **25.36%** | **79.5%** | **0.73** | ✅ Yes |
+| **Whisper-medium (yours, Config D)** | **48.73%** | **35.83%** | **60.0%** | **0.88** | ✅ Yes |
+| **IndicWav2Vec (yours, Config D)** | **73.35%** | **67.39%** | **29.0%** | **0.61** | ✅ Yes |
+| **IndicWav2Vec (yours, Config C)** | **78.95%** | **71.24%** | **54.3%** | **0.14** | ✅ Yes |
 | Voxtral-Mini-3B | **46.01%** | **34.69%** | **70.5%** | 0.54 | ✅ Yes |
 | Whisper large-v3 | 46.32% | 33.53% | 67.0% | 1.49 | ❌ No |
 | Whisper large-v3-turbo | 55.52% | 39.72% | 62.0% | 0.50 | ✅ Yes |
