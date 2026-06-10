@@ -42,7 +42,10 @@ def main():
     parser.add_argument("--public", action="store_true", help="Set repository to public (default is private)")
     parser.add_argument("--model", help="Specify a specific model repo name to upload (e.g., indicwav2vec-banking-configD)")
     parser.add_argument("--config", help="Specify a specific config to upload (e.g., B, C, or D)")
+    parser.add_argument("--local-dir", help="Direct path to a local directory to upload (bypasses predefined lists)")
+    parser.add_argument("--repo-name", help="Repository name to use on Hugging Face when using --local-dir")
     args = parser.parse_args()
+
 
     # Define the models we want to upload (Targeting only the final folders)
     # Using expanding environment variables to support multiple user profiles on cluster
@@ -74,6 +77,19 @@ def main():
         }
     ]
 
+    # If direct local directory upload is requested
+    if args.local_dir:
+        if not args.repo_name:
+            print("Error: --repo-name must be specified when uploading with --local-dir.")
+            return
+        upload_model(
+            local_dir=args.local_dir,
+            repo_name=args.repo_name,
+            token=args.token,
+            private=not args.public
+        )
+        return
+
     # Filter models if arguments are provided
     if args.model:
         models_to_upload = [m for m in models_to_upload if m["repo_name"] == args.model]
@@ -103,3 +119,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
